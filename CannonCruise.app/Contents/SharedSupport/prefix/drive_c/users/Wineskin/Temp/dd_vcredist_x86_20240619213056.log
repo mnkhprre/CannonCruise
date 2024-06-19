@@ -1,0 +1,112 @@
+[0150:0154][2024-06-19T21:30:56]i001: Burn v3.10.4.4718, Windows v10.0 (Build 17763: Service Pack 0), path: C:\windows\temp\{B59951E5-0123-446A-AE75-97D9F6B9B322}\.cr\vc_redist.x86.exe
+[0150:0154][2024-06-19T21:30:56]i009: Command Line: '-burn.clean.room=Y:\vcrun2022\vc_redist.x86.exe -burn.filehandle.attached=136 -burn.filehandle.self=140 /q'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleOriginalSource' to value 'Y:\vcrun2022\vc_redist.x86.exe'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleOriginalSourceFolder' to value 'Y:\vcrun2022\'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleLog' to value 'C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056.log'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleName' to value 'Microsoft Visual C++ 2015-2022 Redistributable (x86) - 14.40.33810'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleManufacturer' to value 'Microsoft Corporation'
+[0150:0160][2024-06-19T21:30:56]i000: Setting version variable 'WixBundleFileVersion' to value '14.40.33810.0'
+[0150:0154][2024-06-19T21:30:56]i100: Detect begin, 10 packages
+[0150:0154][2024-06-19T21:30:56]i000: Setting version variable 'windows_uCRT_DetectKey' to value '10.0.14393.2247'
+[0150:0154][2024-06-19T21:30:56]i000: Setting numeric variable 'windows_uCRT_DetectKeyExists' to value 1
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.3 AND NOT VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.3 AND VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.2 AND NOT VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.2 AND VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.1 AND NOT VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.1 AND VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.0 AND NOT VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i052: Condition '(VersionNT = v6.0 AND VersionNT64) AND (windows_uCRT_DetectKeyExists AND windows_uCRT_DetectKey >= v10.0.10240.0)' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: Windows81_x86, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: Windows81_x64, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: Windows8_x86, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: Windows8_x64, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: Windows7_MSU_x86, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: Windows7_MSU_x64, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: WindowsVista_MSU_x86, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: WindowsVista_MSU_x64, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: vcRuntimeMinimum_x86, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i101: Detected package: vcRuntimeAdditional_x86, state: Absent, cached: None
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT >= v6.1' evaluates to true.
+[0150:0154][2024-06-19T21:30:56]i199: Detect complete, result: 0x0
+[0150:0154][2024-06-19T21:30:56]i200: Plan begin, 10 packages, action: Install
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.3 AND NOT VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: Windows81_x86
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.3 AND VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: Windows81_x64
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.2 AND NOT VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: Windows8_x86
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.2 AND VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: Windows8_x64
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.1 AND NOT VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: Windows7_MSU_x86
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.1 AND VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: Windows7_MSU_x64
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.0 AND NOT VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: WindowsVista_MSU_x86
+[0150:0154][2024-06-19T21:30:56]i052: Condition 'VersionNT = v6.0 AND VersionNT64' evaluates to false.
+[0150:0154][2024-06-19T21:30:56]w321: Skipping dependency registration on package with no dependency providers: WindowsVista_MSU_x64
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleRollbackLog_vcRuntimeMinimum_x86' to value 'C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_000_vcRuntimeMinimum_x86_rollback.log'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleLog_vcRuntimeMinimum_x86' to value 'C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_000_vcRuntimeMinimum_x86.log'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleRollbackLog_vcRuntimeAdditional_x86' to value 'C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_001_vcRuntimeAdditional_x86_rollback.log'
+[0150:0154][2024-06-19T21:30:56]i000: Setting string variable 'WixBundleLog_vcRuntimeAdditional_x86' to value 'C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_001_vcRuntimeAdditional_x86.log'
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: Windows81_x86, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: Windows81_x64, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: Windows8_x86, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: Windows8_x64, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: Windows7_MSU_x86, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: Windows7_MSU_x64, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: WindowsVista_MSU_x86, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: WindowsVista_MSU_x64, state: Absent, default requested: Absent, ba requested: Absent, execute: None, rollback: None, cache: No, uncache: No, dependency: None
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: vcRuntimeMinimum_x86, state: Absent, default requested: Present, ba requested: Present, execute: Install, rollback: Uninstall, cache: Yes, uncache: No, dependency: Register
+[0150:0154][2024-06-19T21:30:56]i201: Planned package: vcRuntimeAdditional_x86, state: Absent, default requested: Present, ba requested: Present, execute: Install, rollback: Uninstall, cache: Yes, uncache: No, dependency: Register
+[0150:0154][2024-06-19T21:30:56]i299: Plan complete, result: 0x0
+[0150:0154][2024-06-19T21:30:56]i300: Apply begin
+[0150:0154][2024-06-19T21:30:56]i010: Launching elevated engine process.
+[0150:0154][2024-06-19T21:30:56]i011: Launched elevated engine process.
+[0150:0154][2024-06-19T21:30:57]i012: Connected to elevated engine.
+[0164:0168][2024-06-19T21:30:57]i358: Pausing automatic updates.
+[0164:0168][2024-06-19T21:30:57]i359: Paused automatic updates.
+[0164:0168][2024-06-19T21:30:57]i360: Creating a system restore point.
+[0164:0168][2024-06-19T21:30:57]i361: Created a system restore point.
+[0164:0168][2024-06-19T21:30:57]i370: Session begin, registration key: SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{47109d57-d746-4f8b-9618-ed6a17cc922b}, options: 0x7, disable resume: No
+[0164:0168][2024-06-19T21:30:57]i000: Caching bundle from: 'C:\windows\Temp\{23E3F7C6-53CA-4736-998C-592370EA3E3B}\.be\VC_redist.x86.exe' to: 'C:\ProgramData\Package Cache\{47109d57-d746-4f8b-9618-ed6a17cc922b}\VC_redist.x86.exe'
+[0164:0168][2024-06-19T21:30:57]i320: Registering bundle dependency provider: VC,redist.x86,x86,14.40,bundle, version: 14.40.33810.0
+[0164:0168][2024-06-19T21:30:57]i371: Updating session, registration key: SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{47109d57-d746-4f8b-9618-ed6a17cc922b}, resume: Active, restart initiated: No, disable resume: No
+[0164:0174][2024-06-19T21:30:57]i305: Verified acquired payload: vcRuntimeMinimum_x86 at path: C:\ProgramData\Package Cache\.unverified\vcRuntimeMinimum_x86, moving to: C:\ProgramData\Package Cache\{0C3457A0-3DCE-4A33-BEF0-9B528C557771}v14.40.33810\packages\vcRuntimeMinimum_x86\vc_runtimeMinimum_x86.msi.
+[0164:0174][2024-06-19T21:30:57]i305: Verified acquired payload: cab54A5CABBE7274D8A22EB58060AAB7623 at path: C:\ProgramData\Package Cache\.unverified\cab54A5CABBE7274D8A22EB58060AAB7623, moving to: C:\ProgramData\Package Cache\{0C3457A0-3DCE-4A33-BEF0-9B528C557771}v14.40.33810\packages\vcRuntimeMinimum_x86\cab1.cab.
+[0164:0174][2024-06-19T21:30:57]i305: Verified acquired payload: vcRuntimeAdditional_x86 at path: C:\ProgramData\Package Cache\.unverified\vcRuntimeAdditional_x86, moving to: C:\ProgramData\Package Cache\{5EA6C998-D5AC-4ED9-89C3-9F25B17CCD3D}v14.40.33810\packages\vcRuntimeAdditional_x86\vc_runtimeAdditional_x86.msi.
+[0164:0174][2024-06-19T21:30:57]i305: Verified acquired payload: cabB3E1576D1FEFBB979E13B1A5379E0B16 at path: C:\ProgramData\Package Cache\.unverified\cabB3E1576D1FEFBB979E13B1A5379E0B16, moving to: C:\ProgramData\Package Cache\{5EA6C998-D5AC-4ED9-89C3-9F25B17CCD3D}v14.40.33810\packages\vcRuntimeAdditional_x86\cab1.cab.
+[0164:0168][2024-06-19T21:30:57]i301: Applying execute package: vcRuntimeMinimum_x86, action: Install, path: C:\ProgramData\Package Cache\{0C3457A0-3DCE-4A33-BEF0-9B528C557771}v14.40.33810\packages\vcRuntimeMinimum_x86\vc_runtimeMinimum_x86.msi, arguments: ' MSIFASTINSTALL="7" NOVSUI="1"'
+[0150:0154][2024-06-19T21:30:57]i319: Applied execute package: vcRuntimeMinimum_x86, result: 0x0, restart: None
+[0164:0168][2024-06-19T21:30:57]i325: Registering dependency: {47109d57-d746-4f8b-9618-ed6a17cc922b} on package provider: Microsoft.VS.VC_RuntimeMinimumVSU_x86,v14, package: vcRuntimeMinimum_x86
+[0164:0168][2024-06-19T21:30:57]i301: Applying execute package: vcRuntimeAdditional_x86, action: Install, path: C:\ProgramData\Package Cache\{5EA6C998-D5AC-4ED9-89C3-9F25B17CCD3D}v14.40.33810\packages\vcRuntimeAdditional_x86\vc_runtimeAdditional_x86.msi, arguments: ' MSIFASTINSTALL="7" NOVSUI="1"'
+[0150:0154][2024-06-19T21:30:57]i319: Applied execute package: vcRuntimeAdditional_x86, result: 0x0, restart: None
+[0164:0168][2024-06-19T21:30:57]i325: Registering dependency: {47109d57-d746-4f8b-9618-ed6a17cc922b} on package provider: Microsoft.VS.VC_RuntimeAdditionalVSU_x86,v14, package: vcRuntimeAdditional_x86
+[0164:0168][2024-06-19T21:30:57]i372: Session end, registration key: SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{47109d57-d746-4f8b-9618-ed6a17cc922b}, resume: ARP, restart: None, disable resume: No
+[0164:0168][2024-06-19T21:30:57]i371: Updating session, registration key: SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{47109d57-d746-4f8b-9618-ed6a17cc922b}, resume: ARP, restart initiated: No, disable resume: No
+[0150:0154][2024-06-19T21:30:57]i399: Apply complete, result: 0x0, restart: None, ba requested restart:  No
+[0150:0154][2024-06-19T21:30:57]i500: Shutting down, exit code: 0x0
+[0150:0154][2024-06-19T21:30:57]i410: Variable: SystemFolder = C:\windows\system32\
+[0150:0154][2024-06-19T21:30:57]i410: Variable: VersionNT = 10.0.0.0
+[0150:0154][2024-06-19T21:30:57]i410: Variable: windows_uCRT_DetectKey = 10.0.14393.2247
+[0150:0154][2024-06-19T21:30:57]i410: Variable: windows_uCRT_DetectKeyExists = 1
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleAction = 5
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleElevated = 1
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleFileVersion = 14.40.33810.0
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleInstalled = 0
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleLog = C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056.log
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleLog_vcRuntimeAdditional_x86 = C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_001_vcRuntimeAdditional_x86.log
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleLog_vcRuntimeMinimum_x86 = C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_000_vcRuntimeMinimum_x86.log
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleManufacturer = Microsoft Corporation
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleName = Microsoft Visual C++ 2015-2022 Redistributable (x86) - 14.40.33810
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleOriginalSource = Y:\vcrun2022\vc_redist.x86.exe
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleOriginalSourceFolder = Y:\vcrun2022\
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleProviderKey = VC,redist.x86,x86,14.40,bundle
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleRollbackLog_vcRuntimeAdditional_x86 = C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_001_vcRuntimeAdditional_x86_rollback.log
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleRollbackLog_vcRuntimeMinimum_x86 = C:\users\mustafabilgin\Temp\dd_vcredist_x86_20240619213056_000_vcRuntimeMinimum_x86_rollback.log
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleSourceProcessFolder = Y:\vcrun2022\
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleSourceProcessPath = Y:\vcrun2022\vc_redist.x86.exe
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleTag = 
+[0150:0154][2024-06-19T21:30:57]i410: Variable: WixBundleVersion = 14.40.33810.0
+[0150:0154][2024-06-19T21:30:57]i007: Exit code: 0x0, restarting: No

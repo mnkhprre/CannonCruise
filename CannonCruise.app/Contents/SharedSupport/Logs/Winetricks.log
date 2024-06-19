@@ -1,0 +1,44 @@
+Executing cd /private/var/folders/fv/q01n3hsx30s_44x9c1gh6n4r0000gn/T/CannonCruise.app/Contents/Wineskin.app/Contents/Resources
+------------------------------------------------------
+warning: Your version of wine 6.0.2 is no longer supported upstream. You should upgrade to 8.x
+------------------------------------------------------
+Using winetricks 20240105-next - sha256sum: 165a8d8059c98e766c7db774498d586eec686f9d4c76d4e1324e38c8ecfe6900 with wine-6.0.2 (WineskinCX 21.2.0) and WINEARCH=win32
+Executing w_do_call vcrun2022
+Executing load_vcrun2022 
+Using native,builtin override for following DLLs: concrt140 msvcp140 msvcp140_1 msvcp140_2 msvcp140_atomic_wait msvcp140_codecvt_ids vcamp140 vccorlib140 vcomp140 vcruntime140
+Executing wine C:\windows\regedit.exe /S C:\windows\Temp\override-dll.reg
+------------------------------------------------------
+warning: Checksum for /Users/mustafabilgin/.cache/winetricks/vcrun2022/vc_redist.x86.exe did not match, retrying download
+------------------------------------------------------
+Executing cd /Users/mustafabilgin/.cache/winetricks/vcrun2022
+Downloading https://aka.ms/vs/17/release/vc_redist.x86.exe to /Users/mustafabilgin/.cache/winetricks/vcrun2022
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 13.2M  100 13.2M    0     0  23.2M      0 --:--:-- --:--:-- --:--:-- 23.2M
+Executing cd /private/var/folders/fv/q01n3hsx30s_44x9c1gh6n4r0000gn/T/CannonCruise.app/Contents/Wineskin.app/Contents/Resources
+------------------------------------------------------
+SHA256 mismatch!
+
+URL: https://aka.ms/vs/17/release/vc_redist.x86.exe
+Downloaded: a32dd41eaab0c5e1eaa78be3c0bb73b48593de8d97a7510b97de3fd993538600
+Expected: 510fc8c2112e2bc544fb29a72191eabcc68d3a5a7468d35d7694493bc8593a79
+
+This is often the result of an updated package such as vcrun2019.
+If you are willing to accept the risk, you can bypass this check.
+Alternatively, you may use the --force option to ignore this check entirely.
+
+Continue anyway?
+------------------------------------------------------
+------------------------------------------------------
+Unattended mode, not prompting for confirmation
+------------------------------------------------------
+Executing cd /Users/mustafabilgin/.cache/winetricks/vcrun2022
+Executing wine vc_redist.x86.exe /q
+Executing w_do_call ucrtbase2019
+Executing load_ucrtbase2019 
+Using native,builtin override for following DLLs: ucrtbase
+Executing wine C:\windows\regedit.exe /S C:\windows\Temp\override-dll.reg
+Executing cabextract -q --directory=/private/var/folders/fv/q01n3hsx30s_44x9c1gh6n4r0000gn/T/CannonCruise.app/Contents/SharedSupport/prefix/drive_c/windows/temp/win32 /Users/mustafabilgin/.cache/winetricks/ucrtbase2019/VC_redist.x86.exe -F a10
+Executing cabextract -q --directory=/private/var/folders/fv/q01n3hsx30s_44x9c1gh6n4r0000gn/T/CannonCruise.app/Contents/SharedSupport/prefix/drive_c/windows/system32 /private/var/folders/fv/q01n3hsx30s_44x9c1gh6n4r0000gn/T/CannonCruise.app/Contents/SharedSupport/prefix/drive_c/windows/temp/win32/a10 -F ucrtbase.dll
+/private/var/folders/fv/q01n3hsx30s_44x9c1gh6n4r0000gn/T/CannonCruise.app/Contents/SharedSupport/prefix/drive_c/windows/temp/win32/a10: WARNING; possible 9136 extra bytes at end of file.

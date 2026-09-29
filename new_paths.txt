@@ -1,0 +1,7 @@
+"@@(#)$Id: //RenderWare/RW36Active/rwsdk/src/baframe.c#1 $" ; len=58
+"@@(#)$Id: //RenderWare/RW36Active/rwsdk/src/plcore/bamatrix.c#1 $" ; len=66
+"@@(#)$Id: //RenderWare/RW36Active/rwsdk/src/batypehf.c#1 $" ; len=59
+"@@@@(#)$Id: //RenderWare/RW36Active/rwsdk/driver/d3d9/d3d9device.c#4 $" ; len=71
+"@@(#)$Id: //RenderWare/RW36Active/rwsdk/src/plcore/bamatrix.c#1 $" ; len=66
+"@@(#)$Id: //RenderWare/RW36Active/rwsdk/src/batypehf.c#1 $" ; len=59
+"@@@@(#)$Id: //RenderWare/RW36Active/rwsdk/driver/d3d9/d3d9device.c#4 $" ; len=71

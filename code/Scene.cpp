@@ -12,6 +12,13 @@
 #include "InputManager.h"
 #include <cassert>
 
+RpWorld* CScene::sm_pActiveWorld = 0;
+
+RpWorld* CScene::GetWorld()
+{
+    return sm_pActiveWorld;
+}
+
 CScene::CScene()
     : m_pWorld(0),
       m_iGameInputFocusID(-1)
@@ -22,6 +29,7 @@ CScene::~CScene()
 {
     Unload();
 }
+
 
 void CScene::HandleEvents(const RWS::CMsg& msg)
 {

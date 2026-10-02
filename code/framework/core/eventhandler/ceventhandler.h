@@ -19,9 +19,16 @@ namespace RWS
 
     typedef RwUInt32 CEventId;
 
+    const CEventId iMsgRunningTick = 0x0001;
+    const CEventId iMsgPhysicsUpdate = 0x0002;
+
     struct CMsg
     {
-        CEventId m_Id;
+        union
+        {
+            CEventId m_Id;
+            CEventId Id;
+        };
         const void* m_pData;
         RwUInt32 m_Priority;
 
@@ -34,16 +41,21 @@ namespace RWS
     class CEventHandler
     {
     public:
-        CEventHandler();
+        CEventHandler() {}
+        CEventHandler(RwUInt32) {}
         virtual ~CEventHandler();
 
         // Olay işleme sanal fonksiyonu
         virtual void HandleEvents(const CMsg& msg);
+        virtual void HandleEvents(CMsg& msg) { HandleEvents((const CMsg&)msg); }
 
         // Olay bağlama / bağlantı kesme
         void LinkMsg(CEventId eventId, const char* pFormat = 0, RwUInt32 priority = 0);
         void UnLinkMsg(CEventId eventId);
         void UnLinkAllProcess();
+
+        void RegisterForMessage(CEventId eventId) { LinkMsg(eventId); }
+        void UnregisterForMessage(CEventId eventId) { UnLinkMsg(eventId); }
 
         // Statik mesaj gönderme & olay yönetimi
         static void SendMsg(const CMsg& msg);

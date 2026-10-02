@@ -24,10 +24,12 @@ public:
     RwBool Load(const char* pSceneName);
     void Unload();
 
-    RpWorld* GetWorld() const { return m_pWorld; }
+    static RpWorld* GetWorld();
+    RpWorld* GetSceneWorld() const { return m_pWorld; }
     const char* GetName() const { return m_SceneName.c_str(); }
 
 private:
+    static RpWorld* sm_pActiveWorld;
     std::string m_SceneName;
     RpWorld* m_pWorld;
     RwInt32 m_iGameInputFocusID;

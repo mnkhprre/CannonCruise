@@ -39,7 +39,11 @@ namespace RWS
         static void HandleSetParent(RwFrame* pChildFrame, RwFrame* pParentFrame);
         static void HandleAttachAtomic(RpAtomic* pAtomic, RwFrame* pFrame);
         static void HandleSetFlags(RpAtomic* pAtomic, RwUInt32 flags);
+
+        static const void* ExtractClump(const class CAttributePacket& packet) { return 0; }
+        static const void* ExtractClump(const struct CMsg& msg) { return 0; }
     };
 }
+
 
 #endif // RWS_CSYSTEMCOMMANDS_H

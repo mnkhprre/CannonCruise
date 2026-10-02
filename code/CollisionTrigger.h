@@ -11,8 +11,22 @@
 #include <rpworld.h>
 #include <rwcore.h>
 
+namespace CollisionTrigger
+{
+    struct CollisionInfo
+    {
+        void* pEntityA;
+        void* pEntityB;
+        RwV3d contactPoint;
+    };
+
+    class CCollisionTrigger;
+}
+
 class CCollisionTrigger : public RWS::CEventHandler {
 public:
+  typedef CollisionTrigger::CollisionInfo CollisionInfo;
+
   CCollisionTrigger();
   virtual ~CCollisionTrigger();
 
@@ -31,4 +45,11 @@ private:
   RwInt32 m_iLeaveSpeakIndex;
 };
 
+namespace CollisionTrigger
+{
+
+    typedef ::CCollisionTrigger CCollisionTrigger;
+}
+
 #endif // COLLISIONTRIGGER_H
+

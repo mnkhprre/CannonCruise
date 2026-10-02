@@ -27,7 +27,12 @@ namespace RWS
         // Clump'ı klonlama ve yok etme
         static RpClump* Clone(RpClump* pClump);
         static void Destroy(RpClump* pClump);
+        static void DestroyClump(RpClump* pClump) { Destroy(pClump); }
+
+        static RpClump* CreateClumpFromResource(const void* pResourceData) { return 0; }
+        static void HandleAttributes(RpClump* pClump, const class CAttributePacket& packet) {}
     };
 }
+
 
 #endif // RWS_CLUMPHELPER_H

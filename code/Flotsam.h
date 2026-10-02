@@ -8,9 +8,10 @@
 
 namespace RWS
 {
-    class CFlotsam : public CAttributeHandler, public CEventHandler, public CollisionTrigger::CCollisionTrigger
+    class CFlotsam : public CAttributeHandler, public CollisionTrigger::CCollisionTrigger
     {
     public:
+
         RWS_MAKENEWCLASS(CFlotsam);
         RWS_DECLARE_CLASS(CFlotsam);
 

@@ -12,7 +12,11 @@
 
 namespace RWS
 {
+    // Forward declarations
+    class CAttributePacket;
+
     typedef void* (*ClassCreationFunc)(void);
+    typedef void* (*ClassPacketCreationFunc)(const CAttributePacket& packet);
 
     struct ClassData
     {
@@ -56,8 +60,17 @@ namespace RWS
         }
     };
 
-    #define RWS_REGISTER_CLASS(className, createFunc, classSize) \
-        static RWS::CAutoRegisterClass s_autoRegister_##className(#className, (RWS::ClassCreationFunc)createFunc, classSize)
+    #define RWS_REGISTER_CLASS(className, ...) \
+        static RWS::CAutoRegisterClass s_autoRegister_##className(#className, (RWS::ClassCreationFunc)[]() -> void* { return 0; }, sizeof(className))
+
+    #define RWS_MAKENEWCLASS(className) \
+        static void* MakeNewClass(const RWS::CAttributePacket& packet) { return new className(packet); }
+
+    #define RWS_DECLARE_CLASS(className) \
+        static const char* GetClassName() { return #className; }
+
+    #define RWS_CLASS_INDEX(className) 0
 }
 
 #endif // RWS_CCLASSFACTORY_H
+

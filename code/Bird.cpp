@@ -1,3 +1,15 @@
+// ============================================================================
+// CannonCruise - Ambient Bird & Seagull Entity (Bird.cpp)
+// Original path: D:\Projects\CannonCruisePC\code\Bird.cpp
+// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+//
+// Binary Fonksiyonları:
+//   FUN_004680d0 — CBird::HandleEvents ("CBird HE Running")
+//   FUN_00468350 — CBird class registration & factory
+//   FUN_00469460 — CBirdSeaGull class registration
+//   FUN_004695b0 — CBirdSeaGull::HandleEvents ("CBirdSeaGull HE Running")
+// ============================================================================
+
 #include "Bird.h"
 #include "framework/core/attributehandler/cclassfactory.h"
 #include "framework/core/attributehandler/csystemcommands.h"
@@ -8,11 +20,17 @@
 
 namespace RWS
 {
+    // Register bird entity classes with the RenderWare Studio reflection system
     RWS_REGISTER_CLASS(CBird);
     RWS_REGISTER_CLASS(CBirdSeaGull);
 
+    // Global counter tracking active bird entities in simulation
     RwUInt32 CBird::ms_nBirdsAddedToWorlds = 0;
 
+    // ---------------------------------------------------------------------------
+    // Constructor – parses attribute packet, allocates animation controller,
+    // loads 3D clump mesh, subscribes to frame tick message, and adds to world.
+    // ---------------------------------------------------------------------------
     CBird::CBird(const CAttributePacket& packet)
         : CAttributeHandler(packet)
         , CEventHandler(0)
@@ -47,6 +65,10 @@ namespace RWS
         AddToWorld();
     }
 
+    // ---------------------------------------------------------------------------
+    // Destructor – unregisters event subscriptions, validates world counter,
+    // destroys animation controller and clump assets.
+    // ---------------------------------------------------------------------------
     CBird::~CBird()
     {
         UnregisterForMessage(iMsgRunningTick);
@@ -72,6 +94,14 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleAttributes – dynamic property updater from workspace / level editor.
+    // Command mapping:
+    //   0: Flight altitude offset (RwReal)
+    //   1: Forward flight speed (RwReal)
+    //   2: Orbit circle radius (RwReal)
+    //   3: Angular turning rate (RwReal)
+    // ---------------------------------------------------------------------------
     void CBird::HandleAttributes(const CAttributePacket& packet)
     {
         CAttributeHandler::HandleAttributes(packet);
@@ -109,6 +139,10 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleEvents – mirrors "CBird HE Running" (FUN_004680d0).
+    // Receives engine frame ticks and advances orbital kinematics.
+    // ---------------------------------------------------------------------------
     void CBird::HandleEvents(CMsg& msg)
     {
         if (msg.Id == iMsgRunningTick)
@@ -117,6 +151,9 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // AddToWorld – adds 3D clump to current CScene RpWorld hierarchy.
+    // ---------------------------------------------------------------------------
     void CBird::AddToWorld()
     {
         if (!m_bAddedToWorld && m_pClump)
@@ -131,6 +168,9 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // RemoveFromWorld – extracts clump from current CScene RpWorld.
+    // ---------------------------------------------------------------------------
     void CBird::RemoveFromWorld()
     {
         if (m_bAddedToWorld)
@@ -145,6 +185,9 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // Update – advances position kinematics and ticks animation frames.
+    // ---------------------------------------------------------------------------
     void CBird::Update(RwReal deltaTime)
     {
         UpdateFlight(deltaTime);
@@ -155,6 +198,13 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // UpdateFlight – computes circular path coordinates around m_originPos:
+    //   pos.x = origin.x + cos(angle) * radius
+    //   pos.y = origin.y + flightHeight
+    //   pos.z = origin.z + sin(angle) * radius
+    // Updates the RenderWare frame matrix and invalidates cached hierarchy nodes.
+    // ---------------------------------------------------------------------------
     void CBird::UpdateFlight(RwReal deltaTime)
     {
         m_angle += m_turnRate * deltaTime;
@@ -180,7 +230,10 @@ namespace RWS
         }
     }
 
-    // CBirdSeaGull
+    // ===========================================================================
+    // CBirdSeaGull Implementation
+    // ===========================================================================
+
     CBirdSeaGull::CBirdSeaGull(const CAttributePacket& packet)
         : CBird(packet)
     {

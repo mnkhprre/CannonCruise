@@ -4,7 +4,7 @@
 // Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
 //
 // Binary Fonksiyonları:
-//   FUN_004ae6c0 — CShipPlayer registration
+//   FUN_004ae6c0 — CShipPlayer registration & setup
 //   FUN_004b2fe0 — CShipPlayerInputProxy::Update
 // ============================================================================
 
@@ -13,17 +13,35 @@
 #include "framework/core/attributehandler/cclassfactory.h"
 #include <cassert>
 
+// ---------------------------------------------------------------------------
+// Constructor – binds proxy to optional ship and sets player index to 0.
+// ---------------------------------------------------------------------------
 CShipPlayerInputProxy::CShipPlayerInputProxy(CShip *pShip)
     : m_pShip(pShip), m_iPlayerIndex(0) {}
 
+// ---------------------------------------------------------------------------
+// Destructor.
+// ---------------------------------------------------------------------------
 CShipPlayerInputProxy::~CShipPlayerInputProxy() {}
 
+// ---------------------------------------------------------------------------
+// AttachShip – associates a new CShip instance with this input controller.
+// ---------------------------------------------------------------------------
 void CShipPlayerInputProxy::AttachShip(CShip *pShip) { m_pShip = pShip; }
 
+// ---------------------------------------------------------------------------
+// HandleEvents – listens for gameplay messages such as iMsgTeleportShip.
+// ---------------------------------------------------------------------------
 void CShipPlayerInputProxy::HandleEvents(const RWS::CMsg &msg) {
   // iMsgTeleportShip
 }
 
+// ---------------------------------------------------------------------------
+// Update – mirrors FUN_004b2fe0.
+// Samples gamepad and keyboard buttons via CInputManager:
+//   - Directional rudder: P1_INPUT_1 (port turn) vs P1_INPUT_2 (starboard turn)
+//   - Cannon broadsides: P1_INPUT_4 (port volley) and P1_INPUT_5 (starboard volley)
+// ---------------------------------------------------------------------------
 void CShipPlayerInputProxy::Update() {
   if (!m_pShip)
     return;
@@ -32,18 +50,18 @@ void CShipPlayerInputProxy::Update() {
   if (!pInput)
     return;
 
-  // Dümen kontrolü
-  if (pInput->IsButtonDown(m_iPlayerIndex, P1_INPUT_1)) // Sol
+  // Rudder steering control
+  if (pInput->IsButtonDown(m_iPlayerIndex, P1_INPUT_1)) // Left turn
   {
     m_pShip->SetRudder(-1.0f);
-  } else if (pInput->IsButtonDown(m_iPlayerIndex, P1_INPUT_2)) // Sağ
+  } else if (pInput->IsButtonDown(m_iPlayerIndex, P1_INPUT_2)) // Right turn
   {
     m_pShip->SetRudder(1.0f);
   } else {
     m_pShip->SetRudder(0.0f);
   }
 
-  // İskele (sol) ve Sancak (sağ) top atışları
+  // Broadside cannon battery salvoes
   if (pInput->IsButtonPressed(m_iPlayerIndex, P1_INPUT_4)) {
     m_pShip->FirePortCannons();
   }

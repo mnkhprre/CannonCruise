@@ -171,9 +171,9 @@ namespace RWS
         pPool->m_pBase = malloc(poolSize + CClassFactory::m_AlignmentSize);
         
         // 64-byte hizalama hesapla
-        RwUInt32 baseAddr = (RwUInt32)pPool->m_pBase;
-        RwUInt32 alignedAddr = baseAddr;
-        RwUInt32 misaligned = baseAddr & (CClassFactory::m_AlignmentSize - 1);
+        uintptr_t baseAddr = reinterpret_cast<uintptr_t>(pPool->m_pBase);
+        uintptr_t alignedAddr = baseAddr;
+        uintptr_t misaligned = baseAddr & (CClassFactory::m_AlignmentSize - 1);
         if (misaligned != 0)
         {
             alignedAddr = (baseAddr - misaligned) + CClassFactory::m_AlignmentSize;
@@ -182,9 +182,9 @@ namespace RWS
         assert((alignedAddr & (CClassFactory::m_AlignmentSize - 1)) == 0 &&
                "CLinearMemoryManager: Storage not aligned to CClassFactory::m_AlignmentSize.");
 
-        pPool->m_pAlignedBase = (void*)alignedAddr;
-        pPool->m_pCurrent = (void*)alignedAddr;
-        pPool->m_pEnd = (void*)(alignedAddr + poolSize);
+        pPool->m_pAlignedBase = reinterpret_cast<void*>(alignedAddr);
+        pPool->m_pCurrent = reinterpret_cast<void*>(alignedAddr);
+        pPool->m_pEnd = reinterpret_cast<void*>(alignedAddr + poolSize);
         pPool->m_AllocCount = 0;
 
         CLinearMemoryManager* pManager = Instance();

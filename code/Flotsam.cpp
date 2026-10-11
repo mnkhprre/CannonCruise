@@ -1,3 +1,16 @@
+// ============================================================================
+// CannonCruise - Flotsam Environmental Entity (Flotsam.cpp)
+// Original path: D:\Projects\CannonCruisePC\code\Flotsam.cpp
+// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+//
+// Binary Fonksiyonları:
+//   FUN_0047f590 — CFlotsam initialization & event wiring
+//   FUN_0047faa0 — CFlotsam clump loading ("Behaviour already has a clump", "_COLLHULL")
+//   FUN_0047fe40 — CFlotsam attribute processing
+//   FUN_00480250 — CFlotsam class registration ("CFlotsam")
+//   FUN_00480cc0 — CFlotsam destructor ("ms_nFlotsamsAddedToWorlds != 0 Failed")
+// ============================================================================
+
 #include "Flotsam.h"
 #include "framework/core/attributehandler/cclassfactory.h"
 #include "framework/core/attributehandler/csystemcommands.h"
@@ -8,13 +21,19 @@
 
 namespace RWS
 {
+    // Register CFlotsam with RenderWare Studio reflection system
     RWS_REGISTER_CLASS(CFlotsam);
 
+    // Global counter tracking active flotsam objects in the simulation
     RwUInt32 CFlotsam::ms_nFlotsamsAddedToWorlds = 0;
 
+    // ---------------------------------------------------------------------------
+    // Constructor – mirrors FUN_0047f590.
+    // Extracts clump model from attribute packet, registers tick handler,
+    // and inserts entity into the active scene world.
+    // ---------------------------------------------------------------------------
     CFlotsam::CFlotsam(const CAttributePacket& packet)
         : CAttributeHandler(packet)
-        , CEventHandler(0)
         , m_pPhysEntity(0)
         , m_pClump(0)
         , m_buoyancy(1.0f)
@@ -33,6 +52,10 @@ namespace RWS
         AddToWorld();
     }
 
+    // ---------------------------------------------------------------------------
+    // Destructor – mirrors FUN_00480cc0.
+    // Verifies counter integrity, removes entity from world, and destroys clump.
+    // ---------------------------------------------------------------------------
     CFlotsam::~CFlotsam()
     {
         UnregisterForMessage(iMsgRunningTick);
@@ -52,6 +75,12 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleAttributes – dynamic property updater from workspace / level editor.
+    // Command mapping:
+    //   0: Buoyancy multiplier (RwReal)
+    //   1: Yaw rotation speed (RwReal)
+    // ---------------------------------------------------------------------------
     void CFlotsam::HandleAttributes(const CAttributePacket& packet)
     {
         CAttributeHandler::HandleAttributes(packet);
@@ -79,6 +108,10 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleEvents – processes per-frame engine ticks.
+    // Queries ocean wave height at current X/Z position to align floating mesh Y.
+    // ---------------------------------------------------------------------------
     void CFlotsam::HandleEvents(CMsg& msg)
     {
         if (msg.Id == iMsgRunningTick)
@@ -89,7 +122,8 @@ namespace RWS
                 if (pFrame)
                 {
                     RwMatrix* pMatrix = RwFrameGetMatrix(pFrame);
-                    RwReal waveHeight = COcean::GetWaveHeight(pMatrix->pos.x, pMatrix->pos.z);
+                    // Align vertical Y position with ocean wave crests
+                    RwReal waveHeight = COcean::GetWaterHeight(pMatrix->pos.x, pMatrix->pos.z);
                     pMatrix->pos.y = waveHeight;
                     RwFrameUpdateObjects(pFrame);
                 }
@@ -97,17 +131,26 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // OnCollision – collision trigger handler delegated from CCollisionTrigger.
+    // ---------------------------------------------------------------------------
     void CFlotsam::OnCollision(const CollisionTrigger::CollisionInfo& info)
     {
         OnCollect();
     }
 
+    // ---------------------------------------------------------------------------
+    // OnCollect – marks pickup as collected and extracts from scene simulation.
+    // ---------------------------------------------------------------------------
     void CFlotsam::OnCollect()
     {
         m_bActive = FALSE;
         RemoveFromWorld();
     }
 
+    // ---------------------------------------------------------------------------
+    // AddToWorld – inserts clump model into current CScene RpWorld.
+    // ---------------------------------------------------------------------------
     void CFlotsam::AddToWorld()
     {
         if (!m_bAddedToWorld && m_pClump)
@@ -122,6 +165,9 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // RemoveFromWorld – extracts clump model from current CScene RpWorld.
+    // ---------------------------------------------------------------------------
     void CFlotsam::RemoveFromWorld()
     {
         if (m_bAddedToWorld)

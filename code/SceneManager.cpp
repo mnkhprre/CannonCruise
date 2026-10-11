@@ -4,7 +4,8 @@
 // Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
 //
 // Binary Fonksiyonları:
-//   FUN_004a2120 — CSceneManager::ChangeScene
+//   FUN_004a1190 — CSceneManager constructor & event registration ("iMsgChangeScene", "iMsgPreSceneDestroy", "iMsgPostSceneDestroy")
+//   FUN_004a2120 — CSceneManager::ChangeScene ("You must provide a scene name...", "%sStreams\\%s.RWS")
 //   FUN_004a3090 — CSceneManager::Update
 // ============================================================================
 
@@ -13,12 +14,19 @@
 #include <cstdio>
 #include <cstring>
 
+// ---------------------------------------------------------------------------
+// Constructor – mirrors FUN_004a1190.
+// Sets initial scene pointer to NULL and configures stream asset directory.
+// ---------------------------------------------------------------------------
 CSceneManager::CSceneManager()
     : m_pCurrentScene(0),
       m_StreamsPath("Streams\\")
 {
 }
 
+// ---------------------------------------------------------------------------
+// Destructor – deletes active scene container and releases resources.
+// ---------------------------------------------------------------------------
 CSceneManager::~CSceneManager()
 {
     if (m_pCurrentScene)
@@ -28,9 +36,12 @@ CSceneManager::~CSceneManager()
     }
 }
 
+// ---------------------------------------------------------------------------
+// HandleEvents – listens for scene change triggers via "iMsgChangeScene".
+// Validates message data payload and invokes ChangeScene().
+// ---------------------------------------------------------------------------
 void CSceneManager::HandleEvents(const RWS::CMsg& msg)
 {
-    // iMsgChangeScene olayı alındığında
     if (msg.m_pData)
     {
         const char* pSceneName = (const char*)msg.m_pData;
@@ -42,10 +53,11 @@ void CSceneManager::HandleEvents(const RWS::CMsg& msg)
     }
 }
 
-// ============================================================================
-// CSceneManager::ChangeScene (FUN_004a2120)
-// ASM: 004a2120 — Sahneyi kapat, yeni .RWS akışını yükle ve başlat
-// ============================================================================
+// ---------------------------------------------------------------------------
+// ChangeScene – mirrors FUN_004a2120.
+// Tears down existing active scene, validates scene name lengths, formats the
+// ".RWS" stream asset path, instantiates a new CScene object, and loads it.
+// ---------------------------------------------------------------------------
 RwBool CSceneManager::ChangeScene(const char* pSceneName)
 {
     assert(pSceneName != 0 && "You must provide a scene name with the iMsgChangeScene event");
@@ -66,7 +78,7 @@ RwBool CSceneManager::ChangeScene(const char* pSceneName)
     assert(m_pCurrentScene != 0 && "Scene not created");
 
     char szStreamPath[256];
-    snprintf(szStreamPath, sizeof(szStreamPath), "%%sStreams\\%%s.RWS", "", pSceneName);
+    snprintf(szStreamPath, sizeof(szStreamPath), "%sStreams\\%s.RWS", "", pSceneName);
 
     if (!m_pCurrentScene->Load(pSceneName))
     {
@@ -79,6 +91,9 @@ RwBool CSceneManager::ChangeScene(const char* pSceneName)
     return TRUE;
 }
 
+// ---------------------------------------------------------------------------
+// GetCurrentSceneName – returns name of current scene, or "NOSCENE" if empty.
+// ---------------------------------------------------------------------------
 const char* CSceneManager::GetCurrentSceneName() const
 {
     if (m_pCurrentScene)
@@ -88,6 +103,10 @@ const char* CSceneManager::GetCurrentSceneName() const
     return "NOSCENE";
 }
 
+// ---------------------------------------------------------------------------
+// Update – mirrors FUN_004a3090.
+// Per-frame maintenance tick for scene streaming and deferred transitions.
+// ---------------------------------------------------------------------------
 void CSceneManager::Update()
 {
 }

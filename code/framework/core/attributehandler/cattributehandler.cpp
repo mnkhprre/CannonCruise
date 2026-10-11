@@ -27,6 +27,21 @@ namespace RWS
     }
 
     // ========================================================================
+    // CAttributeHandler Constructor (attribute packet)
+    // Binary: sub_411DA0 — "CAttributeHandler" sınıfı için paket komutlarını
+    // iterer ve FindInstance ile varlık çözümlemesi yapar.
+    // Yineleyici şu an stub olduğundan döngü boş kalır; tam ayrıştırma
+    // CAttributeCommandIterator restorasyonuyla (Faz 5) tamamlanacak.
+    // ========================================================================
+    CAttributeHandler::CAttributeHandler(const CAttributePacket& packet)
+    {
+        for (CAttributeCommandIterator it(packet); !it.IsFinished(); ++it)
+        {
+            // Varlık çözümleme — yineleyici stub olduğu için şimdilik boş
+        }
+    }
+
+    // ========================================================================
     // CAttributeHandler Destructor
     // ========================================================================
     CAttributeHandler::~CAttributeHandler()

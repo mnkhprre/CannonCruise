@@ -1,9 +1,17 @@
+// ============================================================================
+// CannonCruise - Animation Controller (AnimController.cpp)
+// Original path: D:\Projects\CannonCruisePC\code\AnimController.cpp
+// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Binary ref: FUN_00401300 - FUN_00401600
+// ============================================================================
+
 #include "AnimController.h"
 #include "framework/core/attributehandler/csystemcommands.h"
 #include "framework/core/resourcemanager/cresourcemanager.h"
 #include "framework/toolkits/Animation/AnimHelper.h"
 #include "framework/toolkits/Animation/SkinSafe.h"
 #include "framework/toolkits/world/helpers/clumphelper.h"
+#include <cstdint>
 
 namespace RWS {
 CAnimController::CAnimController()
@@ -33,7 +41,7 @@ void CAnimController::SetTarget(RpClump *pClump) {
 RwInt32 CAnimController::AddAnimation(RwInt32 animId) {
   if (!m_pHierarchy)
     return -1;
-  RpHAnimAnimation *pAnim = (RpHAnimAnimation *)animId;
+  RpHAnimAnimation *pAnim = (RpHAnimAnimation *)(intptr_t)animId;
   if (pAnim) {
     AnimEntry entry;
     entry.pAnim = pAnim;

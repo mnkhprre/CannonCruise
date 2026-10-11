@@ -19,9 +19,25 @@
 #include "cclassfactory.h"
 #include <cassert>
 #include <cstring>
+#include <cctype>
 
 namespace RWS
 {
+    // Case-insensitive string comparison (cross-platform)
+    static int Stricmp(const char* a, const char* b)
+    {
+        while (*a && *b)
+        {
+            char ca = std::toupper(static_cast<unsigned char>(*a));
+            char cb = std::toupper(static_cast<unsigned char>(*b));
+            if (ca != cb)
+                return ca - cb;
+            ++a;
+            ++b;
+        }
+        return std::toupper(static_cast<unsigned char>(*a)) - std::toupper(static_cast<unsigned char>(*b));
+    }
+
     // Singleton instance pointer (DAT_00635660)
     CClassFactory* CClassFactory::sm_pInstance = 0;
 
@@ -30,11 +46,7 @@ namespace RWS
     {
         bool operator()(const std::string& a, const std::string& b) const
         {
-#ifdef _WIN32
-            return _stricmp(a.c_str(), b.c_str()) < 0;
-#else
-            return strcasecmp(a.c_str(), b.c_str()) < 0;
-#endif
+            return Stricmp(a.c_str(), b.c_str()) < 0;
         }
     };
 
@@ -88,62 +100,54 @@ namespace RWS
     // CClassFactory::ClassIsRegistered (FUN_00412cd0)
     // ASM: 00412cd0 — Sınıf kayıtlı mı kontrol et
     // ========================================================================
-    RwBool CClassFactory::ClassIsRegistered(const char* pClassName)
+RwBool CClassFactory::ClassIsRegistered(const char* pClassName)
+{
+    if (!pClassName)
     {
-        if (!pClassName)
-        {
-            return FALSE;
-        }
-
-        CClassFactory* pFactory = Instance();
-        for (std::map<std::string, ClassData*>::iterator it = pFactory->m_RegisteredClasses.begin();
-             it != pFactory->m_RegisteredClasses.end(); ++it)
-        {
-#ifdef _WIN32
-            if (_stricmp(it->first.c_str(), pClassName) == 0)
-#else
-            if (strcasecmp(it->first.c_str(), pClassName) == 0)
-#endif
-            {
-                return TRUE;
-            }
-        }
-
         return FALSE;
     }
+
+    CClassFactory* pFactory = Instance();
+    for (std::map<std::string, ClassData*>::iterator it = pFactory->m_RegisteredClasses.begin();
+         it != pFactory->m_RegisteredClasses.end(); ++it)
+    {
+        if (Stricmp(it->first.c_str(), pClassName) == 0)
+        {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
 
     // ========================================================================
     // CClassFactory::Create (FUN_00412a60)
     // ASM: 00412a60 — Sınıf adından yeni nesne üret
     // ========================================================================
-    void* CClassFactory::Create(const char* pClassName)
+void* CClassFactory::Create(const char* pClassName)
+{
+    if (!pClassName)
     {
-        if (!pClassName)
-        {
-            return 0;
-        }
-
-        CClassFactory* pFactory = Instance();
-        for (std::map<std::string, ClassData*>::iterator it = pFactory->m_RegisteredClasses.begin();
-             it != pFactory->m_RegisteredClasses.end(); ++it)
-        {
-#ifdef _WIN32
-            if (_stricmp(it->first.c_str(), pClassName) == 0)
-#else
-            if (strcasecmp(it->first.c_str(), pClassName) == 0)
-#endif
-            {
-                ClassData* pData = it->second;
-                if (pData && pData->m_pCreationFunc)
-                {
-                    return pData->m_pCreationFunc();
-                }
-                return 0;
-            }
-        }
-
         return 0;
     }
+
+    CClassFactory* pFactory = Instance();
+    for (std::map<std::string, ClassData*>::iterator it = pFactory->m_RegisteredClasses.begin();
+         it != pFactory->m_RegisteredClasses.end(); ++it)
+    {
+        if (Stricmp(it->first.c_str(), pClassName) == 0)
+        {
+            ClassData* pData = it->second;
+            if (pData && pData->m_pCreationFunc)
+            {
+                return pData->m_pCreationFunc();
+            }
+            return 0;
+        }
+    }
+
+    return 0;
+}
 
     // ========================================================================
     // CClassFactory::Register (FUN_00412f10, FUN_00413700, FUN_00413ab0)
@@ -180,29 +184,25 @@ namespace RWS
     // CClassFactory::UnRegister (FUN_00413da0)
     // ASM: 00413da0 — Belirli bir sınıfın kaydını sil
     // ========================================================================
-    void CClassFactory::UnRegister(const char* pClassName)
+void CClassFactory::UnRegister(const char* pClassName)
+{
+    if (!pClassName)
     {
-        if (!pClassName)
-        {
-            return;
-        }
+        return;
+    }
 
-        CClassFactory* pFactory = Instance();
-        for (std::map<std::string, ClassData*>::iterator it = pFactory->m_RegisteredClasses.begin();
-             it != pFactory->m_RegisteredClasses.end(); ++it)
+    CClassFactory* pFactory = Instance();
+    for (std::map<std::string, ClassData*>::iterator it = pFactory->m_RegisteredClasses.begin();
+         it != pFactory->m_RegisteredClasses.end(); ++it)
+    {
+        if (Stricmp(it->first.c_str(), pClassName) == 0)
         {
-#ifdef _WIN32
-            if (_stricmp(it->first.c_str(), pClassName) == 0)
-#else
-            if (strcasecmp(it->first.c_str(), pClassName) == 0)
-#endif
-            {
-                delete it->second;
-                pFactory->m_RegisteredClasses.erase(it);
-                break;
-            }
+            delete it->second;
+            pFactory->m_RegisteredClasses.erase(it);
+            break;
         }
     }
+}
 
     // ========================================================================
     // CClassFactory::UnRegisterAll (FUN_004139b0)

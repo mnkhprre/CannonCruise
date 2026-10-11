@@ -11,18 +11,37 @@
 // ============================================================================
 
 #include "PhysicsWorld.h"
+#include "PhysicsBackend.h"
 #include "framework/core/attributehandler/cclassfactory.h"
 #include <cassert>
 
 RWS_REGISTER_CLASS(CPhysicsWorldBehaviour, []() -> void* { return new CPhysicsWorldBehaviour(); }, sizeof(CPhysicsWorldBehaviour));
 
 // ---------------------------------------------------------------------------
-// CPhysicsWorld constructor – the Havok world object is created externally
-// and assigned later; we just NULL-init here.
+// Create – startup zinciri oluşturucusu (binary: sub_41A680, HavokInit
+// sonrası alloc 0x440 + ctor sub_49C870 → dword_635AF4'ye singleton yazımı).
+// Singleton zaten varsa mevcut örnek döner (ikinci new CSingleton assert
+//'i tetiklemez).
+// ---------------------------------------------------------------------------
+CPhysicsWorld* CPhysicsWorld::Create()
+{
+    CPhysicsWorld* pExisting = CPhysicsWorld::GetSingletonPtr();
+    if (pExisting)
+    {
+        return pExisting;
+    }
+    return new CPhysicsWorld();
+}
+
+// ---------------------------------------------------------------------------
+// CPhysicsWorld constructor – creates the Bullet backend world.
+// Gravity -9.8 / solver iter 20 (sub_55E6D0); AABB ±500 documented as
+// broadphase clamp gap in PhysicsBackend.cpp.
 // ---------------------------------------------------------------------------
 CPhysicsWorld::CPhysicsWorld()
     : m_pHavokWorld(0)
 {
+    m_pHavokWorld = PhysicsWorld_ToOpaque(PhysicsWorld_Create());
 }
 
 // ---------------------------------------------------------------------------
@@ -33,18 +52,25 @@ CPhysicsWorld::CPhysicsWorld()
 CPhysicsWorld::~CPhysicsWorld()
 {
     assert(m_avpRigidBodyVector.empty() && "Still rigid bodies in m_avpRigidBodyVector !");
-    m_avpRigidBodyVector.clear();
+    if (m_pHavokWorld)
+    {
+        PhysicsWorld_Destroy(PhysicsWorld_FromOpaque(m_pHavokWorld));
+        m_pHavokWorld = 0;
+    }
     m_avpPhantomVector.clear();
 }
 
 // ---------------------------------------------------------------------------
-// Update – steps the Havok physics simulation forward by deltaTime.
-// In the original binary (FUN_0043a040) this calls hkpWorld::stepDeltaTime.
-// Currently a stub until the Havok integration layer is fully restored.
+// Update – steps the physics simulation forward by deltaTime.
+// In the original binary (FUN_0043a040) this calls hkpWorld::stepDeltaTime;
+// backend: btDiscreteDynamicsWorld::stepSimulation(dt, 1, dt) — sabit adım.
 // ---------------------------------------------------------------------------
 void CPhysicsWorld::Update(RwReal deltaTime)
 {
-    // Havok fizik adımını ilerlet (hkpWorld::stepDeltaTime)
+    if (m_pHavokWorld)
+    {
+        PhysicsWorld_Step(PhysicsWorld_FromOpaque(m_pHavokWorld), deltaTime);
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -54,6 +80,10 @@ void CPhysicsWorld::Update(RwReal deltaTime)
 void CPhysicsWorld::AddRigidBody(void* pBody)
 {
     assert(pBody != 0 && "pRigidBody != NULL Failed");
+    if (m_pHavokWorld)
+    {
+        PhysicsWorld_AddRigidBody(PhysicsWorld_FromOpaque(m_pHavokWorld), pBody);
+    }
     m_avpRigidBodyVector.push_back(pBody);
 }
 
@@ -65,6 +95,11 @@ void CPhysicsWorld::AddRigidBody(void* pBody)
 void CPhysicsWorld::RemoveRigidBody(void* pBody)
 {
     assert(pBody != 0 && "pRigidBody != NULL Failed");
+
+    if (m_pHavokWorld)
+    {
+        PhysicsWorld_RemoveRigidBody(PhysicsWorld_FromOpaque(m_pHavokWorld), pBody);
+    }
 
     for (std::vector<void*>::iterator it = m_avpRigidBodyVector.begin();
          it != m_avpRigidBodyVector.end(); ++it)
@@ -99,10 +134,15 @@ RwBool CPhysicsWorld::RigidBodyExistsInWorld(void* pBody) const
 // ---------------------------------------------------------------------------
 // AddPhantom – registers a phantom (trigger / sensor volume) with the world.
 // Phantoms detect overlapping bodies without generating contact responses.
+// Backend: btGhostObject (CF_NO_CONTACT_RESPONSE).
 // ---------------------------------------------------------------------------
 void CPhysicsWorld::AddPhantom(void* pPhantom)
 {
     assert(pPhantom != 0 && "pPhantom != NULL Failed");
+    if (m_pHavokWorld)
+    {
+        PhysicsWorld_AddTrigger(PhysicsWorld_FromOpaque(m_pHavokWorld), pPhantom);
+    }
     m_avpPhantomVector.push_back(pPhantom);
 }
 
@@ -113,6 +153,11 @@ void CPhysicsWorld::AddPhantom(void* pPhantom)
 void CPhysicsWorld::RemovePhantom(void* pPhantom)
 {
     assert(pPhantom != 0 && "pPhantom != NULL Failed");
+
+    if (m_pHavokWorld)
+    {
+        PhysicsWorld_RemoveTrigger(PhysicsWorld_FromOpaque(m_pHavokWorld), pPhantom);
+    }
 
     for (std::vector<void*>::iterator it = m_avpPhantomVector.begin();
          it != m_avpPhantomVector.end(); ++it)
@@ -130,26 +175,35 @@ void CPhysicsWorld::RemovePhantom(void* pPhantom)
 // ============================================================================
 
 // ---------------------------------------------------------------------------
-// Constructor – instantiates the CPhysicsWorld singleton. This behaviour is
-// placed in the level by the designers; there should be exactly one instance.
+// Constructor – uses the startup-created singleton (binary sub_41A680);
+// if absent (seviye/test yolu), creates one and takes ownership.
+// Binary'de behaviour ctor'ı (sub_43B860) yalnız container tahsis eder —
+// dünya singleton'ı startup'tan gelir.
 // ---------------------------------------------------------------------------
 CPhysicsWorldBehaviour::CPhysicsWorldBehaviour()
-    : m_pPhysicsWorld(0)
+    : m_pPhysicsWorld(0), m_bOwnsWorld(FALSE)
 {
-    m_pPhysicsWorld = new CPhysicsWorld();
+    m_pPhysicsWorld = CPhysicsWorld::GetSingletonPtr();
+    if (!m_pPhysicsWorld)
+    {
+        m_pPhysicsWorld = new CPhysicsWorld();
+        m_bOwnsWorld = TRUE;
+    }
 }
 
 // ---------------------------------------------------------------------------
-// Destructor – tears down the physics world. Must happen after all physics
-// entities have been destroyed (they unregister their bodies in their dtors).
+// Destructor – tears down the physics world only if this behaviour created
+// it (startup-created singleton shutdown zincirinde lifespan sahibidir —
+// TextureCacheShutdown/binary sub_41AB90 dword_635AF4 temizliği).
 // ---------------------------------------------------------------------------
 CPhysicsWorldBehaviour::~CPhysicsWorldBehaviour()
 {
-    if (m_pPhysicsWorld)
+    if (m_pPhysicsWorld && m_bOwnsWorld)
     {
         delete m_pPhysicsWorld;
-        m_pPhysicsWorld = 0;
     }
+    m_pPhysicsWorld = 0;
+    m_bOwnsWorld = FALSE;
 }
 
 // ---------------------------------------------------------------------------

@@ -16,12 +16,12 @@ CFernandoActor::CFernandoActor(const CAttributePacket &packet)
   }
 
   // Initialize events
-  m_eventChangeMastVisibility.SetId("EVENT_CHANGE_MAST_VISIBILITY");
-  m_eventPlayerShipDeath.SetId("PlayerShipDeath");
-  m_eventPlayerShipActorTakeDamage.SetId("EVENT_PLAYERSHIPACTOR_TAKEDAMAGE");
-  m_eventInqPlayerShipTurnDamper.SetId("EVENT_INQ_PLAYERSHIP_TURNDAMPERV");
-  m_eventPlayerShipDetachAllFrames.SetId("EVENT_PLAYERSHIP_DETACH_ALL_FRAM");
-  m_eventPlayerShipAddFernandoFrame.SetId("EVENT_PLAYERSHIP_ADD_FERNANDOFRA");
+  m_eventChangeMastVisibility = RegisterMsg("EVENT_CHANGE_MAST_VISIBILITY");
+  m_eventPlayerShipDeath = RegisterMsg("PlayerShipDeath");
+  m_eventPlayerShipActorTakeDamage = RegisterMsg("EVENT_PLAYERSHIPACTOR_TAKEDAMAGE");
+  m_eventInqPlayerShipTurnDamper = RegisterMsg("EVENT_INQ_PLAYERSHIP_TURNDAMPERV");
+  m_eventPlayerShipDetachAllFrames = RegisterMsg("EVENT_PLAYERSHIP_DETACH_ALL_FRAM");
+  m_eventPlayerShipAddFernandoFrame = RegisterMsg("EVENT_PLAYERSHIP_ADD_FERNANDOFRA");
 
   RegisterForMessage(m_eventChangeMastVisibility);
   RegisterForMessage(m_eventPlayerShipDeath);

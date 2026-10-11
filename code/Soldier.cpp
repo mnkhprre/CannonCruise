@@ -1,3 +1,16 @@
+// ============================================================================
+// CannonCruise - Soldier NPC & Soldier AI (Soldier.cpp)
+// Original path: D:\Projects\CannonCruisePC\code\Soldier.cpp
+// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+//
+// Binary Fonksiyonları:
+//   FUN_004b7e40 — CSoldier attribute handling & setup
+//   FUN_004b8160 — CSoldier destructor & cleanup ("ms_nSoldiersAddedToWorlds != 0 Failed")
+//   FUN_004b8710 — CSoldier::HandleEvents ("CSoldier HE iMsgRunningTick")
+//   FUN_004b8810 — CSoldier class registration & factory
+//   FUN_004b92f0 — CSoldierAi class registration
+// ============================================================================
+
 #include "Soldier.h"
 #include "framework/core/attributehandler/cclassfactory.h"
 #include "framework/core/attributehandler/csystemcommands.h"
@@ -7,10 +20,16 @@
 
 namespace RWS
 {
+    // Register soldier entity classes with the RenderWare Studio reflection system
     RWS_REGISTER_CLASS(CSoldier);
 
+    // Global counter tracking active soldier instances in simulation
     RwUInt32 CSoldier::ms_nSoldiersAddedToWorlds = 0;
 
+    // ---------------------------------------------------------------------------
+    // Constructor – allocates animation controller and AI state machine, extracts
+    // clump model from attribute packet, registers tick event, and enters world.
+    // ---------------------------------------------------------------------------
     CSoldier::CSoldier(const CAttributePacket& packet)
         : CAttributeHandler(packet)
         , CEventHandler(0)
@@ -41,6 +60,11 @@ namespace RWS
         AddToWorld();
     }
 
+    // ---------------------------------------------------------------------------
+    // Destructor – mirrors FUN_004b8160.
+    // Unregisters tick handler, decrements global soldier count with assert check,
+    // deletes AI and anim controllers, removes clump from world, and frees assets.
+    // ---------------------------------------------------------------------------
     CSoldier::~CSoldier()
     {
         UnregisterForMessage(iMsgRunningTick);
@@ -72,6 +96,14 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleAttributes – dynamic property updater from workspace / level editor.
+    // Command mapping:
+    //   0: Turning rate in rad/s (RwReal)
+    //   1: Health capacity (RwReal)
+    //   2: Movement speed (RwReal)
+    //   4: SoldierType role archetype (RwInt32)
+    // ---------------------------------------------------------------------------
     void CSoldier::HandleAttributes(const CAttributePacket& packet)
     {
         CAttributeHandler::HandleAttributes(packet);
@@ -109,6 +141,10 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleEvents – mirrors "CSoldier HE iMsgRunningTick" (FUN_004b8710).
+    // Receives engine ticks and advances simulation.
+    // ---------------------------------------------------------------------------
     void CSoldier::HandleEvents(CMsg& msg)
     {
         if (msg.Id == iMsgRunningTick)
@@ -117,6 +153,9 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // AddToWorld – attaches character clump to the active CScene RpWorld.
+    // ---------------------------------------------------------------------------
     void CSoldier::AddToWorld()
     {
         if (!m_bAddedToWorld && m_pClump)
@@ -131,6 +170,9 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // RemoveFromWorld – detaches character clump from active CScene RpWorld.
+    // ---------------------------------------------------------------------------
     void CSoldier::RemoveFromWorld()
     {
         if (m_bAddedToWorld)
@@ -145,16 +187,27 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // TakeDamage – applies hit-point deduction, plays guard impact sound
+    // ("Audio_HitGuard"), and switches AI state to STATE_DEAD upon zero health.
+    // ---------------------------------------------------------------------------
     void CSoldier::TakeDamage(RwReal damage)
     {
         m_health -= damage;
-        AudioManager::PlaySound("Audio_HitGuard");
+        CAudioManager* pAudio = CAudioManager::GetSingletonPtr();
+        if (pAudio)
+        {
+            pAudio->PlaySound("Audio_HitGuard");
+        }
         if (m_health <= 0.0f && m_pAi)
         {
             m_pAi->SetState(CSoldierAi::STATE_DEAD);
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // Update – ticks skeletal animation controller and evaluates AI behaviors.
+    // ---------------------------------------------------------------------------
     void CSoldier::Update(RwReal deltaTime)
     {
         if (m_pAnimController)
@@ -167,7 +220,10 @@ namespace RWS
         }
     }
 
-    // CSoldierAi implementation
+    // ===========================================================================
+    // CSoldierAi Implementation
+    // ===========================================================================
+
     CSoldierAi::CSoldierAi(CSoldier* pSoldier)
         : m_pSoldier(pSoldier)
         , m_state(STATE_IDLE)

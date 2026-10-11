@@ -156,10 +156,38 @@ CMakeFiles/CannonCruiseLib.dir/AudioManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/AudioManager.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/AudioManager.cpp -o CMakeFiles/CannonCruiseLib.dir/AudioManager.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/AudioStreamEntity.cpp
+CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/AudioStreamEntity.cpp
+
+CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/AudioStreamEntity.cpp > CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/AudioStreamEntity.cpp -o CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/BehaviourLoader.cpp
+CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/BehaviourLoader.cpp
+
+CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/BehaviourLoader.cpp > CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/BehaviourLoader.cpp -o CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Bird.cpp
 CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Bird.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Bird.cpp.i: cmake_force
@@ -170,10 +198,24 @@ CMakeFiles/CannonCruiseLib.dir/Bird.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/Bird.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Bird.cpp -o CMakeFiles/CannonCruiseLib.dir/Bird.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CameraState.cpp
+CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CameraState.cpp
+
+CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CameraState.cpp > CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CameraState.cpp -o CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Cannon.cpp
 CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Cannon.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.i: cmake_force
@@ -187,7 +229,7 @@ CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Cannonball.cpp
 CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Cannonball.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.i: cmake_force
@@ -201,7 +243,7 @@ CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CollisionFilter.cpp
 CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CollisionFilter.cpp
 
 CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.i: cmake_force
@@ -215,7 +257,7 @@ CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CollisionGeometry.cpp
 CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CollisionGeometry.cpp
 
 CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.i: cmake_force
@@ -229,7 +271,7 @@ CMakeFiles/CannonCruiseLib.dir/CollisionGeometry.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CollisionTrigger.cpp
 CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/CollisionTrigger.cpp
 
 CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.i: cmake_force
@@ -243,7 +285,7 @@ CMakeFiles/CannonCruiseLib.dir/CollisionTrigger.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Debris.cpp
 CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Debris.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Debris.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Debris.cpp.i: cmake_force
@@ -257,7 +299,7 @@ CMakeFiles/CannonCruiseLib.dir/Debris.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Fade.cpp
 CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Fade.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Fade.cpp.i: cmake_force
@@ -271,7 +313,7 @@ CMakeFiles/CannonCruiseLib.dir/Fade.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/FernandoActor.cpp
 CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/FernandoActor.cpp
 
 CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.i: cmake_force
@@ -285,7 +327,7 @@ CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Fish.cpp
 CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Fish.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Fish.cpp.i: cmake_force
@@ -299,7 +341,7 @@ CMakeFiles/CannonCruiseLib.dir/Fish.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Flotsam.cpp
 CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Flotsam.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.i: cmake_force
@@ -310,10 +352,24 @@ CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Flotsam.cpp -o CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/FontSystem.cpp
+CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/FontSystem.cpp
+
+CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/FontSystem.cpp > CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/FontSystem.cpp -o CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/GUIHealthBar.cpp
 CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/GUIHealthBar.cpp
 
 CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.i: cmake_force
@@ -327,7 +383,7 @@ CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/GUIMap.cpp
 CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/GUIMap.cpp
 
 CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.i: cmake_force
@@ -341,7 +397,7 @@ CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/GlobalFunctions.cpp
 CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/GlobalFunctions.cpp
 
 CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.i: cmake_force
@@ -355,7 +411,7 @@ CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/HavokMemoryManager.cpp
 CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/HavokMemoryManager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.i: cmake_force
@@ -369,7 +425,7 @@ CMakeFiles/CannonCruiseLib.dir/HavokMemoryManager.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/HealthDebris.cpp
 CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/HealthDebris.cpp
 
 CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.i: cmake_force
@@ -383,7 +439,7 @@ CMakeFiles/CannonCruiseLib.dir/HealthDebris.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/InputManager.cpp
 CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/InputManager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.i: cmake_force
@@ -397,7 +453,7 @@ CMakeFiles/CannonCruiseLib.dir/InputManager.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Lifebuoy.cpp
 CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Lifebuoy.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.i: cmake_force
@@ -411,7 +467,7 @@ CMakeFiles/CannonCruiseLib.dir/Lifebuoy.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/LoadLevel.cpp
 CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/LoadLevel.cpp
 
 CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.i: cmake_force
@@ -425,7 +481,7 @@ CMakeFiles/CannonCruiseLib.dir/LoadLevel.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/LocalizationManager.cpp
 CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/LocalizationManager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.i: cmake_force
@@ -439,7 +495,7 @@ CMakeFiles/CannonCruiseLib.dir/LocalizationManager.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuBehavior.cpp
 CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuBehavior.cpp
 
 CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.i: cmake_force
@@ -453,7 +509,7 @@ CMakeFiles/CannonCruiseLib.dir/MenuBehavior.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuDelegate.cpp
 CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuDelegate.cpp
 
 CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.i: cmake_force
@@ -467,7 +523,7 @@ CMakeFiles/CannonCruiseLib.dir/MenuDelegate.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuGetFrameDelegate.cpp
 CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuGetFrameDelegate.cpp
 
 CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.i: cmake_force
@@ -481,7 +537,7 @@ CMakeFiles/CannonCruiseLib.dir/MenuGetFrameDelegate.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuGetTimeDelegate.cpp
 CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuGetTimeDelegate.cpp
 
 CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.i: cmake_force
@@ -495,7 +551,7 @@ CMakeFiles/CannonCruiseLib.dir/MenuGetTimeDelegate.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuSetFrameDelegate.cpp
 CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuSetFrameDelegate.cpp
 
 CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.i: cmake_force
@@ -509,7 +565,7 @@ CMakeFiles/CannonCruiseLib.dir/MenuSetFrameDelegate.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuSetTimeDelegate.cpp
 CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MenuSetTimeDelegate.cpp
 
 CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.i: cmake_force
@@ -523,7 +579,7 @@ CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MissionIndicator.cpp
 CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/MissionIndicator.cpp
 
 CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.i: cmake_force
@@ -537,7 +593,7 @@ CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ocean.cpp
 CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ocean.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.i: cmake_force
@@ -551,7 +607,7 @@ CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/OceanTile.cpp
 CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/OceanTile.cpp
 
 CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.i: cmake_force
@@ -562,10 +618,24 @@ CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/OceanTile.cpp -o CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ocean_W32.cpp
+CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ocean_W32.cpp
+
+CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ocean_W32.cpp > CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ocean_W32.cpp -o CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ParticleBank.cpp
 CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ParticleBank.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.i: cmake_force
@@ -579,7 +649,7 @@ CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ParticleEmitter.cpp
 CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ParticleEmitter.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.i: cmake_force
@@ -593,7 +663,7 @@ CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ParticleScript.cpp
 CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ParticleScript.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.i: cmake_force
@@ -607,7 +677,7 @@ CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PathFindingMap.cpp
 CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PathFindingMap.cpp
 
 CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.i: cmake_force
@@ -621,7 +691,7 @@ CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PathFindingResource.cpp
 CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PathFindingResource.cpp
 
 CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.i: cmake_force
@@ -635,7 +705,7 @@ CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PerformanceVisualizer.cpp
 CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PerformanceVisualizer.cpp
 
 CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.i: cmake_force
@@ -646,10 +716,24 @@ CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PerformanceVisualizer.cpp -o CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsBackend.cpp
+CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsBackend.cpp
+
+CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsBackend.cpp > CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsBackend.cpp -o CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsEntity.cpp
 CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsEntity.cpp
 
 CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.i: cmake_force
@@ -663,7 +747,7 @@ CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsResource.cpp
 CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsResource.cpp
 
 CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.i: cmake_force
@@ -677,7 +761,7 @@ CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsWorld.cpp
 CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/PhysicsWorld.cpp
 
 CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.i: cmake_force
@@ -691,7 +775,7 @@ CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ProfilerBehaviour.cpp
 CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ProfilerBehaviour.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.i: cmake_force
@@ -705,7 +789,7 @@ CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RealtimeProfiler.cpp
 CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RealtimeProfiler.cpp
 
 CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.i: cmake_force
@@ -716,10 +800,94 @@ CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RealtimeProfiler.cpp -o CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderBehaviourWorld.cpp
+CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderBehaviourWorld.cpp
+
+CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderBehaviourWorld.cpp > CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderBehaviourWorld.cpp -o CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPipeline.cpp
+CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPipeline.cpp
+
+CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPipeline.cpp > CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPipeline.cpp -o CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPlatform.cpp
+CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPlatform.cpp
+
+CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPlatform.cpp > CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPlatform.cpp -o CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestro.cpp
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestro.cpp
+
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestro.cpp > CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestro.cpp -o CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestroStream.cpp
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestroStream.cpp
+
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestroStream.cpp > CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestroStream.cpp -o CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RwStudioStream.cpp
+CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RwStudioStream.cpp
+
+CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RwStudioStream.cpp > CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RwStudioStream.cpp -o CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SaveGameManager.cpp
 CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SaveGameManager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.i: cmake_force
@@ -733,7 +901,7 @@ CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Scene.cpp
 CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Scene.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Scene.cpp.i: cmake_force
@@ -747,7 +915,7 @@ CMakeFiles/CannonCruiseLib.dir/Scene.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SceneManager.cpp
 CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SceneManager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.i: cmake_force
@@ -761,7 +929,7 @@ CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ship.cpp
 CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Ship.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Ship.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Ship.cpp.i: cmake_force
@@ -775,7 +943,7 @@ CMakeFiles/CannonCruiseLib.dir/Ship.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShipEnemy.cpp
 CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShipEnemy.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.i: cmake_force
@@ -789,7 +957,7 @@ CMakeFiles/CannonCruiseLib.dir/ShipEnemy.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShipPlayerInputProxy.cpp
 CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShipPlayerInputProxy.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.i: cmake_force
@@ -803,7 +971,7 @@ CMakeFiles/CannonCruiseLib.dir/ShipPlayerInputProxy.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShowText.cpp
 CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShowText.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.i: cmake_force
@@ -817,7 +985,7 @@ CMakeFiles/CannonCruiseLib.dir/ShowText.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShowTextManager.cpp
 CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShowTextManager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.i: cmake_force
@@ -831,7 +999,7 @@ CMakeFiles/CannonCruiseLib.dir/ShowTextManager.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Soldier.cpp
 CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Soldier.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.i: cmake_force
@@ -845,7 +1013,7 @@ CMakeFiles/CannonCruiseLib.dir/Soldier.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Spawnable.cpp
 CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Spawnable.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.i: cmake_force
@@ -859,7 +1027,7 @@ CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SpeakEntity.cpp
 CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SpeakEntity.cpp
 
 CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.i: cmake_force
@@ -873,7 +1041,7 @@ CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SpeakManager.cpp
 CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SpeakManager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.i: cmake_force
@@ -887,7 +1055,7 @@ CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SpeakStreamDefs.cpp
 CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SpeakStreamDefs.cpp
 
 CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.i: cmake_force
@@ -898,10 +1066,24 @@ CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/SpeakStreamDefs.cpp -o CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/StaticCollisionData.cpp
+CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/StaticCollisionData.cpp
+
+CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/StaticCollisionData.cpp > CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/StaticCollisionData.cpp -o CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TextureResource.cpp
 CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building CXX object CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TextureResource.cpp
 
 CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.i: cmake_force
@@ -915,7 +1097,7 @@ CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TowerCatapult.cpp
 CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TowerCatapult.cpp
 
 CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.i: cmake_force
@@ -929,7 +1111,7 @@ CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Trigger.cpp
 CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Trigger.cpp
 
 CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.i: cmake_force
@@ -940,10 +1122,24 @@ CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Trigger.cpp -o CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TxdDecode.cpp
+CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TxdDecode.cpp
+
+CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TxdDecode.cpp > CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/TxdDecode.cpp -o CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WbCamera.cpp
 CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WbCamera.cpp
 
 CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.i: cmake_force
@@ -957,7 +1153,7 @@ CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WbRender.cpp
 CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WbRender.cpp
 
 CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.i: cmake_force
@@ -968,10 +1164,24 @@ CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WbRender.cpp -o CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldGeometry.cpp
+CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldGeometry.cpp
+
+CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldGeometry.cpp > CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldGeometry.cpp -o CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldGeometryResource.cpp
 CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldGeometryResource.cpp
 
 CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.i: cmake_force
@@ -982,66 +1192,24 @@ CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldGeometryResource.cpp -o CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.s
 
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o: CMakeFiles/CannonCruiseLib.dir/flags.make
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o: CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o -MF CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o.d -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c
+CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldSpawn.cpp
+CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldSpawn.cpp
 
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c > CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.i
+CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldSpawn.cpp > CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.i
 
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.s
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o: CMakeFiles/CannonCruiseLib.dir/flags.make
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o: CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o -MF CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o.d -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c > CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.i
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.s
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp > CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.i
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.s
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o: CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp > CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.i
-
-CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp -o CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.s
+CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/WorldSpawn.cpp -o CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.s
 
 CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/eventproxy.cpp
 CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/eventproxy.cpp
 
 CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.i: cmake_force
@@ -1055,7 +1223,7 @@ CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/cattributehandler.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/cattributehandler.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.i: cmake_force
@@ -1069,7 +1237,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/cclassfactory.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/cclassfactory.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.i: cmake_force
@@ -1083,7 +1251,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/clinearmemorymanager.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/clinearmemorymanager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymanager.cpp.i: cmake_force
@@ -1097,7 +1265,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/clinearmemorymana
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/csystemcommands.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/csystemcommands.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.cpp.i: cmake_force
@@ -1111,7 +1279,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/csystemcommands.c
 CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/eventhandler/ceventhandler.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/eventhandler/ceventhandler.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.i: cmake_force
@@ -1125,7 +1293,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/eventhandler/ceventhandler.cpp.s: 
 CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/memoryhandler/memoryhandler.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/memoryhandler/memoryhandler.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.i: cmake_force
@@ -1139,7 +1307,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandler/memoryhandler.cpp.s:
 CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/resourcemanager/cresourcemanager.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/resourcemanager/cresourcemanager.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.i: cmake_force
@@ -1153,7 +1321,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.c
 CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/streamhandler/streamhandler.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/streamhandler/streamhandler.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.i: cmake_force
@@ -1167,7 +1335,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.s:
 CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/attachplugins.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/attachplugins.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.i: cmake_force
@@ -1178,10 +1346,94 @@ CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/attachplugins.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gamemanager.cpp
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gamemanager.cpp
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gamemanager.cpp > CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gamemanager.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gameplugin.cpp
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gameplugin.cpp
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gameplugin.cpp > CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/gameplugin.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/havokstart.cpp
+CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/havokstart.cpp
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/havokstart.cpp > CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/havokstart.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/renderpipeline.cpp
+CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/renderpipeline.cpp
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/renderpipeline.cpp > CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/renderpipeline.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/rwstartengine.cpp
+CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/rwstartengine.cpp
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/rwstartengine.cpp > CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/rwstartengine.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/systemservices.cpp
+CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/systemservices.cpp
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/systemservices.cpp > CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/systemservices.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.s
+
 CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/videomode.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/startup/videomode.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.i: cmake_force
@@ -1195,7 +1447,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/Animation/AnimHelper.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/Animation/AnimHelper.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.i: cmake_force
@@ -1209,7 +1461,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.s: cm
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/Animation/SkinSafe.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/Animation/SkinSafe.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.i: cmake_force
@@ -1223,7 +1475,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.s: cmak
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/Audio/Audio.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/Audio/Audio.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.i: cmake_force
@@ -1237,7 +1489,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Audio/Audio.cpp.s: cmake_force
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/rwaudresource/rwaudresource.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/rwaudresource/rwaudresource.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cpp.i: cmake_force
@@ -1251,7 +1503,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwaudresource/rwaudresource.cp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/rwgfxresource/rwgfxresource.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/rwgfxresource/rwgfxresource.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cpp.i: cmake_force
@@ -1265,7 +1517,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/rwgfxresource/rwgfxresource.cp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/txtresource/txtresource.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/txtresource/txtresource.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.i: cmake_force
@@ -1279,7 +1531,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/txtresource/txtresource.cpp.s:
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/cmaterialevent.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/cmaterialevent.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.i: cmake_force
@@ -1293,7 +1545,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/cmaterialevent.cpp.s: cm
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/camerahelper.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/camerahelper.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.i: cmake_force
@@ -1307,7 +1559,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/clumphelper.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/clumphelper.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.i: cmake_force
@@ -1321,7 +1573,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/framehelper.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/framehelper.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.i: cmake_force
@@ -1335,7 +1587,7 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/skinhelper.cpp
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/skinhelper.cpp
 
 CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.i: cmake_force
@@ -1346,6 +1598,34 @@ CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.s
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/toolkits/world/helpers/skinhelper.cpp -o CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.s
 
+CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rw_librw.cpp
+CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rw_librw.cpp
+
+CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rw_librw.cpp > CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rw_librw.cpp -o CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.s
+
+CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o: CMakeFiles/CannonCruiseLib.dir/flags.make
+CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o: /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rwstubs.cpp
+CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o: CMakeFiles/CannonCruiseLib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building CXX object CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o -MF CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o.d -o CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o -c /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rwstubs.cpp
+
+CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rwstubs.cpp > CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.i
+
+CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rwstubs.cpp -o CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.s
+
 # Object files for target CannonCruiseLib
 CannonCruiseLib_OBJECTS = \
 "CMakeFiles/CannonCruiseLib.dir/Actor.cpp.o" \
@@ -1354,7 +1634,10 @@ CannonCruiseLib_OBJECTS = \
 "CMakeFiles/CannonCruiseLib.dir/AnimController.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Astar.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/AudioManager.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o" \
@@ -1365,6 +1648,7 @@ CannonCruiseLib_OBJECTS = \
 "CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o" \
@@ -1383,17 +1667,25 @@ CannonCruiseLib_OBJECTS = \
 "CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o" \
@@ -1407,16 +1699,16 @@ CannonCruiseLib_OBJECTS = \
 "CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o" \
-"CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o" \
-"CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o" \
-"CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o" \
-"CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o" \
@@ -1427,6 +1719,12 @@ CannonCruiseLib_OBJECTS = \
 "CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o" \
@@ -1438,7 +1736,9 @@ CannonCruiseLib_OBJECTS = \
 "CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/camerahelper.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o" \
 "CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o" \
-"CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o"
+"CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o" \
+"CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o"
 
 # External object files for target CannonCruiseLib
 CannonCruiseLib_EXTERNAL_OBJECTS =
@@ -1449,7 +1749,10 @@ libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/AmmoCrate.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/AnimController.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Astar.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/AudioManager.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/AudioStreamEntity.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/BehaviourLoader.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Bird.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/CameraState.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Cannon.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Cannonball.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/CollisionFilter.cpp.o
@@ -1460,6 +1763,7 @@ libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Fade.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/FernandoActor.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Fish.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Flotsam.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/FontSystem.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/GUIHealthBar.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/GUIMap.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/GlobalFunctions.cpp.o
@@ -1478,17 +1782,25 @@ libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/MenuSetTimeDelegate.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/MissionIndicator.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Ocean.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/OceanTile.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Ocean_W32.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/ParticleBank.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/ParticleEmitter.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/ParticleScript.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/PathFindingMap.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/PathFindingResource.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/PerformanceVisualizer.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/PhysicsBackend.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/PhysicsEntity.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/PhysicsResource.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/PhysicsWorld.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/ProfilerBehaviour.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/RealtimeProfiler.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/RenderBehaviourWorld.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/RenderPipeline.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/RenderPlatform.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Rt2dMaestro.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Rt2dMaestroStream.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/RwStudioStream.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/SaveGameManager.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Scene.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/SceneManager.cpp.o
@@ -1502,16 +1814,16 @@ libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Spawnable.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/SpeakEntity.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/SpeakManager.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/SpeakStreamDefs.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/StaticCollisionData.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/TextureResource.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/TowerCatapult.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/Trigger.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/TxdDecode.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/WbCamera.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/WbRender.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/WorldGeometry.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/WorldGeometryResource.cpp.o
-libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/CMakeCCompilerId.c.o
-libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdC/apple-sdk.c.o
-libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/CMakeCXXCompilerId.cpp.o
-libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/CMakeFiles/4.4.3/CompilerIdCXX/apple-sdk.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/WorldSpawn.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/eventproxy.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cattributehandler.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/core/attributehandler/cclassfactory.cpp.o
@@ -1522,6 +1834,12 @@ libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/core/memoryhandle
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/core/resourcemanager/cresourcemanager.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/core/streamhandler/streamhandler.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/attachplugins.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/gamemanager.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/gameplugin.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/havokstart.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/renderpipeline.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/rwstartengine.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/systemservices.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/startup/videomode.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/AnimHelper.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/toolkits/Animation/SkinSafe.cpp.o
@@ -1534,9 +1852,11 @@ libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/he
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/clumphelper.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/framehelper.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/framework/toolkits/world/helpers/skinhelper.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/rw_librw.cpp.o
+libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/rwstubs.cpp.o
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/build.make
 libCannonCruiseLib.a: CMakeFiles/CannonCruiseLib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Linking CXX static library libCannonCruiseLib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mustafabilgin/Documents/GitHub/CannonCruise/code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Linking CXX static library libCannonCruiseLib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/CannonCruiseLib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CannonCruiseLib.dir/link.txt --verbose=$(VERBOSE)
 

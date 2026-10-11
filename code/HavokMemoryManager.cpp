@@ -11,22 +11,31 @@
 #include "HavokMemoryManager.h"
 #include <cassert>
 #include <cstdlib>
+#include <cstdint>
+#include <limits>
 
 void* CHavokMemoryManager::Allocate(RwUInt32 size, RwUInt32 alignment)
 {
     assert(alignment == 16 && "Unalligned alloc");
 
-    // 16-byte hizalama ile tahsis
-    void* pRaw = malloc(size + alignment + sizeof(void*));
+    // Only the existing 16-byte contract is supported, including release builds.
+    if (alignment != 16) return 0;
+    const size_t padding = static_cast<size_t>(alignment) - 1 + sizeof(void*);
+    if (static_cast<size_t>(size) > std::numeric_limits<size_t>::max() - padding)
+        return 0;
+
+    void* pRaw = malloc(static_cast<size_t>(size) + padding);
     if (!pRaw)
     {
         assert(false && "Havok Allocation of bytes failed");
         return 0;
     }
 
-    size_t rawAddr = (size_t)pRaw + sizeof(void*);
-    size_t alignedAddr = (rawAddr + (alignment - 1)) & ~(alignment - 1);
-    void** pStoredRaw = (void**)(alignedAddr - sizeof(void*));
+    // Widen BEFORE complementing: a 32-bit mask clears high pointer bits on x64.
+    const std::uintptr_t mask = static_cast<std::uintptr_t>(alignment) - 1;
+    const std::uintptr_t rawAddr = reinterpret_cast<std::uintptr_t>(pRaw) + sizeof(void*);
+    const std::uintptr_t alignedAddr = (rawAddr + mask) & ~mask;
+    void** pStoredRaw = reinterpret_cast<void**>(alignedAddr - sizeof(void*));
     *pStoredRaw = pRaw;
 
     return (void*)alignedAddr;

@@ -742,6 +742,12 @@ CMakeFiles/CannonCruiseLib.dir/AfterGameMenuBehavior.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/wbuffer_convert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale_dir/wstring_convert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstdarg \
+  /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rt2danim.h \
+  /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/rt2d.h \
+  /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestro.h \
+  /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/Rt2dMaestroStream.h \
+  /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/RenderPlatform.h \
+  /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/ShowText.h \
   /Users/mustafabilgin/Documents/GitHub/CannonCruise/code/framework/core/attributehandler/cclassfactory.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/is_transparent.h \
@@ -770,5 +776,4 @@ CMakeFiles/CannonCruiseLib.dir/AfterGameMenuBehavior.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__new/launder.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/assert.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_static_assert.h

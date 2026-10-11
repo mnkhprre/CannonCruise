@@ -1,0 +1,53 @@
+{
+  "scope": "Local allocator only; AppleClang x86_64, ASan+UBSan, not Havok or Windows validation",
+  "source_sha256": {
+    "tests/havok_memory_manager_test.cpp": "c83e4dd96a1220fe6f80037fab108d195a8c68439909cee43345f46f9ac70ed5",
+    "code/HavokMemoryManager.cpp": "56634493641f371eaa07597116e8e346fc5dd1dc013f3ce07ba90e0e55199320",
+    "code/HavokMemoryManager.h": "f4b3cc5071344952520092cdf0f685dc9f3e645bc73452fb8fa94351b3d6ddb4",
+    "code/rwcore.h": "1f28a2ef653d10085ab918f5c57b07523599d61bc54c907674594931c6a8d712"
+  },
+  "results": [
+    {
+      "configuration": "debug",
+      "command": [
+        "clang++",
+        "-std=c++14",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=address,undefined",
+        "-Icode",
+        "tests/havok_memory_manager_test.cpp",
+        "code/HavokMemoryManager.cpp",
+        "-o",
+        "/Users/mustafabilgin/Documents/GitHub/CannonCruise/build/sdk-audit-tests/havok-memory-debug"
+      ],
+      "build_returncode": 0,
+      "build_diagnostics": "",
+      "test_returncode": 0,
+      "test_output": "PASS: local allocator alignment, write/free, null-free and applicable guard cases\n"
+    },
+    {
+      "configuration": "release",
+      "command": [
+        "clang++",
+        "-std=c++14",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=address,undefined",
+        "-Icode",
+        "-DNDEBUG",
+        "-O2",
+        "tests/havok_memory_manager_test.cpp",
+        "code/HavokMemoryManager.cpp",
+        "-o",
+        "/Users/mustafabilgin/Documents/GitHub/CannonCruise/build/sdk-audit-tests/havok-memory-release"
+      ],
+      "build_returncode": 0,
+      "build_diagnostics": "",
+      "test_returncode": 0,
+      "test_output": "PASS: local allocator alignment, write/free, null-free and applicable guard cases\n"
+    }
+  ]
+}

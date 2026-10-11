@@ -1,3 +1,10 @@
+// ============================================================================
+// CannonCruise - Base Actor (Actor.cpp)
+// Original path: D:\Projects\CannonCruisePC\code\Actor.cpp
+// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Binary ref: FUN_00401000 - FUN_00401200
+// ============================================================================
+
 #include "Actor.h"
 #include "Scene.h"
 #include "framework/core/attributehandler/cclassfactory.h"

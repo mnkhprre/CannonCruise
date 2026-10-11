@@ -10,10 +10,12 @@ namespace RWS
         : CAttributeHandler(packet)
         , CEventHandler(0)
         , m_bEnabled(TRUE)
+        , m_eventInput(0)
+        , m_eventOutput(0)
     {
-        m_eventIduna01.SetId("IDUNA01");
-        m_eventIduna02.SetId("IDUNA02");
-        m_eventIduna03.SetId("IDUNA03");
+        m_eventIduna01 = RegisterMsg("IDUNA01");
+        m_eventIduna02 = RegisterMsg("IDUNA02");
+        m_eventIduna03 = RegisterMsg("IDUNA03");
     }
 
     CEventProxy::~CEventProxy()
@@ -37,14 +39,14 @@ namespace RWS
                 {
                     UnregisterForMessage(m_eventInput);
                     const RwChar* name = reinterpret_cast<const RwChar*>(it->GetCommandData());
-                    m_eventInput.SetId(name);
+                    m_eventInput = RegisterMsg(name);
                     RegisterForMessage(m_eventInput);
                 }
                 break;
             case 1:
                 {
                     const RwChar* name = reinterpret_cast<const RwChar*>(it->GetCommandData());
-                    m_eventOutput.SetId(name);
+                    m_eventOutput = RegisterMsg(name);
                 }
                 break;
             case 2:

@@ -42,9 +42,13 @@ typedef RpAtomic* (*RpAtomicCallBack)(RpAtomic *atomic, void *data);
 RpClump*    RpClumpCreate(void);
 RwBool      RpClumpDestroy(RpClump *clump);
 RpClump*    RpClumpClone(RpClump *clump);
+void        RpClumpRender(RpClump *clump);
 RpClump*    RpClumpForAllAtomics(RpClump *clump, RpAtomicCallBack callback, void *data);
 RwFrame*    RpClumpGetFrame(RpClump *clump);
 RpClump*    RpClumpSetFrame(RpClump *clump, RwFrame *frame);
+RpClump*    RpClumpStreamRead(RwStream *stream);
+// CollisionTrigger (phantom AABB) için eklendi — librw'de gerçek veri döner
+const RwSphere* RpClumpGetBoundingSphere(const RpClump *clump);
 
 // Atomic API
 RpAtomic*   RpAtomicCreate(void);
@@ -53,7 +57,7 @@ RpGeometry* RpAtomicGetGeometry(const RpAtomic *atomic);
 RpAtomic*   RpAtomicSetGeometry(RpAtomic *atomic, RpGeometry *geometry, RwUInt32 flags);
 RwFrame*    RpAtomicGetFrame(const RpAtomic *atomic);
 RpAtomic*   RpAtomicSetFrame(RpAtomic *atomic, RwFrame *frame);
-void        RpAtomicSetFlags(RpAtomic *atomic, RwUInt32 flags);
+RpAtomic*   RpAtomicSetFlags(RpAtomic *atomic, RwUInt32 flags);
 RwUInt32    RpAtomicGetFlags(const RpAtomic *atomic);
 
 // Skin plugin atomic helpers
@@ -65,10 +69,19 @@ RpAtomic*         RpSkinAtomicSetHAnimHierarchy(RpAtomic *atomic, RpHAnimHierarc
 RpGeometry*     RpGeometryCreate(RwInt32 numVerts, RwInt32 numTriangles, RwUInt32 format);
 RwBool          RpGeometryDestroy(RpGeometry *geometry);
 const RwSphere* RpGeometryGetBoundingSphere(const RpGeometry *geometry);
+// vertex/tükenme erişimi — CollisionGeometry (Clump→şekil) için eklendi;
+// librw entegrasyonunda gerçek veri döner (stub: 0/0/NULL)
+RwInt32         RpGeometryGetNumVertices(const RpGeometry *geometry);
+RwInt32         RpGeometryGetNumTriangles(const RpGeometry *geometry);
+RwV3d*          RpGeometryGetVertices(RpGeometry *geometry);
+RwUInt16*       RpGeometryGetTriangleIndices(RpGeometry *geometry);
+RwUInt32        RpGeometryGetFlags(const RpGeometry *geometry);
 
 // World API
 RpWorld*    RpWorldCreate(RwBBox *boundingBox);
 RwBool      RpWorldDestroy(RpWorld *world);
+RpWorld*    RpWorldStreamRead(RwStream *stream);
+void        RpWorldRender(RpWorld *world);
 RpWorld*    RpWorldAddClump(RpWorld *world, RpClump *clump);
 RpWorld*    RpWorldRemoveClump(RpWorld *world, RpClump *clump);
 RpWorld*    RpWorldAddCamera(RpWorld *world, RwCamera *camera);

@@ -5,7 +5,7 @@
 //
 // Binary Fonksiyonları:
 //   FUN_0045a6d0 — CSpeakEntity constructor & registration
-//   FUN_0045ab00 — CSpeakEntity::TriggerSpeak
+//   FUN_0045ab00 — CSpeakEntity::TriggerSpeak ("CSpeakManager::GetSingleton()->IsSpeakValid(m_iCategory, m_iCategoryIndex) Failed")
 // ============================================================================
 
 #include "SpeakEntity.h"
@@ -13,22 +13,37 @@
 #include "framework/core/attributehandler/cclassfactory.h"
 #include <cassert>
 
+// Register CSpeakEntity with RenderWare Studio reflection system
 RWS_REGISTER_CLASS(CSpeakEntity, []() -> void* { return new CSpeakEntity(); }, sizeof(CSpeakEntity));
 
+// ---------------------------------------------------------------------------
+// Constructor – mirrors FUN_0045a6d0.
+// Initializes category to 1 and line index to 0.
+// ---------------------------------------------------------------------------
 CSpeakEntity::CSpeakEntity()
     : m_iCategory(1),
       m_iCategoryIndex(0)
 {
 }
 
+// ---------------------------------------------------------------------------
+// Destructor.
+// ---------------------------------------------------------------------------
 CSpeakEntity::~CSpeakEntity()
 {
 }
 
+// ---------------------------------------------------------------------------
+// HandleEvents – framework message listener.
+// ---------------------------------------------------------------------------
 void CSpeakEntity::HandleEvents(const RWS::CMsg& msg)
 {
 }
 
+// ---------------------------------------------------------------------------
+// TriggerSpeak – mirrors FUN_0045ab00.
+// Validates speech parameters with CSpeakManager and plays the line.
+// ---------------------------------------------------------------------------
 void CSpeakEntity::TriggerSpeak()
 {
     CSpeakManager* pSpeakMgr = CSpeakManager::GetSingletonPtr();

@@ -12,21 +12,41 @@
 #include <cassert>
 #include <cstring>
 
+/**
+ * @brief Constructs a new CShowTextManager singleton instance.
+ *
+ * Initializes the wide character scratchpad buffer.
+ *
+ * @see FUN_004b5e90
+ */
 CShowTextManager::CShowTextManager()
 {
     memset(m_sTempString, 0, sizeof(m_sTempString));
 }
 
+/**
+ * @brief Destructor. Clears pending text messages.
+ */
 CShowTextManager::~CShowTextManager()
 {
     m_TextQueue.clear();
 }
 
+/**
+ * @brief Handles incoming event messages.
+ * @param msg Event message container.
+ */
 void CShowTextManager::HandleEvents(const RWS::CMsg& msg)
 {
     // MSG_GET_TAIL_OF_SHOW_TEXT_QUEUE
 }
 
+/**
+ * @brief Pushes a new text message onto the playback FIFO queue.
+ *
+ * @param pText Null-terminated string to queue.
+ * @param duration Visibility lifespan in seconds.
+ */
 void CShowTextManager::QueueText(const char* pText, RwReal duration)
 {
     if (pText)
@@ -35,6 +55,16 @@ void CShowTextManager::QueueText(const char* pText, RwReal duration)
     }
 }
 
+/**
+ * @brief Transcodes an ASCII string into 16-bit wide character units with bounds checks.
+ *
+ * Validates length against internal scratchpad buffer and output target buffer.
+ *
+ * @param pInput Source null-terminated string.
+ * @param pOutputBuffer Destination wide character buffer.
+ * @param maxLen Maximum characters to write (including null terminator).
+ * @see FUN_004b64a0
+ */
 void CShowTextManager::FormatString(const char* pInput, RwUInt16* pOutputBuffer, RwUInt32 maxLen)
 {
     if (!pInput || !pOutputBuffer || maxLen == 0) return;
@@ -50,6 +80,11 @@ void CShowTextManager::FormatString(const char* pInput, RwUInt16* pOutputBuffer,
     pOutputBuffer[len] = 0;
 }
 
+/**
+ * @brief Ticks queue timer and displays next pending message if available.
+ * @param deltaTime Frame time step in seconds.
+ */
 void CShowTextManager::Update(RwReal deltaTime)
 {
 }
+

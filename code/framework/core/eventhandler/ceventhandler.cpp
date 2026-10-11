@@ -38,6 +38,15 @@ namespace RWS
     }
 
     // ========================================================================
+    // CEventHandler Constructor (priority) — CEventHandler(0) çağrısıyla kullanılır
+    // Binary: öncelik parametreli yapıcı (derleyici C2Ej ile eşleşir)
+    // ========================================================================
+    CEventHandler::CEventHandler(RwUInt32 priority)
+    {
+        (void)priority; // Öncelik henüz saklanmıyor (Faz 5: FUN eşlemesi)
+    }
+
+    // ========================================================================
     // CEventHandler Destructor
     // ========================================================================
     CEventHandler::~CEventHandler()
@@ -181,6 +190,16 @@ namespace RWS
                "Registered more than messages. Please increase CREGISTERED_MSGS_DEFAULT_BLOCK_SIZE in file: ceventhandler.cpp");
 
         return newId;
+    }
+
+    // ========================================================================
+    // CEventHandler::UnRegisterMsg (binary: loc_40CC60)
+    // ASM: kayıtlı olay kaydını ve tüm abonelik bağlantılarını siler
+    // ========================================================================
+    void CEventHandler::UnRegisterMsg(CEventId eventId)
+    {
+        s_RegisteredEvents.erase(eventId);
+        s_EventSubscribers.erase(eventId);
     }
 
     // ========================================================================

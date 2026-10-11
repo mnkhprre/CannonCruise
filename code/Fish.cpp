@@ -123,7 +123,10 @@ void CFish::Update(RwReal deltaTime) {
 }
 
 void CFish::OnPickup() {
-  AudioManager::PlaySound("Audio_HealthPickup");
+  CAudioManager* pAudio = CAudioManager::GetSingletonPtr();
+  if (pAudio) {
+    pAudio->PlaySound("Audio_HealthPickup");
+  }
   m_state = STATE_DEAD;
   RemoveFromWorld();
 }

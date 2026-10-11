@@ -10,6 +10,7 @@
 #include "framework/core/eventhandler/ceventhandler.h"
 #include <rpworld.h>
 #include <rwcore.h>
+#include <vector>
 
 namespace CollisionTrigger
 {
@@ -19,8 +20,6 @@ namespace CollisionTrigger
         void* pEntityB;
         RwV3d contactPoint;
     };
-
-    class CCollisionTrigger;
 }
 
 class CCollisionTrigger : public RWS::CEventHandler {
@@ -32,13 +31,21 @@ public:
 
   virtual void HandleEvents(const RWS::CMsg &msg);
 
+  // binary: FUN_0046f5e0 — clump'tan bounding sphere alıp phantom oluşturur.
+  // RW stub'ları dönen sphere'i NULL döndürür → librw'de gerçek veri akar.
   void Initialize(RpClump *pClump);
-  void OnEntityEnter(void *pEntity);
-  void OnEntityLeave(void *pEntity);
+  // port eklentisi (test + clump'suz yol): AABB kutu phantom'ı kayıtlı
+  // CPhysicsWorld singleton'ına ekler (sphere yarıçapından türetilmiş).
+  void InitializeWithSphere(const RwV3d *pCenter, RwReal radius);
+  // overlap turu — HandleEvents bunu çağırır; test doğrudan çağırabilir.
+  void PollOverlaps();
+  virtual void OnEntityEnter(void *pEntity);
+  virtual void OnEntityLeave(void *pEntity);
 
 private:
   RpClump *m_pClump;
-  void *m_pPhantom;
+  void *m_pPhantom;                 // btGhostObject* (PhysicsBackend)
+  std::vector<void *> m_overlaps;   // önceki turdaki overlap gövdeleri
   RwInt32 m_iEnterSpeakCategory;
   RwInt32 m_iEnterSpeakIndex;
   RwInt32 m_iLeaveSpeakCategory;

@@ -16,11 +16,10 @@
  * @class CPhysicsWorld
  * @brief Singleton wrapper around the Havok physics simulation (hkpWorld).
  *
- * Manages the lifecycle of rigid bodies and phantom volumes used for
- * collision detection. The Update() method advances the Havok simulation
- * by one timestep. Rigid bodies are tracked in a flat vector so that they
- * can be validated (RigidBodyExistsInWorld) before access. This class is
- * a singleton accessed via CSingleton<CPhysicsWorld>.
+ * Current implementation only tracks opaque body/phantom pointers in vectors;
+ * it does not create a Havok world, own SDK bodies or advance simulation.
+ * RigidBodyExistsInWorld checks local membership, not SDK object validity.
+ * Accessed via CSingleton<CPhysicsWorld>; SDK integration is pending.
  */
 class CPhysicsWorld : public CSingleton<CPhysicsWorld>
 {
@@ -37,10 +36,21 @@ public:
     virtual ~CPhysicsWorld();
 
     /**
+     * @brief Startup zinciri oluşturucusu — singleton yoksa new, varsa mevcut.
+     *
+     * Binary: sub_41A680 (startup init) HavokInit sonrası singleton'ı
+     * kendisi tahsis eder (alloc 0x440 → ctor → dword_635AF4'ye yazılır);
+     * CPhysicsWorldBehaviour ctor'ı ise singleton'ı KULLANIR. Bu yardımcı
+     * startup.cpp'deki o adımı karşılar; seviye yüklemesinde behaviour
+     * fallback olarak çağırır.
+     */
+    static CPhysicsWorld* Create();
+
+    /**
      * @brief Advances the physics simulation by deltaTime seconds.
      * @param deltaTime  Time step (the original game uses a fixed 1/60 s).
      *
-     * Internally calls hkpWorld::stepDeltaTime (stub in the current build).
+     * Currently a no-op; the proposed stepDeltaTime call is commented out.
      */
     void Update(RwReal deltaTime);
 
@@ -89,16 +99,17 @@ private:
  * @brief RWS behaviour that owns and drives the CPhysicsWorld singleton.
  *
  * Registered with the RenderWare Studio class factory so the engine can
- * instantiate it from level data. On each iMsgPhysicsUpdate message it
- * steps the physics world at a fixed 60 Hz timestep.
+ * instantiate it from level data. Currently every delivered message calls the
+ * no-op Update with 1/60 s; physics-event filtering/subscription is not restored.
  */
 class CPhysicsWorldBehaviour : public RWS::CEventHandler
 {
 public:
-    /** @brief Constructor – creates the CPhysicsWorld singleton instance. */
+    /** @brief Constructor – uses the startup-created CPhysicsWorld singleton
+     * (binary sub_41A680); creates one only if absent (port fallback). */
     CPhysicsWorldBehaviour();
 
-    /** @brief Destructor – destroys the owned CPhysicsWorld. */
+    /** @brief Destructor – destroys the world only if this behaviour created it. */
     virtual ~CPhysicsWorldBehaviour();
 
     /**
@@ -108,7 +119,8 @@ public:
     virtual void HandleEvents(const RWS::CMsg& msg);
 
 private:
-    CPhysicsWorld* m_pPhysicsWorld; ///< Owned physics world instance.
+    CPhysicsWorld* m_pPhysicsWorld; ///< singleton (ownership: m_bOwnsWorld)
+    RwBool m_bOwnsWorld;            ///< TRUE ise dtor'da delete edilir
 };
 
 #endif // PHYSICSWORLD_H

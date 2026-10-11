@@ -16,6 +16,13 @@
 
 RWS_REGISTER_CLASS(CFade, []() -> void* { return new CFade(); }, sizeof(CFade));
 
+/**
+ * @brief Constructs a new CFade effect instance.
+ *
+ * Initializes black transparent color and sets initial state to FADE_IDLE.
+ *
+ * @see FUN_00479e90
+ */
 CFade::CFade()
     : m_eState(FADE_IDLE),
       m_fDuration(1.0f),
@@ -28,6 +35,11 @@ CFade::CFade()
     m_Color.alpha = 0;
 }
 
+/**
+ * @brief Destructor.
+ *
+ * Releases any input lock held with the InputManager.
+ */
 CFade::~CFade()
 {
     if (m_iFocusID != -1)
@@ -41,11 +53,25 @@ CFade::~CFade()
     }
 }
 
+/**
+ * @brief Handles incoming event messages (such as MSG_FADE_RENDER).
+ * @param msg Event message container.
+ */
 void CFade::HandleEvents(const RWS::CMsg& msg)
 {
     // MSG_FADE_RENDER olayı
 }
 
+/**
+ * @brief Triggers a screen transition state.
+ *
+ * Configures transition start alpha (0 for Fade Out, 255 for Fade In)
+ * and resets timer.
+ *
+ * @param state Transition mode (FADE_IN, FADE_OUT, FADE_HOLD).
+ * @param duration Duration in seconds.
+ * @param color Tint color.
+ */
 void CFade::StartFade(EFadeState state, RwReal duration, RwRGBA color)
 {
     m_eState = state;
@@ -63,6 +89,14 @@ void CFade::StartFade(EFadeState state, RwReal duration, RwRGBA color)
     }
 }
 
+/**
+ * @brief Updates linear interpolation of alpha opacity over time.
+ *
+ * Transitions between states when time elapsed exceeds duration.
+ *
+ * @param deltaTime Elapsed frame time in seconds.
+ * @see FUN_0047a530
+ */
 void CFade::Update(RwReal deltaTime)
 {
     if (m_eState == FADE_IDLE) return;
@@ -93,9 +127,69 @@ void CFade::Update(RwReal deltaTime)
     }
 }
 
+/**
+ * @brief Draws full-screen 2D quad overlay using RenderWare Im2D.
+ * @see FUN_0047a950
+ */
 void CFade::Render()
 {
     if (m_eState == FADE_IDLE || m_Color.alpha == 0) return;
 
-    // 2D Dörtgen RenderWare Im2D ile ekranı kapla
+    RwCamera* pCamera = RwCameraGetCurrentCamera();
+    if (!pCamera) return;
+
+    RwRaster* pRaster = RwCameraGetRaster(pCamera);
+    if (!pRaster) return;
+
+    RwReal width = (RwReal)RwRasterGetWidth(pRaster);
+    RwReal height = (RwReal)RwRasterGetHeight(pRaster);
+    RwReal recipZ = 1.0f / RwCameraGetNearClipPlane(pCamera);
+    RwReal nearZ = RwCameraGetNearClipPlane(pCamera);
+
+    RwIm2DVertex verts[4];
+    
+    // Top-Left (Sol Üst)
+    RwIm2DVertexSetScreenX(&verts[0], 0.0f);
+    RwIm2DVertexSetScreenY(&verts[0], 0.0f);
+    RwIm2DVertexSetScreenZ(&verts[0], nearZ);
+    RwIm2DVertexSetRecipCameraZ(&verts[0], recipZ);
+    RwIm2DVertexSetIntRGBA(&verts[0], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
+
+    // Bottom-Left (Sol Alt)
+    RwIm2DVertexSetScreenX(&verts[1], 0.0f);
+    RwIm2DVertexSetScreenY(&verts[1], height);
+    RwIm2DVertexSetScreenZ(&verts[1], nearZ);
+    RwIm2DVertexSetRecipCameraZ(&verts[1], recipZ);
+    RwIm2DVertexSetIntRGBA(&verts[1], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
+
+    // Top-Right (Sağ Üst)
+    RwIm2DVertexSetScreenX(&verts[2], width);
+    RwIm2DVertexSetScreenY(&verts[2], 0.0f);
+    RwIm2DVertexSetScreenZ(&verts[2], nearZ);
+    RwIm2DVertexSetRecipCameraZ(&verts[2], recipZ);
+    RwIm2DVertexSetIntRGBA(&verts[2], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
+
+    // Bottom-Right (Sağ Alt)
+    RwIm2DVertexSetScreenX(&verts[3], width);
+    RwIm2DVertexSetScreenY(&verts[3], height);
+    RwIm2DVertexSetScreenZ(&verts[3], nearZ);
+    RwIm2DVertexSetRecipCameraZ(&verts[3], recipZ);
+    RwIm2DVertexSetIntRGBA(&verts[3], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
+
+    // RenderStates ayarları
+    RwRenderStateSet(rwRENDERSTATETEXTURERASTER, (void*)0);
+    RwRenderStateSet(rwRENDERSTATEZTESTENABLE, (void*)FALSE);
+    RwRenderStateSet(rwRENDERSTATEZWRITEENABLE, (void*)FALSE);
+    RwRenderStateSet(rwRENDERSTATEVERTEXALPHAENABLE, (void*)TRUE);
+    RwRenderStateSet(rwRENDERSTATESRCBLEND, (void*)rwBLENDSRCALPHA);
+    RwRenderStateSet(rwRENDERSTATEDESTBLEND, (void*)rwBLENDINVSRCALPHA);
+
+    // Ekrana 2D Dörtgen çiz
+    RwIm2DRenderPrimitive(rwPRIMTYPETRISTRIP, verts, 4);
+
+    // Varsayılan duruma geri dön
+    RwRenderStateSet(rwRENDERSTATEZTESTENABLE, (void*)TRUE);
+    RwRenderStateSet(rwRENDERSTATEZWRITEENABLE, (void*)TRUE);
+    RwRenderStateSet(rwRENDERSTATEVERTEXALPHAENABLE, (void*)FALSE);
 }
+

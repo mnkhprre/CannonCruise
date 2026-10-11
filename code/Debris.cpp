@@ -1,3 +1,9 @@
+// ============================================================================
+// CannonCruise - Debris Obstacle & Explosive Flotsam (Debris.cpp)
+// Original path: D:\Projects\CannonCruisePC\code\Debris.cpp
+// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// ============================================================================
+
 #include "Debris.h"
 #include "framework/core/attributehandler/cclassfactory.h"
 #include "framework/core/attributehandler/csystemcommands.h"
@@ -6,8 +12,12 @@
 
 namespace RWS
 {
+    // Register CDebris with RenderWare Studio reflection system
     RWS_REGISTER_CLASS(CDebris);
 
+    // ---------------------------------------------------------------------------
+    // Constructor – initializes default splinter count and particle template.
+    // ---------------------------------------------------------------------------
     CDebris::CDebris(const CAttributePacket& packet)
         : CFlotsam(packet)
         , m_debrisPieces(4)
@@ -15,10 +25,19 @@ namespace RWS
     {
     }
 
+    // ---------------------------------------------------------------------------
+    // Destructor.
+    // ---------------------------------------------------------------------------
     CDebris::~CDebris()
     {
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleAttributes – dynamic property updater from workspace / level editor.
+    // Command mapping:
+    //   0: Number of splinter pieces (RwInt32)
+    //   1: Explosion particle effect template ID (RwInt32)
+    // ---------------------------------------------------------------------------
     void CDebris::HandleAttributes(const CAttributePacket& packet)
     {
         CFlotsam::HandleAttributes(packet);
@@ -41,14 +60,24 @@ namespace RWS
         }
     }
 
+    // ---------------------------------------------------------------------------
+    // HandleEvents – forwards framework events to base CFlotsam.
+    // ---------------------------------------------------------------------------
     void CDebris::HandleEvents(CMsg& msg)
     {
         CFlotsam::HandleEvents(msg);
     }
 
+    // ---------------------------------------------------------------------------
+    // Explode – triggers impact sound "Audio_CannonHit" and cleans up entity.
+    // ---------------------------------------------------------------------------
     void CDebris::Explode()
     {
-        AudioManager::PlaySound("Audio_CannonHit");
+        CAudioManager* pAudio = CAudioManager::GetSingletonPtr();
+        if (pAudio)
+        {
+            pAudio->PlaySound("Audio_CannonHit");
+        }
         OnCollect();
     }
 }

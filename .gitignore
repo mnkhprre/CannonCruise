@@ -1,0 +1,42 @@
+# ---- Build çıktıları ----
+build/
+code/build/
+**/CMakeCache.txt
+**/CMakeFiles/
+**/cmake_install.cmake
+**/Makefile
+**/compile_commands.json
+*.o
+*.obj
+*.a
+*.lib
+*.d
+*.dylib
+*.so
+
+# ---- Derleyici / IDE ----
+*.gcda
+*.gcno
+*.gcov
+.vs/
+.vscode/
+.idea/
+*.xcodeproj/
+*.xcworkspace/
+DerivedData/
+
+# ---- macOS ----
+.DS_Store
+._*
+
+# ---- Yedek / geçici dosyalar ----
+*.bak
+*.tmp
+*~
+*.orig
+
+# ---- Doxygen çıktıları (kaynak değil) ----
+docs/html/
+docs/latex/
+docs/xml/
+docs/doxygen-warnings.log

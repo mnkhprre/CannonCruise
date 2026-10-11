@@ -4,16 +4,20 @@
 // Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
 //
 // Binary Fonksiyonları:
-//   FUN_0048c280 — CInputManager::AllocateFocusID
-//   FUN_0048c590 — CInputManager::FreeFocusID
-//   FUN_0048c910 — CInputManager::PushFocusID
-//   FUN_0048cb40 — CInputManager::PopFocusID
+//   FUN_0048c180 / FUN_0048c280 — CInputManager::FreeFocusID / AllocateFocusID ("m_iFocusIDPoolIndex < MAX_FOCUS_ID_COUNT Failed")
+//   FUN_0048c480 — CInputManager::PushFocusID ("m_iFocusStackIndex < MAX_FOCUS_ID_COUNT Failed", "!IsFocusIDInStack(iFocusID) Failed")
+//   FUN_0048c810 — CInputManager::PopFocusID
+//   FUN_0048ca70 — CInputManager focus querying
 // ============================================================================
 
 #include "InputManager.h"
 #include <cassert>
 #include <cstring>
 
+// ---------------------------------------------------------------------------
+// Constructor – clears focus arrays, initializes stack pointers to 0,
+// and resets player digital button bitmasks.
+// ---------------------------------------------------------------------------
 CInputManager::CInputManager()
     : m_iFocusStackIndex(0),
       m_iFocusIDPoolIndex(0),
@@ -26,18 +30,25 @@ CInputManager::CInputManager()
     memset(m_aFocusStack, -1, sizeof(m_aFocusStack));
 }
 
+// ---------------------------------------------------------------------------
+// Destructor – frees resources upon shutdown.
+// ---------------------------------------------------------------------------
 CInputManager::~CInputManager()
 {
 }
 
+// ---------------------------------------------------------------------------
+// HandleEvents – message dispatcher for engine input events.
+// ---------------------------------------------------------------------------
 void CInputManager::HandleEvents(const RWS::CMsg& msg)
 {
 }
 
-// ============================================================================
-// CInputManager::AllocateFocusID (FUN_0048c280)
-// ASM: 0048c280 — Yeni bir odak ID'si tahsis et
-// ============================================================================
+// ---------------------------------------------------------------------------
+// AllocateFocusID – mirrors FUN_0048c280.
+// Finds the next unallocated slot in m_bFocusIDAllocated, sets it to TRUE,
+// increments pool counter, and asserts against pool limit.
+// ---------------------------------------------------------------------------
 RwInt32 CInputManager::AllocateFocusID()
 {
     for (RwUInt32 i = 0; i < MAX_FOCUS_ID_COUNT; ++i)
@@ -53,10 +64,10 @@ RwInt32 CInputManager::AllocateFocusID()
     return -1;
 }
 
-// ============================================================================
-// CInputManager::FreeFocusID (FUN_0048c590)
-// ASM: 0048c590 — Odak ID'sini serbest bırak
-// ============================================================================
+// ---------------------------------------------------------------------------
+// FreeFocusID – mirrors FUN_0048c590.
+// Validates that ID is allocated and releases it back to the pool.
+// ---------------------------------------------------------------------------
 void CInputManager::FreeFocusID(RwInt32 iFocusID)
 {
     if (iFocusID >= 0 && iFocusID < MAX_FOCUS_ID_COUNT)
@@ -70,10 +81,10 @@ void CInputManager::FreeFocusID(RwInt32 iFocusID)
     }
 }
 
-// ============================================================================
-// CInputManager::PushFocusID (FUN_0048c910)
-// ASM: 0048c910 — Odak yığıtına ID ekle
-// ============================================================================
+// ---------------------------------------------------------------------------
+// PushFocusID – mirrors FUN_0048c910.
+// Validates ID allocation and stack uniqueness, then appends ID to top of stack.
+// ---------------------------------------------------------------------------
 void CInputManager::PushFocusID(RwInt32 iFocusID)
 {
     assert(IsFocusIDAllocated(iFocusID) && "IsFocusIDAllocated(iFocusID) Failed");
@@ -83,10 +94,10 @@ void CInputManager::PushFocusID(RwInt32 iFocusID)
     m_aFocusStack[m_iFocusStackIndex++] = iFocusID;
 }
 
-// ============================================================================
-// CInputManager::PopFocusID (FUN_0048cb40)
-// ASM: 0048cb40 — Odak yığıtından ID çıkar
-// ============================================================================
+// ---------------------------------------------------------------------------
+// PopFocusID – mirrors FUN_0048cb40.
+// Locates given focus ID within active stack and shifts downstream elements down.
+// ---------------------------------------------------------------------------
 void CInputManager::PopFocusID(RwInt32 iFocusID)
 {
     if (m_iFocusStackIndex > 0)
@@ -95,7 +106,7 @@ void CInputManager::PopFocusID(RwInt32 iFocusID)
         {
             if (m_aFocusStack[i] == iFocusID)
             {
-                // Kalanları kaydır
+                // Shift subsequent entries down
                 for (RwUInt32 j = i; j < m_iFocusStackIndex - 1; ++j)
                 {
                     m_aFocusStack[j] = m_aFocusStack[j + 1];
@@ -107,6 +118,9 @@ void CInputManager::PopFocusID(RwInt32 iFocusID)
     }
 }
 
+// ---------------------------------------------------------------------------
+// GetCurrentFocusID – queries the topmost active focus ID on the stack.
+// ---------------------------------------------------------------------------
 RwInt32 CInputManager::GetCurrentFocusID() const
 {
     if (m_iFocusStackIndex > 0)
@@ -116,6 +130,9 @@ RwInt32 CInputManager::GetCurrentFocusID() const
     return -1;
 }
 
+// ---------------------------------------------------------------------------
+// IsFocusIDAllocated – tests if specified ID is currently flagged as in-use.
+// ---------------------------------------------------------------------------
 RwBool CInputManager::IsFocusIDAllocated(RwInt32 iFocusID) const
 {
     if (iFocusID >= 0 && iFocusID < MAX_FOCUS_ID_COUNT)
@@ -125,6 +142,9 @@ RwBool CInputManager::IsFocusIDAllocated(RwInt32 iFocusID) const
     return FALSE;
 }
 
+// ---------------------------------------------------------------------------
+// IsFocusIDInStack – tests if specified ID is present within active modal stack.
+// ---------------------------------------------------------------------------
 RwBool CInputManager::IsFocusIDInStack(RwInt32 iFocusID) const
 {
     for (RwUInt32 i = 0; i < m_iFocusStackIndex; ++i)
@@ -137,6 +157,9 @@ RwBool CInputManager::IsFocusIDInStack(RwInt32 iFocusID) const
     return FALSE;
 }
 
+// ---------------------------------------------------------------------------
+// IsButtonDown – queries current held state of a specific player input button.
+// ---------------------------------------------------------------------------
 RwBool CInputManager::IsButtonDown(RwInt32 playerIndex, RwInt32 inputId) const
 {
     if (playerIndex == 0)
@@ -150,6 +173,9 @@ RwBool CInputManager::IsButtonDown(RwInt32 playerIndex, RwInt32 inputId) const
     return FALSE;
 }
 
+// ---------------------------------------------------------------------------
+// IsButtonPressed – edge detection: TRUE only on transition from released to pressed.
+// ---------------------------------------------------------------------------
 RwBool CInputManager::IsButtonPressed(RwInt32 playerIndex, RwInt32 inputId) const
 {
     if (playerIndex == 0)
@@ -163,11 +189,17 @@ RwBool CInputManager::IsButtonPressed(RwInt32 playerIndex, RwInt32 inputId) cons
     return FALSE;
 }
 
+// ---------------------------------------------------------------------------
+// GetAxisValue – reads analog axis deflection values.
+// ---------------------------------------------------------------------------
 RwReal CInputManager::GetAxisValue(RwInt32 playerIndex, RwInt32 axisId) const
 {
     return 0.0f;
 }
 
+// ---------------------------------------------------------------------------
+// Update – frame latch synchronizing current button states to previous history.
+// ---------------------------------------------------------------------------
 void CInputManager::Update()
 {
     m_uP1PrevButtons = m_uP1Buttons;

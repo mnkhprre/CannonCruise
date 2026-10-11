@@ -31,6 +31,7 @@
 
 #include "attachplugins.h"
 #include "win32/win.h"
+#include "PhysicsWorld.h"   // CPhysicsWorld::Create() — sub_41A680 singleton adımı
 
 #include <rwcore.h>
 #include <rpworld.h>
@@ -69,10 +70,11 @@ extern RwBool RwStartEngine(void);
 extern RwBool CameraInit(RwVideoMode* videoMode, int width, int height, int depth);
 
 // FUN_0050b640 — RwEngineInit
-extern RwBool RwEngineInit(void* memFuncs, RwUInt32 flags, RwUInt32 resEntrySize);
+// RwEngineInit is declared in rwcore.h; do not redeclare with a different
+// parameter list (binary: memFuncs, flags(bit0), resEntrySize).
 
 // FUN_0050b600 — RwEngineTerm (motor temizleme)
-extern void RwEngineTerm(void);
+// RwEngineTerm is declared in rwcore.h; do not redeclare with a different return type.
 
 // FUN_0050b440 — RwEngineSetVideoMode
 extern RwBool RwEngineSetVideoMode(RwInt32 modeIndex);
@@ -84,13 +86,13 @@ extern RwBool RwEngineSetSubSystem(RwInt32 subSystemIndex);
 extern RwBool RwEngineStart(void);
 
 // FUN_0050b3d0 — RwEngineStop
-extern void RwEngineStop(void);
+// RwEngineStop is declared in rwcore.h; do not redeclare with a different return type.
 
 // FUN_0050b2f0 — RwEngineClose
-extern void RwEngineClose(void);
+// RwEngineClose is declared in rwcore.h; do not redeclare with a different return type.
 
-// FUN_0050f660 — RwEngineSetZBufferDepth veya light config
-extern void RwEngineSetConfig(float near_clip, float far_clip, float fog);
+// FUN_0050f660 — RwEngineSetConfig (near/far clip + fog)
+// RwEngineSetConfig is declared in rwcore.h; do not redeclare.
 
 // FUN_0041a640 — Ortam ışığı oluştur ve sahneye ekle
 extern void SetLightAmbient(void);
@@ -146,6 +148,7 @@ RwBool RwStartupInitialize(void* memFuncs, void* subSystemConfig,
                            RwVideoMode* videoMode, RwUInt32 flags,
                            int colorDepth, HWND hWnd)
 {
+    (void)subSystemConfig;
     // -----------------------------------------------------------------
     // Adım 1: Havok Fizik Singleton Kontrolü
     // ASM: 0041a6a5  CALL FUN_00434fb0
@@ -155,6 +158,9 @@ RwBool RwStartupInitialize(void* memFuncs, void* subSystemConfig,
     // -----------------------------------------------------------------
     HavokInit();
     // assert(DAT_00635af4 == NULL) — "ms_pSingleton == NULL Failed" (Singleton.h line 0x33)
+    // Binary sub_41A680 devamı: alloc 0x440 → ctor sub_49C870 → dword_635AF4
+    // (CPhysicsWorld singleton) — burada yaratılır; behaviour ctor'ı KULLANIR.
+    CPhysicsWorld::Create();
 
     // -----------------------------------------------------------------
     // Adım 2: Registry'den Çözünürlük Ayarlarını Oku
@@ -190,7 +196,7 @@ RwBool RwStartupInitialize(void* memFuncs, void* subSystemConfig,
     //       0041a820  JNZ  (başarılıysa devam)
     // Başarısızsa: RwEngineTerm + return FALSE
     // -----------------------------------------------------------------
-    if (!RwEngineInit(memFuncs, 0, 0))
+    if (!RwEngineInit(static_cast<RwMemoryFunctions*>(memFuncs), 0, 0))
     {
         RwEngineTerm();
         return FALSE;
@@ -295,7 +301,12 @@ RwBool RwStartupInitialize(void* memFuncs, void* subSystemConfig,
     //   0x3c23d70a ≈ 0.01f    (far fog)
     // 0041ab3f  CALL FUN_0050f660
     // -----------------------------------------------------------------
-    RwEngineSetConfig(0.00001f, 0.00001f, 0.01f);
+    // Binary (0041ab26-0041ab3f): yığına {1e-5, 1e-5, 0.01f} struct'ı yazılıp
+    // tek pointer ile FUN_0050f660 çağrılır (Ghidra: undefined4 *param_1).
+    {
+        RwEngineConfig engineConfig = { 0.00001f, 0.00001f, 0.01f };
+        RwEngineSetConfig(&engineConfig);
+    }
 
     // -----------------------------------------------------------------
     // Adım 13: Ortam Işığı Ayarla

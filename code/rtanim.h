@@ -16,6 +16,7 @@ typedef struct RtAnimAnimation RtAnimAnimation;
 
 RwBool RtAnimInitialize(void);
 RwBool RtAnimRegisterInterpolationScheme(void *scheme);
+void*     RtCompressedKeyFrameGetCustomKeyFrameScheme(void);
 
 #ifdef __cplusplus
 }

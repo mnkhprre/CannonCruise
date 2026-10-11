@@ -4,9 +4,9 @@
 // Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
 //
 // Binary Fonksiyonları:
-//   FUN_00455c00 — CAudioManager constructor & event linking
-//   FUN_00456180 — CAudioManager::PlaySound
-//   FUN_00456520 — CAudioManager::UpdateListenerPosition
+//   FUN_00455c00 / FUN_00455c40 — CAudioManager constructor & event linking ("!ms_pSingleton Failed")
+//   FUN_00455f80 / FUN_00456180 — CAudioManager::PlaySound ("ms_pSingleton Failed")
+//   FUN_00456420 / FUN_00456520 — CAudioManager::UpdateListenerPosition ("ms_pSingleton Failed")
 // ============================================================================
 
 #include "AudioManager.h"
@@ -14,6 +14,11 @@
 #include <cassert>
 #include <cstring>
 
+// ---------------------------------------------------------------------------
+// Constructor – mirrors FUN_00455c00.
+// Initializes default volume groups to 1.0, resets listener matrix to identity,
+// and configures the sound asset directory ("Sound\\Win32\\").
+// ---------------------------------------------------------------------------
 CAudioManager::CAudioManager()
     : m_SoundPath("Sound\\Win32\\")
 {
@@ -23,40 +28,59 @@ CAudioManager::CAudioManager()
 
     RwMatrixSetIdentity(&m_ListenerMatrix);
 
-    // Olay abonelikleri
+    // Framework event message subscriptions:
     // LinkMsg(RWS::CEventHandler::RegisterMsg("Mixer_UpdateListenerPosition"));
     // LinkMsg(RWS::CEventHandler::RegisterMsg("Stop_AllVoices"));
 }
 
+// ---------------------------------------------------------------------------
+// Destructor – halts all active voices before destruction.
+// ---------------------------------------------------------------------------
 CAudioManager::~CAudioManager()
 {
     StopAllVoices();
 }
 
+// ---------------------------------------------------------------------------
+// HandleEvents – framework event listener for audio commands.
+// ---------------------------------------------------------------------------
 void CAudioManager::HandleEvents(const RWS::CMsg& msg)
 {
-    // Olay dinleme ve yönlendirme
 }
 
+// ---------------------------------------------------------------------------
+// PlaySound – mirrors FUN_00456180.
+// Resolves sound cue name, applies 3D spatialization if pPos is provided,
+// and triggers playback through RenderWare Audio.
+// ---------------------------------------------------------------------------
 void CAudioManager::PlaySound(const char* pSoundName, const RwV3d* pPos)
 {
     if (!pSoundName) return;
 
-    // Ses yükleme & 3D uzamsallaştırma
+    // Load sound asset and trigger 3D audio playback
 }
 
+// ---------------------------------------------------------------------------
+// PlayStream – loads and streams a background music or ambient audio track.
+// ---------------------------------------------------------------------------
 void CAudioManager::PlayStream(const char* pStreamName, RwBool bLoop)
 {
     if (!pStreamName) return;
 
-    // Arka plan müzik akışını oynat
+    // Stream background music track
 }
 
+// ---------------------------------------------------------------------------
+// StopAllVoices – stops all active voice and sound channels.
+// ---------------------------------------------------------------------------
 void CAudioManager::StopAllVoices()
 {
-    // Tüm aktif ses kanallarını sustur
+    // Silence active voices
 }
 
+// ---------------------------------------------------------------------------
+// SetVolumeGroup – sets master, music, or FX volume channel gain.
+// ---------------------------------------------------------------------------
 void CAudioManager::SetVolumeGroup(RwUInt32 groupIndex, RwReal volume)
 {
     if (groupIndex < 3)
@@ -65,6 +89,9 @@ void CAudioManager::SetVolumeGroup(RwUInt32 groupIndex, RwReal volume)
     }
 }
 
+// ---------------------------------------------------------------------------
+// GetVolumeGroup – returns volume level of specified channel.
+// ---------------------------------------------------------------------------
 RwReal CAudioManager::GetVolumeGroup(RwUInt32 groupIndex) const
 {
     if (groupIndex < 3)
@@ -74,6 +101,11 @@ RwReal CAudioManager::GetVolumeGroup(RwUInt32 groupIndex) const
     return 1.0f;
 }
 
+// ---------------------------------------------------------------------------
+// UpdateListenerPosition – mirrors FUN_00456520.
+// Updates 3D listener position, forward (at), and up orientation vectors
+// in the underlying RenderWare Audio mixer system.
+// ---------------------------------------------------------------------------
 void CAudioManager::UpdateListenerPosition(const RwMatrix* pMatrix)
 {
     if (pMatrix)

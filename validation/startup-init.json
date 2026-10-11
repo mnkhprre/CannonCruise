@@ -1,0 +1,15 @@
+{
+  "scope": "Isolated startup init call, not Windows compilation",
+  "command": [
+    "clang++",
+    "-std=c++14",
+    "-fsyntax-only",
+    "-Icode",
+    "-x",
+    "c++",
+    "-"
+  ],
+  "input": "#include \"rwcore.h\"\nextern RwBool RwEngineInit(void* memFuncs, RwUInt32 flags, RwUInt32 resEntrySize);\nvoid probe(void* memFuncs) { (void)RwEngineInit(memFuncs, 0, 0); }\n",
+  "returncode": 0,
+  "diagnostics": ""
+}

@@ -8,7 +8,12 @@
 extern "C" {
 #endif
 
-struct RpHAnimHierarchy;
+struct RpHAnimHierarchy
+{
+    RwInt32 numNodes;
+    void*   pNodeInfo;
+    void*   pMatrixArray;
+};
 typedef struct RpHAnimHierarchy RpHAnimHierarchy;
 
 struct RtAnimAnimation;
@@ -19,6 +24,7 @@ RwBool             RpHAnimPluginAttach(void);
 void               RpHAnimHierarchyUpdateMatrices(RpHAnimHierarchy *hierarchy);
 void               RpHAnimHierarchyAddAnimTime(RpHAnimHierarchy *hierarchy, RwReal time);
 void               RpHAnimHierarchySetCurrentAnim(RpHAnimHierarchy *hierarchy, RtAnimAnimation *anim);
+void               RpHAnimHierarchyBlendHierarchy(RpHAnimHierarchy *dest, RpHAnimHierarchy *src, RwReal alpha);
 RpHAnimHierarchy*  RpSkinSafeAtomicGetHAnimHierarchy(RpClump *clump);
 void               RpSkinSafeClumpSetHAnimHierarchy(RpClump *clump, RpHAnimHierarchy *hierarchy);
 

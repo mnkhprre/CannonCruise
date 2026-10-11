@@ -12,12 +12,22 @@
 #include <cassert>
 #include <cstdio>
 
+/**
+ * @brief Constructs a new CLocalizationManager instance.
+ *
+ * Sets the default language to English ("en") and initializes texture dictionary pointer.
+ *
+ * @see FUN_004918c0
+ */
 CLocalizationManager::CLocalizationManager()
     : m_CurrentLanguage("en"),
       m_pFontTexDict(0)
 {
 }
 
+/**
+ * @brief Destructor. Destroys any loaded font texture dictionary.
+ */
 CLocalizationManager::~CLocalizationManager()
 {
     if (m_pFontTexDict)
@@ -27,14 +37,24 @@ CLocalizationManager::~CLocalizationManager()
     }
 }
 
+/**
+ * @brief Handles incoming event messages.
+ * @param msg Event message container.
+ */
 void CLocalizationManager::HandleEvents(const RWS::CMsg& msg)
 {
 }
 
-// ============================================================================
-// CLocalizationManager::SetLanguage (FUN_00491f20)
-// ASM: 00491f20 — Dil dosyasını yükle ve Unicode başlığını kontrol et
-// ============================================================================
+/**
+ * @brief Sets the active localization language and verifies file Unicode header.
+ *
+ * Checks that the file exists under `Localiza\lang_<langCode>.txt` and contains
+ * a valid Unicode Byte Order Mark (BOM: 0xFEFF or 0xFFFE).
+ *
+ * @param pLangCode Language identifier code string (e.g. "en", "de").
+ * @return TRUE if valid Unicode language file was found and opened; FALSE otherwise.
+ * @see FUN_00491f20
+ */
 RwBool CLocalizationManager::SetLanguage(const char* pLangCode)
 {
     if (!pLangCode) return FALSE;
@@ -65,6 +85,12 @@ RwBool CLocalizationManager::SetLanguage(const char* pLangCode)
     return TRUE;
 }
 
+/**
+ * @brief Returns the localized wide character string for a token key.
+ *
+ * @param pKey Token lookup string.
+ * @return Const pointer to wide string buffer or empty wide string if not found.
+ */
 const wchar_t* CLocalizationManager::GetString(const char* pKey) const
 {
     if (!pKey) return L"";
@@ -76,3 +102,4 @@ const wchar_t* CLocalizationManager::GetString(const char* pKey) const
     }
     return L"";
 }
+

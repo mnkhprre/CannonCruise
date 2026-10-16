@@ -95,6 +95,16 @@ README, Windows CI ve SDK'dan bağımsız temel testler, derleme çalışmaları
 3. **Dış sembolleri çözülmüş EXE:** **Evet (macOS/Clang).** `-force_load` ile tüm arşiv nesneleri bağlandı; `CannonCruise` hedefi derleniyor, linkleniyor ve çalışıyor. Windows/MSVC karşılığı bekliyor.
 4. **Tek sahne çalışma zamanı doğrulaması:** Bekliyor.
 
+> **Güncelleme 2026-10-15** — kapılar artık **Windows/MSVC üzerinde** kapalı:
+> Win32/x86 (orijinal PE32/i386 ile aynı), MSVC 19.51, SDK 10.0.28000.0 —
+> **0 hata / 0 uyarı**; link doğrulaması geçti (`link verification OK`).
+> `CANNONCRUISE_RW_PLATFORM` = **NULL | GL3 | D3D9**; D3D9'da **pencere
+> açılıyor** (`class='CannonCruiseD3D9' visible=True size=656x519`) ve
+> 200/200 kare render edilip çıkış 0 veriyor. **ctest 25/25**.
+> Ayrıntı: Faz 4.6n–4.6t aşağıdaki bölümlerde; Havok shim'i
+> [docs/HAVOK_TO_BULLET.md](docs/HAVOK_TO_BULLET.md), derleme
+> [BUILDING.md](BUILDING.md) içinde.
+
 P0 devamında SDK arayüz envanteri, sınırlı kaynak düzeltmeleri ve tekrar çalıştırılabilir Clang önkontrolü eklendi. Ayrıntılar ve test kanıtları [SDK_INTERFACE_AUDIT.md](SDK_INTERFACE_AUDIT.md) içinde.
 
 Sıradaki adımlar (paralel):
@@ -985,6 +995,11 @@ Uygulama notları (2026-10-10):
 **Boot zinciri (binary)**: startup → GLOBAL.RWS → INTRO1 → INTRO2 →
 INTRO3 → **MAPMENU** (INTRO3 kaydının hedefi) → MAINMENU → dünya.
 
+> **DÜZELTME 2026-10-15 (bkz. Faz 4.6t)**: Bu zincir **yanlıştı**. Binary
+> boot'u `sub_4A2010` = `GLOBAL` → `JINGLE`'dir; `'INTRO1'`/`'INTRO2'`
+> stringleri binary'de hiç yok. INTRO1/2/3 **seviye öncesi kesmedir**
+> (hedef Nordic01/Nordic02/MAPMENU). Doğru geçiş grafiği ve uygulama 4.6t'de.
+
 **INTRO1/2/3.RWS** (1196 B — video DEĞİL, sahne tanımlayıcı):
 - Her biri 4× `0x0716` varlık kaydı: TextureDictionary / WorldGeometry /
   StaticCollisionData / PathFindingData — TÜMÜ aynı GUID'li DIŞ build
@@ -1167,7 +1182,9 @@ INTRO3 → **MAPMENU** (INTRO3 kaydının hedefi) → MAINMENU → dünya.
   (5=`rw.h` artefakt + 1 glob — RenderPlatform.cpp ile aynı Im2D deseni),
   ocean-extra 1/1, isolated-contract 3/3.
 - Sonraki: 4.6r-4 (MAPMENU behaviour wire) ∥ 4.6s (boot zinciri +
-  trailing chunk decode).
+  trailing chunk decode). **Her ikisi de TAMAM** — 4.6r-4 → 2026-10-11;
+  boot zinciri → 2026-10-15 (Faz 4.6t); trailing chunk decode →
+  2026-10-15 (Faz 4.6x).
 
 ### Video Analizi — Oyun Yapısı (SCR.mov + SCR1.mov, 2026-10-11)
 
@@ -1281,12 +1298,112 @@ giriş sözleşmesini** doğrular (port hedefi: `WbRender.cpp` + `FUN_0050ba60` 
   geometri de yok) → MAPMENU (seviye seçimi ∥ skip) → MAINMENU (menü
   ∥ skip) → VIKING01.RWS load (geometry + collision + behaviours
   + kamera) → play loop → seviye geçişi (IDUNA03/BEAVER01).
+  - **DÜZELTME 2026-10-15 (bkz. Faz 4.6t)**: `INTRO1→2→3` kısmı yanlıştı.
+    Boot = **GLOBAL → JINGLE → MainMenu** (`sub_4A2010`); INTRO1/2/3 seviye
+    öncesi kesmedir ve hedeflerine bağlanır (INTRO1 → NORDIC01 gerçek
+    yükleme). Zincir + seviye bağlaması uygulandı (Faz 4.6t).
 - Hata yolları: asset bulunamazsa skip + log; unload zinciri (Unload
   vtable slot[4] karşılıkları).
 - **Çıktı**: `./CannonCruise` → oyun dünyası açılır, gezilir, seviye
   değişir. (Ses PPB/XAudio2 ve Bink video kapsam dışı — opsiyonel faz.)
 - **Test**: entegrasyon smoke (iki dünya load/unload stress, leak yok);
   ctest genişlemesi.
+- **İlerleme 2026-10-15**:
+  - Boot zinciri + seviye bağlaması **TAMAM** (Faz 4.6t: FMV grafiği,
+    `INTRO1 → Nordic01` gerçek yükleme).
+  - **trailing chunk decode TAMAM** → bu bölümün 0x22/0x1E/0x39 maddesi
+    Faz 4.6x'te kapandı (gerçekte ikinci ATOMIC grubu; instantiate
+    edilmiyordu). VIKING01 **96 → 130 atomic** (78146 verts) artık
+    render'da.
+  - Kalan: **tekne follow** + tam oyun döngüsü (play loop → seviye
+    geçişi stres testi, unload zinciri).
+
+### Faz 4.6t: FMV sahne geçişi + intro → nordic bağlantısı — TAMAM (2026-10-15)
+
+#### Düzeltme — boot zinciri (binary kanıtıyla)
+
+Önceki kayıtlardaki (4.6r envanteri ve 4.6s planı) **"GLOBAL → INTRO1 →
+INTRO2 → INTRO3 → MAPMENU → MAINMENU"** zinciri **YANLIŞTIR**:
+
+- `sub_4A2010` (WinMain yakını, `0x4196EA`'dan çağrılır):
+  `sub_4A31B0("GLOBAL")` → `sub_4A2950("JINGLE")` = **boot = GLOBAL → JINGLE**.
+- `'INTRO1'` ve `'INTRO2'` stringleri binary'de **hiç yok**; yalnız `'INTRO3'`
+  geçer (`sub_478600` durum makinesinde MAPMENU/MAINMENU/CREDITS ile birlikte).
+- INTRO1/2/3 ise **seviye öncesi kesmedir**, bağımsız giriş sahnesi değil.
+
+#### Geçiş grafiği (dosya verisinden çıkarıldı — 8 tanımlayıcının hepsi CFMVBehavior)
+
+| Tanımlayıcı | FMV adı | Hedef | Hedef dosya |
+|---|---|---|---|
+| **JINGLE** | Jingle | **MainMenu** | MAINMENU.RWS (1.8 MB → faz) |
+| INTRO1 | Intro | **Nordic01** | NORDIC01.RWS (14.3 MB seviye) |
+| INTRO2 | Intro2 | **Nordic02** | NORDIC02.RWS (14.9 MB seviye) |
+| INTRO3 | Intro3 | MAPMENU | MAPMENU.RWS (2.88 MB → faz) |
+| CREDITS | Credits | MainMenu | MAINMENU.RWS (faz) |
+| OUTRO1 | Outro | Iduna02 | IDUNA02.RWS (seviye) |
+| OUTRO2 | Outro2 | Iduna03 | IDUNA03.RWS (seviye) |
+| OUTRO3 | Outro3 | Credits | CREDITS.RWS (**tanımlayıcı → zincir devam**) |
+
+Zincir kuralı: hedef dosya tanımlayıcıysa (≤64 KB + CFMVBehavior) zincir
+devam eder; seviye/faz ise zincir biter ve hedef işlenir (faz → mevcut menü
+akışına geçilir, seviye → dünya o hedefe bağlanır).
+
+#### Binary kaynakları (CC_ida.asm)
+
+- `sub_45F6D0` — `CClassFactory::Register("CFMVBehavior", sub_45F580, 0x12C, 1, 1)`.
+- `sub_45F950` — **apply** (4 case'li property switch):
+  `case 0` → `[this+0x20] = <base> "Video\Win32\" <FMV adı> ".bik"`
+  (`<base> = dword_635AB4 ? dword_635AB0 : ".\"`, `loc_45FA0F`) + `[+0x124]=1`;
+  `case 1` → `[+0x128] = hedef kimliği`; `case 2` → `[+0x120] = oynatma
+  bayrağı`; `case 3` → `[+0xA0] = hedef sahne adı`.
+- `sub_45FA80` → `sub_45F350(path@+0x20, arg, flag, sub_45FAE0)` = **oynatma
+  çağrısı** (callback `sub_45FAE0` = bitiş → sahne geçişi).
+
+#### Uygulama
+
+- **`code/FmvScene.{h,cpp}`** (yeni, SDK-bağımsız): `FmvScene_Load` (çöz + oku
+  + CFMVBehavior'a göre ayrıştır), `FmvScene_VideoPath` (binary-exact
+  `.\Video\Win32\<ad>.bik`), `FmvScene_VideoExists` (CWD + varlık kökü adayı),
+  `FmvScene_NextScenePath` (hedef → `Streams/<HEDEF>.RWS`; dosyalar tümü BÜYÜK
+  HARF olduğundan `Nordic01` → `NORDIC01.RWS` **UPPERCASE ikinci denemesi şart**).
+- **`code/main.cpp`**: hardcoded `kIntros[] = {INTRO1, INTRO2, INTRO3}` döngüsü
+  **hedefe göre ilerleyen zincirle** değiştirildi; `IsFmvPhaseTarget`
+  (MainMenu/MAPMENU = faz, diğer = seviye); seviye hedefinde dünya
+  yeniden yüklenir (MAPMENU yol değişim deseniyle aynı, öncekine geri dönüşlü).
+- **`tests/fmvscene_test.cpp`** (yeni): 8 dosyalık grafiğin tamamı + video yolu
+  + zincir sonlandırma + UPPERCASE denemesi = **86 kontrol**.
+
+#### Ayrıştırıcı düzeltmeleri (test buldu)
+
+1. **Tanımlayıcı min. uzunluk 3 → 5**: kısa rastgele ASCII koşuları (CREDITS'te
+   `chn`, OUTRO1'de `lXM`) "davranış" sayılıyordu; gerçek tüm FMV/hedef adları
+   ≥5 (`Intro`/`Outro` = 5, `MainMenu` = 8).
+2. **GUID taraması chunk-içi → tampon geneli**: OUTRO1'de kapanış `}` chunk
+   sınırının (`clen`) dışında kaldığı için kaçıyordu; artık `{`…`}` yazdırılabilir
+   + `-` içerme koşuluyla taranır.
+3. Testteki yol karşılaştırması büyük/küçük harf **duyarsız** yapıldı (Windows'ta
+   birebir deneme karışık-harf yol döndürür — doğru davranış).
+
+#### Doğrulama (2026-10-15)
+
+- **ctest 25/25** (önceki 24 + `fmvscene_test`), NULL platform `build_win32_v180`.
+- **D3D9** (`build_win32_d3d9`) çıkış 0 + pencere: `class='CannonCruiseD3D9'
+  title='CannonCruise' visible=True size=656x519`.
+- Boot çıktısı (binary ile aynı):
+  `FMV[0]: fmv='Jingle' target='MainMenu' → Streams/MainMenu.RWS` →
+  `Menu: nodes=32 commands=15`.
+- Nordic bağlantısı (`CANNONCRUISE_FMV=Streams/INTRO1.RWS`):
+  `target='Nordic01' → Streams/Nordic01.RWS` → `WorldDict: Streams/Nordic01.RWS:
+  53 textures` → **`FMV: hedef seviye 'Nordic01' yüklendi`** (gerçek yükleme).
+
+#### Kapsam dışı / bekleyen
+
+- **FMV medyası yok**: `.bik` hiçbir yerde yok (yalnız `DLLs/binkw32.dll` var);
+  harici `{GUID}.txd/.dff/.col/.pfm` (`X:\RwStudio\WaveBreaker\Build Output\…`)
+  da yok → FMV atlanır ve hedefe geçilir. `Video\Win32\` altına `.bik`
+  konduğu anda `FmvScene_VideoExists` onu algılar ve oynatma yoluna geçer
+  (`CFMVBehavior` oynatma çağrısı `sub_45F350` karşılığı hâlâ bağlanmadı).
+- INTRO3 → MAPMENU geçişi akışta mevcut menü fazına devreder (menü atlanmaz).
 
 ### Bağımlılık sırası ve tahmin
 
@@ -1295,11 +1412,254 @@ kapanır; 4.6r paralel/ertelenbilir. Kritik bilinmeyenler: WorldGeometry
 iç yapısı (clump mı RpWorld mü — 4.6o ilk işi doğrulamak), librw GL3
 pencere kurulumu (macOS dev ortamı), input iskeleti.
 
-Sırada (öneri): Faz 4.6r-4 (MAPMENU behaviour wire: CAfterGameMenuBehavior
-+ CAG_Menu.anm + seviye kayıtları → seviye seçimi) ∥ 4.6s (boot zinciri +
-trailing chunk 0x22/0x1E/0x39 decode). Adım 1–3 (parser + Im2D placeholder
-render + boot menü durum makinesi) TAMAM — 21/21 ctest, GL3 smoke 30/30.
+Sırada (öneri): ~~trailing chunk 0x22/0x1E/0x39 decode~~ → **TAMAM
+(2026-10-15, Faz 4.6x — aslında ikinci ATOMIC grubuymuş, 96→130 atomic
+artık render'da)**. Kalan 4.6s kalemleri: tekne follow + tam oyun döngüsü
+(play loop → seviye geçişi stres testi). Adım 1–3 (parser + Im2D
+placeholder render + boot menü durum makinesi) TAMAM — 29/29 ctest,
+GL3 smoke 30/30.
 
 Gerçek SDK/ABI uyumluluğu, bağımlılık kurulumu ve oyun çalıştırması
 doğrulanmadı; kapı 4'ün stream doğrulaması AÇILDI (librw + gerçek asset),
 tek sahne çalışma zamanı bekliyor.
+
+### Faz 4.6u: Orijinal binary giris analizi + LocalizationManager entegrasyonu � TAMAM (2026-10-15)
+
+#### Yapilan Analizler ve Debug Bulgulari
+1. **Orijinal Binary �alistirma ve Kopya Korumasi Analizi**:
+   - `C:\Program Files (x86)\CannonCruise\CannonCruise.exe` binary'si `CDCOPS.DLL`, `CannonCruise.W_X` ve `cdcode.key` ile korunan bir CD-Cops koruma katmanina sahiptir.
+   - PE Header ve import tablosu analiz edildi: `d3d9.dll`, `binkw32.dll`, `DSOUND.dll`, `DINPUT8.dll` kullanan orijinal RenderWare DirectX 9 motoru.
+   - IDA ASM (`CC_ida.asm`) analizi ile a�ilis sirasi (`sub_4A2010` @ `0x4196EA`):
+     - `sub_4A4810`: Singleton dogrulama (`ms_pSingleton == NULL Failed`).
+     - `sub_4A31B0("GLOBAL")`: Global sahne y�kleme.
+     - `sub_4A2950("JINGLE")`: FMV sahne zinciri (JINGLE -> MainMenu).
+
+2. **Localization Dosya �r�nt�s� ve ASM Eslemesi**:
+   - Orijinal dizindeki `Localiza\` yapisi incelendi:
+     - `Localiza\lang.def`: `HUGO_CC` basligi altinda diller (`Den`, `*Eng`, `Fin`, `Nor`, `Swe`). `*Eng` varsayilan.
+     - `Localiza\langmap.def`: G�r�nen adlar (`Danish`, `English`, `Finnish`, `Norwegian`, `Swedish`).
+     - `Localiza\lang_<kod>.txt`: Unicode UTF-16 LE (UCS-2 LE) BOM (`0xFEFF`) ile kodlanmis metin tablolari.
+     - Satir formati: `<KEY> <SCALE> <TEXT>` (�r. `0001 100 QUIT GAME`, `0200 100 NEW GAME`).
+   - Binary'de `sub_492D40` (`langmap.def`), `sub_493130` (`lang.def`) ve `sub_491120` (`MENUTRIGGER_LangSelect1..12`) dogrulandi.
+
+3. **Gelistirmeler ve Kod G�ncellemeleri**:
+   - **`code/LocalizationManager.h` & `code/LocalizationManager.cpp`**:
+     - `LoadDefinitions()`: `Localiza\lang.def` ve `langmap.def` dosyalarini okuma, varsayilan dili belirleme.
+     - `SetLanguage(pLangCode)`: UTF-16 LE BOM kontrol�, satir satir `<KEY> <SCALE> <TEXT>` ayristirma ve `m_StringTable` doldurma.
+     - `GetString(pKey)`: Anahtara g�re `const wchar_t*` d�nd�rme.
+     - `GetLangSelectIndex(pLangCode)`: 1-12 trigger indeks ters eslemesi.
+     - `HandleEvents(const RWS::CMsg& msg)`: `MENUTRIGGER_LangSelect1..12` olaylarini yakalayip dili otomatik g�ncelleme.
+   - **`code/main.cpp`**: Engine boot sonrasi `CLocalizationManager` baslatildi; a�ilista `Localiza/lang_eng.txt` (254 dizge) y�klendigi canli dogrulandi.
+   - **`build_cannoncruise.cmd`**: Ortamdaki Visual Studio 2026 Community (`-G "Visual Studio 18 2026" -A Win32`) konfig�rasyonuna g�ncellendi.
+   - **`tests/localization_test.cpp`**: 5 dil tespiti, `lang_eng.txt` y�kleme, `0001` (`QUIT GAME`) ve `0200` (`NEW GAME`) lookup testleri ve event trigger testleri (ctest 26/26 test ?).
+
+
+### Faz 4.6v: Oyuncu Gemisi Sinifi (CShipPlayer) + Sinif Fabrikasi Kaydi � TAMAM (2026-10-15)
+
+#### Binary Analizi ve Fonksiyon Haritasi
+- `sub_4AE6C0`: `CClassFactory::Register("CShipPlayer", sub_4AE570, 0x488, 1, 1)` (boyut 0x488 = 1160 bayt).
+- `sub_4AE700`: `CShipPlayer` yapicisi, olay kayitlari (`iMsgRunningTick`, `iMsgFadeInAfterRespawn`, `iMsgFadeOutBeforeRespawn`, `IncreaseStaticScore`, `IncreaseDynamicScore`, `iMsgStormStart`, `iMsgStormStop`, `iMsgSpawnLifebuoy`, `Audio_Wind`).
+- `sub_4AF3C0`: Oyuncu per-frame g�ncellemesi ve fizik entegrasyonu.
+- `off_618BF0`: "CShipPlayer" sinif adi dizesi.
+
+#### Uygulama
+- **`code/ShipPlayer.h` ve `code/ShipPlayer.cpp`**:
+  - `CShip` temel sinifindan t�retildi.
+  - `RWS_REGISTER_CLASS(CShipPlayer, ...)` ile RenderWare Studio yansima (reflection) fabrikasina kaydedildi.
+  - Skor y�netimi (`m_iStaticScore`, `m_iDynamicScore`), firtina etkisi (`m_bStormActive`), can ve respawn mekanizmasi (`Respawn(spawnPos)`).
+  - Global aktif oyuncu erisimi: `CShipPlayer::GetPlayerShip()`.
+- **`tests/shipplayer_test.cpp`**:
+  - Fabrika kaydi (`CClassFactory::ClassIsRegistered`), dinamik olusturma (`CClassFactory::Create`), skor g�ncelleme, firtina olaylari ve respawn dogrulamasi.
+- **Dogrulama**:
+  - `ctest` �alistirildi: **27/27 test %100 basariyla ge�ti**.
+
+
+### Faz 4.6w: Giris Y�neticisi (CInputManager) + Klavye/Donanim Eslemesi � TAMAM (2026-10-15)
+
+#### Yapilan Analizler ve Config.ini Eslemesi
+- `Config.ini` ve binary (`sub_493860` @ `0x493860`) incelendi:
+  - `P1Input1` .. `P1Input14` eylemleri:
+    - `P1_INPUT_1` (Sol D�men) / `P1_INPUT_2` (Sag D�men)
+    - `P1_INPUT_3` (Ileri Gaz) / `P1_INPUT_8` (Geri Gaz / Fren)
+    - `P1_INPUT_4` (Iskele Top Atesi) / `P1_INPUT_5` (Sancak Top Atesi)
+    - `P1_INPUT_6` (Mayin Birakma `Audio_LayMine` / `CMine`)
+    - `P1_INPUT_7` (G�rev G�ster `CMissionIndicator`)
+    - `P1_INPUT_9` / `P1_INPUT_10` (Kamera Zoom In/Out)
+
+#### Uygulama
+- **`code/InputManager.h` & `code/InputManager.cpp`**:
+  - `SetButtonState(playerIndex, inputId, bDown)`: Dijital buton durumunu dinamik bitmask ile g�ncelleme.
+  - `SetButtonsBitmask(playerIndex, bitmask)`: T�m 32-bit buton kaydini tek seferde atama.
+  - `PollPlatformInput()`: RenderWare platform klavye olaylarini (Y�n tuslari, WASD, Q/E borda atesi, M mayin, Z/C kamera) dogrudan `P1_INPUT_*`'a esleme.
+- **`code/ShipPlayerInputProxy.cpp`**:
+  - D�men a�isina ek olarak ileri/geri gaz (`SetThrottle(1.0f)` / `SetThrottle(-0.5f)`) ve top atis kontrolleri baglandi.
+- **`tests/inputmanager_test.cpp`**:
+  - Focus yigini (`AllocateFocusID`, `PushFocusID`, `PopFocusID`, `FreeFocusID`), buton basis ve kenar tetikleme (rising edge trigger) tespiti ve `CShipPlayerInputProxy` �zerinden gemi hiz/d�men s�r�s entegrasyon testi.
+- **Dogrulama**:
+  - `ctest` �alistirildi: **28/28 test %100 basariyla ge�ti**.
+
+
+### Faz 4.6x: WorldGeometry trailing chunk çözümü → ikinci ATOMIC grubu — TAMAM (2026-10-15)
+
+Faz 4.6o'da `[trailing chunk — tipe göre dünya varyantı: 0x22/0x1E/0x39]`
+olarak kaydedilmiş, yalnızca **TİP** okunmuş ve içerik çözülmemişti
+(4.6s listesinde "trailing chunk 0x22/0x1E/0x39 decode" olarak bekliyordu).
+Ayrıca bu bölüm **hiç instantiate edilmiyordu** → dünya eksik
+render ediliyordu.
+
+#### Çözüm — dosya verisi + binary modeli
+
+`WorldGeometry` payload'u gerçekte **iki ATOMIC grubundan** oluşur:
+
+```
+[u32 prefixSectionLength][u32 libid=0x1803FFFF]
+[prefix: STRUCT(16) + GEOMETRY + EXTENSION]
+[ATOMIC × N]                    ← count YOK; tip != 0x14 olana kadar
+[u32 count2][ATOMIC × count2]   ← "trailing chunk" buydu
+[2-3 bayt asset padding]
+```
+
+- `0x22/0x1E/0x39` bir chunk **TİPİ değil**, grup2 atomic **SAYISI**
+  (34 / 30 / 57). Üç dünyada da grup2 yürüyüşü sayıyla **tam bitti**;
+  kalan 2-3 bayt asset padding'i.
+- Binary `FUN_004c9b70`: *"u32 count → tekrar: chunk header (assert
+  type==0x14 ATOMIC) → sektör/atomic oku (`FUN_004dbdb0`) → dünyaya
+  ekle"*. Yani binary de `[count][ATOMIC × count]` modelini okur.
+- Yanlış okumanın nedeni: o bölgedeki ilk 12 bayt `type=0x22, len=20`
+  gibi görünüyordu; rastlantısaldı (o baytlar `[u32 count2]` + ilk
+  ATOMIC header'ının ilk alanlarıydı). "İlk atomic-4" `0x1803FFFF`
+  (prefix libid) çıktı — yani grup1 için gerçek bir count yok.
+
+| Dünya | grup1 | grup2 (eski "trailing") | grup2 verts | grup2 tris | toplam atomic |
+|---|---|---|---|---|---|
+| VIKING01 | 96 | 0x22 = **34** | 8489 | 12297 | **130** |
+| IDUNA03 | 31 | 0x1E = **30** | 432 | 258 | **61** |
+| BEAVER01 | 119 | 0x39 = **57** | 10422 | 6806 | **176** |
+
+Toplam vertice: VIKING01 69657 → **78146**; BEAVER01 105358 → **115780**.
+
+#### Uygulama
+
+- **`code/WorldGeometry.h`**: `WorldGeometryInfo`'ya `atomicGroup2Offset`,
+  `atomicGroup2Count`, `group2Vertices`, `group2Triangles` eklendi.
+  `trailingChunkType` alanı korundu ama GERÇEK anlamı (grup2 sayısı)
+  belgelendi; format şeması düzeltildi.
+- **`code/WorldGeometry.cpp`**:
+  - `WorldGeometry_Inspect` — atomik döngüsü `tip != 0x14`'te durunca
+    `c.pos` artık `[u32 count2]` ofsetidir; grup2 **peek** edilir
+    (yürüyen atomic sayısı `count2` ile birebir eşleşirse geçerli).
+  - `WorldGeometry_CreateClump` — **iki grubu da** instantiate eder:
+    grup1 (`tip != 0x14` olana kadar), grup2 (`count2` kadar). bbox
+    birikimi lambda'ya (`accumulateBounds`) çıkarılıp iki gruba uygulandı.
+  - Log: `WorldGeometry: %u/%u+%u atomics instantiated`.
+- **`code/main.cpp`**: dünya yükleme teşhisi `96+34 atomics, 78146 verts,
+  82487 tris` olacak şekilde grup2'yi katacak şekilde düzeltildi.
+
+#### Doğrulama (2026-10-15)
+
+- **Yeni test `tests/trailingchunk_test.cpp`** (48 kontrol, **0 hata**):
+  - üç dünya için grup1/grup2 sayıları **birebir** (96+34, 31+30, 119+57);
+  - grup2 verts/tris birebir (8489/12297, 432/258, 10422/6806);
+  - `trailingChunkType == atomicGroup2Count` (aynı u32 — "tip" değil
+    "sayı" olduğu ispatı) ve `atomicGroup2Offset == trailingChunkOffset`;
+  - bağımsız ham u32 doğrulaması (`count2` ofsetinde `0x14`);
+  - **clump atomic sayısı == grup1 + grup2** (`Clump::countAtomics()`);
+  - bbox geçerli.
+- ctest **29/29** (önceki 28 + bu), %100 geçti.
+- NULL (`build_win32_v180`) ve D3D9 (`build_win32_d3d9`) derlemeleri
+  **0 hata / 0 uyarı**.
+- Uygulama çalıştırması (NULL, 45 kare):
+  `link verification OK` → `WorldDict: Streams/VIKING01.RWS: 54 textures`
+  → **`WorldGeometry: 130/96+34 atomics instantiated (78146 verts, 82487
+  tris)`** → `WorldSpawn: records=497 created=97` → `45/45 frames OK`,
+  çıkış 0.
+
+#### Kapsam / sonraki
+
+- Grup2'nin **semantiği** (statik dünya mı, LOD/su/kolon mi) henüz
+  binary'de isimlendirilmedi; geometri tümüyle geçerli olduğu ve
+  `FUN_004c9b70` modeline oturduğu için **hepsi eklendi**.
+- `resourceLength` sonundaki 2-3 bayt padding çözümlenmedi (tüm atomic
+  verisi `len - 2/3`'te biter; RWS asset hizalama artefaktı).
+
+---
+
+## Faz 4.6y — Bink Video Oynatimi (`.bik` FMV) — TAMAM (2026-10-16)
+
+### Sorun
+
+`Video/Win32/*.bik` (8 dosya) depoya alinmasina ragmen giris/kesme
+videolari hala oynamiyordu. Iki ayri eksik vardi:
+
+1. `main.cpp` FMV asamasinda `.bik` yolunu yalnizca **logluyordu**
+   ("FMV SKIPPED") — `CFMVBehavior` oynatma cagrisi hic baglanmamisti.
+2. `FmvScene_VideoExists` yalnizca CWD + Streams-kok adaylarini biliyordu;
+   derleme dizininden calistirilinca `.bik` bulunamiyordu.
+
+### Binary'den cikarilan oynatma tarifi (CC_ida.asm)
+
+Orijinal oyun binkw32.dll'yi **yalnizca 10 fonksiyonla** kullanir
+(import tablosu): `BinkOpen`, `BinkClose`, `BinkDoFrame`, `BinkNextFrame`,
+`BinkWait`, `BinkCopyToBuffer`, `BinkSetSoundSystem`,
+`BinkOpenDirectSound`, `BinkSetSoundTrack`, `BinkSetVolume`.
+
+Iki fonksiyon tum oynatmayi yapar:
+
+- **`sub_45F350(path, arg, flag, callback)`** — oynatici omru:
+  `BinkSetSoundSystem(BinkOpenDirectSound(hwnd), …)` →
+  `BinkSetSoundTrack(1, …)` → **`BinkOpen(path, 0x4000)`** →
+  `BinkSetVolume` → `raster = sub_518C90(640, 448, 32, 0x604)` →
+  dongu → `BinkClose`.
+- **`sub_45F270(raster)`** — tek kare:
+  `BinkDoFrame` → **`BinkCopyToBuffer(bink, piksel, pitch, x, 0, 0,
+  0x80000003)`** → `BinkNextFrame`. Bitis kosulu `[bink+0xC] == [bink+8]`.
+
+Dongu duzemi (sub_45F350+0x6B):
+
+```
+render()                            // ilk kare, beklemeden
+loop:
+  while (BinkWait(bink) != 0) { }   // BUSY-SPIN (Sleep YOK)
+  if (!render()) break              // kare yok / bitti
+```
+
+### binkw32.dll v1.6c — olculen gercekler (32-bit host ile 10 probe)
+
+- Export'lar **`__stdcall` suslu** (`_BinkOpen@8`, `_BinkCopyToBuffer@28`,
+  …); `GetProcAddress("BinkOpen")` **0 dondurur** — suslu ad lazim.
+- **`BinkCopyToBuffer` 7 ARGUMANLI** (`@28`), modern SDK'nin 10 argumanli
+  imzasi degil. Calisan kurulum (binary ile birebir):
+  `(bink, dest, destpitch, 0, 0, 0, 0x80000003)`.
+- BINK struct: `[0]=width, [4]=height, [8]=toplam kare, [0xC]=kare no`.
+- Bik basligi: `+8 = toplam kare`, `+20 = width`, `+24 = height`,
+  `+28 = fps`. **8 dosyanin TAMAMI 640x448 @ 30 fps.**
+- Cikti bicimi **32 bpp X8R8G8B8** (bellek sira B,G,R,X; X=0, alfa yok) —
+  `Intro.bik` karesi iki yorumla PNG olarak cikarilip **gorsel tasdiklendi**
+  (B,G,R → yesil cam agaclari + kirmizi kelebekler; takasli yorum mavi).
+- **`BinkWait` busy-spin sart**: `Sleep()` ile bekleme decode'u BOZAR —
+  kareler donmez, ayni cikti tekrarlanir (40 karede 18 farkli checksum).
+  Dogru dongude **30 karede 30 farkli kare**, tam **33 ms/kare** olculdu
+  (`BinkWait` kare hizini 30 fps'e kisitlar). `goto100 != goto600`
+  ile arama da calisiyor.
+
+### Yapilan
+
+- **`code/BinkPlayer.{h,cpp}` (yeni)** — binkw32.dll'yi `LoadLibraryA` +
+  `GetProcAddress` ile sarar (suslu → sussuz yedek ad). DLL adaylari:
+  `CANNONCRUISE_BINKW32` env → Windows arama yolu →
+  `<varlik-koku>binkw32.dll` → `<varlik-koku>DLLs/binkw32.dll` → goreli
+  adaylar. API: `Open / Width / Height / TotalFrames / CurrentFrame /
+  IsFinished / Wait(pIdle) / DecodeRGBA / Next / Close / LastError`.
+  `DecodeRGBA` kopyalamayi BGRX yapip yerinde **RGBA'ya cevirir**
+  (`UploadTexture` RGBA bekler) ve alfa baytini 255'e koyar.
+- **`code/FmvScene.{h,cpp}`** — `FmvScene_VideoResolve` eklendi: `.bik`'in
+  **cozulmus tam yolunu** dondurur (CWD adayi → `<varlik-koku>Video/Win32/
+  <ad>.bik`). `FmvScene_VideoExists` artik bunun sarmalayicisi.
+- **`code/main.cpp`** — FMV asamasinda GERCEK oynatma: `.bik` varsa baslik
+  karti yerine `BinkPlayer` dongusu calisir; kare
+  `UploadTexture("FMV")` → `BeginOverlay2D` → `DrawTexturedQuad(0,0,
+  ekranW,ekranH)` → `EndFrame`. `FmvSpinIdle` bekleme boyunca mesaj pompalar
+  ve Esc/kapatma ile atlama saglar (ilk kareye kadar etkisiz — onceki fazdan
+  sızan tus yutulur). Oynatma sonunda `RenderPlatform_ClearTextures()` ile
+  FMV dokusu birakilir ve zincir **HEDEF SAHNEYE** devam eder
+  (JINGLE→MainMenu, INTRO1→Nordic01, OUTRO3→Credits).

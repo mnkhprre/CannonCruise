@@ -2,7 +2,7 @@
 #define HK_CONSTRAINT_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (hkConstraint.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (hkConstraint.h)
 // Binary tipler: hkConstraint, hkAction
 // ============================================================================
 
@@ -12,7 +12,7 @@
 class hkEntity;
 class hkWorld;
 
-/// Eklem / bağlayıcı — iki entity arasında ilişki kurar
+/// Constraint / link — establishes relationship between two entities
 class hkConstraint : public hkSerializable
 {
 public:
@@ -29,7 +29,7 @@ protected:
     hkEntity* m_pEntityB;
 };
 
-/// Fizik aksiyonu — entity'ye bağlı davranış (tetikleyici, sürtünme vb.)
+/// Physics action — behavior attached to entity (trigger, friction etc.)
 class hkAction : public hkSerializable
 {
 public:
@@ -38,7 +38,7 @@ public:
 
     virtual const hkClass* getClass() const;
 
-    /// Simülasyon adımında çağrılır
+    /// Called during simulation step
     virtual void apply(hkReal deltaTime) = 0;
 
     hkEntity* getEntity() const { return m_pEntity; }

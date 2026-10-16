@@ -1,13 +1,13 @@
-// ============================================================================
+﻿// ============================================================================
 // CannonCruise - Input Manager (InputManager.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\InputManager.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Tersine mÃ¼hendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazÄ±lmÄ±ÅŸtÄ±r.
 //
-// Binary Fonksiyonları:
-//   FUN_0048c180 / FUN_0048c280 — CInputManager::FreeFocusID / AllocateFocusID ("m_iFocusIDPoolIndex < MAX_FOCUS_ID_COUNT Failed")
-//   FUN_0048c480 — CInputManager::PushFocusID ("m_iFocusStackIndex < MAX_FOCUS_ID_COUNT Failed", "!IsFocusIDInStack(iFocusID) Failed")
-//   FUN_0048c810 — CInputManager::PopFocusID
-//   FUN_0048ca70 — CInputManager focus querying
+// Binary FonksiyonlarÄ±:
+//   FUN_0048c180 / FUN_0048c280 â€” CInputManager::FreeFocusID / AllocateFocusID ("m_iFocusIDPoolIndex < MAX_FOCUS_ID_COUNT Failed")
+//   FUN_0048c480 â€” CInputManager::PushFocusID ("m_iFocusStackIndex < MAX_FOCUS_ID_COUNT Failed", "!IsFocusIDInStack(iFocusID) Failed")
+//   FUN_0048c810 â€” CInputManager::PopFocusID
+//   FUN_0048ca70 â€” CInputManager focus querying
 // ============================================================================
 
 #include "InputManager.h"
@@ -15,7 +15,7 @@
 #include <cstring>
 
 // ---------------------------------------------------------------------------
-// Constructor – clears focus arrays, initializes stack pointers to 0,
+// Constructor â€“ clears focus arrays, initializes stack pointers to 0,
 // and resets player digital button bitmasks.
 // ---------------------------------------------------------------------------
 CInputManager::CInputManager()
@@ -31,21 +31,21 @@ CInputManager::CInputManager()
 }
 
 // ---------------------------------------------------------------------------
-// Destructor – frees resources upon shutdown.
+// Destructor â€“ frees resources upon shutdown.
 // ---------------------------------------------------------------------------
 CInputManager::~CInputManager()
 {
 }
 
 // ---------------------------------------------------------------------------
-// HandleEvents – message dispatcher for engine input events.
+// HandleEvents â€“ message dispatcher for engine input events.
 // ---------------------------------------------------------------------------
 void CInputManager::HandleEvents(const RWS::CMsg& msg)
 {
 }
 
 // ---------------------------------------------------------------------------
-// AllocateFocusID – mirrors FUN_0048c280.
+// AllocateFocusID â€“ mirrors FUN_0048c280.
 // Finds the next unallocated slot in m_bFocusIDAllocated, sets it to TRUE,
 // increments pool counter, and asserts against pool limit.
 // ---------------------------------------------------------------------------
@@ -65,7 +65,7 @@ RwInt32 CInputManager::AllocateFocusID()
 }
 
 // ---------------------------------------------------------------------------
-// FreeFocusID – mirrors FUN_0048c590.
+// FreeFocusID â€“ mirrors FUN_0048c590.
 // Validates that ID is allocated and releases it back to the pool.
 // ---------------------------------------------------------------------------
 void CInputManager::FreeFocusID(RwInt32 iFocusID)
@@ -82,7 +82,7 @@ void CInputManager::FreeFocusID(RwInt32 iFocusID)
 }
 
 // ---------------------------------------------------------------------------
-// PushFocusID – mirrors FUN_0048c910.
+// PushFocusID â€“ mirrors FUN_0048c910.
 // Validates ID allocation and stack uniqueness, then appends ID to top of stack.
 // ---------------------------------------------------------------------------
 void CInputManager::PushFocusID(RwInt32 iFocusID)
@@ -95,7 +95,7 @@ void CInputManager::PushFocusID(RwInt32 iFocusID)
 }
 
 // ---------------------------------------------------------------------------
-// PopFocusID – mirrors FUN_0048cb40.
+// PopFocusID â€“ mirrors FUN_0048cb40.
 // Locates given focus ID within active stack and shifts downstream elements down.
 // ---------------------------------------------------------------------------
 void CInputManager::PopFocusID(RwInt32 iFocusID)
@@ -119,7 +119,7 @@ void CInputManager::PopFocusID(RwInt32 iFocusID)
 }
 
 // ---------------------------------------------------------------------------
-// GetCurrentFocusID – queries the topmost active focus ID on the stack.
+// GetCurrentFocusID â€“ queries the topmost active focus ID on the stack.
 // ---------------------------------------------------------------------------
 RwInt32 CInputManager::GetCurrentFocusID() const
 {
@@ -131,7 +131,7 @@ RwInt32 CInputManager::GetCurrentFocusID() const
 }
 
 // ---------------------------------------------------------------------------
-// IsFocusIDAllocated – tests if specified ID is currently flagged as in-use.
+// IsFocusIDAllocated â€“ tests if specified ID is currently flagged as in-use.
 // ---------------------------------------------------------------------------
 RwBool CInputManager::IsFocusIDAllocated(RwInt32 iFocusID) const
 {
@@ -143,7 +143,7 @@ RwBool CInputManager::IsFocusIDAllocated(RwInt32 iFocusID) const
 }
 
 // ---------------------------------------------------------------------------
-// IsFocusIDInStack – tests if specified ID is present within active modal stack.
+// IsFocusIDInStack â€“ tests if specified ID is present within active modal stack.
 // ---------------------------------------------------------------------------
 RwBool CInputManager::IsFocusIDInStack(RwInt32 iFocusID) const
 {
@@ -158,7 +158,7 @@ RwBool CInputManager::IsFocusIDInStack(RwInt32 iFocusID) const
 }
 
 // ---------------------------------------------------------------------------
-// IsButtonDown – queries current held state of a specific player input button.
+// IsButtonDown â€“ queries current held state of a specific player input button.
 // ---------------------------------------------------------------------------
 RwBool CInputManager::IsButtonDown(RwInt32 playerIndex, RwInt32 inputId) const
 {
@@ -174,7 +174,7 @@ RwBool CInputManager::IsButtonDown(RwInt32 playerIndex, RwInt32 inputId) const
 }
 
 // ---------------------------------------------------------------------------
-// IsButtonPressed – edge detection: TRUE only on transition from released to pressed.
+// IsButtonPressed â€“ edge detection: TRUE only on transition from released to pressed.
 // ---------------------------------------------------------------------------
 RwBool CInputManager::IsButtonPressed(RwInt32 playerIndex, RwInt32 inputId) const
 {
@@ -190,7 +190,7 @@ RwBool CInputManager::IsButtonPressed(RwInt32 playerIndex, RwInt32 inputId) cons
 }
 
 // ---------------------------------------------------------------------------
-// GetAxisValue – reads analog axis deflection values.
+// GetAxisValue â€“ reads analog axis deflection values.
 // ---------------------------------------------------------------------------
 RwReal CInputManager::GetAxisValue(RwInt32 playerIndex, RwInt32 axisId) const
 {
@@ -198,10 +198,74 @@ RwReal CInputManager::GetAxisValue(RwInt32 playerIndex, RwInt32 axisId) const
 }
 
 // ---------------------------------------------------------------------------
-// Update – frame latch synchronizing current button states to previous history.
+// Update â€“ frame latch synchronizing current button states to previous history.
 // ---------------------------------------------------------------------------
 void CInputManager::Update()
 {
     m_uP1PrevButtons = m_uP1Buttons;
     m_uP2PrevButtons = m_uP2Buttons;
+}
+
+// ---------------------------------------------------------------------------
+// SetButtonState - sets or clears a digital button state bit for a player.
+// ---------------------------------------------------------------------------
+void CInputManager::SetButtonState(RwInt32 playerIndex, RwInt32 inputId, RwBool bDown)
+{
+    if (inputId < 0 || inputId >= 32) return;
+
+    if (playerIndex == 0)
+    {
+        if (bDown)
+            m_uP1Buttons |= (1 << inputId);
+        else
+            m_uP1Buttons &= ~(1 << inputId);
+    }
+    else if (playerIndex == 1)
+    {
+        if (bDown)
+            m_uP2Buttons |= (1 << inputId);
+        else
+            m_uP2Buttons &= ~(1 << inputId);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// SetButtonsBitmask - sets entire 32-bit button register for a player.
+// ---------------------------------------------------------------------------
+void CInputManager::SetButtonsBitmask(RwInt32 playerIndex, RwUInt32 bitmask)
+{
+    if (playerIndex == 0)
+        m_uP1Buttons = bitmask;
+    else if (playerIndex == 1)
+        m_uP2Buttons = bitmask;
+}
+
+// ---------------------------------------------------------------------------
+// SetAxisValue - sets analog axis deflection [-1.0 .. 1.0].
+// ---------------------------------------------------------------------------
+void CInputManager::SetAxisValue(RwInt32 playerIndex, RwInt32 axisId, RwReal value)
+{
+    // Reserve for analog input
+}
+
+// ---------------------------------------------------------------------------
+// PollPlatformInput - maps keyboard states directly to Player 1 buttons.
+// ---------------------------------------------------------------------------
+void CInputManager::PollPlatformInput()
+{
+    RwPlatformPollEvents();
+
+    SetButtonState(0, P1_INPUT_1, (RwPlatformKeyDown(RW_KEY_LEFT) || RwPlatformKeyDown('A')));
+    SetButtonState(0, P1_INPUT_2, (RwPlatformKeyDown(RW_KEY_RIGHT) || RwPlatformKeyDown('D')));
+    SetButtonState(0, P1_INPUT_3, (RwPlatformKeyDown(RW_KEY_UP) || RwPlatformKeyDown('W')));
+    SetButtonState(0, P1_INPUT_8, (RwPlatformKeyDown(RW_KEY_DOWN) || RwPlatformKeyDown('S')));
+
+    SetButtonState(0, P1_INPUT_4, (RwPlatformKeyDown('Q') || RwPlatformKeyDown('1')));
+    SetButtonState(0, P1_INPUT_5, (RwPlatformKeyDown('E') || RwPlatformKeyDown('2')));
+    SetButtonState(0, P1_INPUT_6, (RwPlatformKeyDown('M') || RwPlatformKeyDown('X')));
+    SetButtonState(0, P1_INPUT_7, (RwPlatformKeyDown('T') || RwPlatformKeyDown('\t')));
+
+    SetButtonState(0, P1_INPUT_9, RwPlatformKeyDown('Z'));
+    SetButtonState(0, P1_INPUT_10, RwPlatformKeyDown('C'));
+    SetButtonState(0, P1_INPUT_13, RwPlatformKeyDown('R'));
 }

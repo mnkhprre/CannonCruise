@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\2bd5e8924ec7b2576ca243b66b81b7ad\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B0338059-0BE4-393C-8928-EDF498D78123}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

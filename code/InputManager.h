@@ -1,10 +1,10 @@
-#ifndef INPUTMANAGER_H
+﻿#ifndef INPUTMANAGER_H
 #define INPUTMANAGER_H
 
 // ============================================================================
 // CannonCruise - Input Manager (InputManager.h)
 // Original path: D:\Projects\CannonCruisePC\code\InputManager.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Tersine mÃ¼hendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazÄ±lmÄ±ÅŸtÄ±r.
 // ============================================================================
 
 #include "Singleton.h"
@@ -140,6 +140,29 @@ public:
      * @param axisId       Axis identifier (0: X, 1: Y).
      */
     RwReal GetAxisValue(RwInt32 playerIndex, RwInt32 axisId) const;
+
+    /**
+     * @brief Sets digital button state for a player.
+     * @param playerIndex Player index (0=P1, 1=P2).
+     * @param inputId Button bit index (EPlayerInput).
+     * @param bDown TRUE if held, FALSE if released.
+     */
+    void SetButtonState(RwInt32 playerIndex, RwInt32 inputId, RwBool bDown);
+
+    /**
+     * @brief Directly sets full 32-bit button bitmask for a player.
+     */
+    void SetButtonsBitmask(RwInt32 playerIndex, RwUInt32 bitmask);
+
+    /**
+     * @brief Sets analog axis deflection value [-1.0 .. +1.0].
+     */
+    void SetAxisValue(RwInt32 playerIndex, RwInt32 axisId, RwReal value);
+
+    /**
+     * @brief Polls platform keyboard and translates arrow keys/WASD into P1 inputs.
+     */
+    void PollPlatformInput();
 
     /**
      * @brief Per-frame latch copying current button states to previous frame registers.

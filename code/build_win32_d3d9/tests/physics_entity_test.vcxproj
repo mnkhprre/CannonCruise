@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0703C467-505D-3051-BC35-20B71071138A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.28000.0</WindowsTargetPlatformVersion>
+    <Platform>Win32</Platform>
+    <ProjectName>physics_entity_test</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">physics_entity_test.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">physics_entity_test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">physics_entity_test.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">physics_entity_test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">physics_entity_test.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">physics_entity_test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">physics_entity_test.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">physics_entity_test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;D3D9;DXROUTINE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;D3D9;DXROUTINE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Debug\BulletDynamics_Debug.lib;..\lib\Debug\BulletCollision_Debug.lib;..\lib\Debug\LinearMath_Debug.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/Debug/physics_entity_test.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/Debug/physics_entity_test.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;D3D9;DXROUTINE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;D3D9;DXROUTINE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\Release\BulletDynamics.lib;..\lib\Release\BulletCollision.lib;..\lib\Release\LinearMath.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/Release/physics_entity_test.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/Release/physics_entity_test.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;D3D9;DXROUTINE;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;D3D9;DXROUTINE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\MinSizeRel\BulletDynamics_MinsizeRel.lib;..\lib\MinSizeRel\BulletCollision_MinsizeRel.lib;..\lib\MinSizeRel\LinearMath_MinsizeRel.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/MinSizeRel/physics_entity_test.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/MinSizeRel/physics_entity_test.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;D3D9;DXROUTINE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;D3D9;DXROUTINE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\..\code\framework\toolkits;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\lib\RelWithDebInfo\BulletDynamics_RelWithDebugInfo.lib;..\lib\RelWithDebInfo\BulletCollision_RelWithDebugInfo.lib;..\lib\RelWithDebInfo\LinearMath_RelWithDebugInfo.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/RelWithDebInfo/physics_entity_test.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/RelWithDebInfo/physics_entity_test.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/tests/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\tests\physics_entity_test.cpp" />
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PhysicsEntity.cpp" />
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PhysicsWorld.cpp" />
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\CollisionTrigger.cpp" />
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PhysicsBackend.cpp" />
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\eventhandler\ceventhandler.cpp" />
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\attributehandler\cclassfactory.cpp" />
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\rwstubs.cpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\ZERO_CHECK.vcxproj">
+      <Project>{F3880778-CEFF-384F-B61C-CAA4BDB99F45}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\BulletCollision\BulletCollision.vcxproj">
+      <Project>{873814C4-FD91-3533-8126-B3B5EAC715E4}</Project>
+      <Name>BulletCollision</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\BulletDynamics\BulletDynamics.vcxproj">
+      <Project>{826466DA-E066-3F6E-AC26-1249B5A38A85}</Project>
+      <Name>BulletDynamics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\LinearMath\LinearMath.vcxproj">
+      <Project>{0BDF97CA-A2DF-312F-9E88-62DEE2E06841}</Project>
+      <Name>LinearMath</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

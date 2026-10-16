@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\032333ba1bba0fdfb64175770c4f7cfd\bullet3-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\2e7bbe101b7bfd10cf3046c47bffc795\bullet3-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\160ec006b3a6ae40ffc89abdbc13669e\bullet3-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-subbuild\CMakeFiles\bullet3-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{0F5A660D-72A1-3EB3-9DFB-D0688136FE71}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

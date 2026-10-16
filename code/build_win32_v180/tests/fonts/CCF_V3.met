@@ -1,0 +1,15 @@
+METRICS3
+CCF_V3
+'A
+begin
+moveto 0 0
+lineto 10 0
+lineto 10 12
+closepath
+end
+'é
+begin
+moveto 0 0
+curveto 2 0 4 6 6 6
+lineto 7 6
+end

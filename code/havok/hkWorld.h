@@ -2,9 +2,9 @@
 #define HK_WORLD_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (hkWorld.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (hkWorld.h)
 // Binary: "hkWorld" (CC.asm), FUN_0043a040 (CPhysicsWorld::Update → stepDeltaTime)
-// Havok 2.x adlandırması: hkWorld (hkpWorld değil — hkp öneki Havok 4+).
+// Havok 2.x naming: hkWorld (not hkpWorld — hkp prefix is Havok 4+).
 // ============================================================================
 
 #include "hkBaseTypes.h"
@@ -16,11 +16,14 @@ class hkConstraint;
 class hkAction;
 class hkCollisionFilter;
 
-/// Fizik simülasyon dünyası
+// Bullet bridge — PhysicsBackend's opaque world handle (full definition in cpp)
+struct PhysicsWorldHandle;
+
+/// Physics simulation world
 class hkWorld : public hkSerializable
 {
 public:
-    /// Yapılandırıcı. Havok 2.x'te dünya genişliği Broad-phase ayarlarıyla verilir.
+    /// Constructor. Havok 2.x world extents given via broad-phase settings.
     hkWorld(hkReal worldMinX = -250.0f, hkReal worldMaxX = 250.0f,
             hkReal worldMinY = -250.0f, hkReal worldMaxY = 250.0f,
             hkReal worldMinZ = -250.0f, hkReal worldMaxZ = 250.0f);
@@ -28,38 +31,45 @@ public:
 
     virtual const hkClass* getClass() const;
 
-    /// Simülasyonu deltaTime saniye ilerlet (FUN_0043a040 bu metodu çağırır)
+    /// Advance simulation by deltaTime seconds (FUN_0043a040 calls this method)
     void stepDeltaTime(hkReal deltaTime);
 
-    /// Entity ekle / çıkar (rigid body'ler hkEntity alt sınıfıdır)
+    /// Add / remove entity (rigid bodies are hkEntity subclasses)
     hkResult addEntity(hkEntity* pEntity);
     hkResult removeEntity(hkEntity* pEntity);
 
-    /// Phantom (tetikleyici hacim) ekle / çıkar
+    /// Phantom (trigger volume) add / remove
     hkResult addPhantom(hkPhantom* pPhantom);
     hkResult removePhantom(hkPhantom* pPhantom);
 
-    /// Bağlayıcı ve aksiyon yönetimi
+    /// Constraint and action management
     hkResult addConstraint(hkConstraint* pConstraint);
     hkResult removeConstraint(hkConstraint* pConstraint);
     hkResult addAction(hkAction* pAction);
     hkResult removeAction(hkAction* pAction);
 
-    /// Çarpışma filtresini ayarla
+    /// Set collision filter
     void setCollisionFilter(hkCollisionFilter* pFilter);
+    hkCollisionFilter* getCollisionFilter() const { return m_pCollisionFilter; }
 
-    /// İş parçacığı kilidi yer tutucuları (Havok 2.x checkForWrite ailesi)
+    /// Threading lock stubs (Havok 2.x checkForWrite family)
+    /// Bullet single-threaded → no-op (binary contract preserved).
     void markForWrite();
     void unmarkForWrite();
     void markForRead();
     void unmarkForRead();
 
+    /// Bullet bridge — PhysicsBackend world handle (step/add/remove)
+    PhysicsWorldHandle* getPhysicsWorld() const { return m_pPhysicsWorld; }
+
 private:
     hkAabb m_broadPhaseWorld;
     hkCollisionFilter* m_pCollisionFilter;
-    void* m_pEntities;      ///< Internal linked list (opaque)
-    void* m_pPhantoms;      ///< Internal linked list (opaque)
-    void* m_pConstraints;
+    PhysicsWorldHandle* m_pPhysicsWorld; ///< Bullet world (PhysicsBackend)
+    void* m_pEntities;      ///< internal tracking list (hkEntity)
+    void* m_pPhantoms;      ///< internal tracking list (hkPhantom)
+    void* m_pConstraints;   ///< internal tracking list (hkConstraint)
+    void* m_pActions;       ///< internal tracking list (hkAction)
 };
 
 #endif // HK_WORLD_H

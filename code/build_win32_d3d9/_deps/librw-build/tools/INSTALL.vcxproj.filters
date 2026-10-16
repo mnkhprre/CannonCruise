@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\e6955897ba6b82bff50934b3baa1f84f\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B61A6FE3-7ED4-3E67-B5B2-27E5C4BEAD46}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

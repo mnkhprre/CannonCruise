@@ -94,9 +94,12 @@ RwBool RenderPlatform_Initialize(RwInt32 width, RwInt32 height) {
     const rw::V2d kViewWindow = rw::makeV2d(1.0f, 1.0f);
     s_pCamera->setViewWindow(&kViewWindow);
     s_pCamera->setProjection(rw::Camera::PERSPECTIVE);
-#ifdef RW_GL3
-    // GL3: gerçek framebuffer (skeleton CameraCreate deseni) — ShowRaster
-    // bu raster'ı pencereye kopyalar; NULL platformda raster yok (no-op).
+#if defined(RW_GL3) || defined(RW_D3D9)
+    // GL3/D3D9: gerçek framebuffer (librw skeleton CameraCreate deseni —
+    // skeleton/skeleton.cpp:90 Raster::CAMERA/ZBUFFER) — ShowRaster bu
+    // raster'ı pencereye kopyalar. NULL platformda raster yok (no-op).
+    // D3D9 NOTU: bu raster'lar yoksa clear()/beginUpdate() null çerçeve
+    // çözümler → 0xC0000005 (2026-10-15).
     s_pCamera->frameBuffer =
         rw::Raster::create(width, height, 0, rw::Raster::CAMERA);
     s_pCamera->zBuffer =
@@ -172,6 +175,12 @@ void RenderPlatform_EndFrame(void) {
     // Ekran görüntüsü isteği (swap öncesi) — GL3 framebuffer → PNG.
     if (s_screenshotPath[0] != '\0' && s_pCamera->frameBuffer != nullptr) {
 #ifdef RW_GL3
+        // Ekran görüntüsü — GL3 framebuffer → PNG.
+        // D3D9 SINIRLAMASI (belgeli): librw d3d::rasterToImage()
+        // CAMERA raster'larda raster->pixels nil kalır (lock render-target
+        // için çalışmaz) ve nil'den okuma → 0xC0000005. D3D9 görüntüsü için
+        // ayrı yol gerekir (IDirect3DDevice9::GetRenderTargetData →
+        // systemmem surface → rw::Image) — bkz. Faz 4.6 iş kalemi.
         rw::Image *pShot = s_pCamera->frameBuffer->toImage();
         if (pShot != nullptr) {
             rw::writePNG(pShot, s_screenshotPath);
@@ -257,7 +266,7 @@ void RenderPlatform_Terminate(void) {
     if (s_pWorld != nullptr) {
         if (s_pCamera != nullptr) {
             s_pWorld->removeCamera(s_pCamera);
-#ifdef RW_GL3
+#if defined(RW_GL3) || defined(RW_D3D9)
             // Raster'lar kameradan önce serbest (skeleton CameraDestroy).
             if (s_pCamera->frameBuffer != nullptr) {
                 s_pCamera->frameBuffer->destroy();

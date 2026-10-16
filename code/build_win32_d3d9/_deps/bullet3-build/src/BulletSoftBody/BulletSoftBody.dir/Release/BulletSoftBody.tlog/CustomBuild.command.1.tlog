@@ -1,0 +1,10 @@
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_D3D9\_DEPS\BULLET3-SRC\SRC\BULLETSOFTBODY\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/_deps/bullet3-build/src/BulletSoftBody/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

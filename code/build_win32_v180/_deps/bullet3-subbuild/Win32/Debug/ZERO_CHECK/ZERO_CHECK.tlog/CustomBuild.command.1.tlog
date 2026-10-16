@@ -1,0 +1,10 @@
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5CA988203A7819D153F1FE16AB2272BE\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

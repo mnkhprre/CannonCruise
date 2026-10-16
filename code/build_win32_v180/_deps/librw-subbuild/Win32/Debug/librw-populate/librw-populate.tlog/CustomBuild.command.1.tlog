@@ -1,0 +1,150 @@
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/tmp/librw-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/tmp/librw-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/tmp/librw-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\EDBD158A2E868608D295D1BF7B7466A3\LIBRW-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\A5AD52A5B758A8F6527E37AF46A1305A\LIBRW-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/CMakeFiles/Debug/librw-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/librw-populate-prefix/src/librw-populate-stamp/Debug/librw-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKEFILES\2BD5E8924EC7B2576CA243B66B81B7AD\LIBRW-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\LIBRW-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/librw-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -4,6 +4,13 @@ project(CannonCruise C CXX)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# MSVC: conforming preprocessor (VS2017 15.8+)
+# Geleneksel preprocessör makro içindeki lambda syntax'ını bozar (C2059: '[')
+# /Zc:preprocessor bu sorunu kökten çözer — RWS_REGISTER_CLASS lambda kullanır.
+if(MSVC)
+    add_compile_options(/Zc:preprocessor)
+endif()
+
 # ---------------------------------------------------------------------------
 # Bullet Physics — Havok yerine taşınabilir fizik motoru (Faz 4.6).
 # Binary parametreleri (sub_55E6D0): gravity -9.8, AABB ±500, friction 0.6,
@@ -32,14 +39,13 @@ FetchContent_MakeAvailable(bullet3)
 
 # ---------------------------------------------------------------------------
 # librw — RenderWare Graphics 3.x API yeniden implementasyonu (MIT).
-# Kapı 4: gerçek .RWS asset akışı doğrulaması. NULL platform ile başlanır
-# (cihaz bağımsız — stream/clump parse); render platformu (GL3/D3D9) sonraki
-# iş kalemi. rwstubs.cpp'nin engine/stream sembolleri rw_librw.cpp'ye taşındı.
-# Faz 4.6 (görsel deneme): -DCANNONCRUISE_RW_PLATFORM=GL3 → GLFW penceresi,
-# gerçek piksel (ayrı build dizini: build-gl3/).
+# Kapı 4: gerçek .RWS asset akışı doğrulaması. Platform seçenekleri:
+#   NULL  — cihaz bağımsız no-op (headless smoke test)
+#   GL3   — GLFW + OpenGL 3.x (macOS/Linux derleme)
+#   D3D9  — Direct3D 9 (Windows/MSVC derlemesi)
 # ---------------------------------------------------------------------------
-set(CANNONCRUISE_RW_PLATFORM "NULL" CACHE STRING "librw platform (NULL|GL3)")
-set_property(CACHE CANNONCRUISE_RW_PLATFORM PROPERTY STRINGS NULL GL3)
+set(CANNONCRUISE_RW_PLATFORM "NULL" CACHE STRING "librw platform (NULL|GL3|D3D9)")
+set_property(CACHE CANNONCRUISE_RW_PLATFORM PROPERTY STRINGS NULL GL3 D3D9)
 FetchContent_Declare(librw
     GIT_REPOSITORY https://github.com/aap/librw.git
     # HEAD (2026-10): 18532c2 "build the ps2 platform entirely with freesce"
@@ -50,11 +56,16 @@ set(LIBRW_TOOLS    OFF   CACHE BOOL   "" FORCE)
 set(LIBRW_INSTALL  OFF   CACHE BOOL   "" FORCE)
 FetchContent_MakeAvailable(librw)
 
-# GL3 platform — librw gl3-glfw cihazı pencereyi GLFW ile açar (brew:
-# glfw). CannonCruiseLib'e PUBLIC: rw_librw/RenderPlatform glfw sembollerini
-# kullanır; null build'de bu blok çalışmaz.
+# RenderWare platform seçimine göre konfigürasyon:
+#   NULL  — cihaz bağımsız no-op (headless smoke test) — WINMM için timeGetTime
+#   GL3   — GLFW + OpenGL 3.x (macOS/Linux derlemesi)
+#   D3D9  — Direct3D 9 (Windows/MSVC derlemesi)
+# ---------------------------------------------------------------------------
 if(CANNONCRUISE_RW_PLATFORM STREQUAL "GL3")
     find_package(glfw3 REQUIRED)
+elseif(CANNONCRUISE_RW_PLATFORM STREQUAL "D3D9")
+    # Windows/MSVC için D3D9: CMake içinde sistem paketi find'i yok;
+    # -DD3D9 defined + d3d9.lib link yeterli (SDK altında varsayar).
 endif()
 
 # Include directories
@@ -80,7 +91,8 @@ list(FILTER SOURCES EXCLUDE REGEX "/main\\.cpp$")
 if(NOT WIN32)
     list(FILTER SOURCES EXCLUDE REGEX ".*/framework/startup/win32/.*")
     list(FILTER SOURCES EXCLUDE REGEX ".*/framework/startup/startup\\.cpp")
-    # Ocean_W32.cpp artık tüm platformlarda derlenir (Im3D stub'ları eklendi)
+    # Ocean_W32.cpp: Windows (NULL|D3D9) için; GL3 build dışı.
+    # NULL platform'da Im3D no-op; D3D9/CannonCruise içinde real D3D9 pipeline.
 endif()
 
 # Compile and archive sources; this does NOT validate external symbol resolution.
@@ -90,35 +102,55 @@ add_library(CannonCruiseLib STATIC ${SOURCES})
 # ---------------------------------------------------------------------------
 # Faz 4.5 — Link doğrulama hedefi.
 # main.cpp, statik kütüphanenin TÜM dış sembollerini çözdüğünü kanıtlamak
-# için -force_load (tüm arşiv nesnelerini zorla dahil et) ile bağlanır.
+# için -force_load (tüm archive nesnelerini zorla dahil et) ile bağlanır.
 # ---------------------------------------------------------------------------
 add_executable(CannonCruise main.cpp)
 # force_load dosya yolu kullandığı için hedef bağımlılığını ayrıca tanımla
 add_dependencies(CannonCruise CannonCruiseLib)
-if(APPLE)
-    # -force_load: arşivdeki her nesne bağlanır → eksik sembol varsa hata verir
-    target_link_options(CannonCruise PRIVATE
-        "-Wl,-force_load,${CMAKE_CURRENT_BINARY_DIR}/libCannonCruiseLib.a")
-else()
-    # Not: diğer platformlarda doğrulama Windows (4.4b) / Linux adımlarında
-    # --whole-archive veya /WHOLEARCHIVE ile tekrarlanacak.
-    target_link_libraries(CannonCruise CannonCruiseLib)
+# Zorla dahil etme: arşivdeki her nesne bağlanır → eksik sembol link hatası verir.
+# CMake 3.24+ $<LINK_LIBRARY:WHOLE_ARCHIVE,...> taşınabilir yol:
+#   Apple → -force_load, MSVC → /WHOLEARCHIVE:<lib>, GNU → --whole-archive
+# NOT (neden çıplak /WHOLEARCHIVE DEĞİL): MSVC'de dosyasız verilen
+# /WHOLEARCHIVE, sonraki TÜM kütüphanelere uygulanır. Bu, kernel32/user32/
+# winmm/... için __NULL_IMPORT_DESCRIPTOR tekrarı ve CannonCruiseLib'nin
+# hiç bağlanmamasıyla sonuçlanır (2026-10-15 Windows build hatası).
+target_link_libraries(CannonCruise PRIVATE
+    "$<LINK_LIBRARY:WHOLE_ARCHIVE,CannonCruiseLib>")
+# Platforma göre dış kütüphaneler:
+#   D3D9: Direct3D 9 SDK kütüphanesi
+#   NULL: WINMM zaman çözünürlüğü (GetTime)
+if(WIN32)
+    if(CANNONCRUISE_RW_PLATFORM STREQUAL "D3D9")
+        target_link_libraries(CannonCruise PRIVATE d3d9.lib)
+    elseif(CANNONCRUISE_RW_PLATFORM STREQUAL "NULL")
+        target_link_libraries(CannonCruise PRIVATE winmm.lib)
+    endif()
 endif()
 # Bullet + librw fizik/motor kütüphaneleri — hem statik arşiv hem link doğrulama
-# Not: Bullet/librw include'ları hedeflere INTERFACE olarak yayılmaz → elle
+# Not: Bullet/librw include'ları hedeflere INTERFACE olarak yayılmaz →elle
 target_include_directories(CannonCruiseLib PUBLIC ${bullet3_SOURCE_DIR}/src)
 target_link_libraries(CannonCruiseLib PUBLIC
     BulletDynamics BulletCollision LinearMath librw::librw)
 if(CANNONCRUISE_RW_PLATFORM STREQUAL "GL3")
     target_link_libraries(CannonCruiseLib PUBLIC glfw)
+    target_include_directories(CannonCruise PRIVATE ${bullet3_SOURCE_DIR}/src)
+    target_link_libraries(CannonCruise PRIVATE
+        BulletDynamics BulletCollision LinearMath librw::librw)
 endif()
-target_include_directories(CannonCruise PRIVATE ${bullet3_SOURCE_DIR}/src)
-target_link_libraries(CannonCruise PRIVATE
-    BulletDynamics BulletCollision LinearMath librw::librw)
 
 # Platform-specific definitions
+# ---------------------------------------------------------------------------
+# Windows (MSVC) ve RenderWare/D39 platformu defined'ları
+# ---------------------------------------------------------------------------
 if(WIN32)
     add_definitions(-DWIN32 -D_WINDOWS)
+    # RenderWare platformu + DirectX 9 defined'ları
+    if(CANNONCRUISE_RW_PLATFORM STREQUAL "D3D9")
+        add_definitions(-DD3D9 -DDXROUTINE)
+        target_link_libraries(CannonCruise PRIVATE d3d9.lib)
+    elseif(CANNONCRUISE_RW_PLATFORM STREQUAL "NULL")
+        target_link_libraries(CannonCruise PRIVATE winmm.lib)
+    endif()
 else()
     add_definitions(-D_POSIX_C_SOURCE=200809L)
 endif()

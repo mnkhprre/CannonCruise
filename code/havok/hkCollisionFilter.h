@@ -2,7 +2,7 @@
 #define HK_COLLISION_FILTER_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (hkCollisionFilter.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (hkCollisionFilter.h)
 // Binary tipler: hkCollisionFilter, hkNullCollisionFilter
 // ============================================================================
 
@@ -13,7 +13,7 @@ class hkEntity;
 class hkPhantom;
 class hkShape;
 
-/// Çarpışma çifti filtresi — hangi entity çiftlerinin çarpışacağını belirler
+/// Collision pair filter — determines which entity pairs collide
 class hkCollisionFilter : public hkSerializable
 {
 public:
@@ -21,15 +21,15 @@ public:
 
     virtual const hkClass* getClass() const;
 
-    /// Bu çarpışma çifti filtrelenmeli mi?
+    /// Should this collision pair be filtered?
     virtual hkBool isCollisionEnabled(const hkEntity* a, const hkEntity* b) const;
     virtual hkBool isCollisionEnabled(const hkEntity* e, const hkPhantom* p) const;
 
-    /// Şekil düzeyinde filtre
+    /// Shape-level filter
     virtual hkBool isCollisionEnabled(const hkShape* a, const hkShape* b) const;
 };
 
-/// Hiçbir şeyi filtrelemeyen varsayılan filtre
+/// Default filter — filters nothing
 class hkNullCollisionFilter : public hkCollisionFilter
 {
 public:

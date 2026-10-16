@@ -1,0 +1,554 @@
+Start testing: Oct 16 01:12 Turkey Standard Time
+----------------------------------------------------------
+1/29 Testing: havok_memory_manager_test
+1/29 Test: havok_memory_manager_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/havok_memory_manager_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"havok_memory_manager_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+PASS: local allocator alignment, write/free, null-free and applicable guard cases
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"havok_memory_manager_test" end time: Oct 16 01:12 Turkey Standard Time
+"havok_memory_manager_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/29 Testing: ceventhandler_test
+2/29 Test: ceventhandler_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/ceventhandler_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"ceventhandler_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+PASS: event register/link/send/unlink and handler lifecycle
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ceventhandler_test" end time: Oct 16 01:12 Turkey Standard Time
+"ceventhandler_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/29 Testing: cclassfactory_test
+3/29 Test: cclassfactory_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/cclassfactory_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"cclassfactory_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+PASS: class factory register/create/unregister/shutdown
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"cclassfactory_test" end time: Oct 16 01:12 Turkey Standard Time
+"cclassfactory_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/29 Testing: cattributehandler_test
+4/29 Test: cattributehandler_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/cattributehandler_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"cattributehandler_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+PASS: attribute handler instance registry and packet predicates
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"cattributehandler_test" end time: Oct 16 01:12 Turkey Standard Time
+"cattributehandler_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/29 Testing: fontsystem_test
+5/29 Test: fontsystem_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/fontsystem_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"fontsystem_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+fontsystem_test: OK
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"fontsystem_test" end time: Oct 16 01:12 Turkey Standard Time
+"fontsystem_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/29 Testing: renderpipeline_test
+6/29 Test: renderpipeline_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/renderpipeline_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"renderpipeline_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+renderpipeline_test: all checks passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"renderpipeline_test" end time: Oct 16 01:12 Turkey Standard Time
+"renderpipeline_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/29 Testing: physics_test
+7/29 Test: physics_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/physics_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"physics_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+physics_test: 17 checks, 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"physics_test" end time: Oct 16 01:12 Turkey Standard Time
+"physics_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/29 Testing: havokshim_test
+8/29 Test: havokshim_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/havokshim_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"havokshim_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+havokshim_test: 38 checks, 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"havokshim_test" end time: Oct 16 01:12 Turkey Standard Time
+"havokshim_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/29 Testing: physics_entity_test
+9/29 Test: physics_entity_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/physics_entity_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"physics_entity_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+physics_entity_test: 18 checks, 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"physics_entity_test" end time: Oct 16 01:12 Turkey Standard Time
+"physics_entity_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/29 Testing: rwlibrw_test
+10/29 Test: rwlibrw_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/rwlibrw_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"rwlibrw_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+chunk[0]: type=0x0716 len=1685664 ver=0x00036002
+chunk[1]: type=0x0716 len=208 ver=0x00036002
+chunk[2]: type=0x071C len=104 ver=0x00036002
+chunk[3]: type=0x0716 len=264 ver=0x00036002
+chunk[4]: type=0x0716 len=212 ver=0x00036002
+chunk[5]: type=0x0704 len=288 ver=0x00036002
+chunk[6]: type=0x0704 len=940 ver=0x00036002
+chunk[7]: type=0x0704 len=216 ver=0x00036002
+rwlibrw_test: 10 chunks (clump=0 txd=0 world=0 struct=0)
+rwlibrw_test: 12 checks, 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"rwlibrw_test" end time: Oct 16 01:12 Turkey Standard Time
+"rwlibrw_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/29 Testing: rwstudio_test
+11/29 Test: rwstudio_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/rwstudio_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/GLOBAL.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/VIKING01.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"rwstudio_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+MAINMENU: asset=5 object=4 manifest=1 txd=1 col=1 dff=1
+GLOBAL: asset=7 object=48 manifest=1 txd=1
+VIKING01: asset=119 object=497 manifest=1 txd=1
+rwstudio_test: 74 checks, 0 failures
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"rwstudio_test" end time: Oct 16 01:12 Turkey Standard Time
+"rwstudio_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/29 Testing: renderworld_test
+12/29 Test: renderworld_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/renderworld_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"renderworld_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+renderworld_test: 59 checks, 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"renderworld_test" end time: Oct 16 01:12 Turkey Standard Time
+"renderworld_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/29 Testing: camerastate_test
+13/29 Test: camerastate_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/camerastate_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"camerastate_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+camerastate_test: 86 checks, 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"camerastate_test" end time: Oct 16 01:12 Turkey Standard Time
+"camerastate_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/29 Testing: audiostream_test
+14/29 Test: audiostream_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/audiostream_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"audiostream_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+audiostream_test: 48 checks, 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"audiostream_test" end time: Oct 16 01:12 Turkey Standard Time
+"audiostream_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/29 Testing: behaviourloader_test
+15/29 Test: behaviourloader_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/behaviourloader_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"behaviourloader_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+behaviourloader_test: 31 checks, 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"behaviourloader_test" end time: Oct 16 01:12 Turkey Standard Time
+"behaviourloader_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/29 Testing: txddecode_test
+16/29 Test: txddecode_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/txddecode_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"txddecode_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+txddecode_test: 32 checks, 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"txddecode_test" end time: Oct 16 01:12 Turkey Standard Time
+"txddecode_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/29 Testing: coltrimesh_test
+17/29 Test: coltrimesh_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/coltrimesh_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/VIKING01.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/IDUNA03.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/BEAVER01.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"coltrimesh_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/coltrimesh_test.exe: 53 checks, 0 failures
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"coltrimesh_test" end time: Oct 16 01:12 Turkey Standard Time
+"coltrimesh_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/29 Testing: renderplatform_test
+18/29 Test: renderplatform_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/renderplatform_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"renderplatform_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+renderplatform_test: 21 checks, 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"renderplatform_test" end time: Oct 16 01:12 Turkey Standard Time
+"renderplatform_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/29 Testing: worldgeometry_test
+19/29 Test: worldgeometry_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/worldgeometry_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/VIKING01.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/IDUNA03.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/BEAVER01.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"worldgeometry_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+WorldGeometry: 130/96+34 atomics instantiated (78146 verts, 82487 tris)
+VIKING01: payload 3341192 bytes
+IDUNA03: payload 468984 bytes
+BEAVER01: payload 4760728 bytes
+worldgeometry_test: 36 checks, 0 failures
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"worldgeometry_test" end time: Oct 16 01:12 Turkey Standard Time
+"worldgeometry_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/29 Testing: trailingchunk_test
+20/29 Test: trailingchunk_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/trailingchunk_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/VIKING01.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/IDUNA03.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/BEAVER01.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"trailingchunk_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+VIKING01: group1=96 group2=34 (+8489 verts/+12297 tris) group2Offset=2942986
+WorldGeometry: 130/96+34 atomics instantiated (78146 verts, 82487 tris)
+  clump atomics=130 (beklenen 130) bounds (-476..469, -9..124, -334..328)
+IDUNA03: group1=31 group2=30 (+432 verts/+258 tris) group2Offset=440330
+WorldGeometry: 61/31+30 atomics instantiated (10506 verts, 11484 tris)
+  clump atomics=61 (beklenen 61) bounds (-102..102, -6..81, -74..77)
+BEAVER01: group1=119 group2=57 (+10422 verts/+6806 tris) group2Offset=4352084
+WorldGeometry: 176/119+57 atomics instantiated (115780 verts, 114475 tris)
+  clump atomics=176 (beklenen 176) bounds (-478..481, -8..214, -596..595)
+trailingchunk_test: 48 checks, 0 failures
+trailingchunk_test: OK
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"trailingchunk_test" end time: Oct 16 01:12 Turkey Standard Time
+"trailingchunk_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/29 Testing: worldspawn_test
+21/29 Test: worldspawn_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/worldspawn_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/VIKING01.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"worldspawn_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+VIKING01 spawn: records=497 created=97 skipped=152 applied=97
+MAINMENU spawn: records=4 created=5 skipped=4 applied=5
+worldspawn_test: 13 checks, 0 failures
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"worldspawn_test" end time: Oct 16 01:12 Turkey Standard Time
+"worldspawn_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/29 Testing: ocean_test
+22/29 Test: ocean_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/ocean_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"ocean_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+ocean_test: 3 checks, 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ocean_test" end time: Oct 16 01:12 Turkey Standard Time
+"ocean_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/29 Testing: rt2danim_test
+23/29 Test: rt2danim_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/rt2danim_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAPMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"rt2danim_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+Menu.anm: nodes=32 sceneRecords=421 canvas=640x480
+CAG_Menu.anm: nodes=44 sceneRecords=421 canvas=640x480
+Menu first command: MusicVolSet
+rt2danim_test: 60 checks, 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"rt2danim_test" end time: Oct 16 01:12 Turkey Standard Time
+"rt2danim_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/29 Testing: menustate_test
+24/29 Test: menustate_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/menustate_test.exe" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAINMENU.RWS" "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/tests/../Streams/MAPMENU.RWS"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"menustate_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+menustate_test: 47 checks, 0 failures
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"menustate_test" end time: Oct 16 01:12 Turkey Standard Time
+"menustate_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/29 Testing: rwsassets_test
+25/29 Test: rwsassets_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/rwsassets_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"rwsassets_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+rwsassets_test: 21 checks, 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"rwsassets_test" end time: Oct 16 01:12 Turkey Standard Time
+"rwsassets_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/29 Testing: fmvscene_test
+26/29 Test: fmvscene_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/fmvscene_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"fmvscene_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+  Streams/JINGLE.RWS: fmv='Jingle' target='MainMenu' guid={304f8207-c508-446d-bf42-d820b9e37b65}
+  Streams/INTRO1.RWS: fmv='Intro' target='Nordic01' guid={3681f6c4-35dd-4241-a6a2-b55037312b9c}
+  Streams/INTRO2.RWS: fmv='Intro2' target='Nordic02' guid={a716c2ec-da87-4717-9bec-f32f4fe052c8}
+  Streams/INTRO3.RWS: fmv='Intro3' target='MAPMENU' guid={feeaca57-4fbc-4db9-973a-83cfed54be11}
+  Streams/CREDITS.RWS: fmv='Credits' target='MainMenu' guid={ea978461-c456-49dc-9761-b1662292f62d}
+  Streams/OUTRO1.RWS: fmv='Outro' target='Iduna02' guid={204d38fb-2a81-4bc5-9585-bc4491ea00d6}
+  Streams/OUTRO2.RWS: fmv='Outro2' target='Iduna03' guid={64279e84-dcc9-4393-909a-9d2956c02643}
+  Streams/OUTRO3.RWS: fmv='Outro3' target='Credits' guid={8e5cee45-55e9-4e79-8b10-51458f0ed532}
+FAIL line 140: FmvScene_VideoExists("Jingle") == 0
+FAIL line 141: FmvScene_VideoExists("Intro") == 0
+fmvscene_test: 86 checks, 2 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Failed.
+"fmvscene_test" end time: Oct 16 01:12 Turkey Standard Time
+"fmvscene_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/29 Testing: localization_test
+27/29 Test: localization_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/localization_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"localization_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-src\src\base.cpp:1039: Couldn't open file Localiza\Win\win_eng.txd
+C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-src\src\texture.cpp:183: Couldn't find chunk STRUCT
+C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-src\src\base.cpp:1039: Couldn't open file Localiza\Win\win_nor.txd
+C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-src\src\texture.cpp:183: Couldn't find chunk STRUCT
+C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-src\src\base.cpp:1039: Couldn't open file Localiza\Win\win_eng.txd
+C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-src\src\texture.cpp:183: Couldn't find chunk STRUCT
+=== CannonCruise LocalizationManager Test ===
+[1] Definitions...
+  Found 5 languages
+  OK: Language indices verified
+[2] SetLanguage('eng')...
+LocalizationManager: 'eng' dili yuklendi (254 dizge)
+  OK: Font texture dictionary loaded
+[3] GetString lookup...
+  '0001' -> QUIT GAME
+  '0200' -> NEW GAME
+[4] Event trigger test...
+LocalizationManager: LangSelect2 -> 'nor'
+LocalizationManager: 'nor' dili yuklendi (253 dizge)
+  Norwegian '0001' -> AVSLUTT SPILL
+LocalizationManager: SetLanguage('eng') via event
+LocalizationManager: 'eng' dili yuklendi (254 dizge)
+ALL LOCALIZATION TESTS PASSED!
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"localization_test" end time: Oct 16 01:12 Turkey Standard Time
+"localization_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/29 Testing: shipplayer_test
+28/29 Test: shipplayer_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/shipplayer_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"shipplayer_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+=== CannonCruise CShipPlayer Test ===
+[1] Reflection class factory registration...
+  OK: 'CShipPlayer' is registered in CClassFactory
+[2] Factory Create()...
+CShipPlayer: instantiated (player vessel registered)
+  OK: Instance created and registered as active player ship
+[3] Score and health properties...
+  OK: Scores updated (Total = 200)
+[4] Event message handling...
+CShipPlayer: storm started
+CShipPlayer: storm stopped
+  OK: Storm events processed correctly
+[5] Respawn test...
+CShipPlayer: respawned at (10.00, 0.00, 25.00)
+  OK: Respawn completed successfully
+  OK: Destructor cleaned up singleton pointer
+ALL SHIPPLAYER TESTS PASSED!
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"shipplayer_test" end time: Oct 16 01:12 Turkey Standard Time
+"shipplayer_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/29 Testing: inputmanager_test
+29/29 Test: inputmanager_test
+Command: "C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests/Release/inputmanager_test.exe"
+Directory: C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/tests
+"inputmanager_test" start time: Oct 16 01:12 Turkey Standard Time
+Output:
+----------------------------------------------------------
+=== CannonCruise CInputManager Test ===
+[1] Focus Stack...
+  OK: Focus stack allocated, pushed, popped and freed
+[2] Button State & Edge Trigger Detection...
+  OK: Button press and edge detection verified
+[3] ShipPlayerInputProxy integration...
+CShipPlayer: instantiated (player vessel registered)
+  OK: Ship steering and throttle driven by InputManager
+ALL INPUT MANAGER TESTS PASSED!
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"inputmanager_test" end time: Oct 16 01:12 Turkey Standard Time
+"inputmanager_test" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 16 01:12 Turkey Standard Time

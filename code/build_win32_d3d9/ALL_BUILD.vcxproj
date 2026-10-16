@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DD66B11E-2B8B-3538-8C86-B93AC4AB2BCF}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.28000.0</WindowsTargetPlatformVersion>
+    <Platform>Win32</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindGit.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCXXCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeRCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindGit.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCXXCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeRCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindGit.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCXXCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeRCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9 --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_d3d9/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FetchContent\CMakeLists.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindGit.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeCXXCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeRCCompiler.cmake;C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\4.3.1-msvc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\ZERO_CHECK.vcxproj">
+      <Project>{F3880778-CEFF-384F-B61C-CAA4BDB99F45}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\Bullet3Serialize\Bullet2FileLoader\Bullet2FileLoader.vcxproj">
+      <Project>{2F042BC7-0AC0-3E57-B95D-DAA73E8CBEAA}</Project>
+      <Name>Bullet2FileLoader</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\Bullet3Collision\Bullet3Collision.vcxproj">
+      <Project>{7C258F07-686A-3BF6-B64C-FEE941F017C1}</Project>
+      <Name>Bullet3Collision</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\Bullet3Common\Bullet3Common.vcxproj">
+      <Project>{2B9AC131-0EE1-34B9-9966-1188BEB76FE6}</Project>
+      <Name>Bullet3Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\Bullet3Dynamics\Bullet3Dynamics.vcxproj">
+      <Project>{218B78E2-C895-308A-A07E-02933173FD31}</Project>
+      <Name>Bullet3Dynamics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\Bullet3Geometry\Bullet3Geometry.vcxproj">
+      <Project>{23538F0D-1785-3D21-B94A-7ACB3669104E}</Project>
+      <Name>Bullet3Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\Bullet3OpenCL\Bullet3OpenCL_clew.vcxproj">
+      <Project>{E2BAA805-87CB-3F7C-A48A-001008000CC1}</Project>
+      <Name>Bullet3OpenCL_clew</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\BulletCollision\BulletCollision.vcxproj">
+      <Project>{873814C4-FD91-3533-8126-B3B5EAC715E4}</Project>
+      <Name>BulletCollision</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\BulletDynamics\BulletDynamics.vcxproj">
+      <Project>{826466DA-E066-3F6E-AC26-1249B5A38A85}</Project>
+      <Name>BulletDynamics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\BulletInverseDynamics\BulletInverseDynamics.vcxproj">
+      <Project>{269D97C7-8C1D-3E7C-BAB4-63BA08F8EDD1}</Project>
+      <Name>BulletInverseDynamics</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\BulletSoftBody\BulletSoftBody.vcxproj">
+      <Project>{3C26FB95-2716-3EE2-833C-1D59B7EB7639}</Project>
+      <Name>BulletSoftBody</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CannonCruise.vcxproj">
+      <Project>{838767D4-E8DB-3FD9-A0F0-AAB6C60CD0CB}</Project>
+      <Name>CannonCruise</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\CannonCruiseLib.vcxproj">
+      <Project>{3E6BB5D7-86E5-35F3-8048-58789133B151}</Project>
+      <Name>CannonCruiseLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-build\src\LinearMath\LinearMath.vcxproj">
+      <Project>{0BDF97CA-A2DF-312F-9E88-62DEE2E06841}</Project>
+      <Name>LinearMath</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\audiostream_test.vcxproj">
+      <Project>{FAFCA0D3-698B-3A21-B03C-7DB6A4E3C7A3}</Project>
+      <Name>audiostream_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\behaviourloader_test.vcxproj">
+      <Project>{2368A7F1-D3E6-3841-80E8-BA9578B4104A}</Project>
+      <Name>behaviourloader_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\camerastate_test.vcxproj">
+      <Project>{E3C1380C-280C-3CAB-8CBD-0F5F15519E05}</Project>
+      <Name>camerastate_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\cattributehandler_test.vcxproj">
+      <Project>{2D0C905A-E0C2-3D01-909E-6CF83C6A6726}</Project>
+      <Name>cattributehandler_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\cclassfactory_test.vcxproj">
+      <Project>{DED11226-6441-3BED-8D5F-ABC611E75732}</Project>
+      <Name>cclassfactory_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\ceventhandler_test.vcxproj">
+      <Project>{C6FA20F3-CBE0-3FB7-B768-0D2A88A809F9}</Project>
+      <Name>ceventhandler_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\coltrimesh_test.vcxproj">
+      <Project>{4B82F285-A99C-31A5-B6E8-2F2BA308C966}</Project>
+      <Name>coltrimesh_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\fmvscene_test.vcxproj">
+      <Project>{10616C0D-3A66-307D-95A2-CD957C5C69D2}</Project>
+      <Name>fmvscene_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\fontsystem_test.vcxproj">
+      <Project>{05FA336A-44B4-3DD3-8065-CE35D52D63E3}</Project>
+      <Name>fontsystem_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\havok_memory_manager_test.vcxproj">
+      <Project>{175A63D9-9045-39BF-9A98-47596C1E5CBA}</Project>
+      <Name>havok_memory_manager_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\havokshim_test.vcxproj">
+      <Project>{AF633086-292A-3149-815C-4BCB91DCB488}</Project>
+      <Name>havokshim_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\inputmanager_test.vcxproj">
+      <Project>{C12D4B9E-CF0B-36C0-95EE-9EBC505F8684}</Project>
+      <Name>inputmanager_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\librw-build\src\librw.vcxproj">
+      <Project>{3B64CCA7-2CE2-3B98-A7C1-7F64F05742E3}</Project>
+      <Name>librw</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\localization_test.vcxproj">
+      <Project>{65A06BC6-E7DE-3BDE-AC7B-9652EC620A8C}</Project>
+      <Name>localization_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\menustate_test.vcxproj">
+      <Project>{AA7D569E-F089-3755-9397-28C8B3B94690}</Project>
+      <Name>menustate_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\ocean_test.vcxproj">
+      <Project>{9C3869D2-F9B6-34F1-8C8F-E95EB6A30797}</Project>
+      <Name>ocean_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\physics_entity_test.vcxproj">
+      <Project>{0703C467-505D-3051-BC35-20B71071138A}</Project>
+      <Name>physics_entity_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\physics_test.vcxproj">
+      <Project>{2D2EB82A-F5A3-33C5-A52D-2CFABECE5058}</Project>
+      <Name>physics_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\renderpipeline_test.vcxproj">
+      <Project>{CABAB2EE-3026-34EE-AE96-11A3A7C76FFA}</Project>
+      <Name>renderpipeline_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\renderplatform_test.vcxproj">
+      <Project>{484DE591-3171-3810-9808-3D0B533C56FE}</Project>
+      <Name>renderplatform_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\renderworld_test.vcxproj">
+      <Project>{8BC2737B-266E-3A02-931E-261F93697F9E}</Project>
+      <Name>renderworld_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\rt2danim_test.vcxproj">
+      <Project>{D2389C4D-F4CE-34A4-88EC-44146C3DC614}</Project>
+      <Name>rt2danim_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\rwlibrw_test.vcxproj">
+      <Project>{308D563F-6FED-3DE9-B495-12B45CA35376}</Project>
+      <Name>rwlibrw_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\rwsassets_test.vcxproj">
+      <Project>{7BC2915A-3DED-39D0-8585-60864CE10C10}</Project>
+      <Name>rwsassets_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\rwstudio_test.vcxproj">
+      <Project>{3178CD83-9E7E-3318-854A-3AF04019A8D9}</Project>
+      <Name>rwstudio_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\shipplayer_test.vcxproj">
+      <Project>{60A6D393-817A-3169-B417-9769FBCF5914}</Project>
+      <Name>shipplayer_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\trailingchunk_test.vcxproj">
+      <Project>{CBA4C486-D5B4-3DAF-8434-9F559C4D2F65}</Project>
+      <Name>trailingchunk_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\txddecode_test.vcxproj">
+      <Project>{FA63661B-97A6-34B1-95AE-36C43A4B8D9E}</Project>
+      <Name>txddecode_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\worldgeometry_test.vcxproj">
+      <Project>{BEAF5341-B542-3212-9CBF-27562560D65F}</Project>
+      <Name>worldgeometry_test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\tests\worldspawn_test.vcxproj">
+      <Project>{AA695765-3FF1-3FB5-A664-6C4C748444EB}</Project>
+      <Name>worldspawn_test</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

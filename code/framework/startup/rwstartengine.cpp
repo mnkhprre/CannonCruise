@@ -29,21 +29,23 @@ namespace
     // arg_1 = kök dizin ("X:" ya da cwd), arg_2 = ad tek harf/"."/
     // off_612FE0 varsayılanı). Yapı binary'de FS sistemi tarafından
     // sahiplenilir; Faz 4.4b'de RtFS/CustomFS restorasyonuna bağlanır.
-    struct SearchPath
+    // NOT: "SearchPath" adı Windows API (processenv.h) ile çakışıyor —
+    // "RwSearchPath" olarak yeniden adlandırıldı.
+    struct RwSearchPath
     {
         char        path[0x104];
         char        name[8];
         bool        active;
-        SearchPath* pNext;
+        RwSearchPath* pNext;
     };
 
-    SearchPath* s_pSearchPaths = 0;    // kayıtlı arama yolları (bağlı liste)
-    SearchPath* s_pActivePath = 0;     // sub_4CAFC0 ile aktifleşen son giriş
+    RwSearchPath* s_pSearchPaths = 0;    // kayıtlı arama yolları (bağlı liste)
+    RwSearchPath* s_pActivePath = 0;     // sub_4CAFC0 ile aktifleşen son giriş
 
     // sub_4CB8D0(0x14, path, name) — yeni arama yolu girişi oluştur
-    SearchPath* CreateSearchPath(const char* pPath, const char* pName)
+    RwSearchPath* CreateSearchPath(const char* pPath, const char* pName)
     {
-        SearchPath* p = static_cast<SearchPath*>(calloc(1, sizeof(SearchPath)));
+        RwSearchPath* p = static_cast<RwSearchPath*>(calloc(1, sizeof(RwSearchPath)));
         if (!p)
             return 0;
         strncpy(p->path, pPath, sizeof(p->path) - 1);
@@ -54,7 +56,7 @@ namespace
     }
 
     // sub_4CAD20(pPath) — girişin geçerli (mevcut dizin) olduğunu doğrula
-    RwBool ValidateSearchPath(const SearchPath* pPath)
+    RwBool ValidateSearchPath(const RwSearchPath* pPath)
     {
         if (!pPath || pPath->path[0] == 0)
             return FALSE;
@@ -69,7 +71,7 @@ namespace
     }
 
     // sub_4CAFC0(pPath) — girişi aktif arama yolu yap
-    void ActivateSearchPath(SearchPath* pPath)
+    void ActivateSearchPath(RwSearchPath* pPath)
     {
         if (pPath)
         {
@@ -118,12 +120,12 @@ RwBool RwStartEngine(void)
     if (drive < 1)
     {
         char cwd[0x100];
-        DWORD n = GetCurrentDirectoryA(cwd, sizeof(cwd));
+        DWORD n = GetCurrentDirectoryA(sizeof(cwd), cwd);
         if (n == 0 || n > sizeof(cwd))
             return FALSE;
 
         // TODO(Faz 4.4b): engine dword_65D7A4 vtable[+0x100h](cwd, unk_612E84)
-        SearchPath* pPath = CreateSearchPath(cwd, ".");   // off_612FE0 (varsayılan ad)
+        RwSearchPath* pPath = CreateSearchPath(cwd, ".");   // off_612FE0 (varsayılan ad)
         if (!pPath)
             return FALSE;
         if (!ValidateSearchPath(pPath))
@@ -150,7 +152,7 @@ RwBool RwStartEngine(void)
         name[0] = root[0];                          // ad = sürücü harfi
         name[1] = 0;
 
-        SearchPath* pPath = CreateSearchPath(root, name);
+        RwSearchPath* pPath = CreateSearchPath(root, name);
         if (!pPath)
             return FALSE;                           // binary: loc_418B5E → FALSE
         if (!ValidateSearchPath(pPath))
@@ -170,7 +172,7 @@ RwBool RwStartEngine(void)
     if (!getcwd(cwd, sizeof(cwd)))
         return FALSE;
 
-    SearchPath* pPath = CreateSearchPath(cwd, ".");
+    RwSearchPath* pPath = CreateSearchPath(cwd, ".");
     if (!pPath)
         return FALSE;
     if (!ValidateSearchPath(pPath))

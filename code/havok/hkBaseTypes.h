@@ -2,10 +2,11 @@
 #define HK_BASE_TYPES_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (hkBaseTypes.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (hkBaseTypes.h)
 // Binary: E:\nightly_builds\Havok_2_2_1_Branch\build\code\hk221\source\hkbase
 // Tersine mühendislik ile CC.asm / CC_ida.asm tipleri eşleştirilerek
-// yeniden oluşturulmuş stub arayüzlerdir. Gerçek SDK entegrasyonu bekliyor.
+// yeniden oluşturulmuş arayüzlerdir. ŞİM: havokimpl.cpp bunları Bullet
+// motoruna bağlar (havokshim_test ile doğrulanır).
 // ============================================================================
 
 #include <cstddef>

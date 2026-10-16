@@ -2,9 +2,13 @@
 #define HK_ENTITY_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (hkEntity.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (hkEntity.h)
 // Binary tipler: hkWorldObject, hkEntity, hkRigidBody, hkWorld
-// Tersine mühendislik: CC.asm / CC_ida.asm
+// Reverse-engineered: CC.asm / CC_ida.asm
+//
+// SHIM (Phase 4.6h): hkEntity/hkRigidBody are REAL implementations; each holds
+// a Bullet rigid body (btRigidBody) and forwards to it.
+// getBulletBody() is the bridge accessor. Naming faithful to Havok 2.2.1.
 // ============================================================================
 
 #include "hkBaseTypes.h"
@@ -13,6 +17,9 @@
 class hkWorld;
 class hkShape;
 class hkCollisionFilter;
+
+// Bullet bridge — full definition in havokimpl.cpp
+class btRigidBody;
 
 /// Dünyaya eklenebilen temel nesne
 class hkWorldObject : public hkSerializable
@@ -30,6 +37,9 @@ public:
     /// İç çarpışma maskesi
     hkUint32 getCollisionFilterInfo() const { return m_collisionFilterInfo; }
     void setCollisionFilterInfo(hkUint32 info) { m_collisionFilterInfo = info; }
+
+    /// Dahili dünya ataması — hkWorld::addEntity/removeEntity bu yolu kullanır
+    void setWorld(hkWorld* pWorld) { m_world = pWorld; }
 
 protected:
     hkWorldObject();
@@ -65,14 +75,20 @@ public:
     void setShape(hkShape* pShape);
     hkShape* getShape() const;
 
+    /// Bullet köprüsü — bu entity'yi temsil eden sert cisim
+    btRigidBody* getBulletBody() const { return m_pBulletBody; }
+
 protected:
     hkEntity();
+    /// Bullet gövdesiyle kur (hkRigidBody ctor'u bu yolu kullanır)
+    explicit hkEntity(btRigidBody* pBulletBody);
 
     hkVector3 m_position;
     hkVector3 m_linearVelocity;
     hkVector3 m_angularVelocity;
     hkBool m_activated;
     hkShape* m_pShape;
+    btRigidBody* m_pBulletBody; ///< Bullet köprüsü
 };
 
 /// Sert cisim — oyun CPhysicsEntity::m_pRigidBody bu tipi tutar
@@ -86,7 +102,7 @@ public:
 
     /// Kütle
     hkReal getMass() const { return m_mass; }
-    void setMass(hkReal mass) { m_mass = mass; }
+    void setMass(hkReal mass);
 
     /// Dönme ataleti köşegeni
     void getInertiaDiag(hkVector3& inertia) const;

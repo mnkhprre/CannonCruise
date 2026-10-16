@@ -1,16 +1,16 @@
-// ============================================================================
-// CannonCruise - Platform Smoke + RWS Pipeline Girişi (main.cpp)
-// Faz 4.5: Link doğrulama (-force_load tüm sembolleri çözer).
-// Faz 4.6n: Render platformu kare döngüsü smoke.
-// Faz 4.6o+: Opsiyonel RWS argümanı — uçtan uca dünya boru hattı:
-//   RWS envanter → WorldGeometry clump instantiate → RenderPlatform'a
-//   ekle → StaticCollisionData (.col) trimesh shape → kare döngüsü
-//   (clear/Begin → world render → Im2D kare → End). NULL platform
-//   headless (device no-op); GL3 build'de gerçek pencere/piksel.
+﻿// ============================================================================
+// CannonCruise - Platform Smoke + RWS Pipeline Entry (main.cpp)
+// Phase 4.5: Link verification (-force_load resolves all symbols).
+// Phase 4.6n: Render platform frame loop smoke.
+// Phase 4.6o+: Optional RWS argument -- end-to-end world pipeline:
+//   RWS inventory -> WorldGeometry clump instantiate -> RenderPlatform add
+//   -> StaticCollisionData (.col) trimesh shape -> frame loop
+//   (clear/Begin -> world render -> Im2D frame -> End). NULL platform
+//   headless (device no-op); GL3 build has real window/pixel.
 //
-// Kullanım: ./CannonCruise [world.RWS]
+// Usage: ./CannonCruise [world.RWS]
 //
-// Oyunun gerçek çalışma zamanı girişi Windows'ta startup.cpp / WinMain.
+// Game's real runtime entry on Windows is startup.cpp / WinMain.
 // ============================================================================
 
 #include "CameraState.h"
@@ -21,11 +21,13 @@
 #include "Rt2dMaestroStream.h"
 #include "MenuBehavior.h"
 #include "AfterGameMenuBehavior.h"
+#include "RwsAssets.h"   // .RWS asset yol Ã§Ã¶zÃ¼cÃ¼ (merkezi)
+#include "FmvScene.h"    // FMV sahne tanÄ±mlayÄ±cÄ±sÄ± (CFMVBehavior) + hedef geÃ§iÅŸi
 
-// Video-kurgu (SCR.mov/SCR1.mov) oyun durum makinesi — Faz 4.6s hedefi.
-// BOOT → LOGO_ITE → LOADING ⇄ MAINMENU ⇄ OPTIONS ⇄ SOUND/CREDITS → MAPMENU
-// → LEVELINTRO → GAMEPLAY(NORMAL/CANNON/BINOCULARS) ⇄ PAUSE → LEVELCOMPLETE.
-// Şu an BOOT→MAINMENU→GAMEPLAY iskeleti çalışır; ara durumlar fazlarca dolar.
+// FMV story (SCR.mov/SCR1.mov) game state machine -- Phase 4.6s target.
+// BOOT -> LOGO_ITE -> LOADING -> MAINMENU -> OPTIONS -> SOUND/CREDITS -> MAPMENU
+// -> LEVELINTRO -> GAMEPLAY(NORMAL/CANNON/BINOCULARS) -> PAUSE -> LEVELCOMPLETE.
+// Currently BOOT->MAINMENU->GAMEPLAY skeleton works; intermediate states are phased in later.
 enum EGameState {
     GAMESTATE_BOOT, GAMESTATE_LOGO_ITE, GAMESTATE_LOADING,
     GAMESTATE_MAINMENU, GAMESTATE_OPTIONS, GAMESTATE_SOUND,
@@ -39,6 +41,8 @@ static EGameState s_gameState = GAMESTATE_BOOT;
 #include "StaticCollisionData.h"
 #include "WorldGeometry.h"
 #include "WorldSpawn.h"
+#include "LocalizationManager.h"
+#include "BinkPlayer.h"  // binkw32 oynatici - .bik oynatimi (sub_45F350/45F270)
 #include "rwcore.h"
 
 #include <cmath>
@@ -49,7 +53,26 @@ static EGameState s_gameState = GAMESTATE_BOOT;
 
 namespace {
 
-/// RWS envanteri + WorldGeometry clump + .col shape — tek dünya boru hattı.
+// Is FMV chain terminal target a PHASE? MainMenu/MAPMENU are already handled
+// by menu/map phases; others (Nordic01/Nordic02/Iduna02/Iduna03...)
+// are LEVELS -> load world to that target at chain end (binary iMsgChangeScene
+// counterpart). Case-insensitive (target "MainMenu", file MAINMENU).
+int IsFmvPhaseTarget(const char *pTarget) {
+    if (pTarget == nullptr) {
+        return 0;
+    }
+    char up[64] = {0};
+    for (size_t i = 0; i + 1 < sizeof(up) && pTarget[i] != 0; ++i) {
+        const char c = pTarget[i];
+        up[i] = (c >= 'a' && c <= 'z') ? (char)(c - 'a' + 'A') : c;
+    }
+    return (std::strcmp(up, "MAINMENU") == 0 ||
+            std::strcmp(up, "MAPMENU") == 0)
+               ? 1
+               : 0;
+}
+
+/// RWS inventory + WorldGeometry clump + .col shape -- single world pipeline.
 struct RwsPipeline {
     void *pClump;             ///< rw::Clump* (RenderPlatform'a eklendi)
     void *pCollisionShape;    ///< PhysicsShape* (btBvhTriangleMeshShape)
@@ -89,11 +112,12 @@ RwBool RwsPipeline_Load(const char *pPath, RwsPipeline *pOut) {
                         WorldGeometry_CreateClump(pBuf, asset.resourceLength);
                     pOut->worldGeomBytes = asset.resourceLength;
                     std::printf(
-                        "WorldGeometry: %u atomics, %u verts, %u tris "
+                        "WorldGeometry: %u+%u atomics, %u verts, %u tris "
                         "(%u bytes) -> clump %s\n",
-                        info.atomicCount, info.totalVertices,
-                        info.totalTriangles, asset.resourceLength,
-                        pOut->pClump ? "OK" : "FAIL");
+                        info.atomicCount, info.atomicGroup2Count,
+                        info.totalVertices + info.group2Vertices,
+                        info.totalTriangles + info.group2Triangles,
+                        asset.resourceLength, pOut->pClump ? "OK" : "FAIL");
                 }
             }
             std::free(pBuf);
@@ -122,7 +146,7 @@ RwBool RwsPipeline_Load(const char *pPath, RwsPipeline *pOut) {
                         pOut->pCollisionShape ? "OK" : "FAIL");
                 }
             }
-            std::free(pBuf); // shape mesh'i kopyalar — payload serbest
+            std::free(pBuf); // shape mesh is copied -- payload freed
         }
     }
     RwStudioFileClose(pFile);
@@ -140,9 +164,9 @@ void RwsPipeline_Unload(RwsPipeline *pPipe) {
     }
 }
 
-// Faz 4.6p — RWS 0x0704 CWbCameraBehavior kayıtlarından dünya kamera
-// yerleşimi (VIKING01 obj[264]: id0 pos, id6 dir, id4 FOV). İlk props'u
-// olan CWbCameraBehavior apply edilir (binary: CCameraState singleton).
+// Phase 4.6p -- World camera pose from RWS 0x0704 CWbCameraBehavior registrations
+// (VIKING01 obj[264]: id0 pos, id6 dir, id4 FOV). First props CWbCameraBehavior is applied
+// (binary: CCameraState singleton).
 RwBool RwsCamera_LoadPose(const RwChar *pPath, RwReal posOut[3],
                           RwReal lookOut[3]) {
     RwStudioFile *pFile = RwStudioFileOpen(pPath);
@@ -195,28 +219,65 @@ RwBool RwsCamera_LoadPose(const RwChar *pPath, RwReal posOut[3],
     posOut[0] = state.m_pos[0];
     posOut[1] = state.m_pos[1];
     posOut[2] = state.m_pos[2];
-    // id6 (+0x24) MUTLAK bakış hedefi (lookAt point) — yön vektörü DEĞİL:
-    // VIKING01 pos=(0.35,7,0), hedef=(0.85,0.85,0.85) ≈ dünya merkezine
-    // aşağı bakış. pos+dir yapsaydık yukarı-sağa (gökyüzüne) bakardık.
+    // id6 (+0x24) ABSOLUTE look target (lookAt point) -- NOT a direction vector:
+    // VIKING01 pos=(0.35,7,0), target=(0.85,0.85,0.85) ~= looking down at world center.
+    // pos+dir would look up-to-sky instead.
     lookOut[0] = state.m_dir[0];
     lookOut[1] = state.m_dir[1];
     lookOut[2] = state.m_dir[2];
     return TRUE;
 }
 
+// --------------------------------------------------------------------------
+// FMV playback -- "no-op" callback running inside BinkPlayer_Wait busy-spin.
+// As verified in BinkPlayer.h, Sleep BREAKS DECODE (frames freeze) ->
+// only message pumping during wait.
+// Return !=0 -> stop playback (Esc/close).
+//
+// s_fmvArmed: disables skip on first frame to swallow keypresses leaking
+// from previous phase (same logic as s_prevEsc on title card).
+// --------------------------------------------------------------------------
+RwBool s_fmvArmed = FALSE;
+RwBool s_fmvSkip = FALSE;
+
+int FmvSpinIdle(void) {
+    RwPlatformPollEvents();
+    if (RwPlatformShouldClose() == TRUE) {
+        s_fmvSkip = TRUE;
+        return 1;
+    }
+    if (s_fmvArmed == TRUE &&
+        (RwPlatformKeyDown(RW_KEY_ESCAPE) || RwPlatformKeyDown('Q') ||
+         RwPlatformKeyDown(' '))) {
+        s_fmvSkip = TRUE;
+        return 1;
+    }
+    return 0;
+}
+
 } // namespace
 
 int main(int argc, char **argv) {
+    // Diagnostics: stdout UNBUFFERED -- stdio buffer flushed only on exit;
+    // otherwise last output was lost on crash (e.g. 0xC0000005); needed to
+    // see which step we were at.
+    std::setvbuf(stdout, nullptr, _IONBF, 0);
     std::printf("CannonCruise: link verification OK\n");
 
-    // Engine boot — test deseni (Init/Open/Start; teardown Stop/Close/Term).
+    // Engine boot -- test pattern (Init/Open/Start; teardown Stop/Close/Term).
     if (RwEngineInit(0, 0, 0) != TRUE || RwEngineOpen() != TRUE ||
         RwEngineStart() != TRUE) {
         std::fprintf(stderr, "CannonCruise: engine init failed\n");
         return 2;
     }
 
-    if (RenderPlatform_Initialize(1280, 720) != TRUE) {
+    // Localization Manager (sub_4918C0 / sub_4923A0: lang_<lang>.txt + win_<lang>.txd)
+    // Screen resolution - FMV quad also uses this (.bik 640x448 ->
+    // fits full screen; original game draws 640x448 raster to screen
+    // with same layout).
+    const RwInt32 kScreenW = 1280;
+    const RwInt32 kScreenH = 720;
+    if (RenderPlatform_Initialize(kScreenW, kScreenH) != TRUE) {
         std::fprintf(stderr, "CannonCruise: render platform init failed\n");
         RwEngineStop();
         RwEngineClose();
@@ -224,189 +285,209 @@ int main(int argc, char **argv) {
         return 2;
     }
 
-    // Dünya: argüman yoksa oyun akışı gibi MAINMENU.RWS (binary:
-    // intro → menü). Not: menu RWS kaynakları GÖMÜLÜ değil (resLen=0,
-    // kaynak yolu X:\RwStudio\...\{GUID}.dff — build-output referansı,
-    // elimizde yok) → clump boşsa ilk çalışma dünyasına (VIKING01) düş.
+    // Localization Manager (sub_4918C0 / sub_4923A0: lang_<dil>.txt + win_<dil>.txd)
+    CLocalizationManager locMgr;
+    locMgr.LoadDefinitions();
+    locMgr.SetLanguage(locMgr.GetCurrentLanguage());
+
+    // World: if no argument, like game flow MAINMENU.RWS (binary:
+    // intro -> menu). Note: menu RWS resources are NOT embedded (resLen=0,
+    // resource path X:\RwStudio\...\{GUID}.dff -- build-output reference,
+    // we don't have it) -> empty clump falls to first working world (VIKING01).
     const char *pWorldPath = (argc > 1) ? argv[1] : nullptr;
-    // 4.6r — boot akışı: argümansız çalıştırmada giriş zinciri (INTRO→menü)
-    // overlay olarak dünya üstünde akar; dünya argüsü verilirse doğrudan
-    // interaktif dünyaya girilir (giriş akışı atlanır).
+    // 4.6r -- boot flow: argumentless run uses entry chain (INTRO->menu)
+    // overlaying the world; if world arg given, goes directly to
+    // interactive world (entry chain skipped).
     const RwBool bBootFlow = (argc <= 1) ? TRUE : FALSE;
-    // CANNONCRUISE_SCREENSHOT=<yol.png> — ilk overlay karesini PNG kaydet
-    // (intro karesi; CANNONCRUISE_INTRO_FRAMES=0 ile menü karesi). Tek seferlik.
+    // CANNONCRUISE_SCREENSHOT=<path.png> -- save first overlay frame as PNG
+    // (intro frame; CANNONCRUISE_INTRO_FRAMES=0 for menu frame). One-time only.
     const char *pShotPath = std::getenv("CANNONCRUISE_SCREENSHOT");
-    // CANNONCRUISE_SCREENSHOT_MAP=<yol.png> — MAPMENU karesi.
+    // CANNONCRUISE_SCREENSHOT_MAP=<path.png> -- MAPMENU frame.
     const char *pMapShotPath = std::getenv("CANNONCRUISE_SCREENSHOT_MAP");
-    // MAPMENU seçimiyle güncellenen dünya yolu (kurulum bloğu kullanır).
-    char mapLevelPath[256] = {0};
+    // World path updated by MAPMENU selection (setup block uses it).
+    // 512: RwsAssets_Resolve returns 512-length paths -- no truncation.
+    char mapLevelPath[512] = {0};
 
     RwsPipeline pipeline = {};
     RwBool bWorldLoaded = FALSE;
+    // Resolved path lives in permanent buffer -- pWorldPath pointer must stay
+    // valid throughout loop.
+    static char resolvedWorldPath[512] = {0};
     if (pWorldPath != nullptr) {
-        // Dünya dokuları ÖNCE (malzemeler stream anında çözülür).
+        // Load world textures first (materials resolved at stream time).
         RenderPlatform_LoadWorldDictionary(pWorldPath);
         bWorldLoaded = RwsPipeline_Load(pWorldPath, &pipeline);
     } else {
-        static const char *kBootCandidates[] = {
-            "Streams/MAINMENU.RWS",    "../Streams/MAINMENU.RWS",
-            "../../Streams/MAINMENU.RWS",
-            "Streams/VIKING01.RWS",    "../Streams/VIKING01.RWS",
-            "../../Streams/VIKING01.RWS",
+        // RwsAssets_Resolve resolves relative depth (build layout) + env override
+        // centrally -- no per-call prefix list needed anymore.
+        static const char *kBootWorlds[] = {
+            "Streams/MAINMENU.RWS", "Streams/VIKING01.RWS",
         };
-        for (RwUInt32 i = 0; i < 6; ++i) {
-            FILE *f = std::fopen(kBootCandidates[i], "rb");
-            if (f == nullptr) {
-                continue;
+        for (RwUInt32 i = 0; i < 2 && bWorldLoaded == FALSE; ++i) {
+            if (!RwsAssets_Resolve(kBootWorlds[i], resolvedWorldPath,
+                                   sizeof(resolvedWorldPath))) {
+                continue; // dosya bu yerleÅŸimde yok
             }
-            std::fclose(f);
-            RenderPlatform_LoadWorldDictionary(kBootCandidates[i]);
-            if (RwsPipeline_Load(kBootCandidates[i], &pipeline) == TRUE &&
+            RenderPlatform_LoadWorldDictionary(resolvedWorldPath);
+            if (RwsPipeline_Load(resolvedWorldPath, &pipeline) == TRUE &&
                 pipeline.pClump != nullptr) {
-                pWorldPath = kBootCandidates[i];
+                pWorldPath = resolvedWorldPath;
                 bWorldLoaded = TRUE;
                 break;
             }
-            RwsPipeline_Unload(&pipeline); // clump yok (menü: external dff)
+            RwsPipeline_Unload(&pipeline); // no clump (menu: external dff)
             RenderPlatform_ClearWorldDictionary();
         }
     }
-    // Not: dünya kurulumu (AddClump/spawn/kamera/okyanus) boot-flow
-    // SONRASINA taşındı — MAPMENU seçimi tek yüklemeyle kurulur
-    // (reload + RemoveClump + çifte-spawn gerekmez). (4.6r-4 MAPMENU)
-    COcean *pOcean = nullptr; // quit-cleanup bildirimi (kurulum aşağıda)
+    // Note: world setup (AddClump/spawn/camera/ocean) moved AFTER boot-flow
+    // -- MAPMENU selection set up with single load (reload + RemoveClump +
+    // double-spawn not needed). (4.6r-4 MAPMENU)
+    COcean *pOcean = nullptr; // quit-cleanup notification (setup below)
 
-    // 4.6r — MAINMENU menü fazı (giriş akışı: GLOBAL→INTRO skip→MAINMENU→
-    // dünya). INTRO1-3/FMV {GUID} dosyaları elimizde yok → skip; MAINMENU
-    // external {GUID}.dff yok (clump boş) ama gömülü Menu.anm stream'i
-    // Rt2dMaestro ile render edilir + komut düğümleri gezilir.
-    // CANNONCRUISE_MENU_FRAMES: kare kapak (0=skip menü, -1=sınırsız).
+    // 4.6r -- MAINMENU menu phase (entry chain: GLOBAL->INTRO skip->MAINMENU->
+    // world). INTRO1-3/FMV {GUID} files not available -> skip; MAINMENU
+    // external {GUID}.dff missing (empty clump) but embedded Menu.anm stream
+    // rendered via Rt2dMaestro + command sequences walked.
+    // CANNONCRUISE_MENU_FRAMES: frame cap (0=skip menu, -1=unlimited).
     RwBool bQuitApp = FALSE;
     if (bBootFlow == TRUE) {
         s_gameState = GAMESTATE_LOGO_ITE;
-        // 4.6r-6 — INTRO fazı (binary: INTRO1→2→3→MAPMENU→MAINMENU).
-        // INTRO RWS = FMV sahne tanımlayıcı: CFMVBehavior + dış {GUID}
-        // txd/dff/col/pfm (Bink + geometri elimizde yok) → başlık kartı
-        // + chunk log + Esc skip (fallback: sonraki intro/menü).
+        // 4.6r-6 -- FMV scene phase (binary sub_4A2010: GLOBAL -> JINGLE; JINGLE
+        // target MainMenu -> menu phase). Old assumption "INTRO1->2->3"
+        // WRONG: INTRO1/2 not referenced by name in binary (only INTRO3
+        // exists); INTRO1->Nordic01, INTRO2->Nordic02 = pre-level cuts,
+        // INTRO3->MAPMENU. Full transition graph extracted in FmvScene.h.
+        //
+        // Every .RWS FMV descriptor is CFMVBehavior (sub_45F6D0 Register,
+        // sub_45F950 apply) -> FMV name + TARGET SCENE (FmvScene module).
+        // Video path ".\Video\Win32\<name>.bik" (case0 / loc_45FA0F); .bik and
+        // external {GUID} txd/dff/col/pfm not available -> FMV skip and GO TO
+        // TARGET SCENE -- Nordic connection is chain target following.
         int introCap = 180; // ~3 sn @60fps; CANNONCRUISE_INTRO_FRAMES
         const char *introEnv = std::getenv("CANNONCRUISE_INTRO_FRAMES");
         if (introEnv != nullptr) {
             introCap = std::atoi(introEnv);
         }
-        static const char *kPrefixes[] = {"", "../", "../../"};
-        static const char *kIntros[] = {"Streams/INTRO1.RWS",
-                                        "Streams/INTRO2.RWS",
-                                        "Streams/INTRO3.RWS"};
-        for (RwUInt32 ii = 0; ii < 3 && bQuitApp == FALSE; ++ii) {
-            FILE *inf = nullptr;
-            char ipath[256];
-            for (RwUInt32 pi = 0; pi < 3; ++pi) {
-                std::snprintf(ipath, sizeof(ipath), "%s%s", kPrefixes[pi],
-                              kIntros[ii]);
-                inf = std::fopen(ipath, "rb");
-                if (inf != nullptr) {
-                    break;
-                }
+        // CANNONCRUISE_FMV: starting descriptor (default JINGLE =
+        // binary startup). E.g. Streams/INTRO1.RWS -> target Nordic01.
+        char fmvRel[512] = {0};
+        const char *fmvEnv = std::getenv("CANNONCRUISE_FMV");
+        std::snprintf(fmvRel, sizeof(fmvRel), "%s",
+                      (fmvEnv != nullptr) ? fmvEnv : "Streams/JINGLE.RWS");
+        // Chain terminal target + resolved next path (level start).
+        char fmvTerminalTarget[64] = {0};
+        char fmvNextRel[512] = {0};
+        for (RwUInt32 ii = 0; ii < 8 && bQuitApp == FALSE; ++ii) {
+            // FMV descriptor: CFMVBehavior -> FMV name + target scene
+            FmvSceneDescriptor fmv;
+            if (FmvScene_Load(fmvRel, &fmv) != 1) {
+                std::printf("FMV: %s â†’ tanÄ±mlayÄ±cÄ± deÄŸil (seviye/dÃ¼nya) â†’ "
+                            "zincir sonu\n",
+                            fmvRel);
+                break;
             }
-            if (inf == nullptr) {
-                continue;
+            char video[512] = {0};
+            const int hasVideo =
+                FmvScene_VideoPath(fmv.behaviour, video, sizeof(video));
+            // Resolve .bik real path (CWD + asset root candidates) - used at
+            // playback time; FmvScene_VideoExists scans the same order.
+            char videoFull[512] = {0};
+            const int videoOk =
+                FmvScene_VideoResolve(fmv.behaviour, videoFull,
+                                      sizeof(videoFull));
+            char nextRel[512] = {0};
+            const int hasNext =
+                FmvScene_NextScenePath(fmv.target, nextRel, sizeof(nextRel));
+            // target connection visible here: target -> Streams/<TARGET>.RWS
+            std::printf("FMV[%u]: %s fmv='%s' target='%s'%s%s\n",
+                        (unsigned)ii, fmv.guid, fmv.behaviour, fmv.target,
+                        (hasNext == 1) ? " â†’ " : "",
+                        (hasNext == 1) ? nextRel : "(sahne yok)");
+            if (hasVideo == 1) {
+                std::printf("  video: %s (%s)\n", video,
+                            (videoOk == 1) ? "oynat" : "yok â†’ skip");
             }
-            std::fseek(inf, 0, SEEK_END);
-            long isize = std::ftell(inf);
-            std::fseek(inf, 0, SEEK_SET);
-            if (isize <= 0 || isize > 4L * 1024 * 1024) {
-                std::fclose(inf);
-                continue;
-            }
-            std::vector<unsigned char> ibuf((size_t)isize);
-            if (std::fread(ibuf.data(), 1, (size_t)isize, inf) != (size_t)isize) {
-                std::fclose(inf);
-                continue;
-            }
-            std::fclose(inf);
-            // chunk tarama: GUID + davranış adı + hedef sahne çıkar
-            char guid[64] = {0};
-            char behaviour[32] = {0};
-            char target[32] = {0};
-            for (RwUInt32 off = 0; off + 12 <= (RwUInt32)isize;) {
-                RwUInt32 ctype = 0, clen = 0;
-                std::memcpy(&ctype, ibuf.data() + off, 4);
-                std::memcpy(&clen, ibuf.data() + off + 4, 4);
-                if (clen < 4 || off + 12 + clen > (RwUInt32)isize) {
-                    break;
-                }
-                const unsigned char *pl = ibuf.data() + off + 12;
-                // GUID: '{' ... '}'
-                if (guid[0] == 0) {
-                    for (RwUInt32 j = 0; j + 8 < clen; ++j) {
-                        if (pl[j] == '{') {
-                            RwUInt32 k = 0;
-                            while (j + k < clen && pl[j + k] != '}' &&
-                                   k < sizeof(guid) - 1) {
-                                guid[k] = (char)pl[j + k];
-                                ++k;
-                            }
-                            if (j + k < clen) {
-                                guid[k] = '}';
-                            }
+            // title card loop
+            // ------------------------------------------------------------------
+            // FMV VIDEO PLAYBACK (binkw32) - binary sub_45F350 / sub_45F270.
+            // If .bik exists, REAL video played instead of title card; after
+            // frame ends (or skipped via Esc) chain continues to TARGET SCENE
+            // (JINGLE->MainMenu, INTRO1->Nordic01, OUTRO3->Credits).
+            //
+            // Loop mirrors binary: while (BinkWait()) busy-spin ->
+            // BinkDoFrame -> BinkCopyToBuffer(mode 0x80000003) -> BinkNextFrame.
+            // BinkWait limits frame rate to 30 fps; Sleep NOT added during
+            // wait (breaks decode) - only messages pumped.
+            // ------------------------------------------------------------------
+            RwBool bFmvPlayed = FALSE;
+            if (videoOk == 1) {
+                void *pBink = BinkPlayer_Open(videoFull);
+                if (pBink != nullptr) {
+                    const int vw = BinkPlayer_Width(pBink);
+                    const int vh = BinkPlayer_Height(pBink);
+                    std::printf("  oynat: %s (%dx%d, %d kare) %s\n", videoFull,
+                                vw, vh, BinkPlayer_TotalFrames(pBink),
+                                BinkPlayer_LastError());
+                    std::vector<unsigned char> fmvPixels((size_t)vw *
+                                                         (size_t)vh * 4u);
+                    const int fmvPitch = vw * 4;
+                    int fmvShown = 0;
+                    s_fmvArmed = FALSE; // skip disabled until first frame
+                    s_fmvSkip = FALSE;
+                    for (;;) {
+                        // wait until frame ready (busy-spin + message pumping;
+                        // FmvSpinIdle breaks on close/Esc)
+                        BinkPlayer_Wait(pBink, FmvSpinIdle);
+                        if (s_fmvSkip == TRUE) {
                             break;
                         }
+                        if (BinkPlayer_IsFinished(pBink) == 1) {
+                            break;
+                        }
+                        if (BinkPlayer_DecodeRGBA(pBink, fmvPixels.data(),
+                                                  fmvPitch) != 1) {
+                            std::printf("  video kare hatasi (%s)\n",
+                                        BinkPlayer_LastError());
+                            break;
+                        }
+                        s_fmvArmed = TRUE;
+                        if (RenderPlatform_UploadTexture(
+                                "FMV", vw, vh, fmvPixels.data(),
+                                fmvPitch) != TRUE) {
+                            break;
+                        }
+                        if (RenderPlatform_BeginFrame(nullptr) != TRUE) {
+                            break;
+                        }
+                        // video overlay - ZTEST off, fullscreen quad
+                        // (640x448 .bik matches screen resolution; original
+                        // game draws 640x448 raster to screen)
+                        RenderPlatform_BeginOverlay2D();
+                        RenderPlatform_DrawTexturedQuad(
+                            0.0f, 0.0f, (RwReal)kScreenW, (RwReal)kScreenH,
+                            "FMV");
+                        RenderPlatform_EndOverlay2D();
+                        if (pShotPath != nullptr && fmvShown == 0) {
+                            RenderPlatform_RequestScreenshot(pShotPath);
+                        }
+                        RenderPlatform_EndFrame();
+                        bFmvPlayed = TRUE;
+                        ++fmvShown;
+                        BinkPlayer_Next(pBink);
                     }
+                    BinkPlayer_Close(pBink);
+                    std::printf("  video bitti: %d kare%s oynatildi\n", fmvShown,
+                                (s_fmvSkip == TRUE) ? " (atlandi)" : "");
+                    RenderPlatform_ClearTextures(); // release FMV texture
+                } else {
+                    std::printf("  video acilamadi: %s (%s)\n", videoFull,
+                                BinkPlayer_LastError());
                 }
-                // yazdırılabilir uzun koşu (davranış + hedef)
-                if (ctype == 0x0704 || ctype == 0x071c) {
-                    char run[256];
-                    RwUInt32 rn = 0;
-                    for (RwUInt32 j = 0; j < clen && rn < sizeof(run) - 1; ++j) {
-                        const unsigned char c = pl[j];
-                        run[rn++] = (c >= 32 && c < 127) ? (char)c : '\n';
-                    }
-                    run[rn] = 0;
-                    // '\n' ile böl + trim; Behavior içerenleri atla,
-                    // kalan ilk kısa token = davranış instance adı
-                    // ("Intro"/"Intro2"/"Intro3"), sonraki = hedef sahne.
-                    for (char *tok = std::strtok(run, "\n"); tok != nullptr;
-                         tok = std::strtok(nullptr, "\n")) {
-                        while (*tok == ' ') {
-                            ++tok;
-                        }
-                        const size_t l = std::strlen(tok);
-                        if (l < 3 || l >= 32) {
-                            continue;
-                        }
-                        // yalnız identifier benzeri: [A-Za-z0-9_]
-                        RwBool ident = TRUE;
-                        for (size_t ci = 0; ci < l; ++ci) {
-                            const char c = tok[ci];
-                            if (!((c >= 'A' && c <= 'Z') ||
-                                  (c >= 'a' && c <= 'z') ||
-                                  (c >= '0' && c <= '9') || c == '_')) {
-                                ident = FALSE;
-                                break;
-                            }
-                        }
-                        if (ident == FALSE) {
-                            continue; // binary artığı
-                        }
-                        if (std::strstr(tok, "Behavior") != nullptr ||
-                            std::strstr(tok, "Attribute") != nullptr) {
-                            continue; // class/nesne adları — atla
-                        }
-                        if (behaviour[0] == 0) {
-                            std::snprintf(behaviour, sizeof(behaviour), "%s",
-                                          tok);
-                        } else if (target[0] == 0) {
-                            std::snprintf(target, sizeof(target), "%s", tok);
-                        }
-                    }
-                }
-                off += 12 + clen;
             }
-            std::printf("Intro%d: %s behaviour='%s' target='%s' (FMV skip)\n",
-                        (int)ii + 1, guid, behaviour, target);
-            // başlık kartı döngüsü
+            if (bFmvPlayed == FALSE) {
+
             static RwBool s_prevEsc = FALSE;
-            // Faz girişi: basılı Esc'yi tüket (önceki fazdan sızma atlamasın)
+            // Phase entry: consume held Esc (skip leakage from previous phase)
             RwPlatformPollEvents();
             s_prevEsc = (RwBool)(RwPlatformKeyDown(RW_KEY_ESCAPE) ||
                                  RwPlatformKeyDown('Q') ||
@@ -434,20 +515,20 @@ int main(int argc, char **argv) {
                 if (bWorldLoaded == TRUE && pipeline.pClump != nullptr) {
                     RenderPlatform_RenderScene();
                 }
-                // intro kartı — Im2D overlay (ZTEST kapalı;3D sahne derinlik yazdı)
+                // intro card -- Im2D overlay (ZTEST off; 3D scene depth written)
                 RenderPlatform_BeginOverlay2D();
                 char l1[64], l2[64], l3[96];
                 std::snprintf(l1, sizeof(l1), "CANNONCRUISE");
-                std::snprintf(l2, sizeof(l2), "INTRO %d", (int)ii + 1);
+                std::snprintf(l2, sizeof(l2), "FMV SCENE %u", (unsigned)ii + 1);
                 std::snprintf(l3, sizeof(l3),
                               "FMV SKIPPED (external {GUID} assets missing)");
                 ShowText_DrawBitmapText(l1, 40.0f, 200.0f, 5, 220, 230, 255,
                                         255);
                 ShowText_DrawBitmapText(l2, 40.0f, 280.0f, 4, 200, 210, 230,
                                         255);
-                ShowText_DrawBitmapText(behaviour, 40.0f, 350.0f, 3, 180, 190,
-                                        200, 255);
-                ShowText_DrawBitmapText(target, 40.0f, 390.0f, 3, 180, 190,
+                ShowText_DrawBitmapText(fmv.behaviour, 40.0f, 350.0f, 3, 180,
+                                        190, 200, 255);
+                ShowText_DrawBitmapText(fmv.target, 40.0f, 390.0f, 3, 180, 190,
                                         200, 255);
                 ShowText_DrawBitmapText(l3, 40.0f, 660.0f, 2, 140, 150, 160,
                                         255);
@@ -457,6 +538,18 @@ int main(int argc, char **argv) {
                 }
                 RenderPlatform_EndFrame();
             }
+            // advance chain: is target scene a NEXT FMV descriptor?
+            // (JINGLE->MainMenu, INTRO1->Nordic01, OUTRO3->Credits chain)
+            } // if (bFmvPlayed == FALSE) - title card
+
+            std::snprintf(fmvTerminalTarget, sizeof(fmvTerminalTarget), "%s",
+                          fmv.target);
+            fmvNextRel[0] = 0;
+            if (hasNext != 1) {
+                break; // target not resolved -> chain end
+            }
+            std::snprintf(fmvNextRel, sizeof(fmvNextRel), "%s", nextRel);
+            std::snprintf(fmvRel, sizeof(fmvRel), "%s", nextRel);
         }
         if (bQuitApp == TRUE) {
             delete pOcean;
@@ -469,31 +562,71 @@ int main(int argc, char **argv) {
             return 0;
         }
 
-        int menuCap = -1; // -1 = sınırsız (Enter/Esc bekle); test env ile
+        // Chain terminal -> TARGET LEVEL (Nordic01/Nordic02/Iduna02...):
+        // bind world to that level -- intro's Nordic connection is REALIZED.
+        // Phase targets (MainMenu/MAPMENU) already handled by menu/map phases
+        // below -> untouched. Loading pattern same as MAPMENU
+        // (preserve predecessor for fallback).
+        if (bQuitApp == FALSE && fmvNextRel[0] != 0 &&
+            IsFmvPhaseTarget(fmvTerminalTarget) == 0) {
+            char prevLevel[512] = {0};
+            if (pWorldPath != nullptr) {
+                std::snprintf(prevLevel, sizeof(prevLevel), "%s", pWorldPath);
+            }
+            RwsPipeline_Unload(&pipeline);
+            bWorldLoaded = FALSE;
+            RenderPlatform_LoadWorldDictionary(fmvNextRel);
+            if (RwsPipeline_Load(fmvNextRel, &pipeline) == TRUE &&
+                pipeline.pClump != nullptr) {
+                std::snprintf(mapLevelPath, sizeof(mapLevelPath), "%s",
+                              fmvNextRel);
+                pWorldPath = mapLevelPath;
+                bWorldLoaded = TRUE;
+                std::printf("FMV: hedef seviye '%s' yÃ¼klendi (%s)\n",
+                            fmvTerminalTarget, fmvNextRel);
+            } else {
+                RwsPipeline_Unload(&pipeline);
+                RenderPlatform_ClearWorldDictionary();
+                if (prevLevel[0] != 0) {
+                    RenderPlatform_LoadWorldDictionary(prevLevel);
+                    if (RwsPipeline_Load(prevLevel, &pipeline) == TRUE &&
+                        pipeline.pClump != nullptr) {
+                        bWorldLoaded = TRUE;
+                    }
+                }
+                std::printf("FMV: hedef seviye yÃ¼klenemedi ('%s')\n",
+                            fmvTerminalTarget);
+            }
+        }
+
+        int menuCap = -1; // -1 = unlimited (wait Enter/Esc); test env override
         const char *menuEnv = std::getenv("CANNONCRUISE_MENU_FRAMES");
         if (menuEnv != nullptr) {
             menuCap = std::atoi(menuEnv);
         }
-        RwBool bMenuBackedOut = FALSE; // MAIN-Esc çıkışı (harita açılmaz)
+        RwBool bMenuBackedOut = FALSE; // MAIN-Esc exit (map not opened)
         if (menuCap != 0) {
-            static const char *kMenuFiles[] = {
-                "Streams/MAINMENU.RWS",    "../Streams/MAINMENU.RWS",
-                "../../Streams/MAINMENU.RWS",
-            };
-            for (RwUInt32 mi = 0; mi < 3; ++mi) {
-                // Altyapı: tek-yol maestro yükleme (0x0716-walk tekilleşti).
+            // Relative depth centrally resolved (RwsAssets_Resolve) -> single candidate;
+            // previous 3-prefix loop removes redundant repetition. Loop
+            // structure kept (continue agreement if missing).
+            char menuPath[512] = {0};
+            RwsAssets_Resolve("Streams/MAINMENU.RWS", menuPath,
+                              sizeof(menuPath));
+            const char *kMenuFiles[] = {menuPath};
+            for (RwUInt32 mi = 0; mi < 1; ++mi) {
+                // Platform: single-path maestro load (0x0716-walk deduplicated).
                 Rt2dMaestro *pMaestro =
                     Rt2dMaestro_LoadFromRwsFile(kMenuFiles[mi]);
                 if (pMaestro == nullptr) {
                     continue;
                 }
-                // Video-kurgu: menü durumu CMenuBehavior'da yaşar (MAINMENU/
-                // OPTIONS/SOUND/PAUSE aynı Menu.anm'i paylaşır).
+                // Storyboard: menu state lives in CMenuBehavior (MAINMENU/
+                // OPTIONS/SOUND/PAUSE share same Menu.anm).
                 CMenuBehavior menu;
                 menu.AttachMaestro(pMaestro);
                 pMaestro = menu.GetMaestro();
-                // gömülü menü dokuları (TexDictionary → GL; Menu_074 zemin,
-                // Menu_076 logo) — RWS içinde, dış dosya değil.
+                // embedded menu textures (TexDictionary -> GL; Menu_074 ground,
+                // Menu_076 logo) -- inside RWS, not external file.
                 menu.LoadTextures(kMenuFiles[mi]);
                 s_gameState = GAMESTATE_MAINMENU;
                 std::printf("Menu: nodes=%u commands=%d canvas=%.0fx%.0f\n",
@@ -505,14 +638,14 @@ int main(int argc, char **argv) {
                                 pMaestro->info.nodes[pMaestro->commands[ci]]
                                     .name);
                 }
-                // menü döngüsü: seçim (W/S/↑/↓), onay (Enter/Space), kaçış
-                // (Esc/Q) — kare kapakta otomatik onay (NewSave akışı).
+                // menu loop: select (W/S/up/down), confirm (Enter/Space), back
+                // (Esc/Q) -- auto-confirm at frame cap (NewSave flow).
                 int menuFrame = 0;
                 static RwBool s_prevDown = FALSE, s_prevUp = FALSE,
                               s_prevEnter = FALSE, s_prevEsc = FALSE,
                               s_prevLeft = FALSE, s_prevRight = FALSE;
-                // Faz girişi: basılı tuşları BİR KEZ tüket (intro'dan sızan
-                // Enter/Space menüyü görünmez onaylamasın).
+                // Phase entry: consume held keys ONCE (Enter/Space leaking
+                // from intro shouldn't confirm menu unseen).
                 RwPlatformPollEvents();
                 s_prevDown = RwPlatformKeyDown('S') ||
                                RwPlatformKeyDown(RW_KEY_DOWN);
@@ -529,7 +662,7 @@ int main(int argc, char **argv) {
                 for (;;) {
                     ++menuFrame;
                     if (menuCap > 0 && menuFrame > menuCap) {
-                        break; // otomatik onay — dünyaya geç
+                        break; // auto-confirm -> go to world
                     }
                     RwPlatformPollEvents();
                     if (RwPlatformShouldClose() == TRUE) {
@@ -571,7 +704,7 @@ int main(int argc, char **argv) {
                         s_prevLeft = left; s_prevRight = right;
                         if (menu.Back() == TRUE) {
                             bMenuBackedOut = TRUE;
-                            break; // MAIN → döngüden çık
+                            break; // MAIN -> exit loop
                         }
                     }
                     if (enter == TRUE && s_prevEnter == FALSE) {
@@ -579,7 +712,7 @@ int main(int argc, char **argv) {
                         s_prevEsc = esc;
                         s_prevLeft = left; s_prevRight = right;
                         if (menu.Confirm() == TRUE) {
-                            break; // terminal eylem (NEW/LOAD/QUIT/CREDITS)
+                            break; // terminal action (NEW/LOAD/QUIT/CREDITS)
                         }
                     }
                     s_prevDown = down; s_prevUp = up; s_prevEnter = enter;
@@ -598,25 +731,37 @@ int main(int argc, char **argv) {
                     }
                     RenderPlatform_EndFrame();
                 }
-                // maestro sahipliği menu'de (dtor destroy eder)
+                // maestro owned by menu (dtor destroys it)
                 pMaestro = nullptr;
-                // video-kurgu terminal eylem: NEW/LOAD → dünyaya devam,
-                // QUIT → çıkış, CREDITS → log (CREDITS.RWS fazı bekliyor)
+                // storyboard terminal action: NEW/LOAD -> continue to world,
+                // QUIT -> exit, CREDITS -> log (CREDITS.RWS phase pending)
                 const CMenuBehavior::EMenuAction act =
                     menu.TakePendingAction();
                 if (act == CMenuBehavior::MENUACTION_QUITGAME) {
                     std::printf("Menu: action QUITGAME\n");
                     bQuitApp = TRUE;
                 } else if (act == CMenuBehavior::MENUACTION_CREDITS) {
-                    std::printf("Menu: action CREDITS (phase pending)\n");
+                    // Load Credits.RWS; afterwards return to MainMenu.
+                    char credPath[512] = {0};
+                    if (FmvScene_NextScenePath("Credits", credPath, sizeof(credPath)) == 1) {
+                        std::printf("Menu: action CREDITS → loading %s\n", credPath);
+                        // Load RWS file; textures/visuals loaded via
+                        // MenuTextures_LoadFromRws then return to MainMenu.
+                        RwsAssets_Resolve("Streams/CREDITS.RWS", credPath,
+                                          sizeof(credPath));
+                        // Set game state to return to MainMenu.
+                        s_gameState = GAMESTATE_CREDITS;
+                    } else {
+                        std::printf("Menu: action CREDITS (no path found)\n");
+                    }
                 } else if (act == CMenuBehavior::MENUACTION_NEWGAME) {
                     std::printf("Menu: action NEWGAME\n");
                 } else if (act == CMenuBehavior::MENUACTION_LOADGAME) {
                     std::printf("Menu: action LOADGAME\n");
                 }
-                RenderPlatform_ClearTextures(); // menü dokuları serbest
-                // 4.6r-4 — MAPMENU fazı (CAG_Menu.anm + seviye seçimi).
-                // NEW/LOAD sonrası (otomatik kapakta da); Esc-çıkışta atlanır.
+                RenderPlatform_ClearTextures(); // free menu textures
+                // 4.6r-4 -- MAPMENU phase (CAG_Menu.anm + level selection).
+                // After NEW/LOAD (also at auto-cap); skipped on Esc-backout.
                 const RwBool wantMap =
                     (RwBool)(act == CMenuBehavior::MENUACTION_NEWGAME ||
                              act == CMenuBehavior::MENUACTION_LOADGAME ||
@@ -630,19 +775,19 @@ int main(int argc, char **argv) {
                     if (mapEnv != nullptr) {
                         mapCap = std::atoi(mapEnv);
                     }
-                    // Test: otomatik seviye seçimi (etkileşimsiz reload yolu).
+                    // Test: automatic level selection (non-interactive reload path).
                     int mapAutoSel = -1;
                     const char *mapSelEnv =
                         std::getenv("CANNONCRUISE_MAPMENU_SELECT");
                     if (mapSelEnv != nullptr) {
                         mapAutoSel = std::atoi(mapSelEnv);
                     }
-                    static const char *kMapFiles[] = {
-                        "Streams/MAPMENU.RWS", "../Streams/MAPMENU.RWS",
-                        "../../Streams/MAPMENU.RWS",
-                    };
-                    for (RwUInt32 gi = 0; gi < 3; ++gi) {
-                        // Altyapı: tek-yol maestro yükleme.
+                    static char mapPath[512] = {0};
+                    RwsAssets_Resolve("Streams/MAPMENU.RWS", mapPath,
+                                      sizeof(mapPath));
+                    const char *kMapFiles[] = {mapPath};
+                    for (RwUInt32 gi = 0; gi < 1; ++gi) {
+                        // Platform: single-path maestro load.
                         Rt2dMaestro *pMapMaestro =
                             Rt2dMaestro_LoadFromRwsFile(kMapFiles[gi]);
                         if (pMapMaestro == nullptr) {
@@ -665,9 +810,9 @@ int main(int argc, char **argv) {
                                       s_prevMapUp = FALSE,
                                       s_prevMapEnter = FALSE,
                                       s_prevMapEsc = FALSE;
-                        // Faz girişi: basılı tuşları BİR KEZ tüket (menü
-                        // onayındaki Enter haritayı görünmez geçmesin —
-                        // "direkt viking 1" bug'ı).
+                        // Phase entry: consume held keys ONCE (Enter from menu
+                        // confirm shouldn't skip past map unseen -- "direct viking
+                        // 1" bug).
                         RwPlatformPollEvents();
                         s_prevMapDown = RwPlatformKeyDown('S') ||
                                         RwPlatformKeyDown(RW_KEY_DOWN);
@@ -681,7 +826,7 @@ int main(int argc, char **argv) {
                             ++mapFrame;
                             if (mapAutoSel >= 0 &&
                                 mapAutoSel < mapmenu.GetLevelCount()) {
-                                // otomatik seçim (seçim 0'dan başlar)
+                                // otomatik seÃ§im (seÃ§im 0'dan baÅŸlar)
                                 for (int k = 0; k < mapAutoSel; ++k) {
                                     mapmenu.MoveNext();
                                 }
@@ -689,7 +834,7 @@ int main(int argc, char **argv) {
                                 break;
                             }
                             if (mapCap > 0 && mapFrame > mapCap) {
-                                mapmenu.Confirm(); // otomatik onay (ilk seviye)
+                                mapmenu.Confirm(); // auto-confirm (first level)
                                 break;
                             }
                             RwPlatformPollEvents();
@@ -719,7 +864,7 @@ int main(int argc, char **argv) {
                                 s_prevMapDown = down; s_prevMapUp = up;
                                 s_prevMapEnter = enter; s_prevMapEsc = esc;
                                 if (mapmenu.Back() == TRUE) {
-                                    break; // seçim yok — fallback dünya
+                                    break; // no selection -> fallback world
                                 }
                             }
                             if (enter == TRUE && s_prevMapEnter == FALSE) {
@@ -746,29 +891,22 @@ int main(int argc, char **argv) {
                             }
                             RenderPlatform_EndFrame();
                         }
-                        // Onaylanan seviye → dünya boru hattını değiştir
-                        // (kurulum bloğu SONRA çalışır — tek yükleme).
+                        // Selected level -> switch world pipeline
+                        // (setup block runs AFTER -- single load).
                         const RwInt32 sel = mapmenu.TakeSelectedLevel();
                         if (sel >= 0 && bQuitApp == FALSE) {
                             const char *core = mapmenu.GetLevelFile(sel);
                             if (core != nullptr) {
-                                static const char *kPrefixes[] = {
-                                    "", "../", "../../"};
-                                char levelPath[256] = {0};
-                                for (RwUInt32 pi = 0; pi < 3; ++pi) {
-                                    std::snprintf(
-                                        levelPath, sizeof(levelPath), "%s"
-                                        "Streams/%s.RWS", kPrefixes[pi],
-                                        core);
-                                    FILE *lf = std::fopen(levelPath, "rb");
-                                    if (lf != nullptr) {
-                                        std::fclose(lf);
-                                        break;
-                                    }
-                                    levelPath[0] = 0;
-                                }
+                                char levelName[128];
+                                char levelPath[512] = {0};
+                                std::snprintf(levelName, sizeof(levelName),
+                                              "Streams/%s.RWS", core);
+                                // Relative depth centrally resolved
+                                // (no manual prefix scan)
+                                RwsAssets_Resolve(levelName, levelPath,
+                                                  sizeof(levelPath));
                                 if (levelPath[0] != 0) {
-                                    // aynı dosya → yeniden yükleme yok
+                                    // same file -> no reload
                                     const char *curBase = pWorldPath;
                                     if (curBase != nullptr) {
                                         const char *slash =
@@ -784,7 +922,9 @@ int main(int argc, char **argv) {
                                                               : levelPath;
                                     if (curBase == nullptr ||
                                         std::strcmp(curBase, newBase) != 0) {
-                                        char prevPath[256] = {0};
+                                        // 512: same size as resolved path buffer
+                                        // -> no truncation.
+                                        char prevPath[512] = {0};
                                         if (pWorldPath != nullptr) {
                                             std::snprintf(
                                                 prevPath, sizeof(prevPath),
@@ -839,11 +979,11 @@ int main(int argc, char **argv) {
                                 }
                             }
                         }
-                        RenderPlatform_ClearTextures(); // harita dokuları
-                        break; // ilk geçerli harita dosyası
+                        RenderPlatform_ClearTextures(); // map textures
+                        break; // first valid map file
                     }
                 }
-                break; // ilk geçerli menü dosyası
+                break; // first valid menu file
             }
         }
         if (bQuitApp == TRUE) {
@@ -858,20 +998,20 @@ int main(int argc, char **argv) {
         }
     }
 
-    // Dünya kurulumu (boot-flow SONRASI — MAPMENU seçimi tek yüklemeyle
-    // kurulur). 4.6q kamera + 4.6p spawn/okyanus aynen taşındı.
-    // 4.6q: kamera durumu döngü boyunca yaşar (freecam WASD/QE + mouse look).
+    // World setup (after boot-flow -- MAPMENU selection set up with single
+    // load). 4.6q camera + 4.6p spawn/ocean carried over.
+    // 4.6q: camera state lives throughout loop (freecam WASD/QE + mouse look).
     RwReal camPos[3] = {0.0f, 180.0f, 420.0f};
     RwReal camLook[3] = {0.0f, 0.0f, 0.0f};
-    RwReal camYaw = 0.0f;   // rad — mouse/ok tuşu pitch/yaw için
+    RwReal camYaw = 0.0f;   // rad -- mouse/arrow key pitch/yaw
     RwReal camPitch = 0.0f;
-    RwReal camSpan = 400.0f; // dünya ölçeği — freecam hız temeli
+    RwReal camSpan = 400.0f; // world scale -- freecam speed base
     if (bWorldLoaded == TRUE && pipeline.pClump != nullptr) {
         if (RenderPlatform_AddClump(pipeline.pClump) != TRUE) {
             std::fprintf(stderr, "CannonCruise: AddClump failed\n");
         }
-        // Faz 4.6p — spawn zinciri: 0x0704 kayıtları → CClassFactory
-        // create + apply (bilinen sınıflar; bilinmeyenler sessiz atla).
+        // Phase 4.6p -- spawn chain: 0x0704 registrations -> CClassFactory
+        // create + apply (known classes; unknown silently skipped).
         if (GameBehaviours_Register() == TRUE) {
             WorldSpawnStats spawnStats;
             const RwInt32 spawned =
@@ -881,9 +1021,9 @@ int main(int argc, char **argv) {
                         spawnStats.objectRecords, spawnStats.instancesCreated,
                         spawnStats.instancesSkipped, (int)spawned);
         }
-        // Faz 4.6q — kamera auto-framing: dünya bbox'ından genel bakış
-        // (0x0704 kamera verisi bir chase-rig — takip hedefi olmadan
-        // dünya koordinatı değil; CANNONCRUISE_CAM=DATA ile veri kamerası).
+        // Phase 4.6q -- camera auto-framing: overview from world bbox
+        // (0x0704 camera data is a chase-rig -- without follow target,
+        // not world coordinates; CANNONCRUISE_CAM=DATA for data camera).
         const char *camMode = std::getenv("CANNONCRUISE_CAM");
         if (camMode != nullptr && std::strcmp(camMode, "DATA") == 0) {
             if (RwsCamera_LoadPose((pWorldPath != nullptr) ? pWorldPath : "",
@@ -903,17 +1043,17 @@ int main(int argc, char **argv) {
                 const RwReal dx = bb.max[0] - bb.min[0];
                 const RwReal dz = bb.max[2] - bb.min[2];
                 const RwReal span = (dx > dz) ? dx : dz;
-                // merkeze bakış (bilinen-iyi yön), mesafe span*0.62:
-                // adaya çerçevede hakim — zemin lookAt'ı boş kare yapıyordu
-                // 4.6q rev: alçalt+yaklaştır (ada ufukta ince şerit kalıyordu)
+                // look at center (known-good direction), distance span*0.62:
+                // island dominates view -- ground lookAt was empty frame
+                // 4.6q rev: lower+close (island was thin sliver at horizon)
                 camPos[0] = cx;
                 camPos[1] = cy + span * 0.14f;
                 camPos[2] = cz + span * 0.38f;
                 camLook[0] = cx;
                 camLook[1] = cy;
                 camLook[2] = cz;
-                camSpan = span; // freecam hız ölçeği
-                // Teşhis: CANNONCRUISE_LOOKAT=x,y,z[,dist] → hedef/mesafe ezer.
+                camSpan = span; // freecam speed base
+                // Diagnostics: CANNONCRUISE_LOOKAT=x,y,z[,dist] -> override
                 {
                     const char *lookEnv =
                         std::getenv("CANNONCRUISE_LOOKAT");
@@ -950,7 +1090,7 @@ int main(int argc, char **argv) {
             }
         }
         RenderPlatform_SetCameraPose(camPos, camLook);
-        // mouse look başlangıcı: yaw/pitch'i (look-pos) yönünden türet
+        // mouse look init: yaw/pitch derived from (look-pos) direction
         {
             RwReal f[3] = {camLook[0] - camPos[0], camLook[1] - camPos[1],
                            camLook[2] - camPos[2]};
@@ -961,9 +1101,9 @@ int main(int argc, char **argv) {
                 camPitch = std::asin(f[1] / len);
             }
         }
-        RwPlatformSetMouseCapture(TRUE); // imleç gizli — mouse look
-        // Faz 4.6p (wire-in) — okyanus: bbox XZ'ini kapsayan 5×5 tile ızgara
-        // (tile = span/2 → toplam span*2.5; y=0 su seviyesi, VIKING min.y=-9).
+        RwPlatformSetMouseCapture(TRUE); // cursor hidden -- mouse look
+        // Phase 4.6p (wire-in) -- ocean: 5x5 tile grid covering bbox XZ
+        // (tile = span/2 -> total span*2.5; y=0 water level, VIKING min.y=-9).
         {
             WorldGeometryBounds bb;
             if (WorldGeometry_GetLastBounds(&bb) == TRUE) {
@@ -985,15 +1125,15 @@ int main(int argc, char **argv) {
             }
         }
     }
-    // Geometri/material teşhisi (renksizlik kök nedeni).
+    // Geometry/material diagnostics (root cause of colorlessness).
     if (std::getenv("CANNONCRUISE_GEODIAG") != nullptr) {
         WorldGeometry_Diagnose(pipeline.pClump, 400);
     }
 
-    // Kare döngüsü — dünya varsa pencere kapanana dek (sınırsız;
-    // CANNONCRUISE_FRAMES env ile test kapağı, ör. 300), yoksa 3 kare
+    // Frame loop -- if world loaded, run until window close (unlimited;
+    // CANNONCRUISE_FRAMES env for test cap, e.g. 300), else 3 frames
     // platform smoke.
-    int frameCap = -1; // -1 = sınırsız
+    int frameCap = -1; // -1 = unlimited
     const char *capEnv = std::getenv("CANNONCRUISE_FRAMES");
     if (capEnv != nullptr) {
         frameCap = std::atoi(capEnv);
@@ -1002,7 +1142,7 @@ int main(int argc, char **argv) {
     int framesRendered = 0;
     s_gameState = GAMESTATE_GAMEPLAY; // video-kurgu: NORMAL kamera kipi
     for (int frame = 0; kFrames < 0 || frame < kFrames; ++frame) {
-        RwPlatformPollEvents(); // GLFW olay tazeleme (tuş + mouse delta)
+        RwPlatformPollEvents(); // GLFW event pump (keys + mouse delta)
         if (RwPlatformShouldClose() == TRUE) {
             break;
         }
@@ -1012,15 +1152,15 @@ int main(int argc, char **argv) {
             break;
         }
         if (bWorldLoaded == TRUE && pipeline.pClump != nullptr) {
-            RenderPlatform_RenderScene(); // world->render() — Begin/End arası
-            // Faz 4.6q — freecam: mouse look + WASD (bakış düzleminde) +
-            // Q/E (dikey) + ok tuşları (yaw/pitch). Null platformda tuş/
-            // mouse yok → no-op. Bakış yaw/pitch'ten türetilir.
+            RenderPlatform_RenderScene(); // world->render() -- between Begin/End
+            // Phase 4.6q -- freecam: mouse look + WASD (in view plane) +
+            // Q/E (vertical) + arrow keys (yaw/pitch). Null platform no key/
+            // mouse -> no-op. View derived from yaw/pitch.
             {
                 const RwReal kDt = 1.0f / 60.0f;
                 const RwReal speed = camSpan * 0.10f * kDt;
-                const RwReal turn = 1.8f * kDt; // ok tuşu rad/sn
-                const RwReal sens = 0.0035f;    // mouse radians/piksel
+                const RwReal turn = 1.8f * kDt; // arrow key rad/s
+                const RwReal sens = 0.0035f;    // mouse radians/pixel
                 RwBool lookChanged = FALSE;
                 if (RwPlatformKeyDown(RW_KEY_LEFT)) {
                     camYaw += turn;
@@ -1042,23 +1182,23 @@ int main(int argc, char **argv) {
                 int mdy = 0;
                 if (RwPlatformMouseDelta(&mdx, &mdy) == TRUE) {
                     camYaw += (RwReal)mdx * sens;
-                    camPitch -= (RwReal)mdy * sens; // yukarı sürükle = yukar
+                    camPitch -= (RwReal)mdy * sens; // drag up = look up
                     lookChanged = TRUE;
                 }
-                const RwReal kMaxPitch = 1.55f; // ~89°
+                const RwReal kMaxPitch = 1.55f; // ~89Â°
                 if (camPitch > kMaxPitch) {
                     camPitch = kMaxPitch;
                 }
                 if (camPitch < -kMaxPitch) {
                     camPitch = -kMaxPitch;
                 }
-                // bakış: fwd = (sin(yaw)cos(p), sin(p), cos(yaw)cos(p))
+                // view: fwd = (sin(yaw)cos(p), sin(p), cos(yaw)cos(p))
                 const RwReal cp = std::cos(camPitch);
                 const RwReal fwd[3] = {std::sin(camYaw) * cp,
                                        std::sin(camPitch),
                                        std::cos(camYaw) * cp};
                 const RwReal right[3] = {std::cos(camYaw), 0.0f,
-                                         -std::sin(camYaw)}; // yaw+90°
+                                         -std::sin(camYaw)}; // yaw+90Â°
                 RwReal delta[3] = {0.0f, 0.0f, 0.0f};
                 if (RwPlatformKeyDown('W')) {
                     delta[0] += fwd[0] * speed;
@@ -1102,7 +1242,7 @@ int main(int argc, char **argv) {
             }
             if (pOcean != nullptr) {
                 pOcean->Update((RwReal)frame * (1.0f / 60.0f));
-                pOcean->Render(); // Begin/End arası
+                pOcean->Render(); // between Begin/End
             }
         }
         if (RenderPlatform_RenderTestQuad(0.0f, 0.0f, 0.25f, 0.25f,
@@ -1111,7 +1251,7 @@ int main(int argc, char **argv) {
                          frame);
             break;
         }
-        // Dünya karesi yakalama (faz çekimleri tüketmediyse; tek seferlik).
+        // World frame capture (if phase pulls didn't consume; one-time only).
         if (pShotPath != nullptr && frame == 2) {
             RenderPlatform_RequestScreenshot(pShotPath);
         }
@@ -1136,8 +1276,8 @@ int main(int argc, char **argv) {
             (bWorldLoaded == TRUE) ? pipeline.assetCount : 0u);
     }
 
-    delete pOcean; // COcean::Shutdown + tile temizliği
-    RwPlatformSetMouseCapture(FALSE); // imleç geri
+    delete pOcean; // COcean::Shutdown + tile cleanup
+    RwPlatformSetMouseCapture(FALSE); // cursor back
 
     RwsPipeline_Unload(&pipeline);
     RenderPlatform_Terminate();
@@ -1145,6 +1285,6 @@ int main(int argc, char **argv) {
     RwEngineClose();
     RwEngineTerm();
 
-    // Dünya yolunda pencere erken kapatma (ShouldClose) başarı sayılır.
+    // Window close on world path (ShouldClose) counts as success.
     return (framesRendered > 0) ? 0 : 1;
 }

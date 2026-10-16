@@ -1,0 +1,150 @@
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/tmp/bullet3-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/tmp/bullet3-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-UPDATE.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/tmp/bullet3-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5558B178DD74008EB1B75708D2AE30EC\BULLET3-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\D7CF540CA26A62343D4A8034440B8DD5\BULLET3-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/CMakeFiles/Debug/bullet3-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/bullet3-populate-prefix/src/bullet3-populate-stamp/Debug/bullet3-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKEFILES\5CA988203A7819D153F1FE16AB2272BE\BULLET3-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MNKHPRRE\DOCUMENTS\GITHUB\CANNONCRUISE\CODE\BUILD_WIN32_V180\_DEPS\BULLET3-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild -BC:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild --check-stamp-file C:/Users/mnkhprre/Documents/GitHub/CannonCruise/code/build_win32_v180/_deps/bullet3-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -2,10 +2,11 @@
 #define HK_MEMORY_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (hkMemory.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (hkMemory.h)
 // Binary: "Havok Allocation of " assert dizesi (HavokMemoryManager.cpp / FUN_00435adf)
 // Havok 2.x bellek arayüzü. Oyun CHavokMemoryManager ile kendi tahsisini yapar;
-// gerçek SDK entegrasyonunda bu arayüz hkMemory singleton'ına bağlanacak.
+// ŞİM: init/quit/getInstance havokimpl.cpp'de malloc/realloc/free'ye bağlanır
+// (oyun çağırır; hkMemory::getInstance() tekil örnek döndürür).
 // ============================================================================
 
 #include "hkBaseTypes.h"

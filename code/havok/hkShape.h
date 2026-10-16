@@ -2,12 +2,17 @@
 #define HK_SHAPE_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (hkShape.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (hkShape.h)
 // Binary tipleri (CC.asm / CC_ida.asm):
 //   hkShape, hkConvexShape, hkSphereRepShape, hkSphereShape, hkCapsuleShape,
-//   hkTriangleShape, hkConvexVerticesShape, hkMeshShape, hkShapeCollection,
-//   hkBvTreeShape, hkMoppBvTreeShape
+//   hkTriangleShape, hkBoxShape, hkConvexVerticesShape, hkMeshShape,
+//   hkShapeCollection, hkBvTreeShape, hkMoppBvTreeShape
 // Metotlar: hkShapeCollection::castRay, ::getAabb, ::getMaximumProjection
+//
+// SHIM (Phase 4.6h): These classes are REAL implementations; each holds a Bullet
+// collision shape (btCollisionShape) and forwards to it. Naming and inheritance
+// hierarchy stays faithful to Havok 2.2.1 (binary fidelity); underlying engine
+// is Bullet. getBulletShape() is the bridge accessor.
 // ============================================================================
 
 #include "hkBaseTypes.h"
@@ -16,7 +21,13 @@
 class hkEntity;
 class hkPhantom;
 
-/// Çarpışma şekli taban sınıfı
+// Bullet bridge — full definition in havokimpl.cpp (header kept light).
+// NOTE: btCollisionShape is declared as CLASS in Bullet; MSVC mangling
+// preserves struct/class distinction (PAU vs PAV) → forward declaration must
+// also be 'class', otherwise LNK2019 (2026-10-15).
+class btCollisionShape;
+
+/// Collision shape base class
 class hkShape : public hkSerializable
 {
 public:
@@ -29,11 +40,14 @@ public:
     virtual int getType() const = 0;
     virtual void getAabb(hkAabb& aabb) const = 0;
 
-    /// Şekil casting (Havok 2.x: static castRay yardımcıları)
+    /// Bullet bridge — subclasses return their btCollisionShape
+    virtual btCollisionShape* getBulletShape() const = 0;
+
+    /// Shape casting (Havok 2.x: static castRay helpers)
     static const hkShape* castRay(const hkShape* pShape, const hkVector3& from, const hkVector3& to);
 };
 
-/// Konveks şekil tabanı
+/// Convex shape base
 class hkConvexShape : public hkShape
 {
 public:
@@ -41,72 +55,116 @@ public:
     virtual int getType() const;
 };
 
-/// Küre rep forması (küre / kapsül / üçgen kabuğu)
+/// Sphere rep form (sphere / capsule / triangle shell)
 class hkSphereRepShape : public hkConvexShape
 {
 public:
     virtual ~hkSphereRepShape();
 };
 
-/// Küre şekil — sphere-mesh çarpışma ajanı (hkBvAgent) için
+/// Sphere shape — sphere-mesh collision agent (hkBvAgent) for
 class hkSphereShape : public hkSphereRepShape
 {
 public:
     hkSphereShape(hkReal radius);
     virtual ~hkSphereShape();
+    virtual const hkClass* getClass() const;
+    virtual int getType() const;
     virtual void getAabb(hkAabb& aabb) const;
+    virtual btCollisionShape* getBulletShape() const;
 
     hkReal getRadius() const { return m_radius; }
 
 private:
     hkReal m_radius;
+    btCollisionShape* m_pBulletShape; ///< btSphereShape
 };
 
-/// Kapsül şekil
+/// Capsule shape
 class hkCapsuleShape : public hkSphereRepShape
 {
 public:
     hkCapsuleShape(const hkVector3& start, const hkVector3& end, hkReal radius);
     virtual ~hkCapsuleShape();
+    virtual const hkClass* getClass() const;
+    virtual int getType() const;
     virtual void getAabb(hkAabb& aabb) const;
+    virtual btCollisionShape* getBulletShape() const;
+
+private:
+    btCollisionShape* m_pBulletShape; ///< btCapsuleShape
 };
 
-/// Üçgen şekil (statik çarpışma geometrisi)
+/// Triangle shape (static collision geometry)
 class hkTriangleShape : public hkSphereRepShape
 {
 public:
     hkTriangleShape(const hkVector3& v0, const hkVector3& v1, const hkVector3& v2);
     virtual ~hkTriangleShape();
+    virtual const hkClass* getClass() const;
+    virtual int getType() const;
     virtual void getAabb(hkAabb& aabb) const;
+    virtual btCollisionShape* getBulletShape() const;
+
+private:
+    btCollisionShape* m_pBulletShape; ///< btTriangleShape
 };
 
-/// Konveks köşe listesi (DFF çarpışma geometrisinden üretilir)
+/// Box shape — counterpart of game PhysicsShape_CreateBox flow
+class hkBoxShape : public hkConvexShape
+{
+public:
+    /// halfExtents: half-axes (see PhysicsBodyBoxDesc::halfExtents)
+    hkBoxShape(const hkVector3& halfExtents);
+    virtual ~hkBoxShape();
+    virtual const hkClass* getClass() const;
+    virtual int getType() const;
+    virtual void getAabb(hkAabb& aabb) const;
+    virtual btCollisionShape* getBulletShape() const;
+
+private:
+    btCollisionShape* m_pBulletShape; ///< btBoxShape
+};
+
+/// Convex vertex list (generated from DFF collision geometry)
 class hkConvexVerticesShape : public hkConvexShape
 {
 public:
     hkConvexVerticesShape(const hkVector3* vertices, int numVertices,
                           const hkUint32* indices, int numIndices);
     virtual ~hkConvexVerticesShape();
+    virtual const hkClass* getClass() const;
     virtual int getType() const;
     virtual void getAabb(hkAabb& aabb) const;
+    virtual btCollisionShape* getBulletShape() const;
+
+private:
+    btCollisionShape* m_pBulletShape; ///< btConvexHullShape
 };
 
-/// Üçgen mesh şekil (statik dünya geometrisi)
+/// Triangle mesh shape (static world geometry)
 class hkMeshShape : public hkShape
 {
 public:
     hkMeshShape(const hkVector3* vertices, int numVertices,
                 const hkUint32* indices, int numIndices);
     virtual ~hkMeshShape();
+    virtual const hkClass* getClass() const;
     virtual int getType() const;
     virtual void getAabb(hkAabb& aabb) const;
+    virtual btCollisionShape* getBulletShape() const;
+
+private:
+    void* m_pTriangleMesh;           ///< btTriangleMesh (owned by shape)
+    btCollisionShape* m_pBulletShape; ///< btBvhTriangleMeshShape
 };
 
-/// Şekil koleksiyonu tabanı — castRay / getMaximumProjection metotları ASM'de
+/// Shape collection base — castRay / getMaximumProjection methods in ASM
 class hkShapeCollection : public hkShape
 {
 public:
     virtual ~hkShapeCollection();
+    virtual const hkClass* getClass() const;
     virtual int getType() const;
 
     virtual hkBool castRay(const hkVector3& from, const hkVector3& to, hkEntity*& hit) const = 0;
@@ -119,8 +177,11 @@ class hkBvTreeShape : public hkShape
 public:
     explicit hkBvTreeShape(hkShapeCollection* pCollection);
     virtual ~hkBvTreeShape();
+    virtual const hkClass* getClass() const;
     virtual int getType() const;
     virtual void getAabb(hkAabb& aabb) const;
+    /// Koleksiyonun şekli devredilir (BV ağaç Bullet'te BVH içinde)
+    virtual btCollisionShape* getBulletShape() const;
 
 protected:
     hkShapeCollection* m_pCollection;
@@ -135,7 +196,7 @@ public:
     virtual int getType() const;
 
 private:
-    hkUint8* m_pMoppCode;
+    hkUint8* m_pMoppCode; ///< MOPP kodu (Binary blob; Bullet BVH'a sıkıştırma yok)
     int m_moppSize;
 };
 

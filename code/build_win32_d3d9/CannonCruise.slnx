@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<BuildType Name="MinSizeRel"/>
+		<BuildType Name="RelWithDebInfo"/>
+		<Platform Name="Win32"/>
+	</Configurations>
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="dd66b11e-2b8b-3538-8c86-b93ac4ab2bcf" DefaultStartup="true">
+		<BuildDependency Project="_deps/bullet3-build/src/Bullet3Serialize/Bullet2FileLoader/Bullet2FileLoader.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/Bullet3Collision/Bullet3Collision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/Bullet3Common/Bullet3Common.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/Bullet3Dynamics/Bullet3Dynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/Bullet3Geometry/Bullet3Geometry.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/Bullet3OpenCL/Bullet3OpenCL_clew.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletInverseDynamics/BulletInverseDynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletSoftBody/BulletSoftBody.vcxproj"/>
+		<BuildDependency Project="CannonCruise.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="tests/audiostream_test.vcxproj"/>
+		<BuildDependency Project="tests/behaviourloader_test.vcxproj"/>
+		<BuildDependency Project="tests/camerastate_test.vcxproj"/>
+		<BuildDependency Project="tests/cattributehandler_test.vcxproj"/>
+		<BuildDependency Project="tests/cclassfactory_test.vcxproj"/>
+		<BuildDependency Project="tests/ceventhandler_test.vcxproj"/>
+		<BuildDependency Project="tests/coltrimesh_test.vcxproj"/>
+		<BuildDependency Project="tests/fmvscene_test.vcxproj"/>
+		<BuildDependency Project="tests/fontsystem_test.vcxproj"/>
+		<BuildDependency Project="tests/havok_memory_manager_test.vcxproj"/>
+		<BuildDependency Project="tests/havokshim_test.vcxproj"/>
+		<BuildDependency Project="tests/inputmanager_test.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+		<BuildDependency Project="tests/localization_test.vcxproj"/>
+		<BuildDependency Project="tests/menustate_test.vcxproj"/>
+		<BuildDependency Project="tests/ocean_test.vcxproj"/>
+		<BuildDependency Project="tests/physics_entity_test.vcxproj"/>
+		<BuildDependency Project="tests/physics_test.vcxproj"/>
+		<BuildDependency Project="tests/renderpipeline_test.vcxproj"/>
+		<BuildDependency Project="tests/renderplatform_test.vcxproj"/>
+		<BuildDependency Project="tests/renderworld_test.vcxproj"/>
+		<BuildDependency Project="tests/rt2danim_test.vcxproj"/>
+		<BuildDependency Project="tests/rwlibrw_test.vcxproj"/>
+		<BuildDependency Project="tests/rwsassets_test.vcxproj"/>
+		<BuildDependency Project="tests/rwstudio_test.vcxproj"/>
+		<BuildDependency Project="tests/shipplayer_test.vcxproj"/>
+		<BuildDependency Project="tests/trailingchunk_test.vcxproj"/>
+		<BuildDependency Project="tests/txddecode_test.vcxproj"/>
+		<BuildDependency Project="tests/worldgeometry_test.vcxproj"/>
+		<BuildDependency Project="tests/worldspawn_test.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/Bullet3Serialize/Bullet2FileLoader/Bullet2FileLoader.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2f042bc7-0ac0-3e57-b95d-daa73e8cbeaa">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/Bullet3Collision/Bullet3Collision.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7c258f07-686a-3bf6-b64c-fee941f017c1">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/Bullet3Common/Bullet3Common.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2b9ac131-0ee1-34b9-9966-1188beb76fe6">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/Bullet3Dynamics/Bullet3Dynamics.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="218b78e2-c895-308a-a07e-02933173fd31">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/Bullet3Geometry/Bullet3Geometry.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="23538f0d-1785-3d21-b94a-7acb3669104e">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/Bullet3OpenCL/Bullet3OpenCL_clew.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="e2baa805-87cb-3f7c-a48a-001008000cc1">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="873814c4-fd91-3533-8126-b3b5eac715e4">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="826466da-e066-3f6e-ac26-1249b5a38a85">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/BulletInverseDynamics/BulletInverseDynamics.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="269d97c7-8c1d-3e7c-bab4-63ba08f8edd1">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/BulletSoftBody/BulletSoftBody.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="3c26fb95-2716-3ee2-833c-1d59b7eb7639">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="CannonCruise.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="838767d4-e8db-3fd9-a0f0-aab6c60cd0cb">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="CannonCruiseLib.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="3e6bb5d7-86e5-35f3-8048-58789133b151">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="564ea4ae-9d8e-354e-9f9e-a2e8f5d23fbf">
+		<BuildDependency Project="ALL_BUILD.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0bdf97ca-a2df-312f-9e88-62dee2e06841">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="RUN_TESTS.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="27cac124-dbd5-3a63-a4e3-0cbe8d814a2a">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+		<Build Solution="MinSizeRel|*" Project="false"/>
+		<Build Solution="RelWithDebInfo|*" Project="false"/>
+	</Project>
+	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f3880778-ceff-384f-b61c-caa4bdb99f45"/>
+	<Project Path="tests/audiostream_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="fafca0d3-698b-3a21-b03c-7db6a4e3c7a3">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/behaviourloader_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2368a7f1-d3e6-3841-80e8-ba9578b4104a">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/camerastate_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="e3c1380c-280c-3cab-8cbd-0f5f15519e05">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/cattributehandler_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2d0c905a-e0c2-3d01-909e-6cf83c6a6726">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/cclassfactory_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="ded11226-6441-3bed-8d5f-abc611e75732">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/ceventhandler_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c6fa20f3-cbe0-3fb7-b768-0d2a88a809f9">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/coltrimesh_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="4b82f285-a99c-31a5-b6e8-2f2ba308c966">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/fmvscene_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="10616c0d-3a66-307d-95a2-cd957c5c69d2">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/fontsystem_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="05fa336a-44b4-3dd3-8065-ce35d52d63e3">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/havok_memory_manager_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="175a63d9-9045-39bf-9a98-47596c1e5cba">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/havokshim_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="af633086-292a-3149-815c-4bcb91dcb488">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/inputmanager_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c12d4b9e-cf0b-36c0-95ee-9ebc505f8684">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="_deps/librw-build/src/librw.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="3b64cca7-2ce2-3b98-a7c1-7f64f05742e3">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/localization_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="65a06bc6-e7de-3bde-ac7b-9652ec620a8c">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/menustate_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="aa7d569e-f089-3755-9397-28c8b3b94690">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/ocean_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="9c3869d2-f9b6-34f1-8c8f-e95eb6a30797">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/physics_entity_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="0703c467-505d-3051-bc35-20b71071138a">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/physics_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="2d2eb82a-f5a3-33c5-a52d-2cfabece5058">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/renderpipeline_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="cabab2ee-3026-34ee-ae96-11a3a7c76ffa">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/renderplatform_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="484de591-3171-3810-9808-3d0b533c56fe">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/renderworld_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="8bc2737b-266e-3a02-931e-261f93697f9e">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/rt2danim_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="d2389c4d-f4ce-34a4-88ec-44146c3dc614">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/rwlibrw_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="308d563f-6fed-3de9-b495-12b45ca35376">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/rwsassets_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="7bc2915a-3ded-39d0-8585-60864ce10c10">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="tests/rwstudio_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="3178cd83-9e7e-3318-854a-3af04019a8d9">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/shipplayer_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="60a6d393-817a-3169-b417-9769fbcf5914">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/trailingchunk_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="cba4c486-d5b4-3daf-8434-9f559c4d2f65">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/txddecode_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="fa63661b-97a6-34b1-95ae-36c43a4b8d9e">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/worldgeometry_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="beaf5341-b542-3212-9cbf-27562560d65f">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+	<Project Path="tests/worldspawn_test.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="aa695765-3ff1-3fb5-a664-6c4c748444eb">
+		<BuildDependency Project="_deps/bullet3-build/src/BulletCollision/BulletCollision.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/BulletDynamics/BulletDynamics.vcxproj"/>
+		<BuildDependency Project="CannonCruiseLib.vcxproj"/>
+		<BuildDependency Project="_deps/bullet3-build/src/LinearMath/LinearMath.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="_deps/librw-build/src/librw.vcxproj"/>
+	</Project>
+</Solution>

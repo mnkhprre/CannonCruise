@@ -2,18 +2,21 @@
 #define HAVOK_H
 
 // ============================================================================
-// CannonCruise - Havok Physics 2.2.1 Stub (havok.h)
+// CannonCruise - Havok Physics 2.2.1 Shim (havok.h)
 //
-// Şemsiye başlığı — tek #include ile tüm Havok arayüzlerini sağlar.
+// Umbrella header — single #include provides all Havok interfaces.
 //
-// Sürüm: Havok 2.2.1 (E:\nightly_builds\Havok_2_2_1_Branch)
+// Version: Havok 2.2.1 (E:\nightly_builds\Havok_2_2_1_Branch)
 //   - Binary: "** Havok libs built with version [" / "Havok - Build (%d)"
-//   - Kaynak: hk221\source\hkbase, hk221\source\hkdyd
-//   - Adlandırma: hkWorld / hkEntity / hkRigidBody (hkp öneki YOK — Havok 4+)
+//   - Source: hk221\source\hkbase, hk221\source\hkdyd
+//   - Naming: hkWorld / hkEntity / hkRigidBody (no hkp prefix — Havok 4+)
 //
-// Durum: Stub — gerçek SDK entegrasyonu ve Windows doğrulaması bekliyor.
-//        CPhysicsWorld/CPhysicsEntity halen void* kullanır; bu başlıklar
-//        entegrasyon katmanı hazır olduğunda kullanılacaktır.
+// Status: SHIM — REAL implementation (havokimpl.cpp, Phase 4.6h).
+//   Naming/inheritance faithful to Havok 2.2.1 (binary fidelity); underlying
+//   engine is Bullet 3.25 (MIT). hkWorld uses tested PhysicsBackend
+//   world → existing 22 test paths unaffected.
+//   Task: havokshim_test — naming, shape types, free fall,
+//   static body, contact, phantom overlap, impulse.
 // ============================================================================
 
 #include "hkBaseTypes.h"

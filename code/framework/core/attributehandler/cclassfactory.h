@@ -145,30 +145,39 @@ namespace RWS
     };
 
     /**
+     * @brief Boş fabrika fonksiyonu — 1-arg kayıtlarda create=NULL deseni.
+     * MSVC geleneksel preprocessörü makro içindeki lambda syntax'ını
+     * bozduğundan (C2059: '[') lambda yerine sabit fonksiyon kullanılır.
+     */
+    inline void* NullCreationFunc() { return 0; }
+
+    /**
      * @def RWS_REGISTER_CLASS(className[, factory[, size]])
      * @brief Sınıfı CClassFactory'ye statik başlatmayla kaydeden makro.
      *
      * Kullanım (codegen):
      * ```cpp
      * RWS_REGISTER_CLASS(CShip)  // ad kaydı — create sonradan BehaviorLoader
-     * RWS_REGISTER_CLASS(CShip, []() -> void* { return new CShip(); },
-     *                    sizeof(CShip))
+     * RWS_REGISTER_CLASS(CShip, MakeCShip, sizeof(CShip))
      * ```
      * 3-arg biçim fabrika fonksiyonunu gerçekten kaydeder (Create çağırır);
      * 1-arg biçim binary ad-kaydı desenidir (create NULL).
+     *
+     * NOT: MSVC lambda syntax'ı makro içinde bozulur (C2059/C2512).
+     * Lambda yerine statik fabrika fonksiyonu veya NullCreationFunc kullanın.
      */
     #define RWS_GET_MACRO(_1, _2, _3, NAME, ...) NAME
     #define RWS_REGISTER_CLASS1(className)                                   \
         static RWS::CAutoRegisterClass s_autoRegister_##className(           \
             #className,                                                      \
-            (RWS::ClassCreationFunc)[]() -> void* { return 0; },             \
+            &RWS::NullCreationFunc,                                          \
             sizeof(className))
     #define RWS_REGISTER_CLASS2(className, factory)                          \
         static RWS::CAutoRegisterClass s_autoRegister_##className(           \
-            #className, (RWS::ClassCreationFunc)(factory), sizeof(className))
+            #className, factory, sizeof(className))
     #define RWS_REGISTER_CLASS3(className, factory, size)                    \
         static RWS::CAutoRegisterClass s_autoRegister_##className(           \
-            #className, (RWS::ClassCreationFunc)(factory), (RwUInt32)(size))
+            #className, factory, (RwUInt32)(size))
     #define RWS_REGISTER_CLASS(...)                                           \
         RWS_GET_MACRO(__VA_ARGS__, RWS_REGISTER_CLASS3,                      \
                       RWS_REGISTER_CLASS2, RWS_REGISTER_CLASS1)(__VA_ARGS__)

@@ -10,6 +10,7 @@
 // ============================================================================
 
 #include "SceneManager.h"
+#include "RwsAssets.h"   // .RWS asset yol çözücü (merkezi)
 #include <cassert>
 #include <cstdio>
 #include <cstring>
@@ -77,8 +78,13 @@ RwBool CSceneManager::ChangeScene(const char* pSceneName)
     m_pCurrentScene = new CScene();
     assert(m_pCurrentScene != 0 && "Scene not created");
 
-    char szStreamPath[256];
-    snprintf(szStreamPath, sizeof(szStreamPath), "%sStreams\\%s.RWS", "", pSceneName);
+    // Binary formatı "%sStreams\\%s.RWS" (FUN_004a2120). Önek ("") eskiden
+    // elle veriliyordu; artık göreli derinlik/env merkezi çözülür
+    // (RwsAssets_Resolve) — build yerleşimine göre Streams/ kökünü bulur.
+    char szStreamPath[512] = {0};
+    char szStreamName[128];
+    snprintf(szStreamName, sizeof(szStreamName), "Streams/%s.RWS", pSceneName);
+    RwsAssets_Resolve(szStreamName, szStreamPath, sizeof(szStreamPath));
 
     if (!m_pCurrentScene->Load(pSceneName))
     {

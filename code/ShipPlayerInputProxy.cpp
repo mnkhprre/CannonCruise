@@ -1,11 +1,11 @@
-// ============================================================================
+﻿// ============================================================================
 // CannonCruise - Player Ship Input Proxy (ShipPlayerInputProxy.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\ShipPlayerInputProxy.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Tersine mÃ¼hendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazÄ±lmÄ±ÅŸtÄ±r.
 //
-// Binary Fonksiyonları:
-//   FUN_004ae6c0 — CShipPlayer registration & setup
-//   FUN_004b2fe0 — CShipPlayerInputProxy::Update
+// Binary FonksiyonlarÄ±:
+//   FUN_004ae6c0 â€” CShipPlayer registration & setup
+//   FUN_004b2fe0 â€” CShipPlayerInputProxy::Update
 // ============================================================================
 
 #include "ShipPlayerInputProxy.h"
@@ -14,7 +14,7 @@
 #include <cassert>
 
 // ---------------------------------------------------------------------------
-// Constructor – binds proxy to optional ship and sets player index to 0.
+// Constructor â€“ binds proxy to optional ship and sets player index to 0.
 // ---------------------------------------------------------------------------
 CShipPlayerInputProxy::CShipPlayerInputProxy(CShip *pShip)
     : m_pShip(pShip), m_iPlayerIndex(0) {}
@@ -25,19 +25,19 @@ CShipPlayerInputProxy::CShipPlayerInputProxy(CShip *pShip)
 CShipPlayerInputProxy::~CShipPlayerInputProxy() {}
 
 // ---------------------------------------------------------------------------
-// AttachShip – associates a new CShip instance with this input controller.
+// AttachShip â€“ associates a new CShip instance with this input controller.
 // ---------------------------------------------------------------------------
 void CShipPlayerInputProxy::AttachShip(CShip *pShip) { m_pShip = pShip; }
 
 // ---------------------------------------------------------------------------
-// HandleEvents – listens for gameplay messages such as iMsgTeleportShip.
+// HandleEvents â€“ listens for gameplay messages such as iMsgTeleportShip.
 // ---------------------------------------------------------------------------
 void CShipPlayerInputProxy::HandleEvents(const RWS::CMsg &msg) {
   // iMsgTeleportShip
 }
 
 // ---------------------------------------------------------------------------
-// Update – mirrors FUN_004b2fe0.
+// Update â€“ mirrors FUN_004b2fe0.
 // Samples gamepad and keyboard buttons via CInputManager:
 //   - Directional rudder: P1_INPUT_1 (port turn) vs P1_INPUT_2 (starboard turn)
 //   - Cannon broadsides: P1_INPUT_4 (port volley) and P1_INPUT_5 (starboard volley)

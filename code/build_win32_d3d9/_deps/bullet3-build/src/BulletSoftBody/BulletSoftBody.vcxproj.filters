@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodyHelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftRigidCollisionAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftRigidDynamicsWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftMultiBodyDynamicsWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftSoftCollisionAlgorithm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDefaultSoftBodySolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableBackwardEulerObjective.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableBodySolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableMultiBodyConstraintSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableContactProjection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableMultiBodyDynamicsWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableContactConstraint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\poly34.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableBody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableBodyHelpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableBodySolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableContactConstraint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodyData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodyConcaveCollisionAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodyHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodyRigidBodyCollisionConfiguration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftRigidCollisionAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftRigidDynamicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftMultiBodyDynamicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftSoftCollisionAlgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSparseSDF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodySolvers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDefaultSoftBodySolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btCGProjection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btConjugateGradient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btConjugateResidual.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableGravityForce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableMassSpringForce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableCorotatedForce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableNeoHookeanForce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableLinearElasticityForce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableLagrangianForce.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btPreconditioner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableBackwardEulerObjective.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableBodySolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableMultiBodyConstraintSolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableContactProjection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableMultiBodyDynamicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btDeformableContactConstraint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btKrylovSolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\poly34.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\btSoftBodySolverVertexBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableBody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableBodyHelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableBodySolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\BulletReducedDeformableBody\btReducedDeformableContactConstraint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_d3d9\_deps\bullet3-src\src\BulletSoftBody\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CC1DC226-DD13-331E-8CC3-A14321230FE6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EB02C100-BE3F-37EF-9B77-64E649EE6BAC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

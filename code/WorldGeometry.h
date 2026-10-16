@@ -3,38 +3,54 @@
 
 // ============================================================================
 // CannonCruise - WorldGeometry decode + clump instantiate (WorldGeometry.h)
-// Faz 4.6o: wbID_WORLDGEOMETRY asset payload düzeni (VIKING01/IDUNA03/
-// BEAVER01 hexdump + binary FUN_004c9b70 analizi ile çözüldü):
+// Phase 4.6o: wbID_WORLDGEOMETRY asset payload layout (solved via VIKING01/
+// IDUNA03/BEAVER01 hexdump + binary FUN_004c9b70 analysis):
 //
 //   [u32 prefixSectionLength][u32 libraryId=0x1803FFFF]
 //   [prefix: STRUCT(16B: u32 master0,0,5,0) + GEOMETRY + EXTENSION]
-//     — prefix uzunluğu = ilk ATOMIC chunk header'ına ofset
-//   [ATOMIC × N]  — her biri: STRUCT(16B: u32 artifact,0,u32 flags=5,0)
-//                   + GEOMETRY (gömülü, d3d8-native OLMAYAN standart RW
-//                   verisi — flags TEXTURED2|PRELIT|...) + EXTENSION
-//   [trailing chunk — tipe göre dünya varyantı: 0x22/0x1E/0x39]
+//     — prefix length = offset to first ATOMIC chunk header
+//   [ATOMIC × N]  — each: STRUCT(16B: u32 artifact,0,u32 flags=5,0)
+//                   + GEOMETRY (embedded, NON-d3d8-native standard RW
+//                   data — flags TEXTURED2|PRELIT|...) + EXTENSION
+//   [u32 count2][ATOMIC × count2]  ← Phase 4.6s: the "trailing chunk" section
+//                   we called is actually the SECOND ATOMIC group;
+//                   0x22/0x1E/0x39 is NOT a chunk TYPE but group2 atomic COUNT
+//                   (34/30/57). (Old code only read the type and never
+//                   instantiated the group → VIKING01 had 34 atomics /
+//                   8489 vertices not rendered.) End has 2-3 bytes asset
+//                   padding.
 //
-// Binary: FUN_004c9b70 (atomic döngüsü; header type==0x14 ATOMIC assert),
-// FUN_004dbdb0 (sektör/atomic okuyucu). Gömülü geometri librw
-// Geometry::streamRead ile çözülür (version 0x36003 → native OLMAYAN
-// standart akış; MATLIST d3d8 IMAGE'leri raster create'e bağlı —
-// başarısız atomic'ler atlanır).
+// Binary: FUN_004c9b70 (atomic loop; header type==0x14 ATOMIC assert),
+// FUN_004dbdb0 (sector/atomic reader). Embedded geometry resolved via
+// librw Geometry::streamRead (version 0x36003 → NON-native standard stream;
+// MATLIST d3d8 IMAGE's depend on raster create — failed atomics skipped).
 // ============================================================================
 
 #include "rwcore.h"
 
-/// Decode edilmiş world geometry envanteri (test fixture kaynakları).
+/// Decoded world geometry inventory (test fixture sources).
 struct WorldGeometryInfo {
-    RwUInt32 prefixSectionLength; ///< [0] — ilk ATOMIC ofseti
+    RwUInt32 prefixSectionLength; ///< [0] — offset to first ATOMIC
     RwUInt32 libraryId;           ///< [4] — 0x1803FFFF (RW 3.6)
-    RwUInt32 masterStruct[4];     ///< STRUCT@8 body (ilk: 25115 — bilgi)
-    RwUInt32 atomicCount;         ///< ATOMIC chunk sayısı
-    RwUInt32 totalVertices;       ///< gömülü geometriler toplam vertice
-    RwUInt32 totalTriangles;      ///< gömülü geometriler toplam üçgen
-    RwUInt32 trailingChunkType;   ///< atomikler sonrası ilk chunk (0 = yok)
+    RwUInt32 masterStruct[4];     ///< STRUCT@8 body (first: 25115 — info)
+    RwUInt32 atomicCount;         ///< ATOMIC chunk count
+    RwUInt32 totalVertices;       ///< embedded geometries total vertices
+    RwUInt32 totalTriangles;      ///< embedded geometries total triangles
+    RwUInt32 trailingChunkType;   ///< First u32 AFTER ATOMICs = GROUP2 COUNT
+                                  ///< (0x22/0x1E/0x39 = 34/30/57 — was thought
+                                  ///< to be "trailing chunk" in Phase 4.6s;
+                                  ///< actually FUN_004c9b70's second
+                                  ///< [count][ATOMIC×N])
+    RwUInt32 trailingChunkOffset; ///< trailing header offset (payload start 0)
+    RwUInt32 trailingChunkLength; ///< trailing body length (0 = overflow/bad)
+    RwUInt32 trailingLibraryId;   ///< trailing header libid (RW 3.6 = 0x1803FFFF)
+    RwUInt32 atomicGroup2Offset;  ///< [u32 count2] offset (group2 start)
+    RwUInt32 atomicGroup2Count;   ///< second ATOMIC group count (0 = none)
+    RwUInt32 group2Vertices;      ///< group2 total vertices (peek; not decoded)
+    RwUInt32 group2Triangles;     ///< group2 total triangles (peek; not decoded)
 };
 
-/// Son CreateClump'un dünya bbox'ı (tüm atomic vertice'leri — auto-framing)
+/// Last CreateClump's world bbox (all atomic vertices — auto-framing)
 struct WorldGeometryBounds {
     RwReal min[3];  ///< bbox köşesi (en küçük)
     RwReal max[3];  ///< bbox köşesi (en büyük)
@@ -42,46 +58,46 @@ struct WorldGeometryBounds {
 };
 
 /**
- * @brief Son WorldGeometry_CreateClump'un hesapladığı bbox'ı döndürür.
- * @param pOut Çıktı (NULL güvenli).
- * @return TRUE ise bbox geçerli.
+ * @brief Returns bbox computed by last WorldGeometry_CreateClump.
+ * @param pOut Output (NULL-safe).
+ * @return TRUE if bbox is valid.
  */
 RwBool WorldGeometry_GetLastBounds(WorldGeometryBounds *pOut);
 
 /**
- * @brief Clump geometrilerini teşhis eder (renksizlik kök nedeni).
- *        İlk N atomic: flags (PRELIT/TEXTURED), vertex rengi varlığı +
- *        örneği, malzeme rengi + doku adı + çözüldü mü. stdout.
+ * @brief Diagnose clump geometries (root cause of colorlessness).
+ *        First N atomic: flags (PRELIT/TEXTURED), vertex color presence +
+ *        instance, material color + texture name + resolved. stdout.
  */
 void WorldGeometry_Diagnose(const void *pClump, int maxAtomics);
 
 /**
- * @brief Payload yapısını yürür ve doğrular (okuma yok — gezinme).
+ * @brief Walks and validates payload structure (no read — traversal only).
  *
- * Her ATOMIC: STRUCT(16) + GEOMETRY(STRUCT başlığından flags/tris/verts
- * peek) + EXTENSION; zincir bozulursa/taşarsa FALSE.
+ * Each ATOMIC: STRUCT(16) + GEOMETRY (STRUCT header flags/tris/verts peek)
+ * + EXTENSION; returns FALSE if chain corrupt/overflows.
  *
- * @param pBuf  Asset payload (RwStudioAssetReadResource çıktısı).
- * @param len   Payload uzunluğu.
- * @param pInfo Çıktı envanter (NULL olabilir — yalnız doğrulama).
- * @return TRUE yapı sağlam; FALSE bozuk/desteklenmeyen.
+ * @param pBuf  Asset payload (RwStudioAssetReadResource output).
+ * @param len   Payload length.
+ * @param pInfo Output inventory (may be NULL — validation only).
+ * @return TRUE structure sound; FALSE corrupt/unsupported.
  */
 RwBool WorldGeometry_Inspect(const void *pBuf, RwUInt32 len,
                              WorldGeometryInfo *pInfo);
 
 /**
- * @brief Atomic'leri clump'a instantiate eder (identity frame'ler).
+ * @brief Instantiates atomics into clump (identity frames).
  *
- * Her ATOMIC gömülü GEOMETRY'sini rw::Geometry::streamRead ile çözer;
- * başarısız geometri (örn. d3d8 native MATLIST) o atomic'i ATLANIR.
- * En az bir atomic başarılıysa clump döner.
+ * Each ATOMIC's embedded GEOMETRY resolved via rw::Geometry::streamRead;
+ * failed geometry (e.g. d3d8 native MATLIST) skips that atomic.
+ * Returns clump if at least one atomic succeeded.
  *
- * @return rw::Clump* (sahiplik çağırıcıda — DestroyClump) veya NULL.
+ * @return rw::Clump* (ownership with caller — DestroyClump) or NULL.
  */
 void *WorldGeometry_CreateClump(const void *pBuf, RwUInt32 len);
 
 /**
- * @brief Clump + frame hiyerarşisini yok eder (NULL güvenli).
+ * @brief Destroys clump + frame hierarchy (NULL-safe).
  */
 void WorldGeometry_DestroyClump(void *pClump);
 

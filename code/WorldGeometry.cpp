@@ -1,7 +1,7 @@
 // ============================================================================
 // CannonCruise - WorldGeometry decode + clump instantiate (WorldGeometry.cpp)
-// Faz 4.6o: binary FUN_004c9b70 (ATOMIC döngüsü) + VERİ hexdump çözümü.
-// Prefix [len][libid] + STRUCT/GEOMETRY/EXT + ATOMIC×N (gömülü geometry).
+// Phase 4.6o: binary FUN_004c9b70 (ATOMIC loop) + VERIFY hexdump solution.
+// Prefix [len][libid] + STRUCT/GEOMETRY/EXT + ATOMIC×N (embedded geometry).
 // ============================================================================
 
 #include "WorldGeometry.h"
@@ -19,7 +19,7 @@ const RwUInt32 kChunkStruct = 0x01;
 const RwUInt32 kChunkGeometry = 0x0F;
 const RwUInt32 kChunkAtomic = 0x14;
 
-// Son CreateClump'un dünya bbox'ı — auto-framing (4.6q)
+// Last CreateClump world bbox — auto-framing (4.6q)
 WorldGeometryBounds s_Bounds;
 
 struct Cursor {
@@ -44,7 +44,7 @@ inline RwUInt32 ReadU32At(const RwUInt8 *pBuf, RwUInt32 pos) {
     return v;
 }
 
-/// [type][len][libid] 12B başlık; libid 0x1803FFFF ve tip beklendi.
+/// [type][len][libid] 12B header; libid 0x1803FFFF and type expected.
 inline RwBool ReadHeader(Cursor &c, RwUInt32 expectType, RwUInt32 *pLen) {
     if (!Have(c, 12)) {
         return FALSE;
@@ -66,12 +66,12 @@ inline RwBool ReadHeader(Cursor &c, RwUInt32 expectType, RwUInt32 *pLen) {
 }
 
 /**
- * @brief Bir ATOMIC chunk'ını işler: STRUCT(16) + GEOMETRY peek/decode.
+ * @brief Process one ATOMIC chunk: STRUCT(16) + GEOMETRY peek/decode.
  *
- * @param decode TRUE → Geometry::streamRead + Atomic oluştur (clump'a ekle);
- *               FALSE → yalnız envanter say (Inspect).
- * @return decode modunda: oluşturulan atomic (başarısız geometride NULL);
- *         peek modunda: her zaman dummy (1).
+ * @param decode TRUE → Geometry::streamRead + Atomic create (add to clump);
+ *               FALSE → inventory count only (Inspect).
+ * @return decode mode: created atomic (NULL on failed geometry);
+ *         peek mode: always dummy (1).
  */
 RwBool ProcessAtomic(Cursor &c, RwBool decode, rw::Clump *pClump,
                      rw::Frame *pRootFrame, RwUInt32 *pVerts,
@@ -93,15 +93,15 @@ RwBool ProcessAtomic(Cursor &c, RwBool decode, rw::Clump *pClump,
     }
     c.pos += 16;
 
-    // inner GEOMETRY — STRUCT başlığından flags/tris/verts peek
+    // inner GEOMETRY — STRUCT header flags/tris/verts peek
     const RwUInt32 geoChunkStart = c.pos;
     RwUInt32 geoLen = 0;
     if (!ReadHeader(c, kChunkGeometry, &geoLen)) {
         c.pos = atomicEnd;
         return FALSE;
     }
-    // c.pos = geometry gövdesi = STRUCT header (Geometry::streamRead bunu
-    // findChunk ile okur). Peek: [type][len][libid][GeoStreamData].
+    // c.pos = geometry body = STRUCT header (Geometry::streamRead reads this
+    // via findChunk). Peek: [type][len][libid][GeoStreamData].
     if (!Have(c, 12 + 16)) {
         c.pos = atomicEnd;
         return FALSE;
@@ -111,7 +111,7 @@ RwBool ProcessAtomic(Cursor &c, RwBool decode, rw::Clump *pClump,
         c.pos = atomicEnd;
         return FALSE;
     }
-    c.pos += 4; // STRUCT type'ı geç (c.pos = len alanının başı)
+    c.pos += 4; // skip STRUCT type (c.pos = start of len field)
     const RwUInt32 flags = ReadU32At(c.pBuf, c.pos + 8);
     const RwUInt32 numTris = ReadU32At(c.pBuf, c.pos + 12);
     const RwUInt32 numVerts = ReadU32At(c.pBuf, c.pos + 16);
@@ -120,8 +120,8 @@ RwBool ProcessAtomic(Cursor &c, RwBool decode, rw::Clump *pClump,
     (void)flags;
 
     if (decode && pClump != nullptr) {
-        // stream'i geometry gövdesinin BAŞINA konumla (findChunk STRUCT
-        // bekler — geometry header'dan hemen sonra).
+        // position stream at geometry body start (findChunk expects STRUCT
+        // — right after geometry header).
         rw::StreamMemory mem;
         mem.open(const_cast<RwUInt8 *>(c.pBuf) + geoChunkStart + 12,
                  geoLen, geoLen);
@@ -132,9 +132,9 @@ RwBool ProcessAtomic(Cursor &c, RwBool decode, rw::Clump *pClump,
             rw::Frame *pFrame = rw::Frame::create();
             if (pAtomic != nullptr && pFrame != nullptr) {
                 pAtomic->setFrame(pFrame);
-                pRootFrame->addChild(pFrame); // köke bağla (hiyerarşi)
+                pRootFrame->addChild(pFrame); // attach to root (hierarchy)
                 pAtomic->setGeometry(pGeo, 0);
-                pGeo->destroy(); // setGeometry ref alır
+                pGeo->destroy(); // setGeometry takes ref
                 pClump->addAtomic(pAtomic);
                 if (ppAtomic) {
                     *ppAtomic = pAtomic;
@@ -177,7 +177,7 @@ RwBool WorldGeometry_Inspect(const void *pBuf, RwUInt32 len,
         return FALSE;
     }
 
-    // Prefix: STRUCT(16) + GEOMETRY + EXTENSION — preLen byte
+    // Prefix: STRUCT(16) + GEOMETRY + EXTENSION — preLen bytes
     {
         Cursor prefix = c;
         const RwUInt32 prefixEnd = 8 + preLen;
@@ -190,24 +190,24 @@ RwBool WorldGeometry_Inspect(const void *pBuf, RwUInt32 len,
             std::memcpy(pInfo->masterStruct, prefix.pBuf + prefix.pos, 16);
         }
         prefix.pos += 16;
-        // GEOMETRY tam atlanır (başlık + geoLen)
+        // skip GEOMETRY fully (header + geoLen)
         RwUInt32 geoLen = 0;
         if (!ReadHeader(prefix, kChunkGeometry, &geoLen)) {
             return FALSE;
         }
         prefix.pos += geoLen;
-        // EXTENSION (uzunluk 0 olabilir)
+        // EXTENSION (length may be 0)
         RwUInt32 extLen = 0;
         if (!ReadHeader(prefix, 0x03, &extLen)) {
             return FALSE;
         }
         prefix.pos += extLen;
         if (prefix.pos != prefixEnd) {
-            return FALSE; // preLen tutarlılığı
+            return FALSE; // preLen consistency
         }
     }
 
-    // ATOMIC döngüsü — binary FUN_004c9b70 gibi
+    // ATOMIC loop — like binary FUN_004c9b70
     c.pos = 8 + preLen;
     RwUInt32 atomicCount = 0;
     RwUInt32 totalVerts = 0;
@@ -219,7 +219,7 @@ RwBool WorldGeometry_Inspect(const void *pBuf, RwUInt32 len,
         }
         if (!ProcessAtomic(c, FALSE, nullptr, nullptr, &totalVerts,
                            &totalTris, nullptr)) {
-            return FALSE; // bozuk atomic — yapısal hata
+            return FALSE; // corrupt atomic — structural error
         }
         ++atomicCount;
     }
@@ -233,7 +233,46 @@ RwBool WorldGeometry_Inspect(const void *pBuf, RwUInt32 len,
         pInfo->atomicCount = atomicCount;
         pInfo->totalVertices = totalVerts;
         pInfo->totalTriangles = totalTris;
-        pInfo->trailingChunkType = (c.pos + 12 <= len) ? ReadU32(c) : 0;
+        // Phase 4.6s — SECOND ATOMIC GROUP. Atomic loop broke at type!=0x14
+        // → c.pos is now at [u32 count2] offset. FUN_004c9b70 model is
+        // [u32 count][ATOMIC × count]. Phase 4.6o thought this u32 was
+        // "trailing chunk type"; content is ACTUALLY atomic group (34/30/57 count).
+        pInfo->trailingChunkOffset = c.pos;
+        pInfo->trailingChunkType = 0;
+        pInfo->trailingChunkLength = 0;
+        pInfo->trailingLibraryId = 0;
+        if (c.pos + 12 <= len) {
+            // raw header reads (diagnostics/compatibility; no longer a chunk)
+            pInfo->trailingChunkType = ReadU32At(c.pBuf, c.pos);
+            const RwUInt32 tlen = ReadU32At(c.pBuf, c.pos + 4);
+            pInfo->trailingLibraryId = ReadU32At(c.pBuf, c.pos + 8);
+            pInfo->trailingChunkLength =
+                (c.pos + 12 + tlen <= len) ? tlen : 0;
+        }
+        if (c.pos + 4 <= len) {
+            Cursor g2 = c;
+            const RwUInt32 cnt = ReadU32(g2);
+            g2.pos += 4;
+            RwUInt32 v2 = 0;
+            RwUInt32 t2 = 0;
+            RwUInt32 walked = 0;
+            while (walked < cnt && g2.pos + 12 <= len) {
+                if (ReadU32(g2) != kChunkAtomic) {
+                    break;
+                }
+                if (!ProcessAtomic(g2, FALSE, nullptr, nullptr, &v2, &t2,
+                                   nullptr)) {
+                    break;
+                }
+                ++walked;
+            }
+            if (cnt > 0 && walked == cnt) {
+                pInfo->atomicGroup2Offset = c.pos;
+                pInfo->atomicGroup2Count = cnt;
+                pInfo->group2Vertices = v2;
+                pInfo->group2Triangles = t2;
+            }
+        }
     }
     return TRUE;
 }
@@ -244,7 +283,7 @@ void *WorldGeometry_CreateClump(const void *pBuf, RwUInt32 len) {
         return nullptr;
     }
 
-    // auto-framing bbox — her CreateClump sıfırlanır (son dünya geçerli)
+    // auto-framing bbox — reset each CreateClump (last world valid)
     s_Bounds.valid = FALSE;
 
     rw::Clump *pClump = rw::Clump::create();
@@ -265,62 +304,90 @@ void *WorldGeometry_CreateClump(const void *pBuf, RwUInt32 len) {
     RwUInt32 verts = 0;
     RwUInt32 tris = 0;
     RwUInt32 loaded = 0;
-    while (c.pos + 12 <= len) {
-        if (ReadU32(c) != kChunkAtomic) {
-            break; // ReadU32 position ilerletmez
+
+    // bbox accumulation — all atomic vertices (auto-framing); group1+group2
+    auto accumulateBounds = [](rw::Atomic *pAtomic) {
+        rw::Geometry *pGeo = pAtomic->geometry;
+        if (pGeo == nullptr || pGeo->numMorphTargets == 0 ||
+            pGeo->morphTargets[0].vertices == nullptr) {
+            return;
         }
-        rw::Atomic *pAtomic = nullptr;
-        if (ProcessAtomic(c, TRUE, pClump, pRootFrame, &verts, &tris,
-                          &pAtomic) != TRUE) {
-            break;
-        }
-        if (pAtomic != nullptr) {
-            ++loaded;
-            // bbox birikimi — tüm atomic vertice'leri (auto-framing)
-            rw::Geometry *pGeo = pAtomic->geometry;
-            if (pGeo != nullptr && pGeo->numMorphTargets > 0 &&
-                pGeo->morphTargets[0].vertices != nullptr) {
-                const rw::V3d *pv = pGeo->morphTargets[0].vertices;
-                for (int i = 0; i < pGeo->numVertices; ++i) {
-                    if (s_Bounds.valid != TRUE) {
-                        s_Bounds.min[0] = s_Bounds.max[0] = pv[i].x;
-                        s_Bounds.min[1] = s_Bounds.max[1] = pv[i].y;
-                        s_Bounds.min[2] = s_Bounds.max[2] = pv[i].z;
-                        s_Bounds.valid = TRUE;
-                    } else {
-                        if (pv[i].x < s_Bounds.min[0]) {
-                            s_Bounds.min[0] = pv[i].x;
-                        }
-                        if (pv[i].x > s_Bounds.max[0]) {
-                            s_Bounds.max[0] = pv[i].x;
-                        }
-                        if (pv[i].y < s_Bounds.min[1]) {
-                            s_Bounds.min[1] = pv[i].y;
-                        }
-                        if (pv[i].y > s_Bounds.max[1]) {
-                            s_Bounds.max[1] = pv[i].y;
-                        }
-                        if (pv[i].z < s_Bounds.min[2]) {
-                            s_Bounds.min[2] = pv[i].z;
-                        }
-                        if (pv[i].z > s_Bounds.max[2]) {
-                            s_Bounds.max[2] = pv[i].z;
-                        }
-                    }
+        const rw::V3d *pv = pGeo->morphTargets[0].vertices;
+        for (int i = 0; i < pGeo->numVertices; ++i) {
+            if (s_Bounds.valid != TRUE) {
+                s_Bounds.min[0] = s_Bounds.max[0] = pv[i].x;
+                s_Bounds.min[1] = s_Bounds.max[1] = pv[i].y;
+                s_Bounds.min[2] = s_Bounds.max[2] = pv[i].z;
+                s_Bounds.valid = TRUE;
+            } else {
+                if (pv[i].x < s_Bounds.min[0]) {
+                    s_Bounds.min[0] = pv[i].x;
+                }
+                if (pv[i].x > s_Bounds.max[0]) {
+                    s_Bounds.max[0] = pv[i].x;
+                }
+                if (pv[i].y < s_Bounds.min[1]) {
+                    s_Bounds.min[1] = pv[i].y;
+                }
+                if (pv[i].y > s_Bounds.max[1]) {
+                    s_Bounds.max[1] = pv[i].y;
+                }
+                if (pv[i].z < s_Bounds.min[2]) {
+                    s_Bounds.min[2] = pv[i].z;
+                }
+                if (pv[i].z > s_Bounds.max[2]) {
+                    s_Bounds.max[2] = pv[i].z;
                 }
             }
+        }
+    };
+
+    // Two ATOMIC groups (Phase 4.6s solution — FUN_004c9b70 model):
+    //   group1: no count → until type != 0x14 (prefix end →)
+    //   group2: [u32 count2][ATOMIC × count2]  (0x22/0x1E/0x39 = 34/30/57)
+    for (RwUInt32 grp = 0; grp < 2; ++grp) {
+        RwUInt32 expected = 0; // 0 = run until type != 0x14
+        if (grp == 0) {
+            c.pos = 8 + info.prefixSectionLength;
+        } else {
+            if (info.atomicGroup2Count == 0) {
+                break;
+            }
+            c.pos = info.atomicGroup2Offset + 4; // skip count field
+            expected = info.atomicGroup2Count;
+        }
+        RwUInt32 done = 0;
+        while (c.pos + 12 <= len) {
+            if (expected != 0 && done >= expected) {
+                break;
+            }
+            if (ReadU32(c) != kChunkAtomic) {
+                break; // ReadU32 doesn't advance position
+            }
+            rw::Atomic *pAtomic = nullptr;
+            if (ProcessAtomic(c, TRUE, pClump, pRootFrame, &verts, &tris,
+                              &pAtomic) != TRUE) {
+                break;
+            }
+            if (pAtomic != nullptr) {
+                ++loaded;
+                accumulateBounds(pAtomic);
+            }
+            ++done;
         }
     }
 
     if (loaded == 0) {
-        // Clump::destroy frame hiyerarşisini de yok eder (getFrame →
-        // destroyHierarchy) — ayrıca destroyHierarchy ÇAĞRILMAZ.
+        // Clump::destroy also destroys frame hierarchy (getFrame →
+        // destroyHierarchy) — destroyHierarchy is NOT called separately.
         pClump->destroy();
         return nullptr;
     }
     std::fprintf(stderr,
-                 "WorldGeometry: %u/%u atomics instantiated (%u verts)\n",
-                 loaded, info.atomicCount, verts);
+                 "WorldGeometry: %u/%u+%u atomics instantiated "
+                 "(%u verts, %u tris)\n",
+                 loaded, info.atomicCount, info.atomicGroup2Count, verts,
+                 tris);
     return pClump;
 }
 
@@ -329,8 +396,8 @@ void WorldGeometry_DestroyClump(void *pClumpPtr) {
         return;
     }
     rw::Clump *pClump = static_cast<rw::Clump *>(pClumpPtr);
-    // Clump::destroy atomics + geometriler + frame hiyerarşisini (setFrame
-    // edilen kök frame dahil) yok eder.
+    // Clump::destroy destroys atomics + geometries + frame hierarchy (including
+    // setFrame root frame).
     pClump->destroy();
 }
 
@@ -346,15 +413,15 @@ void WorldGeometry_Diagnose(const void *pClumpPtr, int maxAtomics) {
     if (pClumpPtr == nullptr || maxAtomics <= 0) {
         return;
     }
-    // Teşhis boyası: CANNONCRUISE_REDGEO=1 → tüm vertex renkleri kırmızı
-    // (ilk render öncesi instance'a girer; renk yolu testi).
+    // Diagnostic paint: CANNONCRUISE_REDGEO=1 → all vertex colors red
+    // (enters instance before first render; color path test).
     const RwBool paintRed = (std::getenv("CANNONCRUISE_REDGEO") != nullptr)
                                 ? TRUE
                                 : FALSE;
     rw::Clump *pClump = static_cast<rw::Clump *>(
         const_cast<void *>(pClumpPtr));
     if (paintRed == TRUE) {
-        // Atomik başına düz renk (kırmızı/yeşil/mavi/sarı/magenta/cyan).
+        // Flat color per atomic (red/green/blue/yellow/magenta/cyan).
         static const RwUInt8 kCols[6][3] = {
             {255, 16, 16}, {16, 255, 16}, {16, 16, 255},
             {255, 255, 16}, {255, 16, 255}, {16, 255, 255}};
@@ -375,8 +442,8 @@ void WorldGeometry_Diagnose(const void *pClumpPtr, int maxAtomics) {
             ++ai;
         }
     }
-    // İzolasyon: CANNONCRUISE_ONEATOMIC=1 → ilk atomic hariç hepsini sök
-    // (üzerine çizim/overdraw şüphesi).
+    // Isolation: CANNONCRUISE_ONEATOMIC=1 → remove all but first atomic
+    // (overdraw suspicion).
     if (std::getenv("CANNONCRUISE_ONEATOMIC") != nullptr) {
         bool first = true;
         FORLIST(lnk, pClump->atomics) {
@@ -390,7 +457,7 @@ void WorldGeometry_Diagnose(const void *pClumpPtr, int maxAtomics) {
             }
         }
     }
-    // Culling kapatma teşhisi: CANNONCRUISE_NOCULL=1 → tüm küreler devasa.
+    // Culling disable diagnostic: CANNONCRUISE_NOCULL=1 → all spheres huge.
     if (std::getenv("CANNONCRUISE_NOCULL") != nullptr) {
         FORLIST(lnk, pClump->atomics) {
             rw::Atomic *pAtomic = LLLinkGetData(lnk, rw::Atomic, inClump);
@@ -424,7 +491,7 @@ void WorldGeometry_Diagnose(const void *pClumpPtr, int maxAtomics) {
                           (unsigned)g->colors[0].green,
                           (unsigned)g->colors[0].blue,
                           (unsigned)g->colors[0].alpha);
-            // Renk histogramı (tüm verteksler): [0] temsilci mi?
+            // Color histogram (all vertices): is [0] representative?
             long sumR = 0, sumG = 0, sumB = 0;
             int nBlack = 0;
             for (int v = 0; v < g->numVertices; ++v) {

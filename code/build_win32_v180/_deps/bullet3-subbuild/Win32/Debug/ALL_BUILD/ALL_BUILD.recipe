@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-subbuild\Debug\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-subbuild\Debug\bullet3-populate</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\bullet3-subbuild\Debug\ALL_BUILD</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

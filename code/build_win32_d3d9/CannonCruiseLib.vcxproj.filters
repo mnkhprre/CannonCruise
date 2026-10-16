@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Actor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\AfterGameMenuBehavior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\AmmoCrate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\AnimController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Astar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\AudioManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\AudioStreamEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\BehaviourLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\BinkPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Bird.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\CameraState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Cannon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Cannonball.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\CollisionFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\CollisionGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\CollisionTrigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Debris.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Fade.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\FernandoActor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Fish.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Flotsam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\FmvScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\FontSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\GUIHealthBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\GUIMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\GlobalFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\HavokMemoryManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\HealthDebris.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\InputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Lifebuoy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\LoadLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\LocalizationManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\MenuBehavior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\MenuDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\MenuGetFrameDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\MenuGetTimeDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\MenuSetFrameDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\MenuSetTimeDelegate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\MissionIndicator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Ocean.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\OceanTile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Ocean_W32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ParticleBank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ParticleEmitter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ParticleScript.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PathFindingMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PathFindingResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PerformanceVisualizer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PhysicsBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PhysicsEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PhysicsResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\PhysicsWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ProfilerBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\RealtimeProfiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\RenderBehaviourWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\RenderPipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\RenderPlatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Rt2dMaestro.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Rt2dMaestroStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\RwStudioStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\RwsAssets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\SaveGameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\SceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Ship.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ShipEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ShipPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ShipPlayerInputProxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ShowText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\ShowTextManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Soldier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Spawnable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\SpeakEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\SpeakManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\SpeakStreamDefs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\StaticCollisionData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\TextureResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\TowerCatapult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\Trigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\TxdDecode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\WbCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\WbRender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\WorldGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\WorldGeometryResource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\WorldSpawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\eventproxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\attributehandler\cattributehandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\attributehandler\cclassfactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\attributehandler\clinearmemorymanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\attributehandler\csystemcommands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\eventhandler\ceventhandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\memoryhandler\memoryhandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\resourcemanager\cresourcemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\core\streamhandler\streamhandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\attachplugins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\gamemanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\gameplugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\havokstart.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\renderpipeline.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\rwstartengine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\startup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\systemservices.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\videomode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\win32\enginewin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\win32\rwreg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\startup\win32\win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\Animation\AnimHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\Animation\SkinSafe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\Audio\Audio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\rwaudresource\rwaudresource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\rwgfxresource\rwgfxresource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\txtresource\txtresource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\world\cmaterialevent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\world\helpers\camerahelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\world\helpers\clumphelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\world\helpers\framehelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\framework\toolkits\world\helpers\skinhelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\havok\havokimpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\rw_librw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\rwstubs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EB02C100-BE3F-37EF-9B77-64E649EE6BAC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

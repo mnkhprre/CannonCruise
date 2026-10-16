@@ -26,8 +26,11 @@ static const char* const REG_VAL_HEIGHT  = "VideoResHeight";           // 0x0061
 static const char* const REG_VAL_DEPTH   = "VideoResDepth";            // 0x00613048
 
 // Harici Motor Geri Çağrıları (startup.cpp / RenderWare motor bağlantıları)
+// NOT: ResizeCameraRasters GERÇEK tanımı enginewin.cpp'de BOOL döner
+// (FUN_00418130). İmza 'void' yazılırsa MSVC farklı mangled sembol üretir
+// → LNK2019 (?ResizeCameraRasters@@YAXHHH@Z vs @@YAHHH@Z).
 extern void Idle();
-extern void ResizeCameraRasters(int width, int height, int depth);
+extern BOOL ResizeCameraRasters(int width, int height, int depth);
 extern void CleanupEngine(HWND hWnd);
 extern BOOL InitEngine(HWND hWnd, HINSTANCE hInstance, int width, int height, int depth, BOOL bFullscreen);
 extern DWORD GetTime();

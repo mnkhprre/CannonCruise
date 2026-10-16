@@ -1,12 +1,5 @@
 // ============================================================================
 // CannonCruise - Audio Manager (AudioManager.cpp)
-// Original path: D:\Projects\CannonCruisePC\code\AudioManager.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
-//
-// Binary Fonksiyonları:
-//   FUN_00455c00 / FUN_00455c40 — CAudioManager constructor & event linking ("!ms_pSingleton Failed")
-//   FUN_00455f80 / FUN_00456180 — CAudioManager::PlaySound ("ms_pSingleton Failed")
-//   FUN_00456420 / FUN_00456520 — CAudioManager::UpdateListenerPosition ("ms_pSingleton Failed")
 // ============================================================================
 
 #include "AudioManager.h"
@@ -27,10 +20,6 @@ CAudioManager::CAudioManager()
     m_afVolumeGroups[2] = 1.0f;
 
     RwMatrixSetIdentity(&m_ListenerMatrix);
-
-    // Framework event message subscriptions:
-    // LinkMsg(RWS::CEventHandler::RegisterMsg("Mixer_UpdateListenerPosition"));
-    // LinkMsg(RWS::CEventHandler::RegisterMsg("Stop_AllVoices"));
 }
 
 // ---------------------------------------------------------------------------
@@ -49,25 +38,25 @@ void CAudioManager::HandleEvents(const RWS::CMsg& msg)
 }
 
 // ---------------------------------------------------------------------------
-// PlaySound – mirrors FUN_00456180.
-// Resolves sound cue name, applies 3D spatialization if pPos is provided,
-// and triggers playback through RenderWare Audio.
+// PlaySound – plays a sound cue by resource identifier.
 // ---------------------------------------------------------------------------
 void CAudioManager::PlaySound(const char* pSoundName, const RwV3d* pPos)
 {
-    if (!pSoundName) return;
-
-    // Load sound asset and trigger 3D audio playback
+    // TODO: Implement WAV playback from Sound\\Win32\\<name>.wav
+    // (currently a stub; sound files will be added later).
+    (void)pSoundName;
+    (void)pPos;
 }
 
 // ---------------------------------------------------------------------------
-// PlayStream – loads and streams a background music or ambient audio track.
+// PlayStream – streams a background music or ambient audio track.
 // ---------------------------------------------------------------------------
 void CAudioManager::PlayStream(const char* pStreamName, RwBool bLoop)
 {
-    if (!pStreamName) return;
-
-    // Stream background music track
+    // TODO: Implement background music streaming.
+    // (currently a stub; music files will be added later).
+    (void)pStreamName;
+    (void)bLoop;
 }
 
 // ---------------------------------------------------------------------------
@@ -75,7 +64,6 @@ void CAudioManager::PlayStream(const char* pStreamName, RwBool bLoop)
 // ---------------------------------------------------------------------------
 void CAudioManager::StopAllVoices()
 {
-    // Silence active voices
 }
 
 // ---------------------------------------------------------------------------
@@ -90,26 +78,22 @@ void CAudioManager::SetVolumeGroup(RwUInt32 groupIndex, RwReal volume)
 }
 
 // ---------------------------------------------------------------------------
-// GetVolumeGroup – returns volume level of specified channel.
+// GetVolumeGroup – returns volume level of specified group.
 // ---------------------------------------------------------------------------
 RwReal CAudioManager::GetVolumeGroup(RwUInt32 groupIndex) const
 {
-    if (groupIndex < 3)
-    {
+    if (groupIndex < 3) {
         return m_afVolumeGroups[groupIndex];
     }
     return 1.0f;
 }
 
 // ---------------------------------------------------------------------------
-// UpdateListenerPosition – mirrors FUN_00456520.
-// Updates 3D listener position, forward (at), and up orientation vectors
-// in the underlying RenderWare Audio mixer system.
+// UpdateListenerPosition – updates 3D listener position.
 // ---------------------------------------------------------------------------
 void CAudioManager::UpdateListenerPosition(const RwMatrix* pMatrix)
 {
-    if (pMatrix)
-    {
+    if (pMatrix) {
         m_ListenerMatrix = *pMatrix;
         RWS::Audio::SetListenerPosition(&m_ListenerMatrix.pos, &m_ListenerMatrix.at, &m_ListenerMatrix.up);
     }

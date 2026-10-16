@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\edbd158a2e868608d295d1bf7b7466a3\librw-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\a5ad52a5b758a8f6527e37af46a1305a\librw-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\2bd5e8924ec7b2576ca243b66b81b7ad\librw-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\mnkhprre\Documents\GitHub\CannonCruise\code\build_win32_v180\_deps\librw-subbuild\CMakeFiles\librw-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B0338059-0BE4-393C-8928-EDF498D78123}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

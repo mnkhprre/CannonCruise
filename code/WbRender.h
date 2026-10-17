@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - WaveBreaker Master Render Coordinator (WbRender.h)
 // Original path: D:\Projects\CannonCruisePC\code\WbRender.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include "framework/core/eventhandler/ceventhandler.h"

@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Flotsam Environmental Entity (Flotsam.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\Flotsam.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0047f590 — CFlotsam initialization & event wiring
 //   FUN_0047faa0 — CFlotsam clump loading ("Behaviour already has a clump", "_COLLHULL")
 //   FUN_0047fe40 — CFlotsam attribute processing

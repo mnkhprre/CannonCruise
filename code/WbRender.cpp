@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - WaveBreaker Master Render Coordinator (WbRender.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\WbRender.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_00430150 — CWbRender constructor & registration
 //   FUN_004308e0 — CWbRender::RenderFrame
 // ============================================================================
@@ -82,11 +82,11 @@ void CWbRender::RenderFrame(RwCamera* pCamera, RpWorld* pWorld)
     {
         ClearCamera(pCamera);
 
-        // 3D Dünya ve modellerin çizimi
+        // 3D world and models rendering
         RpWorldRender(pWorld);
 
-        // 2D Arayüz / HUD çizimi
-        // (Im2D can barı, minimap, altyazı)
+        // 2D UI / HUD rendering
+        // (Im2D health bar, minimap, subtitles)
 
         RwCameraEndUpdate(pCamera);
         RwCameraShowRaster(pCamera, 0, 0);

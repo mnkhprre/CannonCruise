@@ -29,7 +29,7 @@ RwBool BehaviourLoader::Register(const BehaviourClassEntry *pEntry) {
     ++s_EntryCount;
     sm_entryCount = s_EntryCount;
 
-    // Binary'de create CClassFactory'ye kayıtlıdır (FUN_00413700 Register)
+    // In binary, create is registered with CClassFactory (FUN_00413700 Register)
     RWS::CClassFactory::Register(
         pEntry->className,
         (RWS::ClassCreationFunc)pEntry->create, pEntry->size, 1);
@@ -60,12 +60,12 @@ RwInt32 BehaviourLoader::ProcessObject(const RwStudioObject *pObject,
     RwInt32 applied = 0;
     for (RwUInt32 b = 0; b < pObject->behaviourCount; ++b) {
         const RwStudioBehaviour *pBeh = &pObject->behaviours[b];
-        // sınıf adı → fabrika (binary: CClassFactory::Create)
+        // class name -> factory (binary: CClassFactory::Create)
         void *pInstance = Create(pBeh->className);
         if (!pInstance) {
-            continue; // bilinmeyen sınıf: Process property atlamaya devam eder
+            continue; // unknown class: Process property continues to skip
         }
-        // apply virtual (vtable slot1): property kayıtları
+        // apply virtual (vtable slot1): property registrations
         for (RwUInt32 i = 0; i < s_EntryCount; ++i) {
             if (std::strcmp(s_Entries[i].className, pBeh->className) != 0) {
                 continue;

@@ -5,17 +5,17 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # MSVC: conforming preprocessor (VS2017 15.8+)
-# Geleneksel preprocessör makro içindeki lambda syntax'ını bozar (C2059: '[')
-# /Zc:preprocessor bu sorunu kökten çözer — RWS_REGISTER_CLASS lambda kullanır.
+# Traditional preprocessor breaks lambda syntax inside macros (C2059: '[')
+# /Zc:preprocessor fixes this at root — RWS_REGISTER_CLASS uses lambda.
 if(MSVC)
     add_compile_options(/Zc:preprocessor)
 endif()
 
 # ---------------------------------------------------------------------------
-# Bullet Physics — Havok yerine taşınabilir fizik motoru (Faz 4.6).
-# Binary parametreleri (sub_55E6D0): gravity -9.8, AABB ±500, friction 0.6,
-# restitution 0.3, solver iter 20; sabit adım 1/60 (sub_4B8710).
-# Sadece gerekli alt kütüphaneler derlenir (LinearMath/Collision/Dynamics).
+# Bullet Physics — portable physics engine instead of Havok (Phase 4.6).
+# Binary parameters (sub_55E6D0): gravity -9.8, AABB ±500, friction 0.6,
+# restitution 0.3, solver iter 20; fixed step 1/60 (sub_4B8710).
+# Only required sub-libraries compiled (LinearMath/Collision/Dynamics).
 # ---------------------------------------------------------------------------
 include(FetchContent)
 FetchContent_Declare(bullet3
@@ -33,16 +33,16 @@ set(BUILD_CLSOCKET       OFF CACHE BOOL "" FORCE)
 set(USE_GLUT             OFF CACHE BOOL "" FORCE)
 set(BUILD_SHARED_LIBS    OFF CACHE BOOL "" FORCE)
 set(BULLET_REQUIRE_CXX_FLAGS OFF CACHE BOOL "" FORCE)
-# Bullet 3.25 eski cmake_minimum_required içerir (CMake 4.x <3.5 kaldırır)
+# Bullet 3.25 includes older cmake_minimum_required (CMake 4.x removes <3.5)
 set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 FetchContent_MakeAvailable(bullet3)
 
 # ---------------------------------------------------------------------------
-# librw — RenderWare Graphics 3.x API yeniden implementasyonu (MIT).
-# Kapı 4: gerçek .RWS asset akışı doğrulaması. Platform seçenekleri:
-#   NULL  — cihaz bağımsız no-op (headless smoke test)
-#   GL3   — GLFW + OpenGL 3.x (macOS/Linux derleme)
-#   D3D9  — Direct3D 9 (Windows/MSVC derlemesi)
+# librw — RenderWare Graphics 3.x API reimplementation (MIT).
+# Phase 4: real .RWS asset stream validation. Platform options:
+#   NULL  — device-independent no-op (headless smoke test)
+#   GL3   — GLFW + OpenGL 3.x (macOS/Linux build)
+#   D3D9  — Direct3D 9 (Windows/MSVC build)
 # ---------------------------------------------------------------------------
 set(CANNONCRUISE_RW_PLATFORM "NULL" CACHE STRING "librw platform (NULL|GL3|D3D9)")
 set_property(CACHE CANNONCRUISE_RW_PLATFORM PROPERTY STRINGS NULL GL3 D3D9)
@@ -56,16 +56,16 @@ set(LIBRW_TOOLS    OFF   CACHE BOOL   "" FORCE)
 set(LIBRW_INSTALL  OFF   CACHE BOOL   "" FORCE)
 FetchContent_MakeAvailable(librw)
 
-# RenderWare platform seçimine göre konfigürasyon:
-#   NULL  — cihaz bağımsız no-op (headless smoke test) — WINMM için timeGetTime
-#   GL3   — GLFW + OpenGL 3.x (macOS/Linux derlemesi)
-#   D3D9  — Direct3D 9 (Windows/MSVC derlemesi)
+# Configuration by RenderWare platform selection:
+#   NULL  — device-independent no-op (headless smoke test) — timeGetTime for WINMM
+#   GL3   — GLFW + OpenGL 3.x (macOS/Linux build)
+#   D3D9  — Direct3D 9 (Windows/MSVC build)
 # ---------------------------------------------------------------------------
 if(CANNONCRUISE_RW_PLATFORM STREQUAL "GL3")
     find_package(glfw3 REQUIRED)
 elseif(CANNONCRUISE_RW_PLATFORM STREQUAL "D3D9")
-    # Windows/MSVC için D3D9: CMake içinde sistem paketi find'i yok;
-    # -DD3D9 defined + d3d9.lib link yeterli (SDK altında varsayar).
+    # Windows/MSVC for D3D9: no system package find in CMake;
+    # -DD3D9 defined + d3d9.lib link sufficient (assumed in SDK).
 endif()
 
 # Include directories
@@ -91,8 +91,8 @@ list(FILTER SOURCES EXCLUDE REGEX "/main\\.cpp$")
 if(NOT WIN32)
     list(FILTER SOURCES EXCLUDE REGEX ".*/framework/startup/win32/.*")
     list(FILTER SOURCES EXCLUDE REGEX ".*/framework/startup/startup\\.cpp")
-    # Ocean_W32.cpp: Windows (NULL|D3D9) için; GL3 build dışı.
-    # NULL platform'da Im3D no-op; D3D9/CannonCruise içinde real D3D9 pipeline.
+    # Ocean_W32.cpp: Windows (NULL|D3D9); outside GL3 build.
+    # NULL platform Im3D no-op; real D3D9 pipeline in D3D9/CannonCruise.
 endif()
 
 # Compile and archive sources; this does NOT validate external symbol resolution.
@@ -100,25 +100,25 @@ endif()
 add_library(CannonCruiseLib STATIC ${SOURCES})
 
 # ---------------------------------------------------------------------------
-# Faz 4.5 — Link doğrulama hedefi.
-# main.cpp, statik kütüphanenin TÜM dış sembollerini çözdüğünü kanıtlamak
-# için -force_load (tüm archive nesnelerini zorla dahil et) ile bağlanır.
+# Phase 4.5 — Link verification target.
+# main.cpp, statically proving all external symbols of CannonCruiseLib resolved
+# via -force_load (forcing all archive objects included).
 # ---------------------------------------------------------------------------
 add_executable(CannonCruise main.cpp)
-# force_load dosya yolu kullandığı için hedef bağımlılığını ayrıca tanımla
+# force_load uses file path — define target dependency separately
 add_dependencies(CannonCruise CannonCruiseLib)
-# Zorla dahil etme: arşivdeki her nesne bağlanır → eksik sembol link hatası verir.
-# CMake 3.24+ $<LINK_LIBRARY:WHOLE_ARCHIVE,...> taşınabilir yol:
+# Forced inclusion: every object in archive linked → missing symbol link error.
+# CMake 3.24+ portable path $<LINK_LIBRARY:WHOLE_ARCHIVE,...>:
 #   Apple → -force_load, MSVC → /WHOLEARCHIVE:<lib>, GNU → --whole-archive
-# NOT (neden çıplak /WHOLEARCHIVE DEĞİL): MSVC'de dosyasız verilen
-# /WHOLEARCHIVE, sonraki TÜM kütüphanelere uygulanır. Bu, kernel32/user32/
-# winmm/... için __NULL_IMPORT_DESCRIPTOR tekrarı ve CannonCruiseLib'nin
-# hiç bağlanmamasıyla sonuçlanır (2026-10-15 Windows build hatası).
+# NOT (why not bare /WHOLEARCHIVE): MSVC applies /WHOLEARCHIVE given
+# without file to ALL subsequent libraries. Causes __NULL_IMPORT_DESCRIPTOR
+# repetition for kernel32/user32/winmm/... and CannonCruiseLib not linked
+# at all (Windows build error 2026-10-15).
 target_link_libraries(CannonCruise PRIVATE
     "$<LINK_LIBRARY:WHOLE_ARCHIVE,CannonCruiseLib>")
-# Platforma göre dış kütüphaneler:
-#   D3D9: Direct3D 9 SDK kütüphanesi
-#   NULL: WINMM zaman çözünürlüğü (GetTime)
+# Platform-specific external libraries:
+#   D3D9: Direct3D 9 SDK library
+#   NULL: WINMM timing resolution (GetTime)
 if(WIN32)
     if(CANNONCRUISE_RW_PLATFORM STREQUAL "D3D9")
         target_link_libraries(CannonCruise PRIVATE d3d9.lib)
@@ -126,8 +126,8 @@ if(WIN32)
         target_link_libraries(CannonCruise PRIVATE winmm.lib)
     endif()
 endif()
-# Bullet + librw fizik/motor kütüphaneleri — hem statik arşiv hem link doğrulama
-# Not: Bullet/librw include'ları hedeflere INTERFACE olarak yayılmaz →elle
+# Bullet + librw physics/engine libraries — both static archive and link validation
+# Note: Bullet/librw includes not propagated INTERFACE to targets → manually
 target_include_directories(CannonCruiseLib PUBLIC ${bullet3_SOURCE_DIR}/src)
 target_link_libraries(CannonCruiseLib PUBLIC
     BulletDynamics BulletCollision LinearMath librw::librw)
@@ -140,11 +140,11 @@ endif()
 
 # Platform-specific definitions
 # ---------------------------------------------------------------------------
-# Windows (MSVC) ve RenderWare/D39 platformu defined'ları
+# Windows (MSVC) and RenderWare/D39 platform definitions
 # ---------------------------------------------------------------------------
 if(WIN32)
     add_definitions(-DWIN32 -D_WINDOWS)
-    # RenderWare platformu + DirectX 9 defined'ları
+    # RenderWare platform + DirectX 9 definitions
     if(CANNONCRUISE_RW_PLATFORM STREQUAL "D3D9")
         add_definitions(-DD3D9 -DDXROUTINE)
         target_link_libraries(CannonCruise PRIVATE d3d9.lib)
@@ -156,7 +156,7 @@ else()
 endif()
 
 # ---------------------------------------------------------------------------
-# SDK bağımsız birim testleri (roadmap: test kapsamı).
+# SDK-independent unit tests (roadmap: test coverage).
 # ctest --test-dir build --output-on-failure
 # ---------------------------------------------------------------------------
 enable_testing()

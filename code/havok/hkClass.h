@@ -4,12 +4,12 @@
 // ============================================================================
 // CannonCruise - Havok Physics 2.2.1 Shim (hkClass.h)
 // Binary tipler: hkClass, hkSerializable, hkType* (hkTypeInt, hkTypeReal, ...)
-// Havok 2.x serializasyon / yansıma altyapısı.
+// Havok 2.x serialization / reflection infrastructure.
 // ============================================================================
 
 #include "hkBaseTypes.h"
 
-// Serializasyon alan tipleri (ASM: hkTypeInt, hkTypeReal, hkTypeVector, ...)
+// Serialization field types (ASM: hkTypeInt, hkTypeReal, hkTypeVector, ...)
 enum hkDataType
 {
     HK_TYPE_VOID,
@@ -34,10 +34,10 @@ struct hkClassField
     hkUint32    m_offset;
     hkUint32    m_size;
     hkDataType  m_type;
-    const hkClassField* m_classField; ///< İç içe sınıf alanları için
+    const hkClassField* m_classField; ///< For nested class fields
 };
 
-/// Havok sınıf yansıması — "hkClass" ASM'de geçer
+/// Havok class reflection — "hkClass" appears in ASM
 class hkClass
 {
 public:
@@ -61,23 +61,23 @@ private:
     int m_totalSize;
 };
 
-/// Tüm serializable Havok nesnelerinin tabanı
+/// Base of all serializable Havok objects
 class hkSerializable
 {
 public:
     virtual ~hkSerializable() {}
 
-    /// Sınıf yansıması
+    /// Class reflection
     virtual const hkClass* getClass() const = 0;
 
-    /// Akışa yaz — binary akış serializasyonu henüz bağlanmadı (Faz 4.6).
+    /// Write to stream — binary stream serialization not yet wired (Phase 4.6).
     virtual hkResult writeToStream(void* stream) const
     {
         (void)stream;
         return hkResult(hkResult::FAIL);
     }
 
-    /// Akıştan oku — bkz. writeToStream.
+    /// Read from stream — see writeToStream.
     virtual hkResult readFromStream(void* stream)
     {
         (void)stream;

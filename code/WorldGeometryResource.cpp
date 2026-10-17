@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - World Geometry Resource Loader (WorldGeometryResource.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\WorldGeometryResource.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0044a800 — CWorldGeometryResource::Load
 //   FUN_0044ab50 — CWorldGeometryResource::Unload
 // ============================================================================

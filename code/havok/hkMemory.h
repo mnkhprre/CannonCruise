@@ -4,9 +4,9 @@
 // ============================================================================
 // CannonCruise - Havok Physics 2.2.1 Shim (hkMemory.h)
 // Binary: "Havok Allocation of " assert dizesi (HavokMemoryManager.cpp / FUN_00435adf)
-// Havok 2.x bellek arayüzü. Oyun CHavokMemoryManager ile kendi tahsisini yapar;
-// ŞİM: init/quit/getInstance havokimpl.cpp'de malloc/realloc/free'ye bağlanır
-// (oyun çağırır; hkMemory::getInstance() tekil örnek döndürür).
+// Havok 2.x memory interface. Game CHavokMemoryManager does its own allocation;
+// SHIM: init/quit/getInstance in havokimpl.cpp bind to malloc/realloc/free
+// (game calls them; hkMemory::getInstance() returns singleton).
 // ============================================================================
 
 #include "hkBaseTypes.h"
@@ -16,22 +16,22 @@ class hkMemory
 public:
     virtual ~hkMemory() {}
 
-    /// Tahsis et (Havok 2.x: allocate)
+    /// Allocate (Havok 2.x: allocate)
     virtual void* HK_CALL allocate(size_t size) = 0;
 
-    /// Serbest bırak
+    /// Deallocate
     virtual void HK_CALL deallocate(void* p) = 0;
 
-    /// Yeniden boyutlandır
+    /// Reallocate
     virtual void* HK_CALL reallocate(void* p, size_t size) = 0;
 
-    /// Global bellek sistemi başlat (HavokInit çağrılmadan önce)
+    /// Initialize global memory system (before HavokInit)
     static void init();
 
-    /// Global bellek sistemini kapat
+    /// Shut down global memory system
     static void quit();
 
-    /// Aktif bellek sistemi singleton'ı
+    /// Active memory system singleton
     static hkMemory* getInstance();
 };
 

@@ -3,7 +3,7 @@
 // ============================================================================
 // CannonCruise - Ammo Crate Pickup (AmmoCrate.h)
 // Original path: D:\Projects\CannonCruisePC\code\AmmoCrate.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include "Flotsam.h"

@@ -1,19 +1,19 @@
 // ============================================================================
 // CannonCruise - BehaviourLoader (0x0704 create-by-name dispatch)
 //
-// Binary: FUN_00411010 (CEventHandler ctor(stream, className) → hemen
-// Process(false)), FUN_00411050 (Process: 0x20/0x40 skip; 0x80000000 →
-// *(DAT_0065d7a4+0x114)(this+4, rec+8) sınıf adı karşılaştırma (strcmp
-// semantiği, 0=eşleşme); eşleşen behaviour'ın ilk property'sinde DUR; eşleş-
-// meyen property'ler atlanır), FUN_004110e0 (Advance + Process(1) —
-// sonraki behaviour'a geçiş), CClassFactory::Create (FUN_004134xx ailesi,
-// FUN_00413700 = Register) ve sınıf başına apply virtual'ı (vtable slot1:
+// Binary: FUN_00411010 (CEventHandler ctor(stream, className) -> immediately
+// Process(false)), FUN_00411050 (Process: 0x20/0x40 skip; 0x80000000 ->
+// *(DAT_0065d7a4+0x114)(this+4, rec+8) class name comparison (strcmp
+// semantics, 0=match); stops at first property of matching behaviour; non-matching
+// properties skipped), FUN_004110e0 (Advance + Process(1) —
+// transition to next behaviour), CClassFactory::Create (FUN_004134xx family,
+// FUN_00413700 = Register) and per-class apply virtual (vtable slot1:
 // FUN_004c3e40 / sub_4C3450 / sub_458BD0).
 //
-// Bu port dispatch glue'sunu modelleyip mevcut apply portlarını uçtan uca
-// bağlar: sınıf adı → fabrika oluştur → behaviour'ın tüm property'lerini
-// apply. Bilinmeyen sınıf atlanır (binary: factory NULL → Process property
-// atlamaya devam eder).
+// This port models dispatch glue and connects existing apply ports end-to-end:
+// class name -> create factory -> apply all behaviour's properties.
+// Unknown class skipped (binary: factory NULL -> Process property
+// continues to skip).
 // ============================================================================
 
 #ifndef CANNONCRUISE_BEHAVIOURLOADER_H
@@ -24,16 +24,16 @@
 
 /**
  * @struct BehaviourClassEntry
- * @brief Kayıtlı bir behaviour sınıfının fabrika + apply kaydı.
+ * @brief Factory + apply record of a registered behaviour class.
  *
- * Binary'de bu ikili CClassFactory::Register (create) + vtable slot1
- * (apply) olarak dağılıktır; port tek tabloda toplar.
+ * In binary, this pair is distributed as CClassFactory::Register (create) + vtable slot1
+ * (apply); port collects them in single table.
  */
 struct BehaviourClassEntry {
-    const char *className; ///< "CWbRenderBehavior" vb.
-    RwUInt32 size;         ///< nesne boyutu (binary Register boyutu)
-    void *(*create)();     ///< fabrika: sıfırlanmış+Init nesne
-    /// apply virtual (slot1): property kaydını uygula
+    const char *className; ///< "CWbRenderBehavior" etc.
+    RwUInt32 size;         ///< object size (binary Register size)
+    void *(*create)();     ///< factory: zeroed+Init object
+    /// apply virtual (slot1): apply property record
     RwBool (*apply)(void *pObject, RwUInt32 id, const RwUInt8 *pValue);
 };
 
@@ -41,39 +41,39 @@ struct BehaviourClassEntry {
  * @class BehaviourLoader
  * @brief 0x0704 OBJECTRECORD → class name → factory → apply dispatch'i.
  *
- * Binary akışı (CEventHandler::Process + sınıf apply'ları):
- * - her behaviour: sınıf adı (0x20/0x80000000 segmenti) → CClassFactory
- *   lookup → create; property kayıtları apply virtual'ına akar.
- * - bu port: RwStudioObject (parse edilmiş) üzerinden aynı akışı yürütür.
+ * Binary flow (CEventHandler::Process + class applies):
+ * - each behaviour: class name (0x20/0x80000000 segment) -> CClassFactory
+ *   lookup -> create; property records flow to apply virtual.
+ * - this port: runs same flow over RwStudioObject (parsed).
  */
 class BehaviourLoader {
 public:
     /**
-     * @brief Sınıfı kaydeder: CClassFactory::Register + apply tablosu.
-     * @return TRUE ise kayıt başarılı.
+     * @brief Registers class: CClassFactory::Register + apply table.
+     * @return TRUE if registration successful.
      */
     static RwBool Register(const BehaviourClassEntry *pEntry);
 
-    /// Tüm kayıtları temizler (test teardown)
+    /// Clears all registrations (test teardown)
     static void UnregisterAll();
 
     /**
-     * @brief Sınıf adına göre nesne oluşturur (CClassFactory köprüsü).
-     * @return Nesne veya NULL (bilinmeyen sınıf).
+     * @brief Creates object by class name (CClassFactory bridge).
+     * @return Object or NULL (unknown class).
      */
     static void *Create(const char *pClassName);
 
     /**
-     * @brief Bir OBJECTRECORD'daki tüm behaviour'ları create+apply eder.
+     * @brief Creates+applies all behaviours in an OBJECTRECORD.
      *
-     * Her behaviour için: Create(className); NULL ise atla (binary:
-     * factory yok → property'ler atlanır). Değilse apply çağrısını
-     * ppInstances[]'e kaydeder.
+     * For each behaviour: Create(className); if NULL skip (binary:
+     * factory missing -> properties skipped). Otherwise records apply call
+     * in ppInstances[].
      *
-     * @param pObject      Parse edilmiş nesne (RwStudioFileGetObject()).
-     * @param ppInstances  Oluşturulan nesne işaretçileri (çıktı).
-     * @param maxInstances ppInstances kapasitesi.
-     * @return Uygulanan behaviour sayısı (-1: pObject NULL).
+     * @param pObject      Parsed object (RwStudioFileGetObject()).
+     * @param ppInstances  Created object pointers (output).
+     * @param maxInstances ppInstances capacity.
+     * @return Number of behaviours applied (-1: pObject NULL).
      */
     static RwInt32 ProcessObject(const RwStudioObject *pObject,
                                  void **ppInstances, RwInt32 maxInstances);

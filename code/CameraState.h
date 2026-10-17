@@ -3,21 +3,21 @@
 
 // ============================================================================
 // CannonCruise - CWbCameraBehavior property apply (CameraState.h)
-// Tersine mühendislik ile yeniden yazılmıştır.
-// Binary ref: sub_4C3450 (vtable PTR_LAB_005f0ac4 slot1 — 51 case'lik
-// switch; default SESSİZ ilerler, assert yok).
+// Reverse-engineered.
+// Binary ref: sub_4C3450 (vtable PTR_LAB_005f0ac4 slot1 — 51-case
+// switch; default advances SILENTLY, no assert).
 //
-// Apply, sub_452170() ile alınan kamera-durum nesnesine (esi) yazar.
-// 4 parametre grubu (A: id0-7, B: id8-16, C: id17-27, D: id28-40) +
-// misc (id41-50) — her grup konum/yon/FOV/aspect üçlüsü içerir.
+// Apply writes to camera-state object (esi) obtained via sub_452170().
+// 4 parameter groups (A: id0-7, B: id8-16, C: id17-27, D: id28-40) +
+// misc (id41-50) — each group contains position/direction/FOV/aspect triple.
 //
-// Dönüşümler (sabitler exe'den: flt_5F0AC0=π, flt_5EF7B8=1/180):
-//   RAD  : v * π * (1/180)  (FOV derece → radyan)
-//   TAN  : tan(v * π/180)   (projeksiyon ölçeği; x87 fptan)
-//   VEC3 : 12 bayt kopya (rec+8 → hedef)
+// Transformations (constants from exe: flt_5F0AC0=π, flt_5EF7B8=1/180):
+//   RAD  : v * π * (1/180)  (FOV degrees → radians)
+//   TAN  : tan(v * π/180)   (projection scale; x87 fptan)
+//   VEC3 : 12-byte copy (rec+8 -> dest)
 //
-// id→offset/doğrudan yazım tablosu (bkz. .cpp); id42: guard==0 ise
-// +0x114 += 1.0f; id48: guard==0 ise +0x12C = 1.0f; default: atla.
+// id→offset/direct-write table (see .cpp); id42: guard==0 →
+// +0x114 += 1.0f; id48: guard==0 → +0x12C = 1.0f; default: skip.
 // ============================================================================
 
 #include <rwcore.h>
@@ -28,8 +28,8 @@
 
 /**
  * @struct CCameraState
- * @brief Binary kamera-durum nesnesi (sub_452170 sonucu, ≥0x140 bayt).
- * 32-bit binary düzeni RwUInt32/float alanlarla birebir modellenir.
+ * @brief Binary camera-state object (sub_452170 result, ≥0x140 bytes).
+ * 32-bit binary layout modeled exactly with RwUInt32/float fields.
  */
 struct CCameraState {
     RwUInt32 m_pad00;         ///< +0x00
@@ -39,11 +39,11 @@ struct CCameraState {
     float m_fovRad;           ///< +0x18 (id3 RAD)
     float m_projX;            ///< +0x1c (id4 TAN)
     RwUInt32 m_flagsA;        ///< +0x20 (id5 raw)
-    float m_dir[3];           ///< +0x24 (id6 VEC3 — yön)
+    float m_dir[3];           ///< +0x24 (id6 VEC3 — direction)
     RwUInt32 m_param7;        ///< +0x30 (id7 raw)
-    float m_fovRadDup;        ///< +0x34 (id3 RAD tekrarı)
+    float m_fovRadDup;        ///< +0x34 (id3 RAD duplicate)
     RwUInt32 m_pad38;         ///< +0x38
-    float m_projXDup;         ///< +0x3c (id4 TAN tekrarı)
+    float m_projXDup;         ///< +0x3c (id4 TAN duplicate)
     float m_bPos[3];          ///< +0x40 (id8 VEC3)
     float m_bProjY;           ///< +0x4c (id9 TAN)
     float m_bFovRad;          ///< +0x50 (id10 RAD)
@@ -53,8 +53,8 @@ struct CCameraState {
     float m_bParam14;         ///< +0x60 (id14 RAD)
     float m_bParam15;         ///< +0x64 (id15 RAD)
     float m_bDir[3];          ///< +0x68 (id16 VEC3)
-    float m_bFovRadDup;       ///< +0x74 (id10 RAD tekrarı)
-    float m_bFovRad2Dup;      ///< +0x78 (id11 RAD tekrarı)
+    float m_bFovRadDup;       ///< +0x74 (id10 RAD duplicate)
+    float m_bFovRad2Dup;      ///< +0x78 (id11 RAD duplicate)
     float m_cPos[3];          ///< +0x7c (id17 VEC3)
     RwUInt32 m_cParam18;      ///< +0x88 (id18 raw)
     RwUInt32 m_cParam19;      ///< +0x8c (id19 raw)
@@ -67,8 +67,8 @@ struct CCameraState {
     float m_cParam26;         ///< +0xa8 (id26 RAD)
     RwUInt32 m_cParam27;      ///< +0xac (id27 raw)
     float m_cDir[3];          ///< +0xb0 (id28 VEC3)
-    float m_cParam24Dup;      ///< +0xbc (id24 RAD tekrarı)
-    float m_cParam25Dup;      ///< +0xc0 (id25 RAD tekrarı)
+    float m_cParam24Dup;      ///< +0xbc (id24 RAD duplicate)
+    float m_cParam25Dup;      ///< +0xc0 (id25 RAD duplicate)
     float m_dPos[3];          ///< +0xc4 (id29 VEC3)
     RwUInt32 m_dParam30;      ///< +0xd0 (id30 raw)
     RwUInt32 m_dParam31;      ///< +0xd4 (id31 raw)
@@ -81,8 +81,8 @@ struct CCameraState {
     float m_dParam38;         ///< +0xf0 (id38 RAD)
     RwUInt32 m_dParam39;      ///< +0xf4 (id39 raw)
     float m_dDir[3];          ///< +0xf8 (id40 VEC3)
-    float m_dParam36Dup;      ///< +0x104 (id36 RAD tekrarı)
-    float m_dParam37Dup;      ///< +0x108 (id37 RAD tekrarı)
+    float m_dParam36Dup;      ///< +0x104 (id36 RAD duplicate)
+    float m_dParam37Dup;      ///< +0x108 (id37 RAD duplicate)
     RwUInt32 m_pad10c;        ///< +0x10c
     RwUInt32 m_param41;       ///< +0x110 (id41 raw)
     float m_counter;          ///< +0x114 (id42: guard==0 ise += 1.0f)
@@ -98,10 +98,10 @@ struct CCameraState {
     RwUInt32 m_guard;         ///< +0x13c (id42/48 guard)
 
     /**
-     * @brief Tek bir CWbCameraBehavior property kaydını uygular.
-     * @param id    0x0704 property kimliği (0..50).
-     * @param value 4 bayt raw (float alanlara bit/RAD/TAN dönüşümü).
-     * @return FALSE yalnızca id > 50 (binary default: sessiz atla).
+     * @brief Applies single CWbCameraBehavior property record.
+     * @param id    0x0704 property identifier (0..50).
+     * @param value 4-byte raw (bit/RAD/TAN conversion for float fields).
+     * @return FALSE only when id > 50 (binary default: silent skip).
      */
     RwBool ApplyAttribute(RwUInt32 id, RwUInt32 value);
 };
@@ -109,7 +109,7 @@ struct CCameraState {
 // Binary float sabitleri (exe .rdata)
 //   flt_5F0AC0 = 0x40490FDB (π), flt_5EF7B8 = 0x3BB60B61 (1/180)
 
-/// Derece → radyan çarpanı (π/180 — binary iki ayrı fmul ile)
+/// Degree → radian multiplier (π/180 — binary uses two separate fmuls)
 inline float CameraDegToRad(float deg) {
     const float kPi = 3.1415927410125732f; // 0x40490FDB
     const float kOneOver180 = 0.0055555556900799274f; // 0x3BB60B61
@@ -117,16 +117,16 @@ inline float CameraDegToRad(float deg) {
 }
 
 /**
- * @brief VEC3 property kayıtlarını uygular (12 bayt kopya — loc_4C393B).
- * @param pState Hedef kamera durumu.
- * @param id     Property kimliği (0, 6, 8, 0x10, 0x11, 0x1C, 0x1D, 0x28).
- * @param pVec3  12 bayt kaynak (rec+8).
- * @return TRUE ise id bir VEC3 kaydıydı ve kopyalandı.
+ * @brief Applies VEC3 property records (12-byte copy — loc_4C393B).
+ * @param pState Target camera state.
+ * @param id     Property identifier (0, 6, 8, 0x10, 0x11, 0x1C, 0x1D, 0x28).
+ * @param pVec3  12-byte source (rec+8).
+ * @return TRUE if id was a VEC3 record and was copied.
  */
 RwBool CCameraStateApplyVec3(CCameraState *pState, RwUInt32 id,
                              const RwUInt8 *pVec3);
 
-// Layout doğrulaması — binary byte offset'leri
+// Layout validation — binary byte offsets
 static_assert(offsetof(CCameraState, m_pos) == 0x04, "id0 → +0x04");
 static_assert(offsetof(CCameraState, m_clip1) == 0x10, "id1 → +0x10");
 static_assert(offsetof(CCameraState, m_fovRad) == 0x18, "id3 → +0x18");

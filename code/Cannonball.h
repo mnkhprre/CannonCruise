@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - Cannonball Projectile (Cannonball.h)
 // Original path: D:\Projects\CannonCruisePC\code\Cannonball.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include "PhysicsEntity.h"

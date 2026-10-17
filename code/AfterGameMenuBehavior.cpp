@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - After Game Menu Behavior (AfterGameMenuBehavior.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\AfterGameMenuBehavior.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0043cb30 — CAfterGameMenuBehavior constructor & registration
 //   FUN_0043d9d0 — CAfterGameMenuBehavior::ShowSummary
 // ============================================================================
@@ -58,7 +58,7 @@ CAfterGameMenuBehavior::~CAfterGameMenuBehavior()
  */
 void CAfterGameMenuBehavior::HandleEvents(const RWS::CMsg& msg)
 {
-    // MENUTRIGGER_MapMenuEnter, MapMenuRatingInquire vb.
+    // MENUTRIGGER_MapMenuEnter, MapMenuRatingInquire etc.
 }
 
 /**
@@ -71,7 +71,7 @@ void CAfterGameMenuBehavior::ShowSummary(RwUInt32 score, RwUInt32 accuracy,
     m_uScore = score;
     m_uAccuracy = accuracy;
     m_uRating = rating;
-    m_bSummary = TRUE; // özet ekranı (onay/geri → harita)
+    m_bSummary = TRUE; // summary screen (confirm/back → map)
 }
 
 void CAfterGameMenuBehavior::AttachMaestro(Rt2dMaestro* pMaestro)
@@ -88,7 +88,7 @@ void CAfterGameMenuBehavior::AttachMaestro(Rt2dMaestro* pMaestro)
     {
         return;
     }
-    // Seviye grupları: "/Viking_1/" … (tip=1, adında '_' + rakam).
+    // Level groups: "/Viking_1/" … (type=1, '_' + digit in name).
     for (RwUInt32 i = 0;
          i < pMaestro->info.nodeCount && m_levelCount < MAX_LEVELS; ++i)
     {
@@ -105,7 +105,7 @@ void CAfterGameMenuBehavior::AttachMaestro(Rt2dMaestro* pMaestro)
             continue;
         }
         MapLevel* lv = &m_levels[m_levelCount];
-        // "VIKING 1" (büyük harf) + "VIKING01" (dosya çekirdeği)
+        // "VIKING 1" (uppercase) + "VIKING01" (file core)
         size_t bi = 0;
         for (size_t k = 0; base[k] != 0 && bi + 1 < sizeof(lv->display); ++k)
         {
@@ -115,7 +115,7 @@ void CAfterGameMenuBehavior::AttachMaestro(Rt2dMaestro* pMaestro)
         }
         std::snprintf(lv->display + bi, sizeof(lv->display) - bi, " %d",
                       num);
-        // "VIKING01" (dosya çekirdeği)
+        // "VIKING01" (file core)
         lv->file[0] = 0;
         bi = 0;
         for (size_t k = 0; base[k] != 0 && bi + 1 < sizeof(lv->file); ++k)
@@ -159,7 +159,7 @@ RwBool CAfterGameMenuBehavior::Confirm()
 {
     if (m_bSummary == TRUE)
     {
-        m_bSummary = FALSE; // özetten haritaya dön
+        m_bSummary = FALSE; // from summary back to map
         return FALSE;
     }
     if (m_levelCount <= 0)
@@ -177,7 +177,7 @@ RwBool CAfterGameMenuBehavior::Back()
         m_bSummary = FALSE;
         return FALSE;
     }
-    return TRUE; // haritadan çıkış (ana menüye dönüş — çağıran yönetir)
+    return TRUE; // exit map (return to main menu — caller manages)
 }
 
 void CAfterGameMenuBehavior::Update(RwReal deltaTime)
@@ -199,7 +199,7 @@ void CAfterGameMenuBehavior::Render()
     const RwUInt32 kKeyBox = 0xFFE8D8B0;
 
     RenderPlatform_BeginOverlay2D();
-    // Harita zemini: CAG_Menu_079 (640×480 ızgara harita) tam ekran.
+    // Map ground: CAG_Menu_079 (640×480 grid map) fullscreen.
     if (RenderPlatform_HasTexture("CAG_Menu_079") == TRUE)
     {
         RenderPlatform_DrawTexturedQuad(0.0f, 0.0f, kScreenW, kScreenH,
@@ -213,7 +213,7 @@ void CAfterGameMenuBehavior::Render()
 
     if (m_bSummary == TRUE)
     {
-        // Özet ekranı (seviye sonu: skor/isabet/derece).
+        // Summary screen (end-of-level: score/accuracy/rating).
         RenderPlatform_DrawOverlayQuad(kScreenW * 0.2f, kScreenH * 0.2f,
                                        kScreenW * 0.6f, kScreenH * 0.55f,
                                        0xFFC7A05E);
@@ -232,14 +232,14 @@ void CAfterGameMenuBehavior::Render()
     }
     else
     {
-        // Başlık (video: TRICKY TROLL FJORD + rating satırı).
+        // Title (video: TRICKY TROLL FJORD + rating line).
         ShowText_DrawBitmapText("TRICKY TROLL FJORD", kScreenW * 0.3f,
                                 kScreenH * 0.05f, 3, 0x3A, 0x1E, 0x08, 255);
         ShowText_DrawBitmapText("YOUR RATING - NOT COMPLETED",
                                 kScreenW * 0.3f, kScreenH * 0.11f, 2,
                                 0x4A, 0x28, 0x10, 255);
-        // Seviye listesi (sahne düğüm konumu decode'una kadar işlevsel
-        // liste; video harita imleci sahne artığı).
+        // Level list (functionally decodes scene node positions until end;
+        // video map cursor scene surplus).
         const RwReal listX = kScreenW * 0.06f;
         const RwReal listY = kScreenH * 0.24f;
         const RwReal rowH = kScreenH * 0.052f;
@@ -271,7 +271,7 @@ void CAfterGameMenuBehavior::Render()
         }
     }
 
-    // klavye ipuçları
+    // keyboard hints
     RenderPlatform_DrawOverlayQuad(150.0f, 636.0f, 86.0f, 30.0f, kKeyBox);
     ShowText_DrawBitmapText("Enter", 158.0f, 640.0f, 2, 0x3A, 0x1E, 0x08, 255);
     ShowText_DrawBitmapText("SELECT", 244.0f, 640.0f, 2, 0x4A, 0x28, 0x10,

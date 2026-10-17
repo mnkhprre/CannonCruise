@@ -1,17 +1,17 @@
 // ============================================================================
-// CannonCruise - Faz 4.6p: 0x0704 nesne kayıtlarından dünya spawn zinciri
-// Binary: CEventHandler::Process döngüsü (FUN_00411050) — sınıf adı →
-// CClassFactory::Create → apply virtual (vtable slot1).
+// CannonCruise - Phase 4.6p: world spawn chain from 0x0704 object records
+// Binary: CEventHandler::Process loop (FUN_00411050) — class name ->
+// CClassFactory::Create -> apply virtual (vtable slot1).
 //
-// Bu modül iki iş yapar:
-//   1. GameBehaviours_Register(): bilinen behaviour sınıflarını
-//      BehaviourLoader'a kaydeder (render/camera/audio/physics portları).
-//   2. WorldSpawn_FromFile(): RWS dosyasındaki tüm OBJECTRECORD
-//      kayıtlarını walk edip ProcessObject ile örnek üretir; bilinmeyen
-//      sınıflar binary'de olduğu gibi sessiz atlanır.
+// This module does two things:
+//   1. GameBehaviours_Register(): registers known behaviour classes
+//      with BehaviourLoader (render/camera/audio/physics ports).
+//   2. WorldSpawn_FromFile(): walks all OBJECTRECORD records in RWS
+//      file and creates instances via ProcessObject; unknown
+//      classes silently skipped as in binary.
 //
-// Sahiplik: oluşturulan örnekler süreç sonuna dek yaşar (binary'de sahne
-// teardown'ı CClassFactory delete çağırır — port 4.6s'e kadar leak bilinçli).
+// Ownership: created instances live until process end (in binary, scene
+// teardown calls CClassFactory delete — port consciously leaks until 4.6s).
 // ============================================================================
 
 #ifndef CANNONCRUISE_WORLDSPAWN_H
@@ -19,27 +19,27 @@
 
 #include "rwcore.h"
 
-/// WORLDSPAWN istatistikleri (RWS walk çıktısı)
+/// WORLDSPAWN statistics (RWS walk output)
 struct WorldSpawnStats {
-    RwUInt32 objectRecords;    ///< walk edilen 0x0704 kayıtları
-    RwUInt32 instancesCreated; ///< Create() başarılı (bilinen sınıflar)
-    RwUInt32 instancesSkipped; ///< factory yok → binary: property atla
+    RwUInt32 objectRecords;    ///< walked 0x0704 records
+    RwUInt32 instancesCreated; ///< Create() successful (known classes)
+    RwUInt32 instancesSkipped; ///< factory missing -> binary: property skip
 };
 
 /**
- * @brief Bilinen behaviour sınıflarını kaydeder (binary Register deseni).
+ * @brief Registers known behaviour classes (binary Register pattern).
  *
  * CWbRenderBehavior / CWbCameraBehavior / CAudioStreamEntity /
- * CPhysicsWorldBehaviour — apply adaptörleri 4.6h-j portlarına bağlı.
- * @return TRUE kayıt başarılı (tekrar çağrılabilir — önce UnregisterAll).
+ * CPhysicsWorldBehaviour — apply adaptors wired to 4.6h-j ports.
+ * @return TRUE registration successful (repeatable — call UnregisterAll first).
  */
 RwBool GameBehaviours_Register();
 
 /**
- * @brief RWS dosyasındaki tüm 0x0704 kayıtlarını create+apply eder.
- * @param pPath  RWS dosya yolu.
- * @param pStats İstatistik (opsiyonel).
- * @return Uygulanan behaviour sayısı (-1: dosya açılamadı).
+ * @brief Creates+applies all 0x0704 records in RWS file.
+ * @param pPath  RWS file path.
+ * @param pStats Statistics (optional).
+ * @return Number of behaviours applied (-1: file open failed).
  */
 RwInt32 WorldSpawn_FromFile(const RwChar *pPath, WorldSpawnStats *pStats);
 

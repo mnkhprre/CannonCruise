@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - Engine FixedArray Template (FixedArray.h)
 // Original path: D:\Projects\CannonCruisePC\code\FixedArray.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include <cassert>
@@ -13,41 +13,41 @@
 
 /**
  * @class CFixedArray
- * @brief Sabit boyutlu, compile-time parametreli dizi şablonu.
+ * @brief Fixed-size, compile-time parameterized array template.
  *
- * Standart C dizisini güvenli erişim için sarmalayan; boyut, indeks sınırı
- * ve veri işaretçisi kontrolleri sağlayan bir yardımcı şablon sınıf.
- * Dinamik bellek tahsisi gerektirmez ve heap'e ihtiyaç duymadan stack veya
- * üye değişken olarak kullanılabilir.
+ * Wrapper around standard C array for safe access; provides size,
+ * index bounds checking and data pointer checks.
+ * Requires no dynamic allocation and can be used on stack or as
+ * member variable without heap.
  *
- * **Kullanım örneği:**
+ * **Usage example:**
  * ```cpp
- * CFixedArray<RwV3d, 16> pathWaypoints; // 16 waypoint tutan sabit dizi
+ * CFixedArray<RwV3d, 16> pathWaypoints; // fixed array holding 16 waypoints
  * pathWaypoints[0] = { 0.0f, 0.0f, 0.0f };
  * ```
  *
- * **Güvenlik özellikleri:**
- * - `operator[]` indeks sınır denetimi (assert ile)
- * - SIZE > 0 denetimi
+ * **Safety features:**
+ * - `operator[]` index bounds checking (with assert)
+ * - SIZE > 0 check
  *
- * @tparam T    Dizide tutulacak eleman türü.
- * @tparam SIZE Dizi boyutu (compile-time sabit).
+ * @tparam T    Element type stored in array.
+ * @tparam SIZE Array size (compile-time constant).
  */
 template <typename T, RwUInt32 SIZE>
 class CFixedArray
 {
 public:
     /**
-     * @brief Varsayılan yapıcı — elemanları başlatmaz (ham bellek).
+     * @brief Default constructor — does not initialize elements (raw memory).
      */
     CFixedArray()
     {
     }
 
     /**
-     * @brief Belirtilen indeksteki elemana yazılabilir referans döndürür.
-     * @param index Erişilecek eleman indeksi (0 tabanlı).
-     * @return T& — İstenen elemanın referansı.
+     * @brief Returns writable reference to element at specified index.
+     * @param index Index of element to access (0-based).
+     * @return T& — Reference to requested element.
      * @pre index < SIZE
      */
     T& operator[](RwUInt32 index)
@@ -58,9 +58,9 @@ public:
     }
 
     /**
-     * @brief Belirtilen indeksteki elemana salt okunur referans döndürür.
-     * @param index Erişilecek eleman indeksi (0 tabanlı).
-     * @return const T& — İstenen elemanın sabit referansı.
+     * @brief Returns const reference to element at specified index.
+     * @param index Index of element to access (0-based).
+     * @return const T& — Const reference to requested element.
      * @pre index < SIZE
      */
     const T& operator[](RwUInt32 index) const
@@ -71,8 +71,8 @@ public:
     }
 
     /**
-     * @brief Dizinin sabit boyutunu döndürür.
-     * @return RwUInt32 — SIZE şablon parametresi.
+     * @brief Returns fixed array size.
+     * @return RwUInt32 — SIZE template parameter.
      */
     RwUInt32 GetSize() const
     {
@@ -80,8 +80,8 @@ public:
     }
 
     /**
-     * @brief Ham veri işaretçisini döndürür.
-     * @return T* — İlk elemana işaretçi.
+     * @brief Returns raw data pointer.
+     * @return T* — Pointer to first element.
      */
     T* GetData()
     {
@@ -89,8 +89,8 @@ public:
     }
 
     /**
-     * @brief Ham veri işaretçisini salt okunur olarak döndürür.
-     * @return const T* — İlk elemana sabit işaretçi.
+     * @brief Returns raw data pointer as const.
+     * @return const T* — Const pointer to first element.
      */
     const T* GetData() const
     {
@@ -98,7 +98,7 @@ public:
     }
 
 private:
-    T m_Data[SIZE]; ///< Sabit boyutlu ham veri dizisi
+    T m_Data[SIZE]; ///< Fixed-size raw data array
 };
 
 #endif // FIXEDARRAY_H

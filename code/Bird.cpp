@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Ambient Bird & Seagull Entity (Bird.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\Bird.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_004680d0 — CBird::HandleEvents ("CBird HE Running")
 //   FUN_00468350 — CBird class registration & factory
 //   FUN_00469460 — CBirdSeaGull class registration

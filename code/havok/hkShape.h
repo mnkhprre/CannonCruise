@@ -171,7 +171,7 @@ public:
     virtual hkReal getMaximumProjection(const hkVector3& direction) const = 0;
 };
 
-/// BV ağaç şekli (broad-phase hızlandırması)
+/// BV tree shape (broad-phase acceleration)
 class hkBvTreeShape : public hkShape
 {
 public:
@@ -180,14 +180,14 @@ public:
     virtual const hkClass* getClass() const;
     virtual int getType() const;
     virtual void getAabb(hkAabb& aabb) const;
-    /// Koleksiyonun şekli devredilir (BV ağaç Bullet'te BVH içinde)
+    /// Collection's shape forwarded (BV tree in Bullet's BVH)
     virtual btCollisionShape* getBulletShape() const;
 
 protected:
     hkShapeCollection* m_pCollection;
 };
 
-/// MOPP (Memory Optimized Partial Polytope) BV ağaç — sıkıştırılmış broad-phase
+/// MOPP (Memory Optimized Partial Polytope) BV tree — compressed broad-phase
 class hkMoppBvTreeShape : public hkBvTreeShape
 {
 public:
@@ -196,7 +196,7 @@ public:
     virtual int getType() const;
 
 private:
-    hkUint8* m_pMoppCode; ///< MOPP kodu (Binary blob; Bullet BVH'a sıkıştırma yok)
+    hkUint8* m_pMoppCode; ///< MOPP code (Binary blob; no compression to Bullet BVH)
     int m_moppSize;
 };
 

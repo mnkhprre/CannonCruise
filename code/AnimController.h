@@ -3,7 +3,7 @@
 // ============================================================================
 // CannonCruise - Animation Controller (AnimController.h)
 // Original path: D:\Projects\CannonCruisePC\code\AnimController.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // Binary ref: FUN_00401300 - FUN_00401600 (CAnimController methods)
 // ============================================================================
 
@@ -18,20 +18,20 @@ namespace RWS
 
 /**
  * @class CAnimController
- * @brief RenderWare HAnimHierarchy tabanlı animasyon oynatma ve harmanlama denetleyicisi.
+ * @brief RenderWare HAnimHierarchy-based animation playback and blending controller.
  *
- * CActor gibi sınıflara dahil edilen bu denetleyici, RpHAnimAnimation nesnelerini
- * yönetir, hız/harmanlama değerlerini ayarlar ve her karede güncelleme yapar.
- * Aynı anda birden fazla animasyonu harmanlama (blend) desteklenir.
+ * This controller, included in classes like CActor, manages RpHAnimAnimation
+ * objects, sets speed/blend values, and updates every frame.
+ * Blending multiple animations simultaneously is supported.
  *
- * **Bellek düzeni:**
- * - `m_anims`        — animasyon listesi
- * - `m_blends`       — harmanlama listesi
- * - `m_pHierarchy`   — RW HAnimHierarchy işaretçisi
- * - `m_currentAnim`  — etkin animasyon indeksi
- * - `m_currentTime`  — animasyon zamanlayıcısı (saniye)
+ * **Memory layout:**
+ * - `m_anims`        — animation list
+ * - `m_blends`       — blend list
+ * - `m_pHierarchy`   — RW HAnimHierarchy pointer
+ * - `m_currentAnim`  — active animation index
+ * - `m_currentTime`  — animation timer (seconds)
  *
- * **Binary referansları:**
+ * **Binary references:**
  * - Ctor: `FUN_00401300`
  * - SetTarget: `FUN_00401350`
  * - AddAnimation: `FUN_00401400`
@@ -41,100 +41,100 @@ class CAnimController
 {
 public:
     /**
-     * @brief Animasyon kaydı — oynatma hızı, bayraklar ve ID içerir.
+     * @brief Animation record — playback speed, flags, and ID.
      */
     struct AnimEntry
     {
-        RpHAnimAnimation* pAnim;  ///< RW animasyon kaynağı
-        RwReal speed;             ///< Oynatma hızı çarpanı (1.0 = normal)
-        RwInt32 flags;            ///< Animasyon bayrakları (döngü, tek seferlik vb.)
-        RwUInt32 id;              ///< Oyun tarafından atanan animasyon ID'si
+        RpHAnimAnimation* pAnim;  ///< RW animation source
+        RwReal speed;             ///< Playback speed multiplier (1.0 = normal)
+        RwInt32 flags;            ///< Animation flags (loop, one-shot, etc.)
+        RwUInt32 id;              ///< Animation ID assigned by game
     };
 
     /**
-     * @brief Harmanlama kaydı — hierarchy, animasyon indeksi ve ağırlık içerir.
+     * @brief Blend record — hierarchy, animation index, and weight.
      */
     struct BlendEntry
     {
-        RpHAnimHierarchy* pHierarchy; ///< Hedef hiyerarşi
-        RwInt32 animIndex;            ///< Harmanlanan animasyonun listesi indeksi
-        RwReal weight;                ///< Harmanlama ağırlığı (0.0–1.0)
+        RpHAnimHierarchy* pHierarchy; ///< Target hierarchy
+        RwInt32 animIndex;            ///< Index of blended animation in list
+        RwReal weight;                ///< Blend weight (0.0–1.0)
     };
 
     /**
-     * @brief Yapıcı — boş denetleyici başlatır.
+     * @brief Constructor — initializes empty controller.
      */
     CAnimController();
 
     /**
-     * @brief Yıkıcı — tüm animasyon kaynaklarını serbest bırakır.
+     * @brief Destructor — releases all animation resources.
      */
     virtual ~CAnimController();
 
     /**
-     * @brief Animasyon hedefinin ayarlanıp ayarlanmadığını döndürür.
-     * @return RwBool — TRUE ise m_pHierarchy geçerlidir.
+     * @brief Returns whether animation target is set.
+     * @return RwBool — TRUE if m_pHierarchy valid.
      */
     RwBool HasTarget() const { return m_pHierarchy != 0; }
 
     /**
-     * @brief Animasyon hedefi olarak bir RpClump atar.
-     * @param pClump Animasyon uygulanacak 3D model.
+     * @brief Assigns an RpClump as animation target.
+     * @param pClump 3D model to apply animation to.
      */
     void SetTarget(RpClump* pClump);
 
     /**
-     * @brief Animasyon kaynağını listeye ekler ve indeksini döndürür.
-     * @param animId Oyun tarafından atanan animasyon ID'si.
-     * @return RwInt32 — eklenen AnimEntry'nin indeksi.
+     * @brief Adds animation source to list and returns its index.
+     * @param animId Animation ID assigned by game.
+     * @return RwInt32 — index of added AnimEntry.
      */
     RwInt32 AddAnimation(RwInt32 animId);
 
     /**
-     * @brief İndekse göre animasyon işaretçisini döndürür.
-     * @param index AnimEntry listesindeki indeks.
-     * @return RpHAnimAnimation* — animasyon işaretçisi veya nullptr.
+     * @brief Returns animation pointer by index.
+     * @param index Index in AnimEntry list.
+     * @return RpHAnimAnimation* — animation pointer or nullptr.
      */
     RpHAnimAnimation* GetAnimation(RwInt32 index);
 
     /**
-     * @brief ID değerine göre animasyonu arar ve döndürür.
-     * @param animId Aranan animasyon ID'si.
-     * @return RpHAnimAnimation* — bulunan animasyon veya nullptr.
+     * @brief Searches and returns animation by ID value.
+     * @param animId Animation ID to search for.
+     * @return RpHAnimAnimation* — found animation or nullptr.
      */
     RpHAnimAnimation* FindAnimation(RwInt32 animId);
 
     /**
-     * @brief RWS attribute paketinden animasyon verilerini işler.
-     * @param packet Animasyon ID veya hız değeri içeren paket.
+     * @brief Processes animation data from RWS attribute packet.
+     * @param packet Packet containing animation ID or speed value.
      */
     void HandleAttributes(const CAttributePacket& packet);
 
     /**
-     * @brief İsimle animasyon kaynağı yükler ve listeye ekler.
-     * @param name Kaynak dosya adı (örn. "run.anm").
+     * @brief Loads animation resource by name and adds to list.
+     * @param name Source file name (e.g. "run.anm").
      */
     void AddAnimResource(const RwChar* name);
 
     /**
-     * @brief Belirli bir animasyonun oynatma hızını ayarlar.
-     * @param index AnimEntry listesindeki indeks.
-     * @param speed Yeni hız çarpanı.
+     * @brief Sets playback speed for a specific animation.
+     * @param index Index in AnimEntry list.
+     * @param speed New speed multiplier.
      */
     void SetAnimSpeed(RwInt32 index, RwReal speed);
 
     /**
-     * @brief Her karede çağrılır; animasyon zamanını ve hierarchy'yi günceller.
-     * @param deltaTime Son kareden bu yana geçen süre (saniye).
+     * @brief Called every frame; updates animation time and hierarchy.
+     * @param deltaTime Time elapsed since last frame (seconds).
      */
     void Update(RwReal deltaTime);
 
 private:
-    std::vector<AnimEntry> m_anims;    ///< Yüklü animasyon listesi
-    std::vector<BlendEntry> m_blends;  ///< Aktif harmanlama listesi
-    RpHAnimHierarchy* m_pHierarchy;    ///< RW animasyon hiyerarşisi
-    RwInt32 m_currentAnim;             ///< Etkin animasyonun indeksi
-    RwReal m_currentTime;              ///< Mevcut animasyon zamanı (saniye)
+    std::vector<AnimEntry> m_anims;    ///< Loaded animation list
+    std::vector<BlendEntry> m_blends;  ///< Active blend list
+    RpHAnimHierarchy* m_pHierarchy;    ///< RW animation hierarchy
+    RwInt32 m_currentAnim;             ///< Active animation index
+    RwReal m_currentTime;              ///< Current animation time (seconds)
 };
 
 } // namespace RWS

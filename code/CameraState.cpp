@@ -1,7 +1,7 @@
 // ============================================================================
 // CannonCruise - CWbCameraBehavior property apply (CameraState.cpp)
-// Tersine mühendislik ile yeniden yazılmıştır.
-// Binary ref: sub_4C3450 (51 case; default sessiz ilerler).
+// Reverse-engineered.
+// Binary ref: sub_4C3450 (51 case; default advances silently).
 // ============================================================================
 
 #include "CameraState.h"
@@ -21,16 +21,15 @@ inline void StoreVec3(float *pDst, const RwUInt8 *pSrc) {
 } // namespace
 
 RwBool CCameraState::ApplyAttribute(RwUInt32 id, RwUInt32 value) {
-    // value = property kaydının 4 bayt değeri (rec+8); VEC3 kayıtlarında
-    // ApplyAttribute çağrısı test/dışarıdan tek-kayıt API'si için value
-    // yerine ham buffer verilir — tek-kayıt API'sinde VEC3 id'lerinde
-    // değerin ilk 12 baytı ayrı buffer'dan gelmeli. Bu port tek-kayıt
-    // sözleşmesinde: VEC3 id'lerinde value yerine &value bit deseninin
-    // kendisi kullanılır (MAINMENU testi dosyadan 12 baytı doğrudan
-    // geçer). Dışarıdan çağıran, VEC3 için ApplyAttributeVec3 kullanır.
+    // value = 4-byte value of property record (rec+8); in VEC3 records
+    // ApplyAttribute call passes raw buffer instead of value — in single-record
+    // API VEC3 ids require first 12 bytes from separate buffer. This port uses
+    // single-record contract: VEC3 ids use &value bit pattern itself
+    // (MAINMENU test passes 12 bytes directly from file). External callers
+    // use ApplyAttributeVec3 for VEC3.
     switch (id) {
     case 0x0:
-        return FALSE; // VEC3 — ApplyAttributeVec3 ile
+        return FALSE; // VEC3 — via ApplyAttributeVec3
     case 0x1:
         m_clip1 = value;
         return TRUE;
@@ -172,7 +171,7 @@ RwBool CCameraState::ApplyAttribute(RwUInt32 id, RwUInt32 value) {
         m_param41 = value;
         return TRUE;
     case 0x2A:
-        // id42: guard yoksa sayaç artırımı (binary: +0x114 += 1.0f)
+        // id42: counter increment if no guard (binary: +0x114 += 1.0f)
         if (m_guard == 0) {
             m_counter += 1.0f;
         }
@@ -205,14 +204,14 @@ RwBool CCameraState::ApplyAttribute(RwUInt32 id, RwUInt32 value) {
         m_param50 = value;
         return TRUE;
     default:
-        // binary: default case sessizce advance — dış API FALSE döner
+        // binary: default case advances silently — external API returns FALSE
         return FALSE;
     }
 }
 
-// VEC3 property kayıtları (id 0,6,8,0x10,0x11,0x1C,0x1D,0x28) — 12 bayt
-// kopya; tek-kayıt value arayüzü 4 bayt olduğundan ayrı girişim var.
-// (sub_4C3450 ortak kuyruğu loc_4C393B: rec+8 → hedef, 3 dword.)
+// VEC3 property records (id 0,6,8,0x10,0x11,0x1C,0x1D,0x28) — 12-byte
+// copy; separate entry because single-record value interface is 4 bytes.
+// (sub_4C3450 common queue loc_4C393B: rec+8 -> dest, 3 dword.)
 RwBool CCameraStateApplyVec3(CCameraState *pState, RwUInt32 id,
                              const RwUInt8 *pVec3) {
     float *pDst = 0;

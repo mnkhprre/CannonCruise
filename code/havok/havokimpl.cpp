@@ -379,7 +379,7 @@ const hkClass* hkBvTreeShape::getClass() const
 }
 btCollisionShape* hkBvTreeShape::getBulletShape() const
 {
-    // Bullet'te BV ağaç shape'in BVH'indedir; koleksiyonun şekli devredilir.
+    // Bullet's BV tree shape is in BVH; collection's shape forwarded.
     return m_pCollection ? m_pCollection->getBulletShape() : 0;
 }
 void hkBvTreeShape::getAabb(hkAabb& aabb) const
@@ -730,7 +730,7 @@ void hkWorld::setCollisionFilter(hkCollisionFilter* pFilter)
     m_pCollisionFilter = pFilter;
 }
 
-// Bullet tek iş parçacıklı → yer tutucular no-op (binary sözleşmesi korunur)
+// Bullet single-threaded → stubs no-op (binary contract preserved)
 void hkWorld::markForWrite() {}
 void hkWorld::unmarkForWrite() {}
 void hkWorld::markForRead() {}

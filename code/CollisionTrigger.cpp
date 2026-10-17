@@ -1,23 +1,23 @@
 // ============================================================================
 // CannonCruise - Collision Trigger Entity (CollisionTrigger.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\CollisionTrigger.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0046f420 — CCollisionTrigger constructor & registration
 //   FUN_0046f5e0 — CCollisionTrigger::Initialize (clump → hkpPhantom)
 //   FUN_004702c0 — CCollisionTrigger::OnEntityEnter
 //
-// Backend: hkpPhantom → btGhostObject (PhysicsBackend). Initialize,
-// clump bounding sphere'inden AABB kutu phantom üretir ve kayıtlı
-// CPhysicsWorld singleton'ına ekler (CPhysicsWorld::AddPhantom →
-// backend PhysicsWorld_AddTrigger). HandleEvents her turda overlap
-// listesini poll eder; fark OnEntityEnter/OnEntityLeave'a akar.
+// Backend: hkpPhantom -> btGhostObject (PhysicsBackend). Initialize,
+// creates AABB box phantom from clump bounding sphere and registers
+// with CPhysicsWorld singleton (CPhysicsWorld::AddPhantom ->
+// backend PhysicsWorld_AddTrigger). HandleEvents polls overlap list
+// every frame; delta flows to OnEntityEnter/OnEntityLeave.
 //
-// SAPMA: binary OnEntityEnter/Leave içinde CSpeakManager speak olayı
-// tetikler (assert "IsSpeakValid(m_iEnterSpeakCategory...") — speak
-// manager portlanmadı, alanlar korunuyor. Clump sphere'i RW stub'larında
-// NULL → librw'de gerçek veriye akacak.
+// DEVIATION: binary OnEntityEnter/Leave triggers CSpeakManager speak event
+// (assert "IsSpeakValid(m_iEnterSpeakCategory...") — speak manager
+// not ported, fields preserved. Clump sphere NULL in RW stubs -> real
+// data flows in librw.
 // ============================================================================
 
 #include "CollisionTrigger.h"
@@ -32,7 +32,7 @@ RWS_REGISTER_CLASS(
 
 namespace
 {
-    const RwInt32 kMaxOverlaps = 16; // tek turda raporlanan en fazla gövde
+    const RwInt32 kMaxOverlaps = 16; // max bodies reported per turn
 }
 
 CCollisionTrigger::CCollisionTrigger()
@@ -61,11 +61,11 @@ void CCollisionTrigger::Initialize(RpClump *pClump) {
          "be present at start for every collision trigger");
   m_pClump = pClump;
 
-  // FUN_0046f5e0 — clump'tan bounding sphere al (stub: NULL → erken dönüş;
-  // librw'de dolduğunda AABB phantom oluşur)
+  // FUN_0046f5e0 — get bounding sphere from clump (stub: NULL -> early return;
+  // in librw, AABB phantom is created when filled)
   const RwSphere *pSphere = RpClumpGetBoundingSphere(pClump);
   if (!pSphere) {
-    return; // veri yok (RW stub durumu)
+    return; // no data (RW stub condition)
   }
   InitializeWithSphere(&pSphere->center, pSphere->radius);
 }
@@ -76,7 +76,7 @@ void CCollisionTrigger::InitializeWithSphere(const RwV3d *pCenter,
   assert(radius > 0.0f && "trigger radius > 0 Failed");
   assert(m_pPhantom == 0 && "phantom already created");
 
-  // sphere → AABB kutu (yarı eksen = radius) — hkpBoxPhantom taklidi
+  // sphere -> AABB box (half-extent = radius) — hkpBoxPhantom emulation
   const RwReal half[3] = {radius, radius, radius};
   const RwReal pos[3] = {pCenter->x, pCenter->y, pCenter->z};
   m_pPhantom = PhysicsTrigger_CreateBox(half, pos);
@@ -97,7 +97,7 @@ void CCollisionTrigger::PollOverlaps() {
   const RwInt32 n =
       PhysicsTrigger_GetOverlaps(m_pPhantom, hits, kMaxOverlaps);
 
-  // çıkanlar — önceki turda vardı, bu turda yok
+  // leavers — were present last turn, gone this turn
   for (size_t i = 0; i < m_overlaps.size(); ++i) {
     bool bStill = false;
     for (RwInt32 h = 0; h < n; ++h) {
@@ -111,7 +111,7 @@ void CCollisionTrigger::PollOverlaps() {
     }
   }
 
-  // girenler — bu turda var, önceki turda yok
+  // enterers — present this turn, absent last turn
   for (RwInt32 h = 0; h < n; ++h) {
     bool bWas = false;
     for (size_t i = 0; i < m_overlaps.size(); ++i) {
@@ -129,8 +129,8 @@ void CCollisionTrigger::PollOverlaps() {
 }
 
 void CCollisionTrigger::OnEntityEnter(void *pEntity) {
-  // FUN_004702c0 — binary burada CSpeakManager speak olayı tetikler
-  // (m_iEnterSpeakCategory/m_iEnterSpeakIndex); speak manager portlanmadı.
+  // FUN_004702c0 — binary triggers CSpeakManager speak event here
+  // (m_iEnterSpeakCategory/m_iEnterSpeakIndex); speak manager not ported.
   (void)pEntity;
 }
 

@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - Collision Geometry Generator (CollisionGeometry.h)
 // Original path: D:\Projects\CannonCruisePC\code\CollisionGeometry.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include <rwcore.h>
@@ -13,7 +13,7 @@
 class CCollisionGeometry
 {
 public:
-    // RenderWare Clump geometrisinden Havok çarpışma şekli oluştur
+    // Create Havok collision shape from RenderWare Clump geometry
     static void* CreateShapeFromClump(RpClump* pClump, RwBool bConvex = TRUE);
     static void* CreateBoxShape(const RwV3d* pHalfExtents);
     static void* CreateSphereShape(RwReal radius);

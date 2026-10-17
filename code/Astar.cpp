@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - A* Grid Pathfinding (Astar.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\Astar.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_00446c60 — CAstar::Initialize
 //   FUN_00447680 — CAstar::FindPath
 // ============================================================================
@@ -18,7 +18,7 @@ CAstar::~CAstar() {}
 
 // ============================================================================
 // CAstar::Initialize (FUN_00446c60)
-// ASM: 00446c60 — Izgara boyutunu doğrula ve başlat
+// ASM: 00446c60 — Validate grid size and initialize
 // ============================================================================
 void CAstar::Initialize(RwInt32 width, RwInt32 height) {
   assert(width >= 3 && height >= 3 && "(iWidth >= 3) && (iHeight >= 3) Failed");
@@ -29,7 +29,7 @@ void CAstar::Initialize(RwInt32 width, RwInt32 height) {
 
 // ============================================================================
 // CAstar::FindPath (FUN_00447680)
-// ASM: 00447680 — Başlangıçtan hedefe yol bul
+// ASM: 00447680 — Path from start to target
 // ============================================================================
 RwBool CAstar::FindPath(RwInt32 startX, RwInt32 startZ, RwInt32 endX,
                         RwInt32 endZ, std::vector<RwV3d> &outPath) {
@@ -49,7 +49,7 @@ RwBool CAstar::FindPath(RwInt32 startX, RwInt32 startZ, RwInt32 endX,
 
   m_OpenList.Insert(startNode);
 
-  // Yol arama döngüsü
+  // Pathfinding loop
   RwV3d step;
   step.x = (RwReal)startX;
   step.y = 0.0f;

@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - A* Grid Pathfinding (Astar.h)
 // Original path: D:\Projects\CannonCruisePC\code\Astar.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // Binary ref: FUN_00473800 - FUN_00473f00 (CAstar methods)
 // ============================================================================
 
@@ -14,42 +14,42 @@
 
 /**
  * @struct SPathNode
- * @brief A* algoritması için tek bir ızgara düğümünü temsil eder.
+ * @brief Represents a single grid node for A* algorithm.
  *
- * Izgara koordinatları (x, z), g/h/f maliyetleri ve üst düğüm işaretçisi içerir.
- * CBinMinTree<SPathNode> açık listesinde öncelik sırasına göre sıralanır.
+ * Contains grid coordinates (x, z), g/h/f costs, and parent node pointer.
+ * Sorted by priority in CBinMinTree<SPathNode> open list.
  */
 struct SPathNode {
-  RwInt32 x;          ///< Izgaradaki X koordinatı (sütun)
-  RwInt32 z;          ///< Izgaradaki Z koordinatı (satır)
-  RwReal g;           ///< Başlangıçtan bu düğüme kadar gerçek maliyet
-  RwReal h;           ///< Bu düğümden hedefe tahmin edilen maliyet (sezgisel)
-  RwReal f;           ///< Toplam maliyet: f = g + h
-  SPathNode *pParent; ///< Yol izleme için üst düğüm işaretçisi
+  RwInt32 x;          ///< X coordinate in grid (column)
+  RwInt32 z;          ///< Z coordinate in grid (row)
+  RwReal g;           ///< Actual cost from start to this node
+  RwReal h;           ///< Estimated cost from this node to target (heuristic)
+  RwReal f;           ///< Total cost: f = g + h
+  SPathNode *pParent; ///< Parent node pointer for path tracing
 
   /**
-   * @brief Min-heap sıralaması için karşılaştırma operatörü.
-   * @param other Karşılaştırılan diğer düğüm.
-   * @return Bu düğümün f değeri daha küçükse true.
+   * @brief Comparison operator for min-heap ordering.
+   * @param other Other node to compare.
+   * @return True if this node's f value is smaller.
    */
   bool operator<(const SPathNode &other) const { return f < other.f; }
 };
 
 /**
  * @class CAstar
- * @brief 2B ızgara üzerinde A* yol bulma algoritması.
+ * @brief A* pathfinding algorithm on 2D grid.
  *
- * CPathFindingMap tarafından kullanılır; NPC AI'larının (Soldier, Bird)
- * engelleri aşarak hedefe ulaşmasını sağlayan yolu hesaplar.
- * Izgara boyutları Initialize() ile belirlenir; her FindPath() çağrısı
- * bağımsız bir yol hesaplaması yapar.
+ * Used by CPathFindingMap; calculates path allowing NPC AIs (Soldier, Bird)
+ * to reach target by overcoming obstacles.
+ * Grid dimensions set via Initialize(); each FindPath() call performs
+ * independent path calculation.
  *
- * **Algoritma:**
- * - Açık liste: CBinMinTree<SPathNode> (min-heap)
- * - Sezgisel: Manhattan mesafesi
- * - Komşular: 4 yönlü (kuzey, güney, doğu, batı)
+ * **Algorithm:**
+ * - Open list: CBinMinTree<SPathNode> (min-heap)
+ * - Heuristic: Manhattan distance
+ * - Neighbors: 4-directional (north, south, east, west)
  *
- * **Binary referansları:**
+ * **Binary references:**
  * - Ctor: `FUN_00473800`
  * - FindPath: `FUN_004738a0`
  * - Initialize: `FUN_00473850`
@@ -57,38 +57,38 @@ struct SPathNode {
 class CAstar {
 public:
   /**
-   * @brief Varsayılan yapıcı — boş ızgara ile başlatır.
+   * @brief Default constructor — initializes empty grid.
    */
   CAstar();
 
   /**
-   * @brief Yıkıcı — açık liste belleğini serbest bırakır.
+   * @brief Destructor — frees open list memory.
    */
   ~CAstar();
 
   /**
-   * @brief Izgara boyutlarını ayarlar.
-   * @param width  Izgaranın sütun sayısı (X ekseni).
-   * @param height Izgaranın satır sayısı (Z ekseni).
+   * @brief Sets grid dimensions.
+   * @param width  Number of columns (X axis).
+   * @param height Number of rows (Z axis).
    */
   void Initialize(RwInt32 width, RwInt32 height);
 
   /**
-   * @brief Başlangıç noktasından hedef noktaya yol arar.
-   * @param startX Başlangıç X koordinatı.
-   * @param startZ Başlangıç Z koordinatı.
-   * @param endX   Hedef X koordinatı.
-   * @param endZ   Hedef Z koordinatı.
-   * @param outPath Bulunan yolu 3D dünya koordinatları olarak dolduran çıkış vektörü.
-   * @return RwBool — TRUE ise geçerli yol bulundu; FALSE ise ulaşılamaz.
+   * @brief Searches path from start to target node.
+   * @param startX Start X coordinate.
+   * @param startZ Start Z coordinate.
+   * @param endX   Target X coordinate.
+   * @param endZ   Target Z coordinate.
+   * @param outPath Output vector filled with path in 3D world coordinates.
+   * @return RwBool — TRUE if valid path found; FALSE if unreachable.
    */
   RwBool FindPath(RwInt32 startX, RwInt32 startZ, RwInt32 endX, RwInt32 endZ,
                   std::vector<RwV3d> &outPath);
 
 private:
-  RwInt32 m_iWidth;             ///< Izgara genişliği (sütun sayısı)
-  RwInt32 m_iHeight;            ///< Izgara yüksekliği (satır sayısı)
-  CBinMinTree<SPathNode> m_OpenList; ///< A* açık listesi (min-heap)
+  RwInt32 m_iWidth;             ///< Grid width (column count)
+  RwInt32 m_iHeight;            ///< Grid height (row count)
+  CBinMinTree<SPathNode> m_OpenList; ///< A* open list (min-heap)
 };
 
 #endif // ASTAR_H

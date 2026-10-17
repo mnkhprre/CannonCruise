@@ -1,6 +1,6 @@
 #!/bin/sh
-# CannonCruise altyapı derleme betiği — stale-binary tuzağına karşı:
-# link öncesi eski exe'ler silinir (| head SIGPIPE + eksik relink).
+# CannonCruise infrastructure build script — guards against stale-binary trap:
+# old exe files are deleted before linking (| head SIGPIPE + missing relink).
 set -e
 cd "$(dirname "$0")"
 rm -f build/CannonCruise build-gl3/CannonCruise

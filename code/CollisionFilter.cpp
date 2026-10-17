@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Collision Filter (CollisionFilter.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\CollisionFilter.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_00434cb0 — CCollisionFilter::ShouldCollide
 // ============================================================================
 
@@ -17,8 +17,8 @@ void CCollisionFilter::Initialize()
 {
     memset(sm_CollisionMatrix, 0, sizeof(sm_CollisionMatrix));
 
-    // Çarpışma Kuralları Matrisi
-    // Oyuncu gemisi statik dünya, düşman gemileri, mayınlar, enkaz ve tetikleyicilerle çarpışır
+    // Collision Rules Matrix
+    // Player ship collides with static world, enemy ships, mines, debris and triggers
     sm_CollisionMatrix[CFE_PLAYER_SHIP][CFE_WORLD_STATIC] = TRUE;
     sm_CollisionMatrix[CFE_PLAYER_SHIP][CFE_ENEMY_SHIP] = TRUE;
     sm_CollisionMatrix[CFE_PLAYER_SHIP][CFE_CANNONBALL] = TRUE;
@@ -27,12 +27,12 @@ void CCollisionFilter::Initialize()
     sm_CollisionMatrix[CFE_PLAYER_SHIP][CFE_FISH] = TRUE;
     sm_CollisionMatrix[CFE_PLAYER_SHIP][CFE_TRIGGER] = TRUE;
 
-    // Düşman gemisi kuralları
+    // Enemy ship rules
     sm_CollisionMatrix[CFE_ENEMY_SHIP][CFE_WORLD_STATIC] = TRUE;
     sm_CollisionMatrix[CFE_ENEMY_SHIP][CFE_PLAYER_SHIP] = TRUE;
     sm_CollisionMatrix[CFE_ENEMY_SHIP][CFE_CANNONBALL] = TRUE;
 
-    // Top güllesi kuralları
+    // Cannonball rules
     sm_CollisionMatrix[CFE_CANNONBALL][CFE_WORLD_STATIC] = TRUE;
     sm_CollisionMatrix[CFE_CANNONBALL][CFE_PLAYER_SHIP] = TRUE;
     sm_CollisionMatrix[CFE_CANNONBALL][CFE_ENEMY_SHIP] = TRUE;
@@ -52,7 +52,7 @@ void CCollisionFilter::Initialize()
 
 // ============================================================================
 // CCollisionFilter::ShouldCollide (FUN_00434cb0)
-// ASM: 00434cb0 — İki katman arasındaki çarpışmayı filtrele
+// ASM: 00434cb0 — Filter collision between two layers
 // ============================================================================
 RwBool CCollisionFilter::ShouldCollide(RwUInt32 infoA, RwUInt32 infoB)
 {

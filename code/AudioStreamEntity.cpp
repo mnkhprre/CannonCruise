@@ -9,10 +9,10 @@
 
 namespace {
 
-// Kısa/boş string önekini slot önbelleğine kopyalar (max 8 bayt, NUL'a kadar).
-// Binary'de loc_40BF90 payload register çağrısı; slot'un ikinci kelimesindeki
-// register flag bu portta yok — "kayıtlı" durumu önekin ilk baytından türetilir
-// (0x00 = boş = kayıt yok). Tam slot makinesi mesaj alt sisteminin parçası.
+// Copies short/empty string prefix to slot cache (max 8 bytes, up to NUL).
+// Binary calls loc_40BF90 payload register; register flag not in this port —
+// "registered" status derived from prefix's first byte (0x00 = empty = not registered).
+// Part of full slot machine message subsystem.
 void CopySlotPrefix(RwUInt32 slot[2], const RwUInt8 *pValue) {
     RwUInt8 bytes[8] = {0, 0, 0, 0, 0, 0, 0, 0};
     if (pValue) {

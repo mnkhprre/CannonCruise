@@ -52,9 +52,9 @@ struct WorldGeometryInfo {
 
 /// Last CreateClump's world bbox (all atomic vertices — auto-framing)
 struct WorldGeometryBounds {
-    RwReal min[3];  ///< bbox köşesi (en küçük)
-    RwReal max[3];  ///< bbox köşesi (en büyük)
-    RwBool valid;   ///< TRUE ise en az bir vertice işlendi
+    RwReal min[3];  ///< bbox corner (min)
+    RwReal max[3];  ///< bbox corner (max)
+    RwBool valid;   ///< TRUE if at least one vertex processed
 };
 
 /**

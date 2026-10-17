@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - World Geometry Resource Loader (WorldGeometryResource.h)
 // Original path: D:\Projects\CannonCruisePC\code\WorldGeometryResource.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include <rwcore.h>

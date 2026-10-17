@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Screen Fade Effect (Fade.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\Fade.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_00479e90 — CFade constructor & registration
 //   FUN_0047a530 — CFade::Update
 //   FUN_0047a950 — CFade::Render
@@ -59,7 +59,7 @@ CFade::~CFade()
  */
 void CFade::HandleEvents(const RWS::CMsg& msg)
 {
-    // MSG_FADE_RENDER olayı
+    // MSG_FADE_RENDER event
 }
 
 /**
@@ -148,35 +148,35 @@ void CFade::Render()
 
     RwIm2DVertex verts[4];
     
-    // Top-Left (Sol Üst)
+    // Top-Left
     RwIm2DVertexSetScreenX(&verts[0], 0.0f);
     RwIm2DVertexSetScreenY(&verts[0], 0.0f);
     RwIm2DVertexSetScreenZ(&verts[0], nearZ);
     RwIm2DVertexSetRecipCameraZ(&verts[0], recipZ);
     RwIm2DVertexSetIntRGBA(&verts[0], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
 
-    // Bottom-Left (Sol Alt)
+    // Bottom-Left
     RwIm2DVertexSetScreenX(&verts[1], 0.0f);
     RwIm2DVertexSetScreenY(&verts[1], height);
     RwIm2DVertexSetScreenZ(&verts[1], nearZ);
     RwIm2DVertexSetRecipCameraZ(&verts[1], recipZ);
     RwIm2DVertexSetIntRGBA(&verts[1], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
 
-    // Top-Right (Sağ Üst)
+    // Top-Right
     RwIm2DVertexSetScreenX(&verts[2], width);
     RwIm2DVertexSetScreenY(&verts[2], 0.0f);
     RwIm2DVertexSetScreenZ(&verts[2], nearZ);
     RwIm2DVertexSetRecipCameraZ(&verts[2], recipZ);
     RwIm2DVertexSetIntRGBA(&verts[2], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
 
-    // Bottom-Right (Sağ Alt)
+    // Bottom-Right
     RwIm2DVertexSetScreenX(&verts[3], width);
     RwIm2DVertexSetScreenY(&verts[3], height);
     RwIm2DVertexSetScreenZ(&verts[3], nearZ);
     RwIm2DVertexSetRecipCameraZ(&verts[3], recipZ);
     RwIm2DVertexSetIntRGBA(&verts[3], m_Color.red, m_Color.green, m_Color.blue, m_Color.alpha);
 
-    // RenderStates ayarları
+    // RenderState settings
     RwRenderStateSet(rwRENDERSTATETEXTURERASTER, (void*)0);
     RwRenderStateSet(rwRENDERSTATEZTESTENABLE, (void*)FALSE);
     RwRenderStateSet(rwRENDERSTATEZWRITEENABLE, (void*)FALSE);
@@ -184,10 +184,10 @@ void CFade::Render()
     RwRenderStateSet(rwRENDERSTATESRCBLEND, (void*)rwBLENDSRCALPHA);
     RwRenderStateSet(rwRENDERSTATEDESTBLEND, (void*)rwBLENDINVSRCALPHA);
 
-    // Ekrana 2D Dörtgen çiz
+    // Draw 2D quad to screen
     RwIm2DRenderPrimitive(rwPRIMTYPETRISTRIP, verts, 4);
 
-    // Varsayılan duruma geri dön
+    // Restore default state
     RwRenderStateSet(rwRENDERSTATEZTESTENABLE, (void*)TRUE);
     RwRenderStateSet(rwRENDERSTATEZWRITEENABLE, (void*)TRUE);
     RwRenderStateSet(rwRENDERSTATEVERTEXALPHAENABLE, (void*)FALSE);

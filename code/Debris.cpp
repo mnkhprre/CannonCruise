@@ -1,7 +1,7 @@
 // ============================================================================
 // CannonCruise - Debris Obstacle & Explosive Flotsam (Debris.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\Debris.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include "Debris.h"

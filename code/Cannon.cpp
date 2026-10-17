@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Cannon Weapon Entity (Cannon.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\Cannon.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0046a0e0 — CCannon constructor & initialization
 //   FUN_0046a700 — CCannon::Fire
 // ============================================================================
@@ -103,7 +103,7 @@ void CCannon::Fire(ECannonballType type, const RwV3d* pDirection, RwReal speed)
     spawnData.m_uOwnerID = m_uOwnerID;
 
     // --- 4. Firing sound (positional 3-D audio) ---
-    // Top ateşleme sesi
+    // Cannon fire sound
     CAudioManager* pAudio = CAudioManager::GetSingletonPtr();
     if (pAudio)
     {
@@ -118,5 +118,5 @@ void CCannon::Fire(ECannonballType type, const RwV3d* pDirection, RwReal speed)
 // ---------------------------------------------------------------------------
 void CCannon::Aim(RwReal elevation, RwReal azimuth)
 {
-    // Namlu ve kaide dönüşleri
+    // Barrel and base rotations
 }

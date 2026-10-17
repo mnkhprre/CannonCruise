@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Texture Resource Loader (TextureResource.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\TextureResource.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0044b100 — CTextureResource::Load
 //   FUN_0044b420 — CTextureResource::Unload
 // ============================================================================

@@ -1,5 +1,5 @@
 // ============================================================================
-// CannonCruise - Faz 4.6p: WorldSpawn implementation
+// CannonCruise - Phase 4.6p: WorldSpawn implementation
 // ============================================================================
 
 #include "WorldSpawn.h"
@@ -16,9 +16,9 @@
 
 namespace {
 
-// ---- fabrika + apply adaptörleri (binary: factory + vtable slot1) ----
-// Test deseninin birebir aynısı (behaviourloader_test.cpp); apply
-// singleton hedefine akar (binary: apply DAT_00635648).
+// ---- factory + apply adaptors (binary: factory + vtable slot1) ----
+// Exact replica of test pattern (behaviourloader_test.cpp); apply
+// flows to singleton target (binary: apply DAT_00635648).
 
 void *CreateWbRender() {
     CRenderBehaviourSub *pSub = new CRenderBehaviourSub;
@@ -41,7 +41,7 @@ void *CreateWbCamera() {
 RwBool ApplyWbCamera(void *pObject, RwUInt32 id, const RwUInt8 *pValue) {
     CCameraState *pCam = static_cast<CCameraState *>(pObject);
     if (CCameraStateApplyVec3(pCam, id, pValue) == TRUE) {
-        return TRUE; // VEC3 kaydı (12B kopya)
+        return TRUE; // VEC3 record (12B copy)
     }
     RwUInt32 bits = 0;
     std::memcpy(&bits, pValue, 4);
@@ -61,8 +61,8 @@ RwBool ApplyAudio(void *pObject, RwUInt32 id, const RwUInt8 *pValue) {
 
 void *CreatePhysicsWorld() { return new CPhysicsWorldBehaviour; }
 
-// CPhysicsWorldBehaviour apply: binary'de property yok — tetikleme akışına
-// mesaj-driven (HandleEvents); port no-op döner.
+// CPhysicsWorldBehaviour apply: no property in binary — message-driven
+// (HandleEvents); port returns no-op.
 RwBool ApplyPhysicsWorld(void *, RwUInt32, const RwUInt8 *) { return TRUE; }
 
 } // namespace
@@ -115,7 +115,7 @@ RwInt32 WorldSpawn_FromFile(const RwChar *pPath, WorldSpawnStats *pStats) {
             stats.instancesCreated += (RwUInt32)applied;
             totalApplied += applied;
         }
-        // bilinmeyen sınıflar: factory miss (binary: property atla)
+        // unknown classes: factory miss (binary: property skip)
         stats.instancesSkipped +=
             pObj->behaviourCount - (RwUInt32)(applied > 0 ? applied : 0);
     }

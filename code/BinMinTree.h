@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - Binary Minimum Heap / Tree (BinMinTree.h)
 // Original path: D:\Projects\CannonCruisePC\code\BinMinTree.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include <cassert>
@@ -13,38 +13,36 @@
 
 /**
  * @class CBinMinTree
- * @brief İkili minimum yığın (binary min-heap) veri yapısı şablonu.
+ * @brief Binary min-heap data structure template.
  *
- * A* yol bulma algoritmasında `CAstar` sınıfının açık listesi olarak kullanılır.
- * Her `Insert()` en küçük elemanı kök konumuna getirmek için yukarı yığınlama
- * (UpHeap), `ExtractMin()` ise kaldırılan kökü yeniden sıralamak için aşağı
- * yığınlama (DownHeap) uygular.
+ * Used as open list in A* pathfinding algorithm by `CAstar` class.
+ * Each `Insert()` performs up-heap (UpHeap) to bring smallest element to root,
+ * `ExtractMin()` performs down-heap (DownHeap) to re-sort after root removal.
  *
- * **Kullanım koşulları:**
- * - `T` türü `operator<` tanımlamalıdır (SPathNode gibi).
- * - `ExtractMin()` boş yığında çağrılmamalıdır.
+ * **Preconditions:**
+ * - `T` type must define `operator<` (e.g. SPathNode).
+ * - `ExtractMin()` must not be called on empty heap.
  *
- * **Karmaşıklık:**
+ * **Complexity:**
  * - Insert: O(log n)
  * - ExtractMin: O(log n)
  * - IsEmpty / GetSize: O(1)
  *
- * @tparam T Yığında tutulacak eleman türü (operator< gerektir).
+ * @tparam T Element type stored in heap (requires operator<).
  */
 template <typename T>
 class CBinMinTree {
 public:
     /**
-     * @brief Varsayılan yapıcı — boş yığın oluşturur.
+     * @brief Default constructor — creates empty heap.
      */
     CBinMinTree() {}
 
     /**
-     * @brief Yığına yeni bir eleman ekler.
-     * @param item Eklenecek eleman.
+     * @brief Adds new element to heap.
+     * @param item Element to add.
      *
-     * Eleman vektörün sonuna eklendikten sonra `UpHeap()` ile
-     * uygun konuma taşınır.
+     * After appending to end of element vector, moved to correct position via `UpHeap()`.
      */
     void Insert(const T &item) {
         m_vTree.push_back(item);
@@ -53,12 +51,12 @@ public:
     }
 
     /**
-     * @brief Minimum elemanı yığından çıkarır ve döndürür.
-     * @return T — En küçük değere sahip eleman (kök).
-     * @pre Yığın boş olmamalıdır.
+     * @brief Extracts and returns minimum element from heap.
+     * @return T — Element with smallest value (root).
+     * @pre Heap must not be empty.
      *
-     * Kök, son elemanla yer değiştirir, son eleman çıkarılır,
-     * ardından `DownHeap()` ile yığın özelliği yeniden sağlanır.
+     * Root swapped with last element, last element removed,
+     * then heap property restored via `DownHeap()`.
      */
     T ExtractMin() {
         assert(m_vTree.size() > 0 && "m_vTree.size() > 0 Failed");
@@ -72,26 +70,26 @@ public:
     }
 
     /**
-     * @brief Tüm elemanları yığından temizler.
+     * @brief Removes all elements from heap.
      */
     void Clear() { m_vTree.clear(); }
 
     /**
-     * @brief Yığının boş olup olmadığını döndürür.
-     * @return RwBool — TRUE ise yığında eleman yoktur.
+     * @brief Returns whether heap is empty.
+     * @return RwBool — TRUE if no elements in heap.
      */
     RwBool IsEmpty() const { return m_vTree.empty(); }
 
     /**
-     * @brief Yığındaki eleman sayısını döndürür.
-     * @return RwUInt32 — Mevcut eleman sayısı.
+     * @brief Returns element count in heap.
+     * @return RwUInt32 — Current element count.
      */
     RwUInt32 GetSize() const { return (RwUInt32)m_vTree.size(); }
 
     /**
-     * @brief İç vektördeki belirli bir indekse salt okunur erişim sağlar.
-     * @param n Erişilecek indeks.
-     * @return const T& — İstenen elemanın sabit referansı.
+     * @brief Provides read-only access to specific index in internal vector.
+     * @param n Index to access.
+     * @return const T& — Const reference to requested element.
      * @pre n < m_vTree.size()
      */
     const T &operator[](RwUInt32 n) const {
@@ -102,8 +100,8 @@ public:
 
 private:
     /**
-     * @brief n indeksindeki elemanı yukarı doğru yığın özelliğini sağlayarak taşır.
-     * @param n Yukarı taşınacak elemanın indeksi.
+     * @brief Moves element at index n upward maintaining heap property.
+     * @param n Index of element to move up.
      */
     void UpHeap(RwUInt32 n) {
         while (n > 0) {
@@ -120,8 +118,8 @@ private:
     }
 
     /**
-     * @brief n indeksindeki elemanı aşağı doğru yığın özelliğini sağlayarak taşır.
-     * @param n Aşağı taşınacak elemanın indeksi.
+     * @brief Moves element at index n downward maintaining heap property.
+     * @param n Index of element to move down.
      */
     void DownHeap(RwUInt32 n) {
         RwUInt32 nTreeSize = (RwUInt32)m_vTree.size();
@@ -150,7 +148,7 @@ private:
         }
     }
 
-    std::vector<T> m_vTree; ///< Yığın elemanlarını tutan dinamik vektör
+    std::vector<T> m_vTree; ///< Dynamic vector holding heap elements
 };
 
 #endif // BINMINTREE_H

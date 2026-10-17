@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Cannonball Projectile (Cannonball.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\Cannonball.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0046c2a0 — CCannonball constructor & registration
 //   FUN_0046d1e0 — CCannonball::Spawn
 //   FUN_0046d520 — CCannonball::OnHit

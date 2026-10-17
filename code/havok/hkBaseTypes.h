@@ -4,9 +4,8 @@
 // ============================================================================
 // CannonCruise - Havok Physics 2.2.1 Shim (hkBaseTypes.h)
 // Binary: E:\nightly_builds\Havok_2_2_1_Branch\build\code\hk221\source\hkbase
-// Tersine mühendislik ile CC.asm / CC_ida.asm tipleri eşleştirilerek
-// yeniden oluşturulmuş arayüzlerdir. ŞİM: havokimpl.cpp bunları Bullet
-// motoruna bağlar (havokshim_test ile doğrulanır).
+// Reverse-engineered interfaces matching CC.asm / CC_ida.asm types.
+// SHIM: havokimpl.cpp binds them to Bullet engine (verified by havokshim_test).
 // ============================================================================
 
 #include <cstddef>
@@ -45,7 +44,7 @@ typedef void*        hkPointer;
 #define HK_ON_ASSERT(X) X
 #endif
 
-// Havok 2.x hata kodu — "hkResult" ASM'de geçer
+// Havok 2.x error code — "hkResult" appears in ASM
 struct hkResult
 {
     enum { FAIL = 0, SUCCESS = 1 } m_enum;
@@ -54,7 +53,7 @@ struct hkResult
     hkBool isSuccess() const { return m_enum == SUCCESS; }
 };
 
-// Basit 3B vektör (hkVector4'ün 3B karşılığı; oyun RwV3d ile çalışır)
+// Simple 3-vector (3D counterpart of hkVector4; game works with RwV3d)
 struct hkVector3
 {
     hkReal x, y, z;
@@ -62,7 +61,7 @@ struct hkVector3
     hkVector3(hkReal xx, hkReal yy, hkReal zz) : x(xx), y(yy), z(zz) {}
 };
 
-// AABB sınır kutusu (hkBvTreeShape broad-phase için)
+// AABB bounding box (for hkBvTreeShape broad-phase)
 struct hkAabb
 {
     hkVector3 m_min;

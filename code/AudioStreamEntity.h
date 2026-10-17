@@ -15,10 +15,10 @@
 // Sub vtable at +0x18 (PTR_LAB_005efbe0): [0]=458F00, [1]=HandleEvents(458B60),
 //   [2]=dtor(458A30), [3]=apply(458BD0).
 //
-// Not: apply id0/id1/id2 mesaj-slot register (loc_40BF90) çağırır; slot
-// makinesinin tam işlevselliği mesaj alt sisteminin parçasıdır (todo). Bu
-// port layout + property apply semantiğini taşır: slot alanlarına ilk 8 bayt
-// (kısa/boş string öneki) yazılır ve "registered" işareti konur.
+// Note: apply id0/id1/id2 calls message-slot register (loc_40BF90); slot
+// machine's full functionality is part of message subsystem (todo). This port
+// carries layout + property apply semantics: writes first 8 bytes (short/empty
+// string prefix) to slot fields and sets "registered" flag.
 // ============================================================================
 
 #ifndef CANNONCRUISE_AUDIOSTREAMENTITY_H
@@ -27,12 +27,12 @@
 #include "rwcore.h"
 
 /**
- * @brief CAudioStreamEntity 0x54 baytlık 32-bit sınıf düzeni.
+ * @brief CAudioStreamEntity 0x54 byte 32-bit class layout.
  *
- * Binary ctor (FUN_00458960) sıfırları ve vtable yüklemeleri:
- *   +0x00 vtable, +0x04..+0x14 sıfır, +0x18 sub-vtable, +0x1c = 1,
- *   +0x20/+0x28/+0x30 üç 8B mesaj slotu (FUN_0040b300 init),
- *   +0x38..+0x48 sıfır (loopCount/streamHandle/floats/state).
+ * Binary ctor (FUN_00458960) zeroing and vtable loads:
+ *   +0x00 vtable, +0x04..+0x14 zero, +0x18 sub-vtable, +0x1c = 1,
+ *   +0x20/+0x28/+0x30 three 8B message slots (FUN_0040b300 init),
+ *   +0x38..+0x48 zero (loopCount/streamHandle/floats/state).
  */
 struct CAudioStreamEntity {
     RwUInt32 vtable;          // +0x00 PTR_FUN_005efbe8
@@ -47,15 +47,15 @@ struct CAudioStreamEntity {
     RwUInt32 slot28[2];       // +0x28 id1 slotu
     RwUInt32 slot30[2];       // +0x30 id2 slotu
     RwUInt32 loopCount;       // +0x38 id3 (dosya: 0xFFFFFFFF = -1)
-    RwUInt32 streamHandle;    // +0x3c (stop'da sıfırlanır)
-    float    float0;          // +0x40 id4 (dosya: 5.0f)
-    float    float1;          // +0x44 id5 (dosya: 0.0f)
-    RwUInt32 state;           // +0x48 (stop'da sıfırlanır)
+    RwUInt32 streamHandle;    // +0x3c (reset on stop)
+    float    float0;          // +0x40 id4 (file: 5.0f)
+    float    float1;          // +0x44 id5 (file: 0.0f)
+    RwUInt32 state;           // +0x48 (reset on stop)
     RwUInt32 reserved4c;      // +0x4c
     RwUInt32 reserved50;      // +0x50
 };
 
-// 32-bit sınıf düzeni garantisi
+// 32-bit class layout guarantee
 static_assert(sizeof(CAudioStreamEntity) == 0x54,
               "CAudioStreamEntity must be 0x54 bytes (32-bit layout)");
 static_assert(sizeof(RwUInt32) == 4, "32-bit build expected");
@@ -71,29 +71,29 @@ static_assert(offsetof(CAudioStreamEntity, float1) == 0x44, "layout");
 static_assert(offsetof(CAudioStreamEntity, state) == 0x48, "layout");
 
 /**
- * @brief Entity'yi ctor varsayılanlarıyla başlatır (FUN_00458960).
+ * @brief Initializes entity with ctor defaults (FUN_00458960).
  */
 void CAudioStreamEntityInit(CAudioStreamEntity *pEntity);
 
 /**
- * @brief 0x0704 property kaydını uygular (sub_458BD0).
+ * @brief Applies 0x0704 property record (sub_458BD0).
  *
- * id0: stop (handle/state=0) + slot20 temizle; value ilk baytı != 0 ise
- *      slot20'ye string öneki kaydet (SAudioPlayStreamData* register hook).
- * id1: slot28 <- string öneki (sub_40E0B0: rec+8 payload).
- * id2: slot30 <- string öneki.
+ * id0: stop (handle/state=0) + clear slot20; if value first byte != 0,
+ *      save string prefix to slot20 (SAudioPlayStreamData* register hook).
+ * id1: slot28 <- string prefix (sub_40E0B0: rec+8 payload).
+ * id2: slot30 <- string prefix.
  * id3: loopCount = *(u32*)value.
  * id4: float0 = *(float*)value.
  * id5: float1 = *(float*)value.
- * default: FALSE (binary default sessiz).
+ * default: FALSE (binary default silent).
  *
- * Slot öneği: NUL'a kadar en fazla 8 bayt. "Kayıtlı" durum binary'de slot'un
- * 2. kelimesindeydi; bu portta önekin ilk baytından türetilir (0x00 = boş).
+ * Slot prefix: max 8 bytes up to NUL. "Registered" status in binary is in
+ * slot's 2nd word; in this port derived from prefix's first byte (0x00 = empty).
  *
- * @param pEntity Hedef entity.
- * @param id      Property kimliği.
- * @param pValue  Kayıt değeri (rec+8; string için NUL sonlu inline).
- * @return TRUE ise id işlendi.
+ * @param pEntity Target entity.
+ * @param id      Property identifier.
+ * @param pValue  Record value (rec+8; NUL-terminated inline for string).
+ * @return TRUE if id was processed.
  */
 RwBool CAudioStreamEntityApplyAttribute(CAudioStreamEntity *pEntity,
                                         RwUInt32 id,

@@ -1,19 +1,19 @@
 // ============================================================================
 // CannonCruise - Collision Geometry Generator (CollisionGeometry.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\CollisionGeometry.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0046f040 — CCollisionGeometry::CreateShapeFromClump
 //
-// Backend: Bullet (PhysicsBackend). bConvex=TRUE → btConvexHullShape (dinamik
-// gövde), FALSE → btBvhTriangleMeshShape (statik dünya). Tristrip bayrağı
-// (rpGEOMETRYTRISTRIP) tekil üçgenlere açılır (alternating winding).
+// Backend: Bullet (PhysicsBackend). bConvex=TRUE -> btConvexHullShape (dynamic
+// body), FALSE -> btBvhTriangleMeshShape (static world). Tristrip flag
+// (rpGEOMETRYTRISTRIP) expands to individual triangles (alternating winding).
 //
-// SAPMA: vertex çıkarma RpGeometryGetVertices üzerinden — RW stub'larında
-// NULL döner; librw entegrasyonunda gerçek veri akar. Atomik transform'u
-// uygulamıyoruz (clump'ta noinstance/tek atomic varsayımı; ileride frame
-// matrisiyle birleştirme).
+// DEVIATION: vertex extraction via RpGeometryGetVertices — returns NULL in
+// RW stubs; real data flows in librw integration. Atomic transform not
+// applied (clump noinstance/single atomic assumption; merge with frame
+// matrix later).
 // ============================================================================
 
 #include "CollisionGeometry.h"
@@ -27,11 +27,11 @@
 
 namespace
 {
-    // RpClumpForAllAtomics toplayıcısı: tüm atomic'lerin vertex/triangle
-    // listelerini tek akışta birleştirir (base offset'li).
+    // RpClumpForAllAtomics collector: merges all atomic vertex/triangle
+    // lists into single stream (base offset).
     struct ClumpGeomAccum {
-        std::vector<RwReal> verts;     // xyz paketli, stride 12
-        std::vector<RwInt32> indices;  // 3'lü
+        std::vector<RwReal> verts;     // xyz packed, stride 12
+        std::vector<RwInt32> indices;  // triples
     };
 
     RpAtomic *CollectAtomic(RpAtomic *pAtomic, void *pData)
@@ -49,7 +49,7 @@ namespace
         RwUInt16 *pIdx = RpGeometryGetTriangleIndices(pGeo);
         if (!pVerts || !pIdx || vCount <= 0 || tCount <= 0)
         {
-            return pAtomic; // stub/boş geometri — atla
+            return pAtomic; // stub/empty geometry — skip
         }
 
         const RwInt32 base = static_cast<RwInt32>(pAcc->verts.size() / 3);
@@ -70,7 +70,7 @@ namespace
             pAcc->indices.push_back(base + i0);
             if (bTristrip && (t & 1))
             {
-                // strip ters sarım — winding düzeltmesi
+                // strip reverse wrap — winding correction
                 pAcc->indices.push_back(base + i2);
                 pAcc->indices.push_back(base + i1);
             }
@@ -88,7 +88,7 @@ void* CCollisionGeometry::CreateShapeFromClump(RpClump* pClump, RwBool bConvex)
 {
     if (!pClump) return 0;
 
-    // Hatırlatma: DFF çarpışma için kullanıldığında "noinstance" bayrağını kullanın
+    // Reminder: when using DFF for collision, set "noinstance" flag
     ClumpGeomAccum acc;
     RpClumpForAllAtomics(pClump, CollectAtomic, &acc);
     if (acc.indices.empty() || acc.verts.empty())
@@ -98,13 +98,13 @@ void* CCollisionGeometry::CreateShapeFromClump(RpClump* pClump, RwBool bConvex)
 
     if (bConvex)
     {
-        // dinamik gövde yolu — konveks hull (vertex akışı kopyalanır)
+        // dynamic body path — convex hull (vertex stream copied)
         return PhysicsShape_CreateConvexHull(&acc.verts[0],
                                              static_cast<RwInt32>(acc.verts.size() / 3),
                                              3 * static_cast<RwInt32>(sizeof(RwReal)));
     }
 
-    // statik dünya yolu — üçgen mesh
+    // static world path — triangle mesh
     PhysicsTriMeshDesc desc;
     desc.pVertices = &acc.verts[0];
     desc.vertexCount = static_cast<RwInt32>(acc.verts.size() / 3);
@@ -118,7 +118,7 @@ void* CCollisionGeometry::CreateShapeFromClump(RpClump* pClump, RwBool bConvex)
 void* CCollisionGeometry::CreateBoxShape(const RwV3d* pHalfExtents)
 {
     if (!pHalfExtents) return 0;
-    // RwV3d {x,y,z} ↔ RwReal[3] aynı düzen
+    // RwV3d {x,y,z} <-> RwReal[3] same layout
     return PhysicsShape_CreateBox(reinterpret_cast<const RwReal*>(pHalfExtents));
 }
 

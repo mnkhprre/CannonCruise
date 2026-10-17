@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - Tower Catapult Defense Entity (TowerCatapult.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\TowerCatapult.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_004bc3f0 — CTowerCatapult constructor & class registration ("CTowerCatapult")
 //   FUN_004bcf30 — CTowerCatapult::Initialize ("Standard graphics (undamaged) not available...")
 //   FUN_004be0b0 — CTowerCatapult::TakeDamage

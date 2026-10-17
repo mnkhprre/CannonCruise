@@ -1,7 +1,7 @@
 // ============================================================================
 // CannonCruise - Animation Controller (AnimController.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\AnimController.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // Binary ref: FUN_00401300 - FUN_00401600
 // ============================================================================
 

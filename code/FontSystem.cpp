@@ -1,38 +1,38 @@
 // ============================================================================
 // CannonCruise - Font Metrics System (FontSystem.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\FontSystem.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
-//   FUN_004cefd0 — FontSystemAllocBuffers (dword_66D5C4 vertex tamponu 0x2400
-//                  + dword_66D5C0 0x78'lik çizim havuzu)
-//   FUN_004cd660 — FontSystemInit ("fonts\" yol tamponu dword_66D5CC,
-//                  unk_66D2C4..0x66D5C4 çeyrek-dörtgen indeks tablosu,
-//                  dword_66D5DC/E0 liste başı, dword_66DCC0 = yükleyici)
-//   FUN_004cd9a0 — FontSystemLoad ("fonts\<ad>.met", METRICS1)
-//   FUN_004cd4d0 — FontAlloc (havuz dword_66D5C8, 0x144 nesne)
-//   FUN_004cd8c0 — FontFree (glif verisi sub_4D0C20, doku sub_515300)
+// Binary functions:
+//   FUN_004cefd0 — FontSystemAllocBuffers (dword_66D5C4 vertex buffer 0x2400
+//                  + dword_66D5C0 0x78-sized draw pool)
+//   FUN_004cd660 — FontSystemInit ("fonts\" path buffer dword_66D5CC,
+//                  unk_66D2C4..0x66D5C4 quad index table,
+//                  dword_66D5DC/E0 list head, dword_66DCC0 = loader)
+//   FUN_004cd9a0 — FontSystemLoad ("fonts\<name>.met", METRICS1)
+//   FUN_004cd4d0 — FontAlloc (pool dword_66D5C8, 0x144 object)
+//   FUN_004cd8c0 — FontFree (glyph data sub_4D0C20, texture sub_515300)
 //   FUN_004cdbc0 — ParseMetrics1
-//   FUN_004ce870 — ParseMetrics3 (METRICS3 vektör kontur biçimi — begin/
-//                  moveto/lineto/curveto/closepath/end; kontur çizimi
-//                  sub_4CCAF0 → raster sub_4D54C0 Faz 4.4b TODO)
-//   FUN_004ce000 — FontFinalizeExtMap (dword_66DE1C genişletilmiş harita)
-//   FUN_004cee90 — FontSystemGet (dword_66D5D8 ad listesi)
+//   FUN_004ce870 — ParseMetrics3 (METRICS3 vector contour format — begin/
+//                  moveto/lineto/curveto/closepath/end; contour drawing
+//                  sub_4CCAF0 -> raster sub_4D54C0 Phase 4.4b TODO)
+//   FUN_004ce000 — FontFinalizeExtMap (dword_66DE1C extended map)
+//   FUN_004cee90 — FontSystemGet (dword_66D5D8 name list)
 //   FUN_004cd580 — FontSystemTeardown (__ioterm+62)
 //   FUN_004cef90 — FontSystemShutdown (__ioterm+67)
-//   FUN_004cd7e0 — FontSystem_MeasureText (metin genişliği; glyphFlags&2
-//                  → UTF-16LE üniteleri)
-//   FUN_004ccc40 — FontSystem_DrawText (font->drawHandler çizim yolu;
-//                  matris yığını sub_4CC2F0/4CC4D0/4CC480 ve engine
-//                  vcall'leri Faz 4.4b — port ekran uzayında birebir UV/
-//                  ilerleme/batch semantiğiyle üretir; UTF-16LE desteği
-//                  MeasureText ile aynı)
+//   FUN_004cd7e0 — FontSystem_MeasureText (text width; glyphFlags&2
+//                  -> UTF-16LE units)
+//   FUN_004ccc40 — FontSystem_DrawText (font->drawHandler draw path;
+//                  matrix stack sub_4CC2F0/4CC4D0/4CC480 and engine
+//                  vcall's Phase 4.4b — port produces exact UV/
+//                  progress/batch semantics in screen space; UTF-16LE support
+//                  same as MeasureText)
 //
-// Motor bağımlılığı olmayan parçalar (bellek, dize, dosya) taşınabilir C ile
-// modellenir; engine vtable eşlemeleri:
+// Engine-independent parts (memory, string, file) modeled in portable C;
+// engine vtable mappings:
 //   +0x120 strlen, +0xF8 strcpy, +0x100 strcat, +0x130 sscanf,
 //   +0x114 strcmp, +0x134 malloc, +0x13C realloc, +0x138 free,
-//   +0x144 havuz tahsisi, +0x148 havuz serbest bırakma
+//   +0x144 pool allocation, +0x148 pool free
 // ============================================================================
 
 #include "FontSystem.h"
@@ -45,32 +45,32 @@
 
 namespace
 {
-    // dword_66D5CC + dword_66D5D0 (kapasite 0x51) — binary Windows "fonts\"
-    // kullanır; yol ayracı olarak '/' hem Windows hem POSIX'te fopen'da
-    // çalıştığı için birleşik yazılır.
+    // dword_66D5CC + dword_66D5D0 (capacity 0x51) — binary uses Windows "fonts\"
+    // path; uses '/' separator since it works in fopen on both Windows
+    // and POSIX, written unified.
     const char kFontPath[] = "fonts/";
 
-    // unk_66D2C4..(0x66D5C4) — 64 çeyrek-dörtgen × 6 × uint16 = 0x300 bayt.
-    // Binary döngüsü: ecx=3, adım 4; her 12 baytlık blok:
+    // unk_66D2C4..(0x66D5C4) — 64 quads x 6 x uint16 = 0x300 bytes.
+    // Binary loop: ecx=3, step 4; each 12-byte block:
     //   {ecx-3, ecx-1, ecx, ecx-3, ecx, ecx-2}
     RwUInt16 s_QuadIndices[64][6];
 
-    // dword_66D5D8 — font adı önbellek listesi başı (sub_4CEE90 / sub_4CD580)
+    // dword_66D5D8 — font name cache list head (sub_4CEE90 / sub_4CD580)
     CCFontNode *s_pFontListHead = 0;
 
-    // dword_66D5DC / dword_66D5E0 — sub_515130 liste başı düğümü.
-    // Binary dairesel düğüm + motor listesine ekler; portta basit işaretçi.
+    // dword_66D5DC / dword_66D5E0 — sub_515130 list head node.
+    // Binary circular node + added to engine list; port uses simple pointer.
     void *s_pListNode = 0;
 
-    // dword_66D5C4 — 0x2400 baytlık glyph vertex tamponu (sub_4CEFD0)
+    // dword_66D5C4 — 0x2400-byte glyph vertex buffer (sub_4CEFD0)
     void *s_pVertexBuffer = 0;
 
-    // dword_66DE1C / dword_66DE20 — genişletilmiş kod çizme dizisi (önbellek).
-    // Glif indeksi → kod eşlemesi; bitişte 0xFFFFFFFF ile sıfırlanır.
+    // dword_66DE1C / dword_66DE20 — extended code draw sequence (cache).
+    // Glyph index -> code mapping; terminated with 0xFFFFFFFF.
     RwInt32 *s_pExtScratch = 0;
     RwInt32  s_extScratchCap = 0;
 
-    // sub_5154D0 doku okuyucu (test enjeksiyonu) — 0 = varsayılan rota
+    // sub_5154D0 texture reader (test injection) — 0 = default path
     FontTextureReader s_pTextureReader = 0;
 
     // dword_66DCC0 — yükleme geri çağrısı (sub_4CD660 kaydeder;
@@ -78,25 +78,25 @@ namespace
     typedef CCFont *(*FontLoaderCallback)(const char *);
     FontLoaderCallback s_pLoader = &FontSystemLoad;
 
-    // sub_51A0A0/sub_51A230 — havuz/geri-boyama karşılığı: doğrudan malloc.
-    // TODO(Faz 4.4b): engine havuz semantiği (engine+0x144/+0x148 freelist).
+    // sub_51A0A0/sub_51A230 — pool/free counterpart: directly malloc.
+    // TODO(Phase 4.4b): engine pool semantics (engine+0x144/+0x148 freelist).
     void *PoolAlloc(size_t bytes) { return std::malloc(bytes); }
     void  PoolFree(void *p) { std::free(p); }
 
-    // unk_66DDCC — başlık ayrıştırma için sprintf/scratch tamponu
+    // unk_66DDCC — sprintf/scratch buffer for header parsing
     char s_Scratch[256];
 
-    // sub_517CF0 / sub_517DB0 — global dize tamponu Set/Get karşılığı
-    // (binary: dword_65DDFC[+4] tampon, [+8] kapasite). Portta statik dize.
+    // sub_517CF0 / sub_517DB0 — global string buffer Set/Get counterpart
+    // (binary: dword_65DDFC[+4] buffer, [+8] capacity). Port uses static string.
     char s_StringBuf[512];
     void ScratchString_Set(const char *pStr) {
         std::snprintf(s_StringBuf, sizeof(s_StringBuf), "%s", pStr ? pStr : "");
     }
     const char *ScratchString_Get(void) { return s_StringBuf; }
 
-    // sub_5154D0 — (ad, maske) → doku. Varsayılan rota rwcore.h'de bildirilen
-    // RwTextureRead; rwstubs gerçek doku yokluğunda NULL döndürür (binary'de
-    // doku bulunamazsa font yüklemesi başarısız olur).
+    // sub_5154D0 — (name, mask) -> texture. Default path RwTextureRead
+    // declared in rwcore.h; rwstubs return NULL when no real texture
+    // (binary: font load fails if texture not found).
     RwTexture *ReadTexture(const char *pName, const char *pMask,
                            RwInt32 *pWidth, RwInt32 *pHeight) {
         *pWidth = 0;
@@ -115,14 +115,14 @@ namespace
         return pTex;
     }
 
-    // sub_515300 — doku serbest bırakma (refcount azaltma karşılığı)
+    // sub_515300 — texture release (refcount decrement counterpart)
     void TextureRelease(RwTexture *pTex) {
         if (pTex) {
             RwTextureDestroy(pTex);
         }
     }
 
-    // ctx vtable[0] — dosya varlık yoklaması (tek token doku maskesi için)
+    // ctx vtable[0] — file existence probe (for single-token texture mask)
     RwBool FileExists(const char *pPath) {
         std::FILE *pFile = std::fopen(pPath, "rb");
         if (!pFile) {
@@ -132,8 +132,9 @@ namespace
         return TRUE;
     }
 
-    // fgets sonundaki \r\n'yi kırpır (binary motor dize karşılaştırması
-    // engine+0x114 kullanır; port CRLF/LF dosyalarda aynı sonucu verir).
+    // fgets strips trailing \r\n (binary engine string comparison
+    // uses engine+0x114; port gives same result on CRLF/LF files).
+    // engine+0x114 uses; port gives same result on CRLF/LF files).
     void StripNewline(char *pLine) {
         size_t len = std::strlen(pLine);
         while (len > 0 && (pLine[len - 1] == '\n' || pLine[len - 1] == '\r')) {

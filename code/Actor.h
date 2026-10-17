@@ -3,8 +3,8 @@
 // ============================================================================
 // CannonCruise - Base Actor (Actor.h)
 // Original path: D:\Projects\CannonCruisePC\code\Actor.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
-// Binary ref: FUN_00401000 - FUN_00401200 (CActor vtable bölgesi)
+// Reverse-engineered via Ghidra and CC.asm analysis.
+// Binary ref: FUN_00401000 - FUN_00401200 (CActor vtable region)
 // ============================================================================
 
 #include "AnimController.h"
@@ -17,14 +17,13 @@ namespace RWS {
 
 /**
  * @class CActor
- * @brief RenderWare Studio tabanlı oyun nesneleri için temel aktör sınıfı.
+ * @brief Base actor class for RenderWare Studio-based game objects.
  *
- * CActor, `CAttributeHandler` ve `CEventHandler`'dan türeyen ve
- * RpClump (3D mesh) ile CAnimController (animasyon) yönetimini üstlenen
- * temel sınıftır. Soldier, Bird, Fish, FernandoActor gibi tüm sahne varlıkları
- * bu sınıftan türer.
+ * CActor, derives from `CAttributeHandler` and `CEventHandler` and
+ * manages RpClump (3D mesh) and CAnimController (animation).
+ * Soldier, Bird, Fish, FernandoActor and all scene entities derive from this class.
  *
- * **Bellek düzeni (binary offset):**
+ * **Memory layout (binary offset):**
  * - `+0x00` vtable pointer
  * - `+0x04` CAttributeHandler base
  * - `+0x14` CEventHandler base
@@ -32,7 +31,7 @@ namespace RWS {
  * - `+0x28` m_pClump
  * - `+0x2C` m_bAddedToWorld
  *
- * **Binary referansları:**
+ * **Binary references:**
  * - Ctor: `FUN_00401000`
  * - Dtor: `FUN_00401080`
  * - HandleAttributes: `FUN_00401100`
@@ -44,66 +43,66 @@ public:
   RWS_DECLARE_CLASS(CActor);
 
   /**
-   * @brief Yapıcı — RWS attribute paketi ile nesneyi başlatır.
-   * @param packet İlk clump ve transform verilerini taşıyan attribute paketi.
+   * @brief Constructor — initializes object with RWS attribute packet.
+   * @param packet Attribute packet carrying first clump and transform data.
    *
-   * CAnimController oluşturulur; paketten clump verileri çıkarılırsa
-   * animasyon hedefi buna atanır. `iMsgRunningTick` mesajına kaydolur.
+   * CAnimController is created; if clump data extracted from packet,
+   * animation target is assigned. Subscribes to `iMsgRunningTick` message.
    */
   CActor(const CAttributePacket &packet);
 
   /**
-   * @brief Yıkıcı — animasyon denetleyicisini ve clump'ı serbest bırakır.
+   * @brief Destructor — releases animation controller and clump.
    *
-   * `iMsgRunningTick` kaydını iptal eder, `RemoveFromWorld()` çağırır,
-   * ardından CAnimController ve RpClump belleği serbest bırakır.
+   * Cancels `iMsgRunningTick` registration, calls `RemoveFromWorld()`,
+   * then frees CAnimController and RpClump memory.
    */
   virtual ~CActor();
 
   /**
-   * @brief RWS attribute paketini işler; clump ve animasyon güncellenir.
-   * @param packet Güncel transform/animasyon verilerini taşıyan paket.
+   * @brief Processes RWS attribute packet; updates clump and animation.
+   * @param packet Packet carrying current transform/animation data.
    */
   virtual void HandleAttributes(const CAttributePacket &packet);
 
   /**
-   * @brief Gelen olay mesajını işler (clump değiştirme gibi).
-   * @param msg İşlenecek CMsg olayı.
+   * @brief Handles incoming event message (e.g. clump change).
+   * @param msg CMsg event to process.
    */
   virtual void HandleEvents(CMsg &msg);
 
   /**
-   * @brief Clump'ı RpWorld sahnesine ekler (tekrar eklememe koruması ile).
+   * @brief Adds clump to RpWorld scene (with duplicate-add protection).
    */
   void AddToWorld();
 
   /**
-   * @brief Clump'ı RpWorld sahnesinden çıkarır.
+   * @brief Removes clump from RpWorld scene.
    */
   void RemoveFromWorld();
 
   /**
-   * @brief Bu aktörün 3D mesh'ini döndürür.
-   * @return RpClump* — geçerli mesh işaretçisi veya nullptr.
+   * @brief Returns this actor's 3D mesh.
+   * @return RpClump* — valid mesh pointer or nullptr.
    */
   RpClump *GetClump() const { return m_pClump; }
 
   /**
-   * @brief Animasyon denetleyicisini döndürür.
-   * @return CAnimController* — animasyon denetleyici işaretçisi.
+   * @brief Returns animation controller.
+   * @return CAnimController* — animation controller pointer.
    */
   CAnimController *GetAnimController() const { return m_pAnimController; }
 
   /**
-   * @brief Aktörün sahneye eklenip eklenmediğini döndürür.
-   * @return RwBool — TRUE ise RpWorld içinde.
+   * @brief Returns whether actor is added to world.
+   * @return RwBool — TRUE if in RpWorld.
    */
   RwBool IsAddedToWorld() const { return m_bAddedToWorld; }
 
 protected:
-  CAnimController *m_pAnimController; ///< Animasyon denetleyici (+0x24)
+  CAnimController *m_pAnimController; ///< Animation controller (+0x24)
   RpClump *m_pClump;                  ///< 3D model mesh (+0x28)
-  RwBool m_bAddedToWorld;             ///< Dünyaya eklenme bayrağı (+0x2C)
+  RwBool m_bAddedToWorld;             ///< Added-to-world flag (+0x2C)
 };
 
 } // namespace RWS

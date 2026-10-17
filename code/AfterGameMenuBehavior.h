@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - After Game Menu Behavior (AfterGameMenuBehavior.h)
 // Original path: D:\Projects\CannonCruisePC\code\AfterGameMenuBehavior.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include "framework/core/eventhandler/ceventhandler.h"
@@ -18,8 +18,8 @@
  * Displays end-of-level performance ratings, total score, shot accuracy percentages,
  * and handles transition back to map/level selection screens.
  *
- * Video-kurgu (SCR.mov): MAPMENU harita ekranı (CAG_Menu.anm) — seviye
- * seçimi (MapMenuEnter) + özet ekranı (skor/isabet/derece basamakları).
+ * Storyboard (SCR.mov): MAPMENU map screen (CAG_Menu.anm) — level
+ * selection (MapMenuEnter) + summary screen (score/accuracy/rating steps).
  */
 class CAfterGameMenuBehavior : public RWS::CEventHandler
 {
@@ -50,7 +50,7 @@ public:
      */
     void ShowSummary(RwUInt32 score, RwUInt32 accuracy, RwUInt32 rating);
 
-    /// Maestro sahiplenme (CAG_Menu.anm) — seviye grupları taranır.
+    /// Maestro ownership (CAG_Menu.anm) — level groups scanned.
     void AttachMaestro(Rt2dMaestro* pMaestro);
     Rt2dMaestro* GetMaestro() const { return m_pMaestro; }
 
@@ -59,16 +59,16 @@ public:
     RwBool MovePrev();
     /// Onay (Enter): MapMenuEnter → bekleyen seviye. TRUE=terminal.
     RwBool Confirm();
-    /// Geri (Esc): TRUE=döngüden çık.
+    /// Back (Esc): TRUE=exit loop.
     RwBool Back();
     void Update(RwReal deltaTime);
     void Render();
 
     RwInt32 GetLevelCount() const { return m_levelCount; }
     const char* GetLevelDisplay(RwInt32 i) const;
-    /// Seviye dosya çekirdeği ("VIKING01"); NULL geçersiz.
+    /// Level file core ("VIKING01"); NULL invalid.
     const char* GetLevelFile(RwInt32 i) const;
-    /// Onaylanan seviye (Take ile tüketilir, -1 yok).
+    /// Confirmed level (consumed with Take, -1 if none).
     RwInt32 TakeSelectedLevel();
     RwBool HasTextures() const;
 
@@ -84,8 +84,8 @@ private:
     MapLevel     m_levels[MAX_LEVELS];
     RwInt32      m_levelCount;
     RwInt32      m_selection;
-    RwInt32      m_pendingLevel; ///< onaylanan (Take ile tüketilir)
-    RwBool       m_bSummary;     ///< özet ekranı modu
+    RwInt32      m_pendingLevel; ///< confirmed (consumed with Take)
+    RwBool       m_bSummary;     ///< summary screen mode
     RwUInt32 m_uScore;    ///< Final mission score
     RwUInt32 m_uAccuracy; ///< Accuracy percentage [0, 100]
     RwUInt32 m_uRating;   ///< Performance grade / star rating

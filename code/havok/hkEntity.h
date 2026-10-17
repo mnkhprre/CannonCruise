@@ -21,24 +21,24 @@ class hkCollisionFilter;
 // Bullet bridge — full definition in havokimpl.cpp
 class btRigidBody;
 
-/// Dünyaya eklenebilen temel nesne
+/// Base object addable to world
 class hkWorldObject : public hkSerializable
 {
 public:
     virtual ~hkWorldObject();
 
-    /// İsim (Havok 2.x: getName)
+    /// Name (Havok 2.x: getName)
     const char* getName() const { return m_name; }
     void setName(const char* name) { m_name = name; }
 
-    /// Nesnenin ait olduğu dünya
+    /// World the object belongs to
     hkWorld* getWorld() const { return m_world; }
 
-    /// İç çarpışma maskesi
+    /// Internal collision mask
     hkUint32 getCollisionFilterInfo() const { return m_collisionFilterInfo; }
     void setCollisionFilterInfo(hkUint32 info) { m_collisionFilterInfo = info; }
 
-    /// Dahili dünya ataması — hkWorld::addEntity/removeEntity bu yolu kullanır
+    /// Internal world assignment — hkWorld::addEntity/removeEntity use this path
     void setWorld(hkWorld* pWorld) { m_world = pWorld; }
 
 protected:
@@ -49,21 +49,21 @@ protected:
     hkUint32 m_collisionFilterInfo;
 };
 
-/// Simülasyona katılan fiziksel varlık (taban sınıf)
+/// Physical object participating in simulation (base class)
 class hkEntity : public hkWorldObject
 {
 public:
     virtual ~hkEntity();
 
-    /// Dünya konumu
+    /// World position
     void getPosition(hkVector3& position) const;
     void setPosition(const hkVector3& position);
 
-    /// Doğrusal hız (birim: dünya birimi / saniye)
+    /// Linear velocity (unit: world units / second)
     void getLinearVelocity(hkVector3& velocity) const;
     void setLinearVelocity(const hkVector3& velocity);
 
-    /// Açısal hız
+    /// Angular velocity
     void getAngularVelocity(hkVector3& velocity) const;
     void setAngularVelocity(const hkVector3& velocity);
 
@@ -71,16 +71,16 @@ public:
     void setActivated(hkBool activated);
     hkBool isActivated() const;
 
-    /// Şekil erişimi
+    /// Shape access
     void setShape(hkShape* pShape);
     hkShape* getShape() const;
 
-    /// Bullet köprüsü — bu entity'yi temsil eden sert cisim
+    /// Bullet bridge — rigid body representing this entity
     btRigidBody* getBulletBody() const { return m_pBulletBody; }
 
 protected:
     hkEntity();
-    /// Bullet gövdesiyle kur (hkRigidBody ctor'u bu yolu kullanır)
+    /// Construct with Bullet body (hkRigidBody ctor uses this path)
     explicit hkEntity(btRigidBody* pBulletBody);
 
     hkVector3 m_position;
@@ -88,7 +88,7 @@ protected:
     hkVector3 m_angularVelocity;
     hkBool m_activated;
     hkShape* m_pShape;
-    btRigidBody* m_pBulletBody; ///< Bullet köprüsü
+    btRigidBody* m_pBulletBody; ///< Bullet bridge
 };
 
 /// Sert cisim — oyun CPhysicsEntity::m_pRigidBody bu tipi tutar
@@ -100,11 +100,11 @@ public:
 
     virtual const hkClass* getClass() const;
 
-    /// Kütle
+    /// Mass
     hkReal getMass() const { return m_mass; }
     void setMass(hkReal mass);
 
-    /// Dönme ataleti köşegeni
+    /// Inertia diagonal
     void getInertiaDiag(hkVector3& inertia) const;
 
     /// Zorlama uygula (merkez-of-gravity-relative)

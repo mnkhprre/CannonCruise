@@ -1,9 +1,9 @@
 // ============================================================================
 // CannonCruise - WaveBreaker Third-Person Camera (WbCamera.cpp)
 // Original path: D:\Projects\CannonCruisePC\code\WbCamera.cpp
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 //
-// Binary Fonksiyonları:
+// Binary functions:
 //   FUN_0042a100 — CWbCamera constructor & registration
 //   FUN_0042a820 — CWbCamera::Update
 //   FUN_0042af00 — CWbCamera::SetTargetFrame
@@ -95,19 +95,19 @@ void CWbCamera::Update(RwReal deltaTime)
     RwV3d targetPos = pTargetMatrix->pos;
     RwV3d forwardVec = pTargetMatrix->at;
 
-    // Hedefin arkasında istenen kamera konumu
+    // Desired camera position behind target
     RwV3d desiredPos;
     desiredPos.x = targetPos.x - forwardVec.x * m_fDistance;
     desiredPos.y = targetPos.y + m_fElevation;
     desiredPos.z = targetPos.z - forwardVec.z * m_fDistance;
 
-    // Su seviyesinin altına inmemesi için Y kontrolü
+    // Y check so camera doesn't go below water level
     if (desiredPos.y < 2.0f)
     {
         desiredPos.y = 2.0f;
     }
 
-    // Yumuşak kamera takibi (sönümleme)
+    // Smooth camera follow (damping)
     RwReal t = deltaTime * m_fDamping;
     if (t > 1.0f) t = 1.0f;
 

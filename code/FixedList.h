@@ -4,7 +4,7 @@
 // ============================================================================
 // CannonCruise - Engine FixedList Template (FixedList.h)
 // Original path: D:\Projects\CannonCruisePC\code\FixedList.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include <cassert>
@@ -12,41 +12,41 @@
 
 /**
  * @class CFixedList
- * @brief Sabit kapasiteli, dinamik bellek kullanmayan liste şablonu.
+ * @brief Fixed-capacity, no-dynamic-allocation list template.
  *
- * CFixedArray'den farklı olarak aktif eleman sayısını (`m_Count`) takip eder;
- * `PushBack`/`PopBack` ile elemanlar listeye eklenir/çıkarılır. Kapasite aşımı
- * assert ile kontrol edilir.
+ * Unlike CFixedArray, tracks active element count (`m_Count`);
+ * `PushBack`/`PopBack` add/remove elements. Capacity overflow
+ * checked via assert.
  *
- * **Kullanım örneği:**
+ * **Usage example:**
  * ```cpp
  * CFixedList<RwV3d, 32> waypoints;
  * waypoints.PushBack({1.0f, 0.0f, 2.0f});
  * for (RwUInt32 i = 0; i < waypoints.GetCount(); ++i) { ... }
  * ```
  *
- * **Garantiler:**
- * - Kapasite aşımında: `assert(m_Count < CAPACITY)` (debug)
- * - Alt taşmada: `assert(m_Count > 0)` (debug)
+ * **Guarantees:**
+ * - Capacity overflow: `assert(m_Count < CAPACITY)` (debug)
+ * - Underflow: `assert(m_Count > 0)` (debug)
  *
- * @tparam T        Listede tutulacak eleman türü.
- * @tparam CAPACITY Maksimum eleman sayısı (compile-time sabit).
+ * @tparam T        Element type stored in list.
+ * @tparam CAPACITY Maximum element count (compile-time constant).
  */
 template <typename T, RwUInt32 CAPACITY>
 class CFixedList
 {
 public:
     /**
-     * @brief Yapıcı — boş liste başlatır (m_Count = 0).
+     * @brief Constructor — initializes empty list (m_Count = 0).
      */
     CFixedList() : m_Count(0)
     {
     }
 
     /**
-     * @brief Listenin sonuna yeni bir eleman ekler.
-     * @param item Eklenecek eleman.
-     * @pre m_Count < CAPACITY (kapasite aşımı assert ile korunur)
+     * @brief Adds new element to end of list.
+     * @param item Element to add.
+     * @pre m_Count < CAPACITY (capacity overflow protected by assert)
      */
     void PushBack(const T& item)
     {
@@ -55,8 +55,8 @@ public:
     }
 
     /**
-     * @brief Listenin son elemanını çıkarır.
-     * @pre m_Count > 0 (alt taşma assert ile korunur)
+     * @brief Removes last element from list.
+     * @pre m_Count > 0 (underflow protected by assert)
      */
     void PopBack()
     {
@@ -65,7 +65,7 @@ public:
     }
 
     /**
-     * @brief Listeyi temizler (m_Count = 0 yapar, bellek serbest bırakılmaz).
+     * @brief Clears list (sets m_Count = 0, memory not freed).
      */
     void Clear()
     {
@@ -73,8 +73,8 @@ public:
     }
 
     /**
-     * @brief Aktif eleman sayısını döndürür.
-     * @return RwUInt32 — Listedeki geçerli eleman sayısı.
+     * @brief Returns active element count.
+     * @return RwUInt32 — number of valid elements in list.
      */
     RwUInt32 GetCount() const
     {
@@ -82,8 +82,8 @@ public:
     }
 
     /**
-     * @brief Maksimum eleman kapasitesini döndürür.
-     * @return RwUInt32 — CAPACITY şablon parametresi.
+     * @brief Returns maximum element capacity.
+     * @return RwUInt32 — CAPACITY template parameter.
      */
     RwUInt32 GetCapacity() const
     {
@@ -91,8 +91,8 @@ public:
     }
 
     /**
-     * @brief Listenin boş olup olmadığını döndürür.
-     * @return RwBool — TRUE ise m_Count == 0.
+     * @brief Returns whether list is empty.
+     * @return RwBool — TRUE if m_Count == 0.
      */
     RwBool IsEmpty() const
     {
@@ -100,8 +100,8 @@ public:
     }
 
     /**
-     * @brief Listenin dolu olup olmadığını döndürür.
-     * @return RwBool — TRUE ise m_Count >= CAPACITY.
+     * @brief Returns whether list is full.
+     * @return RwBool — TRUE if m_Count >= CAPACITY.
      */
     RwBool IsFull() const
     {
@@ -109,9 +109,9 @@ public:
     }
 
     /**
-     * @brief Belirtilen indeksteki elemana yazılabilir referans döndürür.
-     * @param index Erişilecek eleman indeksi.
-     * @return T& — İstenen elemanın referansı.
+     * @brief Returns writable reference to element at specified index.
+     * @param index Index of element.
+     * @return T& — Reference to requested element.
      * @pre index < m_Count
      */
     T& operator[](RwUInt32 index)
@@ -121,9 +121,9 @@ public:
     }
 
     /**
-     * @brief Belirtilen indeksteki elemana salt okunur referans döndürür.
-     * @param index Erişilecek eleman indeksi.
-     * @return const T& — İstenen elemanın sabit referansı.
+     * @brief Returns const reference to element at specified index.
+     * @param index Index of element.
+     * @return const T& — Const reference to requested element.
      * @pre index < m_Count
      */
     const T& operator[](RwUInt32 index) const
@@ -133,8 +133,8 @@ public:
     }
 
 private:
-    T m_Data[CAPACITY]; ///< Ham veri dizisi
-    RwUInt32 m_Count;   ///< Aktif eleman sayısı
+    T m_Data[CAPACITY]; ///< Raw data array
+    RwUInt32 m_Count;   ///< Active element count
 };
 
 #endif // FIXEDLIST_H

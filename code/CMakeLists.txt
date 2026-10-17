@@ -117,9 +117,10 @@ add_dependencies(CannonCruise CannonCruiseLib)
 target_link_libraries(CannonCruise PRIVATE
     "$<LINK_LIBRARY:WHOLE_ARCHIVE,CannonCruiseLib>")
 # Platform-specific external libraries:
-#   D3D9: Direct3D 9 SDK library
-#   NULL: WINMM timing resolution (GetTime)
+#   D3D9: Direct3D 9 SDK library + WINMM (PlaySound)
+#   NULL: WINMM timing resolution (GetTime) + WINMM (PlaySound)
 if(WIN32)
+    target_link_libraries(CannonCruise PRIVATE winmm.lib)
     if(CANNONCRUISE_RW_PLATFORM STREQUAL "D3D9")
         target_link_libraries(CannonCruise PRIVATE d3d9.lib)
     elseif(CANNONCRUISE_RW_PLATFORM STREQUAL "NULL")

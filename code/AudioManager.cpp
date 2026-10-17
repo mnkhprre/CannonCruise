@@ -6,6 +6,13 @@
 #include "framework/toolkits/Audio/Audio.h"
 #include <cassert>
 #include <cstring>
+#include <windows.h>
+#include <mmsystem.h>
+
+// Undefine Windows PlaySound macro to avoid conflict with CAudioManager::PlaySound
+#ifdef PlaySound
+#undef PlaySound
+#endif
 
 // ---------------------------------------------------------------------------
 // Constructor – mirrors FUN_00455c00.
@@ -42,10 +49,22 @@ void CAudioManager::HandleEvents(const RWS::CMsg& msg)
 // ---------------------------------------------------------------------------
 void CAudioManager::PlaySound(const char* pSoundName, const RwV3d* pPos)
 {
-    // TODO: Implement WAV playback from Sound\\Win32\\<name>.wav
-    // (currently a stub; sound files will be added later).
-    (void)pSoundName;
-    (void)pPos;
+    if (pSoundName == nullptr || pSoundName[0] == 0) {
+        return;
+    }
+
+    // Build full path: Sound\Win32\<name>.wav
+    char fullPath[MAX_PATH] = {0};
+    std::snprintf(fullPath, sizeof(fullPath), "%s%s.wav", m_SoundPath.c_str(), pSoundName);
+
+    // Play asynchronously so it doesn't block the game loop
+    // SND_FILENAME = sound name is a file path
+    // SND_ASYNC = play asynchronously (return immediately)
+    // SND_NODEFAULT = don't play default sound if file not found
+    DWORD flags = SND_FILENAME | SND_ASYNC | SND_NODEFAULT;
+    if (!::PlaySoundA(fullPath, nullptr, flags)) {
+        // Silent fail if file not found or playback fails
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -53,10 +72,23 @@ void CAudioManager::PlaySound(const char* pSoundName, const RwV3d* pPos)
 // ---------------------------------------------------------------------------
 void CAudioManager::PlayStream(const char* pStreamName, RwBool bLoop)
 {
-    // TODO: Implement background music streaming.
-    // (currently a stub; music files will be added later).
-    (void)pStreamName;
-    (void)bLoop;
+    if (pStreamName == nullptr || pStreamName[0] == 0) {
+        return;
+    }
+
+    // Build full path: Sound\Win32\<name>.wav or .rws for music tracks
+    char fullPath[MAX_PATH] = {0};
+    std::snprintf(fullPath, sizeof(fullPath), "%s%s.wav", m_SoundPath.c_str(), pStreamName);
+
+    // For streaming music, use looping flag if requested
+    DWORD flags = SND_FILENAME | SND_ASYNC | SND_NODEFAULT;
+    if (bLoop) {
+        flags |= SND_LOOP;
+    }
+
+    if (!::PlaySoundA(fullPath, nullptr, flags)) {
+        // Silent fail if file not found or playback fails
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -64,6 +96,7 @@ void CAudioManager::PlayStream(const char* pStreamName, RwBool bLoop)
 // ---------------------------------------------------------------------------
 void CAudioManager::StopAllVoices()
 {
+    PlaySoundA(nullptr, nullptr, 0); // Stop all sounds
 }
 
 // ---------------------------------------------------------------------------
@@ -71,8 +104,7 @@ void CAudioManager::StopAllVoices()
 // ---------------------------------------------------------------------------
 void CAudioManager::SetVolumeGroup(RwUInt32 groupIndex, RwReal volume)
 {
-    if (groupIndex < 3)
-    {
+    if (groupIndex < 3) {
         m_afVolumeGroups[groupIndex] = volume;
     }
 }

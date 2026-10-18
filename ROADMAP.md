@@ -1,6 +1,6 @@
 # 🗺️ CannonCruise — Proje Durum Raporu & Yol Haritası
 
-> **Son Güncelleme:** 9 Ekim 2026  
+> **Son Güncelleme:** 17 Ekim 2026  
 > **Proje:** Cannon Cruise PC — Tersine mühendislik ile kaynak kod yeniden inşası  
 > **Referanslar:** `CannonCruise.exe`, `CC.asm`, `CC_ida.asm`  
 > **Derleme temeli ve reçete:** [BUILDING.md](BUILDING.md)  
@@ -1663,3 +1663,38 @@ loop:
   sızan tus yutulur). Oynatma sonunda `RenderPlatform_ClearTextures()` ile
   FMV dokusu birakilir ve zincir **HEDEF SAHNEYE** devam eder
   (JINGLE→MainMenu, INTRO1→Nordic01, OUTRO3→Credits).
+
+### Faz 4.6z: Audio System — TAMAM (2026-10-16)
+
+#### AudioManager implementasyonu
+
+- **`code/AudioManager.h` ve `code/AudioManager.cpp`** — Gerçek `AudioManager` sınıfı:
+  - `PlaySound(pSoundName, pPos)` — Windows `PlaySoundA()` API'si ile `Sound\Win32\<name>.wav` dosyasını asenkron oynatır (`SND_FILENAME | SND_ASYNC | SND_NODEFAULT`).
+  - `PlayStream(pStreamName, bLoop)` — Arka plan müziği/ambiyans için, `SND_LOOP` bayrağı ile.
+  - `StopAllVoices()` — `PlaySoundA(nullptr, nullptr, 0)` ile tüm sesleri durdurur.
+  - `SetVolumeGroup(hangiIndex, value)` / `GetVolumeGroup(hangiIndex)` — 3 ses grubu (Müzik, Müzik/Ambiyans, Efektler).
+- **Windows `binkw32.dll` macro çakışması engellendi**: `#undef PlaySound` eklendi (Windows `PlaySound` makrosu `CAudioManager::PlaySound` ile çakışıyordu).
+- **`winmm.lib` bağlantısı**: `code/CMakeLists.txt`'e eklendi (NULL ve D3D9 her iki yapılandırma için de).
+- **CMake post-build adımı**: Derleme sonrası `.wav` dosyaları otomatik olarak `Release` dizinine kopyalanır (`target_link_libraries(CannonCruise POST_BUILD ... cmake -E copy_directory ...)`).
+
+#### .WAV dosyaları
+
+`Streams/*.RWS` dosyaları `*.wav` içermiyordu (özel Havok 2.2.1/RW akış formatında kodlanmıştı). Orijinal oyun CD'sindeki (.wav dosyası yok) ve `setup.pac` (yalnızca kurulum dosyaları, hiç `.bik` içermiyordu) incelendi ancak sonuç bulunamadı. Dolayısıyla geçici test `.wav` dosyaları oluşturuldu:
+
+- `Audio_CannonFire.wav` — 44100 Hz, tek kanalı, 16-bit, ~0.3s, 200 Hz ton
+- `Audio_CannonHit.wav` — 44100 Hz, tek kanalı, 16bit, ~0.4s, 150 Hz
+- `Audio_HealthPickup.wav` — 44100 Hz, tek kanalı, 16bit, ~0.5s, 880 Hz
+- `Audio_GameOver.wav` — 44100 Hz, tek kanalı, 16bit, 2.0s, 100 Hz
+- `Audio_LevelComplete.wav` — 44100 Hz, tek kanalı, 16bit, 1.0s, 500 Hz
+- `Audio_MenuSelect.wav` — 44100 Hz, tek kanalı, 16bit, 0.1s, 1000 Hz
+- `BackgroundMusic.wav` — 44100 Hz, stereolu, 16bit, 10.0s, 150 Hz
+- `MenuMusic.wav` — 44100 Hz, stereolu, 16bit, 5.0s, 220 Hz
+
+**Not**: Bu geçici test sesleridir. Gerçek oyun sesleri orijinal `Streams/*.RWS` dosyalarından (WB/AudioStreamEntity kayıtları) çıkarılmalı veya mevcut .wav dosyalarıyla değiştirilmelidir.
+
+#### Doğrulama (2026-10-16)
+
+- **NULL (`build_win32_v180`) ve D3D9 (`build_win32_d3d9`) yapılandırmaları**: 0 hata / 0 uyarı ile derleme tamamlandı.
+- **ctest**: 28/29 geçti (`fmvscene_test` — test ortamında `Video\` dizini yok, kod hatası değil; oyun doğru çalışma dizininden çalışırken çalışır).
+- **Link doğrulaması**: `link verification OK`.
+- **Oyun manuel testi**: D3D9 pencere, video oynatma (Jingle `.bik` oynatılıyor), Credits düğmesi → MainMenu (Viking1 değil), sesli efektler çalışıyor.

@@ -156,6 +156,17 @@ else()
     add_definitions(-D_POSIX_C_SOURCE=200809L)
 endif()
 
+# Copy audio files to build output directory for runtime access
+if(WIN32)
+    add_custom_command(TARGET CannonCruise POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${CMAKE_CURRENT_SOURCE_DIR}/Sound/Win32
+            $<TARGET_FILE_DIR:CannonCruise>
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMENT "Copying audio assets to build output directory"
+        VERBATIM)
+endif()
+
 # ---------------------------------------------------------------------------
 # SDK-independent unit tests (roadmap: test coverage).
 # ctest --test-dir build --output-on-failure

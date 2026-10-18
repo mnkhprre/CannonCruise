@@ -1,10 +1,10 @@
-#ifndef SPEAKMANAGER_H
+﻿#ifndef SPEAKMANAGER_H
 #define SPEAKMANAGER_H
 
 // ============================================================================
 // CannonCruise - Speech Manager (SpeakManager.h)
 // Original path: D:\Projects\CannonCruisePC\code\SpeakManager.h
-// Tersine mühendislik ile Ghidra ve CC.asm analiz edilerek yeniden yazılmıştır.
+// Reverse-engineered via Ghidra and CC.asm analysis.
 // ============================================================================
 
 #include "Singleton.h"
@@ -19,8 +19,8 @@
  *
  * Organizes spoken character lines into numbered categories (1..SPEAK_MAX_NUM_CATEGORIES)
  * and line indices within each category. Validates category/index bounds against
- * CSpeakStreamDefs definitions, loads formatted wave streams ("Sound\\Win32\\Speaks\\%d.%d.wav"),
- * and stops or updates speech states.
+ * CSpeakStreamDefs definitions, loads formatted wave streams from Speaks/<Language>/,
+ * and streams voice lines asynchronously via MCI.
  */
 class CSpeakManager : public CSingleton<CSpeakManager>, public RWS::CEventHandler
 {
@@ -31,7 +31,7 @@ public:
     CSpeakManager();
 
     /**
-     * @brief Destructor – halts any active speech stream.
+     * @brief Destructor - halts any active speech stream.
      */
     virtual ~CSpeakManager();
 
@@ -63,8 +63,19 @@ public:
      */
     void StopSpeak();
 
+    /**
+     * @brief Sets dialogue language code ("Tyr" for Turkish, "Eng" for English, etc.).
+     */
+    void SetLanguage(const char* pLang);
+
+    /**
+     * @brief Returns currently active language code.
+     */
+    const std::string& GetLanguage() const { return m_Language; }
+
 private:
     std::string m_SpeaksPath;       ///< Root directory for speech audio assets.
+    std::string m_Language;         ///< Language subfolder ("Tyr" default).
     RwInt32 m_iCurrentCategory;     ///< Category of currently active voice line (-1 if idle).
     RwInt32 m_iCurrentIndex;        ///< Index of currently active voice line (-1 if idle).
 };

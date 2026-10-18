@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+﻿cmake_minimum_required(VERSION 3.16)
 project(CannonCruise C CXX)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -6,14 +6,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # MSVC: conforming preprocessor (VS2017 15.8+)
 # Traditional preprocessor breaks lambda syntax inside macros (C2059: '[')
-# /Zc:preprocessor fixes this at root — RWS_REGISTER_CLASS uses lambda.
+# /Zc:preprocessor fixes this at root â€” RWS_REGISTER_CLASS uses lambda.
 if(MSVC)
     add_compile_options(/Zc:preprocessor)
 endif()
 
 # ---------------------------------------------------------------------------
-# Bullet Physics — portable physics engine instead of Havok (Phase 4.6).
-# Binary parameters (sub_55E6D0): gravity -9.8, AABB ±500, friction 0.6,
+# Bullet Physics â€” portable physics engine instead of Havok (Phase 4.6).
+# Binary parameters (sub_55E6D0): gravity -9.8, AABB Â±500, friction 0.6,
 # restitution 0.3, solver iter 20; fixed step 1/60 (sub_4B8710).
 # Only required sub-libraries compiled (LinearMath/Collision/Dynamics).
 # ---------------------------------------------------------------------------
@@ -38,11 +38,11 @@ set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
 FetchContent_MakeAvailable(bullet3)
 
 # ---------------------------------------------------------------------------
-# librw — RenderWare Graphics 3.x API reimplementation (MIT).
+# librw â€” RenderWare Graphics 3.x API reimplementation (MIT).
 # Phase 4: real .RWS asset stream validation. Platform options:
-#   NULL  — device-independent no-op (headless smoke test)
-#   GL3   — GLFW + OpenGL 3.x (macOS/Linux build)
-#   D3D9  — Direct3D 9 (Windows/MSVC build)
+#   NULL  â€” device-independent no-op (headless smoke test)
+#   GL3   â€” GLFW + OpenGL 3.x (macOS/Linux build)
+#   D3D9  â€” Direct3D 9 (Windows/MSVC build)
 # ---------------------------------------------------------------------------
 set(CANNONCRUISE_RW_PLATFORM "NULL" CACHE STRING "librw platform (NULL|GL3|D3D9)")
 set_property(CACHE CANNONCRUISE_RW_PLATFORM PROPERTY STRINGS NULL GL3 D3D9)
@@ -57,9 +57,9 @@ set(LIBRW_INSTALL  OFF   CACHE BOOL   "" FORCE)
 FetchContent_MakeAvailable(librw)
 
 # Configuration by RenderWare platform selection:
-#   NULL  — device-independent no-op (headless smoke test) — timeGetTime for WINMM
-#   GL3   — GLFW + OpenGL 3.x (macOS/Linux build)
-#   D3D9  — Direct3D 9 (Windows/MSVC build)
+#   NULL  â€” device-independent no-op (headless smoke test) â€” timeGetTime for WINMM
+#   GL3   â€” GLFW + OpenGL 3.x (macOS/Linux build)
+#   D3D9  â€” Direct3D 9 (Windows/MSVC build)
 # ---------------------------------------------------------------------------
 if(CANNONCRUISE_RW_PLATFORM STREQUAL "GL3")
     find_package(glfw3 REQUIRED)
@@ -100,16 +100,16 @@ endif()
 add_library(CannonCruiseLib STATIC ${SOURCES})
 
 # ---------------------------------------------------------------------------
-# Phase 4.5 — Link verification target.
+# Phase 4.5 â€” Link verification target.
 # main.cpp, statically proving all external symbols of CannonCruiseLib resolved
 # via -force_load (forcing all archive objects included).
 # ---------------------------------------------------------------------------
 add_executable(CannonCruise main.cpp)
-# force_load uses file path — define target dependency separately
+# force_load uses file path â€” define target dependency separately
 add_dependencies(CannonCruise CannonCruiseLib)
-# Forced inclusion: every object in archive linked → missing symbol link error.
+# Forced inclusion: every object in archive linked â†’ missing symbol link error.
 # CMake 3.24+ portable path $<LINK_LIBRARY:WHOLE_ARCHIVE,...>:
-#   Apple → -force_load, MSVC → /WHOLEARCHIVE:<lib>, GNU → --whole-archive
+#   Apple â†’ -force_load, MSVC â†’ /WHOLEARCHIVE:<lib>, GNU â†’ --whole-archive
 # NOT (why not bare /WHOLEARCHIVE): MSVC applies /WHOLEARCHIVE given
 # without file to ALL subsequent libraries. Causes __NULL_IMPORT_DESCRIPTOR
 # repetition for kernel32/user32/winmm/... and CannonCruiseLib not linked
@@ -127,8 +127,8 @@ if(WIN32)
         target_link_libraries(CannonCruise PRIVATE winmm.lib)
     endif()
 endif()
-# Bullet + librw physics/engine libraries — both static archive and link validation
-# Note: Bullet/librw includes not propagated INTERFACE to targets → manually
+# Bullet + librw physics/engine libraries â€” both static archive and link validation
+# Note: Bullet/librw includes not propagated INTERFACE to targets â†’ manually
 target_include_directories(CannonCruiseLib PUBLIC ${bullet3_SOURCE_DIR}/src)
 target_link_libraries(CannonCruiseLib PUBLIC
     BulletDynamics BulletCollision LinearMath librw::librw)
@@ -160,7 +160,7 @@ endif()
 if(WIN32)
     add_custom_command(TARGET CannonCruise POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${CMAKE_CURRENT_SOURCE_DIR}/Sound/Win32
+            ${CMAKE_CURRENT_SOURCE_DIR}/../Sound/Win32
             $<TARGET_FILE_DIR:CannonCruise>
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
         COMMENT "Copying audio assets to build output directory"

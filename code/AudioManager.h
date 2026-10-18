@@ -1,4 +1,4 @@
-#ifndef AUDIOMANAGER_H
+﻿#ifndef AUDIOMANAGER_H
 #define AUDIOMANAGER_H
 
 // ============================================================================
@@ -31,7 +31,7 @@ public:
     CAudioManager();
 
     /**
-     * @brief Destructor – stops all active sound voices before teardown.
+     * @brief Destructor - stops all active sound voices before teardown.
      */
     virtual ~CAudioManager();
 
@@ -45,17 +45,22 @@ public:
 
     /**
      * @brief Plays a sound cue by resource identifier with optional 3D world positioning.
-     * @param pSoundName  Identifier name of the audio asset (e.g. "Audio_CannonBall").
+     * @param pSoundName  Identifier name of the audio asset (e.g. "Audio_CannonFire").
      * @param pPos        World-space coordinates for spatial panning/attenuation, or NULL for 2D.
      */
     void PlaySound(const char* pSoundName, const RwV3d* pPos = 0);
 
     /**
-     * @brief Streams an extended audio file (background music, ambiance).
-     * @param pStreamName  Stream asset filename.
+     * @brief Streams an extended audio file (background music, ambiance) via MCI.
+     * @param pStreamName  Stream asset filename (e.g. "MenuMus", "BeaverM").
      * @param bLoop        TRUE to repeat indefinitely.
      */
     void PlayStream(const char* pStreamName, RwBool bLoop = FALSE);
+
+    /**
+     * @brief Stops currently streaming background music.
+     */
+    void StopStream();
 
     /**
      * @brief Immediately halts all playing sound channels and voice streams.
@@ -90,6 +95,7 @@ private:
     RwReal m_afVolumeGroups[3];     ///< Volume scalars for groups: 0=Master, 1=Music, 2=FX.
     RwMatrix m_ListenerMatrix;      ///< Current camera transform matrix for 3D panning.
     std::string m_SoundPath;        ///< Base directory path ("Sound\\Win32\\").
+    std::string m_CurrentStream;    ///< Currently active stream filename.
 };
 
 #endif // AUDIOMANAGER_H

@@ -1,1 +1,16 @@
+10:rwlibrw_test
+11:rwstudio_test
+12:renderworld_test
+13:camerastate_test
+14:audiostream_test
+15:behaviourloader_test
+16:txddecode_test
+17:coltrimesh_test
+18:renderplatform_test
+19:worldgeometry_test
+20:trailingchunk_test
+21:worldspawn_test
+22:ocean_test
+23:rt2danim_test
 26:fmvscene_test
+27:localization_test

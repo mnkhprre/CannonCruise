@@ -44,6 +44,8 @@ static EGameState s_gameState = GAMESTATE_BOOT;
 #include "LocalizationManager.h"
 #include "BinkPlayer.h"  // binkw32 oynatici - .bik oynatimi (sub_45F350/45F270)
 #include "rwcore.h"
+#include "AudioManager.h"
+#include "SpeakManager.h"
 
 #include <cmath>
 #include <cstdio>
@@ -289,6 +291,11 @@ int main(int argc, char **argv) {
     CLocalizationManager locMgr;
     locMgr.LoadDefinitions();
     locMgr.SetLanguage(locMgr.GetCurrentLanguage());
+
+    // Audio & Speech subsystems (Phase 4.6z + Turkish dubbing)
+    CAudioManager audioMgr;
+    CSpeakManager speakMgr;
+    speakMgr.SetLanguage("Tyr");
 
     // World: if no argument, like game flow MAINMENU.RWS (binary:
     // intro -> menu). Note: menu RWS resources are NOT embedded (resLen=0,
@@ -629,6 +636,7 @@ int main(int argc, char **argv) {
                 // Menu_076 logo) -- inside RWS, not external file.
                 menu.LoadTextures(kMenuFiles[mi]);
                 s_gameState = GAMESTATE_MAINMENU;
+                audioMgr.PlayStream("MenuMus", TRUE);
                 std::printf("Menu: nodes=%u commands=%d canvas=%.0fx%.0f\n",
                             pMaestro->info.nodeCount, pMaestro->commandCount,
                             (double)pMaestro->info.canvasWidth,
@@ -688,9 +696,11 @@ int main(int argc, char **argv) {
                                        RwPlatformKeyDown('Q');
                     if (down == TRUE && s_prevDown == FALSE) {
                         menu.MoveNext();
+                        audioMgr.PlaySound("Audio_MenuSelect");
                     }
                     if (up == TRUE && s_prevUp == FALSE) {
                         menu.MovePrev();
+                        audioMgr.PlaySound("Audio_MenuSelect");
                     }
                     if (left == TRUE && s_prevLeft == FALSE) {
                         menu.AdjustLeft();
@@ -1007,6 +1017,16 @@ int main(int argc, char **argv) {
     RwReal camPitch = 0.0f;
     RwReal camSpan = 400.0f; // world scale -- freecam speed base
     if (bWorldLoaded == TRUE && pipeline.pClump != nullptr) {
+        const char *bgmTrack = "BeaverM";
+        if (pWorldPath != nullptr) {
+            if (std::strstr(pWorldPath, "VIKING") || std::strstr(pWorldPath, "Viking")) bgmTrack = "VikingM";
+            else if (std::strstr(pWorldPath, "NORDIC") || std::strstr(pWorldPath, "Nordic")) bgmTrack = "NordicM";
+            else if (std::strstr(pWorldPath, "IDUNA") || std::strstr(pWorldPath, "Iduna")) bgmTrack = "IdunaM";
+            else if (std::strstr(pWorldPath, "BEAVER") || std::strstr(pWorldPath, "Beaver")) bgmTrack = "BeaverM";
+        }
+        audioMgr.PlayStream(bgmTrack, TRUE);
+        speakMgr.PlaySpeak(1, 0); // Introductory speech line
+
         if (RenderPlatform_AddClump(pipeline.pClump) != TRUE) {
             std::fprintf(stderr, "CannonCruise: AddClump failed\n");
         }
@@ -1152,7 +1172,13 @@ int main(int argc, char **argv) {
             break;
         }
         if (bWorldLoaded == TRUE && pipeline.pClump != nullptr) {
-            RenderPlatform_RenderScene(); // world->render() -- between Begin/End
+            RenderPlatform_RenderScene();
+            if (RwPlatformKeyDown(' ')) {
+                audioMgr.PlaySound("Audio_CannonFire");
+            }
+            if (RwPlatformKeyDown('T')) {
+                speakMgr.PlaySpeak(2, 0);
+            } // world->render() -- between Begin/End
             // Phase 4.6q -- freecam: mouse look + WASD (in view plane) +
             // Q/E (vertical) + arrow keys (yaw/pitch). Null platform no key/
             // mouse -> no-op. View derived from yaw/pitch.
@@ -1276,6 +1302,8 @@ int main(int argc, char **argv) {
             (bWorldLoaded == TRUE) ? pipeline.assetCount : 0u);
     }
 
+    audioMgr.StopAllVoices();
+    speakMgr.StopSpeak();
     delete pOcean; // COcean::Shutdown + tile cleanup
     RwPlatformSetMouseCapture(FALSE); // cursor back
 

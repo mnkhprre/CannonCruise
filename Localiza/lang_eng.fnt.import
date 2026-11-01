@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://bak064kjw7ca"
+path="res://.godot/imported/lang_eng.fnt-a23a7ea9501ce898f6877bc5fd3d0873.fontdata"
+
+[deps]
+
+source_file="res://GitHub/CannonCruise/Localiza/lang_eng.fnt"
+dest_files=["res://.godot/imported/lang_eng.fnt-a23a7ea9501ce898f6877bc5fd3d0873.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

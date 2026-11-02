@@ -18,10 +18,10 @@ project(bullet3-populate NONE)
 
 # Pass through things we've already detected in the main project to avoid
 # paying the cost of redetecting them again in ExternalProject_Add()
-set(GIT_EXECUTABLE [==[GIT_EXECUTABLE-NOTFOUND]==])
-set(Git_VERSION [==[]==])
+set(GIT_EXECUTABLE [==[C:/Program Files/Git/cmd/git.exe]==])
+set(Git_VERSION [==[2.56.0.windows.4]==])
 set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[GIT_EXECUTABLE-NOTFOUND;]==]
+  [==[C:/Program Files/Git/cmd/git.exe;2.56.0.windows.4]==]
 )
 
 
